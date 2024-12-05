@@ -1,0 +1,38 @@
+SELECT 
+    dm.perkara_id,
+    dm.tgl_surat,
+    dm.nomor_surat,
+    MAX(dm.pn_asal_text) AS pn_asal_text, 
+    MAX(dm.nomor_perkara) AS nomor_perkara, 
+    MAX(dm.pihak) AS pihak, 
+    MAX(dm.tgl_sidang) AS tgl_sidang, 
+    MAX(dm.tgl_delegasi) AS tgl_delegasi, 
+    MAX(dm.jenis_delegasi_text) AS jenis_delegasi_text,
+    dpm.tgl_surat_diterima, 
+    dpm.tgl_penunjukan_jurusita, 
+    dpm.tgl_relaas, 
+    dpm.tgl_pengiriman_relaas, 
+    MAX(dpm.jurusita_nama) AS jurusita_nama
+FROM 
+    delegasi_masuk dm
+INNER JOIN 
+    delegasi_proses_masuk dpm
+ON 
+    dm.id = dpm.delegasi_id
+WHERE
+    dm.tgl_surat >= '2023-12-01' AND dm.tgl_surat <= '2023-12-31'
+    AND dm.pn_asal_text = 'PENGADILAN AGAMA BARABAI'
+    
+   
+    AND dpm.tgl_surat_diterima >= '2023-12-01' AND dpm.tgl_surat_diterima <= '2023-12-31'
+    AND dpm.tgl_penunjukan_jurusita >= '2023-12-01' AND dpm.tgl_penunjukan_jurusita <= '2023-12-31'
+    AND dpm.tgl_relaas >= '2023-12-01' AND dpm.tgl_relaas <= '2023-12-31'
+    AND dpm.tgl_pengiriman_relaas >= '2023-12-01' AND dpm.tgl_pengiriman_relaas <= '2023-12-31'
+GROUP BY 
+    dm.tgl_surat, dm.nomor_surat HAVING COUNT(dpm.perkara_id) > 0
+
+    
+    
+ORDER BY
+    dm.perkara_id DESC
+   
