@@ -10,7 +10,7 @@
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="#">Beranda</a></li>
-						<li class="breadcrumb-item active">PERKARA BULAN</li>
+						<li class="breadcrumb-item active">M_Statistik_chart</li>
 					</ol>
 				</div>
 			</div>
@@ -36,8 +36,23 @@
 							<div class="form-group col-md-1">
 								<label for="month">Bulan:</label>
 								<select id="month" name="month" class="form-control">
-									<?php for ($i = 1; $i <= 12; $i++): ?>
-										<option value="<?= $i ?>" <?= isset($_GET['month']) && $_GET['month'] == $i ? 'selected' : '' ?>><?= date('F', mktime(0, 0, 0, $i, 10)) ?></option>
+									<?php
+									$months = [
+										1 => 'Januari',
+										'Februari',
+										'Maret',
+										'April',
+										'Mei',
+										'Juni',
+										'Juli',
+										'Agustus',
+										'September',
+										'Oktober',
+										'November',
+										'Desember'
+									];
+									for ($i = 1; $i <= 12; $i++): ?>
+										<option value="<?= $i ?>" <?= isset($_GET['month']) && $_GET['month'] == $i ? 'selected' : '' ?>><?= $months[$i] ?></option>
 									<?php endfor; ?>
 								</select>
 							</div>
@@ -45,14 +60,21 @@
 
 						<button type="submit" class="btn btn-primary mb-3">Cari</button>
 
+						<?php if (isset($_GET['month'])): ?>
+							<div class="text-center">
+								<h2>Statistik Perkara Bulan <?= $months[$_GET['month']] ?></h2>
+							</div>
+						<?php endif; ?>
+
 					</form>
 				</div>
+
 				<!-- Chart Column -->
 				<div class="col-md-6">
 					<!-- DONUT CHART -->
 					<div class="card card-danger">
 						<div class="card-header">
-							<h3 class="card-title">STATISTIK PERKARA</h3>
+							<h3 class="card-title">CHART PERKARA</h3>
 							<div class="card-tools">
 								<button type="button" class="btn btn-tool" data-card-widget="collapse">
 									<i class="fas fa-minus"></i>
@@ -76,7 +98,7 @@
 					<!-- TABLE -->
 					<div class="card card-info">
 						<div class="card-header">
-							<h3 class="card-title">Tabel Perkara</h3>
+							<h3 class="card-title">Tabel Jumlah Perkara</h3>
 						</div>
 						<div class="card-body">
 							<table class="table table-bordered table-hover sql-table">
