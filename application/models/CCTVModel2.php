@@ -12,17 +12,25 @@ class CCTVModel2 extends CI_Model {
 
     public function getPerkaraData() {
         $query = $this->db->query("
-            SELECT 
-                COUNT(perkara.perkara_id) AS total_perkara,
-                COUNT(perkara_efiling_id.perkara_id) AS total_perkara_ecourt,
-                (COUNT(perkara_efiling_id.perkara_id) * 100.0 / COUNT(perkara.perkara_id)) AS persen_perkara_ecourt,
-                (COUNT(perkara.perkara_id) - COUNT(perkara_efiling_id.perkara_id)) AS total_perkara_non_ecourt
-            FROM 
-                perkara
-            LEFT JOIN 
-                perkara_efiling_id ON perkara.perkara_id = perkara_efiling_id.perkara_id
+            SELECT jenis_perkara_nama, COUNT(*) AS jumlah_perkara
+            FROM perkara
+            LEFT JOIN perkara_penetapan ON perkara.perkara_id = perkara_penetapan.perkara_id
+            LEFT JOIN perkara_pihak1 ON perkara.perkara_id = perkara_pihak1.perkara_id
             WHERE 
-                YEAR(perkara.tanggal_pendaftaran) = YEAR(CURDATE())
+                YEAR(tanggal_pendaftaran) = ? AND MONTH(tanggal_pendaftaran) = ?
+                AND perkara_pihak1.pihak_id != ?
+                AND perkara_pihak1.urutan = ?
+            GROUP BY jenis_perkara_nama
+            ORDER BY 
+                CASE 
+                    WHEN jenis_perkara_nama LIKE '%cerai gugat%' THEN 1
+                    WHEN jenis_perkara_nama LIKE '%cerai talak%' THEN 2
+                    WHEN jenis_perkara_nama LIKE '%Asal Usul Anak%' THEN 3
+                    WHEN jenis_perkara_nama LIKE '%Istbat Nikah%' THEN 4
+                    WHEN jenis_perkara_nama LIKE '%dispensasi nikah%' THEN 5
+                    WHEN jenis_perkara_nama LIKE '%ahli waris%' THEN 6
+                    ELSE 7 
+                END
         ");
         return $query->row();
     }
