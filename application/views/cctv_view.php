@@ -54,6 +54,21 @@
         .breadcrumb {
             background-color: #e9ecef;
         }
+        .small-box {
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .small-box:hover {
+            transform: scale(1.05);
+        }
+        .small-box .inner h3 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .small-box .inner p {
+            font-size: 1.2rem;
+        }
     </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -101,6 +116,126 @@
                             </div>
                         <?php endforeach; ?>
                     </div>
+
+                    <!-- Data Perkara Section -->
+                    <?php
+                    $total_perkara = $perkaraData->total_perkara;
+                    $total_perkara_ecourt = $perkaraData->total_perkara_ecourt;
+                    $persen_perkara_ecourt = $perkaraData->persen_perkara_ecourt;
+                    $total_perkara_non_ecourt = $perkaraData->total_perkara_non_ecourt;
+                    $currentYear = date('Y');
+                    ?>
+                    <h4 style="text-align: center;">Perkara Tahun : <?php echo $currentYear; ?></h4>
+                    <div class="row">
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-info rounded-box">
+                                <div class="inner">
+                                    <h3><?php echo $total_perkara; ?></h3>
+                                    <p>Total Perkara</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-success rounded-box">
+                                <div class="inner">
+                                    <h3><?php echo $total_perkara_ecourt; ?></h3>
+                                    <p>Total Perkara e-Court</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-warning rounded-box">
+                                <div class="inner">
+                                    <h3><?php echo number_format($persen_perkara_ecourt, 2); ?>%</h3>
+                                    <p>Persen Perkara e-Court</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-danger rounded-box">
+                                <div class="inner">
+                                    <h3><?php echo $total_perkara_non_ecourt; ?></h3>
+                                    <p>Total Perkara Non e-Court</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add the chart -->
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Statistik Perkara Non e-Court dan Perkara E-Court </h3>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="perkaraChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+                    <script>
+                        var ctx = document.getElementById('perkaraChart').getContext('2d');
+                        var totalPerkaraEcourt = <?php echo $total_perkara_ecourt; ?>;
+                        var totalPerkaraNonEcourt = <?php echo $total_perkara_non_ecourt; ?>;
+
+                        var perkaraChart = new Chart(ctx, {
+                            type: 'pie',
+                            data: {
+                                labels: ['Perkara e-Court', 'Perkara Non e-Court'],
+                                datasets: [{
+                                    data: [totalPerkaraEcourt, totalPerkaraNonEcourt],
+                                    backgroundColor: ['#28a745', '#dc3545'],
+                                    hoverBackgroundColor: ['#1e7e34', '#c82333'],
+                                    borderColor: ['#fff', '#fff'],
+                                    borderWidth: 2
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        display: true,
+                                        position: 'bottom',
+                                        labels: {
+                                            font: {
+                                                size: 14
+                                            }
+                                        }
+                                    },
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(tooltipItem) {
+                                                return tooltipItem.label + ': ' + tooltipItem.raw + ' (' + (tooltipItem.raw * 100 / (totalPerkaraEcourt + totalPerkaraNonEcourt)).toFixed(2) + '%)';
+                                            }
+                                        }
+                                    },
+                                    datalabels: {
+                                        formatter: function(value, context) {
+                                            return (value * 100 / (totalPerkaraEcourt + totalPerkaraNonEcourt)).toFixed(2) + '%';
+                                        },
+                                        color: '#fff',
+                                        font: {
+                                            weight: 'bold',
+                                            size: 14
+                                        }
+                                    }
+                                }
+                            },
+                            plugins: [ChartDataLabels]
+                        });
+                    </script>
                 </div>
             </section>
             <!-- /.content -->
@@ -119,13 +254,5 @@
     <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo base_url() ?>assets/dist/js/adminlte.min.js"></script>
-    <!-- Custom Script -->
-    <script>
-        <?php foreach ($links as $id => $link): ?>
-            document.getElementById('<?= $id ?>').addEventListener('mouseover', function() {
-                document.getElementById('video-frame-<?= $id ?>').src = '<?= $link ?>';
-            });
-        <?php endforeach; ?>
-    </script>
 </body>
 </html>
