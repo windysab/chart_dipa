@@ -117,7 +117,7 @@
 					$total_perkara_ecourt = $perkaraData->total_perkara_ecourt;
 					$persen_perkara_ecourt = $perkaraData->persen_perkara_ecourt;
 					$total_perkara_non_ecourt = $perkaraData->total_perkara_non_ecourt;
-					$currentYear = date('Y');                     ?>
+					$currentYear = date('Y'); ?>
 					<div class="header"> <img src="https://www.pa-amuntai.go.id/images/images/logo.png" alt="Logo" class="img-fluid">
 						<h5>CCTV Online Pengadilan Agama Amuntai Kelas IB</h5>
 					</div>
