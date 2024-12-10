@@ -25,6 +25,7 @@
 		.header h5 {
 			font-size: 2rem;
 			font-weight: bold;
+			color: #007bff;
 		}
 
 		.video-link {
@@ -35,16 +36,18 @@
 			margin-bottom: 20px;
 			text-align: center;
 			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-			transition: transform 0.3s;
+			transition: transform 0.3s, box-shadow 0.3s;
 		}
 
 		.video-link:hover {
 			transform: scale(1.05);
+			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 		}
 
 		.video-link h6 {
 			margin-bottom: 10px;
 			font-weight: bold;
+			color: #007bff;
 		}
 
 		.video-link iframe {
@@ -53,22 +56,14 @@
 			border: none;
 		}
 
-		.chart-container {
+		.chart-container, .table-container {
 			margin-top: 40px;
 		}
 
-		.chart-container h5 {
+		.chart-container h5, .table-container h5 {
 			text-align: center;
 			margin-bottom: 20px;
-		}
-
-		.table-container {
-			margin-top: 40px;
-		}
-
-		.table-container h5 {
-			text-align: center;
-			margin-bottom: 20px;
+			color: #007bff;
 		}
 
 		.table-container .table {
@@ -98,13 +93,51 @@
 		.table-container .table tbody tr:hover {
 			background-color: #e9ecef;
 		}
+
+		.total-perkara-container {
+			margin-top: 40px;
+		}
+
+		.total-perkara-container h5 {
+			text-align: center;
+			margin-bottom: 20px;
+			color: #007bff;
+		}
+
+		.total-perkara-container .table {
+			background-color: #ffffff;
+			border-radius: 5px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			overflow: hidden;
+		}
+
+		.total-perkara-container .table th,
+		.total-perkara-container .table td {
+			text-align: center;
+			vertical-align: middle;
+			padding: 15px;
+		}
+
+		.total-perkara-container .table th {
+			background-color: #f8f9fa;
+			font-weight: bold;
+			color: #333;
+		}
+
+		.total-perkara-container .table tbody tr:nth-child(odd) {
+			background-color: #f2f2f2;
+		}
+
+		.total-perkara-container .table tbody tr:hover {
+			background-color: #e9ecef;
+		}
 	</style>
 </head>
 
 <body>
 	<div class="container">
 		<div class="header">
-			<img src="path/to/your/logo.png" alt="Logo">
+			<img src="<?php echo base_url('assets/images/logo.png'); ?>" alt="Logo">
 			<h5>Live CCTV PENGADILAN AGAMA AMUNTAI KELAS IB</h5>
 		</div>
 		<div class="row">
@@ -118,8 +151,13 @@
 			<?php endforeach; ?>
 		</div>
 		<div class="row">
+			<div class="col-md-12 text-center mt-4">
+				<h2>KEADAAN PERKARA S/D <?php echo date('F Y', strtotime('first day of last month')); ?></h2>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-md-6 chart-container">
-				<h5>Chart Data Perkara Bulan Lalu</h5>
+				<h5>Chart Data Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
 				<div class="card-body">
 					<div class="chart">
 						<canvas id="donutChart" style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
@@ -127,7 +165,7 @@
 				</div>
 			</div>
 			<div class="col-md-6 table-container">
-				<h5>Data Perkara Bulan Lalu</h5>
+				<h5>Data Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
 				<table class="table table-bordered table-hover sql-table">
 					<thead>
 						<tr>
@@ -171,7 +209,29 @@
 					</tbody>
 				</table>
 			</div>
-
+		</div>
+		<div class="row total-perkara-container">
+			<div class="col-md-12">
+				<h5>Total Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th>Total Perkara</th>
+							<th>Total Perkara e-Court</th>
+							<th>Persentase Perkara e-Court</th>
+							<th>Total Perkara Non e-Court</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?></td>
+							<td><?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?></td>
+							<td><?php echo number_format($total_perkara_data->persen_perkara_ecourt, 2) . '%'; ?></td>
+							<td><?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
