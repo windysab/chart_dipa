@@ -119,6 +119,7 @@
 			font-weight: bold;
 			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 			transition: transform 0.3s, box-shadow 0.3s;
+			text-align: center;
 		}
 
 		.total-perkara-container .circle-card:hover {
@@ -149,10 +150,12 @@
 		.total-perkara-container .circle-card .title {
 			font-size: 1rem;
 			margin-bottom: 5px;
+			font-weight: 600;
 		}
 
 		.total-perkara-container .circle-card .value {
 			font-size: 1.5rem;
+			font-weight: 700;
 		}
 	</style>
 </head>
@@ -236,26 +239,26 @@
 		<div class="row total-perkara-container text-center">
 			<div class="col-md-3">
 				<div class="circle-card total-perkara">
-						<p class="title">Total Perkara</p>
-						<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?></p>
+					<p class="title">Total Perkara</p>
+					<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?></p>
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="circle-card total-perkara-ecourt">
-						<p class="title">Total Perkara e-Court</p>
-						<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
+					<p class="title">Total Perkara e-Court</p>
+					<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="circle-card persen-perkara-ecourt">
-						<p class="title">Persentase Perkara e-Court</p>
-						<p class="value"><?php echo number_format($total_perkara_data->persen_perkara_ecourt, 2) . '%'; ?></p>
+					<p class="title">Persentase Perkara e-Court</p>
+					<p class="value"><?php echo number_format($total_perkara_data->persen_perkara_ecourt, 2) . '%'; ?></p>
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="circle-card total-perkara-non-ecourt">
-						<p class="title">Total Perkara Non e-Court</p>
-						<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
+					<p class="title">Total Perkara Non e-Court</p>
+					<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
 				</div>
 			</div>
 		</div>
