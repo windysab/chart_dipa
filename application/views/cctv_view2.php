@@ -106,32 +106,53 @@
 			color: #007bff;
 		}
 
-		.total-perkara-container .table {
-			background-color: #ffffff;
-			border-radius: 5px;
-			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-			overflow: hidden;
-		}
-
-		.total-perkara-container .table th,
-		.total-perkara-container .table td {
-			text-align: center;
-			vertical-align: middle;
-			padding: 15px;
-		}
-
-		.total-perkara-container .table th {
-			background-color: #f8f9fa;
+		.total-perkara-container .circle-card {
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto 20px;
+			color: #fff;
+			font-size: 1.2rem;
 			font-weight: bold;
-			color: #333;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s, box-shadow 0.3s;
 		}
 
-		.total-perkara-container .table tbody tr:nth-child(odd) {
-			background-color: #f2f2f2;
+		.total-perkara-container .circle-card:hover {
+			transform: scale(1.05);
+			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 		}
 
-		.total-perkara-container .table tbody tr:hover {
-			background-color: #e9ecef;
+		.total-perkara-container .circle-card.total-perkara {
+			background-color: #007bff;
+		}
+
+		.total-perkara-container .circle-card.total-perkara-ecourt {
+			background-color: #28a745;
+		}
+
+		.total-perkara-container .circle-card.persen-perkara-ecourt {
+			background-color: #ffc107;
+		}
+
+		.total-perkara-container .circle-card.total-perkara-non-ecourt {
+			background-color: #dc3545;
+		}
+
+		.total-perkara-container .circle-card p {
+			margin: 0;
+		}
+
+		.total-perkara-container .circle-card .title {
+			font-size: 1rem;
+			margin-bottom: 5px;
+		}
+
+		.total-perkara-container .circle-card .value {
+			font-size: 1.5rem;
 		}
 	</style>
 </head>
@@ -212,27 +233,30 @@
 				</table>
 			</div>
 		</div>
-		<div class="row total-perkara-container">
-			<div class="col-md-12">
-				<h5>Total Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-				<table class="table table-bordered table-hover">
-					<thead>
-						<tr>
-							<th>Total Perkara</th>
-							<th>Total Perkara e-Court</th>
-							<th>Persentase Perkara e-Court</th>
-							<th>Total Perkara Non e-Court</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?></td>
-							<td><?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?></td>
-							<td><?php echo number_format($total_perkara_data->persen_perkara_ecourt, 2) . '%'; ?></td>
-							<td><?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?></td>
-						</tr>
-					</tbody>
-				</table>
+		<div class="row total-perkara-container text-center">
+			<div class="col-md-3">
+				<div class="circle-card total-perkara">
+						<p class="title">Total Perkara</p>
+						<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?></p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="circle-card total-perkara-ecourt">
+						<p class="title">Total Perkara e-Court</p>
+						<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="circle-card persen-perkara-ecourt">
+						<p class="title">Persentase Perkara e-Court</p>
+						<p class="value"><?php echo number_format($total_perkara_data->persen_perkara_ecourt, 2) . '%'; ?></p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="circle-card total-perkara-non-ecourt">
+						<p class="title">Total Perkara Non e-Court</p>
+						<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
+				</div>
 			</div>
 		</div>
 	</div>
