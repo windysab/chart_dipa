@@ -75,16 +75,28 @@
 			background-color: #ffffff;
 			border-radius: 5px;
 			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			overflow: hidden;
 		}
 
 		.table-container .table th,
 		.table-container .table td {
 			text-align: center;
 			vertical-align: middle;
+			padding: 15px;
 		}
 
 		.table-container .table th {
 			background-color: #f8f9fa;
+			font-weight: bold;
+			color: #333;
+		}
+
+		.table-container .table tbody tr:nth-child(odd) {
+			background-color: #f2f2f2;
+		}
+
+		.table-container .table tbody tr:hover {
+			background-color: #e9ecef;
 		}
 	</style>
 </head>
@@ -93,7 +105,7 @@
 	<div class="container">
 		<div class="header">
 			<img src="path/to/your/logo.png" alt="Logo">
-			<h5>Live CCTV Feeds</h5>
+			<h5>Live CCTV PENGADILAN AGAMA AMUNTAI KELAS IB</h5>
 		</div>
 		<div class="row">
 			<?php foreach ($links as $name => $url): ?>
