@@ -17,7 +17,7 @@
 		}
 
 		.header img {
-			width: 100%;
+			width: 150px;
 			height: auto;
 			margin-bottom: 10px;
 		}
@@ -56,11 +56,13 @@
 			border: none;
 		}
 
-		.chart-container, .table-container {
+		.chart-container,
+		.table-container {
 			margin-top: 40px;
 		}
 
-		.chart-container h5, .table-container h5 {
+		.chart-container h5,
+		.table-container h5 {
 			text-align: center;
 			margin-bottom: 20px;
 			color: #007bff;
@@ -137,7 +139,7 @@
 <body>
 	<div class="container">
 		<div class="header">
-			<img src="<?php echo base_url('assets/images/logo.png'); ?>" alt="Logo">
+			<img src="<?php echo base_url('assets/images/Logo PA Amuntai - Trans.png'); ?>" class="img-circle elevation-2" alt="Logo">
 			<h5>Live CCTV PENGADILAN AGAMA AMUNTAI KELAS IB</h5>
 		</div>
 		<div class="row">
