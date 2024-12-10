@@ -10,17 +10,16 @@ class CCTVModel2 extends CI_Model {
         return $this->links;
     }
 
-    public function getPerkaraData() {
+    public function getPerkaraData($year, $month) {
         $query = $this->db->query("
-            SELECT jenis_perkara_nama, COUNT(*) AS jumlah_perkara
+            SELECT jenis_perkara_nama, tanggal_pendaftaran, COUNT(*) AS jumlah_perkara
             FROM perkara
             LEFT JOIN perkara_penetapan ON perkara.perkara_id = perkara_penetapan.perkara_id
             LEFT JOIN perkara_pihak1 ON perkara.perkara_id = perkara_pihak1.perkara_id
             WHERE 
                 YEAR(tanggal_pendaftaran) = ? AND MONTH(tanggal_pendaftaran) = ?
-                AND perkara_pihak1.pihak_id != ?
-                AND perkara_pihak1.urutan = ?
-            GROUP BY jenis_perkara_nama
+                AND perkara_pihak1.pihak_id != ? AND perkara_pihak1.urutan = ?
+            GROUP BY jenis_perkara_nama, tanggal_pendaftaran
             ORDER BY 
                 CASE 
                     WHEN jenis_perkara_nama LIKE '%cerai gugat%' THEN 1
@@ -31,8 +30,8 @@ class CCTVModel2 extends CI_Model {
                     WHEN jenis_perkara_nama LIKE '%ahli waris%' THEN 6
                     ELSE 7 
                 END
-        ");
-        return $query->row();
+        ", [$year, $month, 0, 1]); // Pastikan parameter diisi dengan nilai yang sesuai
+        return $query->result();
     }
 }
 ?>

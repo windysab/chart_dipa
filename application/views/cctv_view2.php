@@ -2,204 +2,265 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCTV Online Pengadilan Agama Amuntai Kelas IB</title>
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/adminlte.min.css">
-    <style>
-        .container {
-            margin-top: 20px;
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CCTV View</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		.container {
+			margin-top: 20px;
+		}
 
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+		.header {
+			text-align: center;
+			margin-bottom: 20px;
+		}
 
-        .header img {
-            width: 1000px;
-            height: auto;
-            margin-bottom: 10px;
-        }
+		.header img {
+			width: 100%;
+			height: auto;
+			margin-bottom: 10px;
+		}
 
-        .header h5 {
-            font-size: 2rem;
-            font-weight: bold;
-        }
+		.header h5 {
+			font-size: 2rem;
+			font-weight: bold;
+		}
 
-        .video-link {
-            background-color: #ffffff;
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 20px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
+		.video-link {
+			background-color: #ffffff;
+			border: 1px solid #dee2e6;
+			border-radius: 5px;
+			padding: 15px;
+			margin-bottom: 20px;
+			text-align: center;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s;
+		}
 
-        .video-link:hover {
-            transform: scale(1.05);
-        }
+		.video-link:hover {
+			transform: scale(1.05);
+		}
 
-        .video-link h6 {
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
+		.video-link h6 {
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
 
-        .video-link iframe {
-            width: 100%;
-            height: 200px;
-            border: none;
-        }
+		.video-link iframe {
+			width: 100%;
+			height: 200px;
+			border: none;
+		}
 
-        .center-text {
-            text-align: center;
-        }
+		.chart-container {
+			margin-top: 40px;
+		}
 
-        body {
-            background-color: #f4f6f9;
-        }
+		.chart-container h5 {
+			text-align: center;
+			margin-bottom: 20px;
+		}
 
-        .breadcrumb {
-            background-color: #e9ecef;
-        }
+		.table-container {
+			margin-top: 40px;
+		}
 
-        .small-box {
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
+		.table-container h5 {
+			text-align: center;
+			margin-bottom: 20px;
+		}
 
-        .small-box:hover {
-            transform: scale(1.05);
-        }
+		.table-container .table {
+			background-color: #ffffff;
+			border-radius: 5px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
 
-        .small-box .inner h3 {
-            font-size: 2.5rem;
-            font-weight: bold;
-        }
+		.table-container .table th,
+		.table-container .table td {
+			text-align: center;
+			vertical-align: middle;
+		}
 
-        .small-box .inner p {
-            font-size: 1.2rem;
-        }
-
-        .data-section {
-            margin-bottom: 20px;
-        }
-    </style>
+		.table-container .table th {
+			background-color: #f8f9fa;
+		}
+	</style>
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
-        <!-- Navbar -->
-        <?php $this->load->view('template/new_header'); ?>
-        <!-- /.navbar -->
+<body>
+	<div class="container">
+		<div class="header">
+			<img src="path/to/your/logo.png" alt="Logo">
+			<h5>Live CCTV Feeds</h5>
+		</div>
+		<div class="row">
+			<?php foreach ($links as $name => $url): ?>
+				<div class="col-md-4">
+					<div class="video-link">
+						<h6><?php echo ucfirst(str_replace('_', ' ', $name)); ?></h6>
+						<iframe src="<?php echo $url; ?>" allowfullscreen></iframe>
+					</div>
+				</div>
+			<?php endforeach; ?>
+		</div>
+		<div class="row">
+			<div class="col-md-6 chart-container">
+				<h5>Chart Data Perkara Bulan Lalu</h5>
+				<div class="card-body">
+					<div class="chart">
+						<canvas id="donutChart" style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 table-container">
+				<h5>Data Perkara Bulan Lalu</h5>
+				<table class="table table-bordered table-hover sql-table">
+					<thead>
+						<tr>
+							<th>Jenis Perkara</th>
+							<th>Jumlah Perkara</th>
+							<th>Persentase</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+						$previous_month = date('Y-m', strtotime('first day of last month'));
+						$filtered_chart_data = array_filter($chart_data, function ($data) use ($previous_month) {
+							$data_month = isset($data->tanggal_pendaftaran) ? date('Y-m', strtotime($data->tanggal_pendaftaran)) : '';
+							return $data_month == $previous_month;
+						});
 
-        <!-- Main Sidebar Container -->
-        <?php $this->load->view('template/new_sidebar'); ?>
+						$grouped_data = [];
+						foreach ($filtered_chart_data as $data) {
+							if (!isset($grouped_data[$data->jenis_perkara_nama])) {
+								$grouped_data[$data->jenis_perkara_nama] = 0;
+							}
+							$grouped_data[$data->jenis_perkara_nama] += $data->jumlah_perkara;
+						}
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>CCTV Online</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">CCTV</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div><!-- /.container-fluid -->
-            </section>
+						$total_perkara = array_sum($grouped_data);
+						foreach ($grouped_data as $jenis_perkara_nama => $jumlah_perkara): ?>
+							<tr>
+								<td><?php echo htmlspecialchars($jenis_perkara_nama, ENT_QUOTES, 'UTF-8'); ?></td>
+								<td><?php echo htmlspecialchars($jumlah_perkara, ENT_QUOTES, 'UTF-8'); ?></td>
+								<td>
+									<?php
+									if ($total_perkara > 0) {
+										echo number_format(($jumlah_perkara / $total_perkara * 100), 2) . '%';
+									} else {
+										echo '0.00%';
+									}
+									?>
+								</td>
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+			</div>
 
-            <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <!-- Data Perkara Section -->
-                    <?php
-                    $total_perkara = $perkaraData->total_perkara;
-                    $total_perkara_ecourt = $perkaraData->total_perkara_ecourt;
-                    $persen_perkara_ecourt = $perkaraData->persen_perkara_ecourt;
-                    $total_perkara_non_ecourt = $perkaraData->total_perkara_non_ecourt;
-                    $currentYear = date('Y');
-                    ?>
-                    <div class="header">
-                        <img src="https://www.pa-amuntai.go.id/images/images/logo.png" alt="Logo" class="img-fluid">
-                        <h5>CCTV Online Pengadilan Agama Amuntai Kelas IB</h5>
-                    </div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
+	<script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/adminlte.min.css">
+	<style>
+		.highlight {
+			background-color: yellow !important;
+		}
 
-                    <!-- Statistik Perkara Section -->
-                    <div class="row">
-                        <div class="col-lg-3 col-6">
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3><?php echo $total_perkara; ?></h3>
-                                    <p>Total Perkara <?php echo $currentYear; ?></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-6">
-                            <div class="small-box bg-success">
-                                <div class="inner">
-                                    <h3><?php echo $total_perkara_ecourt; ?></h3>
-                                    <p>Total Perkara e-Court</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-6">
-                            <div class="small-box bg-warning">
-                                <div class="inner">
-                                    <h3><?php echo $total_perkara_non_ecourt; ?></h3>
-                                    <p>Total Perkara Non e-Court</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-6">
-                            <div class="small-box bg-danger">
-                                <div class="inner">
-                                    <h3><?php echo round($persen_perkara_ecourt, 2); ?>%</h3>
-                                    <p>Persentase Perkara e-Court</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+		.table-hover tbody tr:hover {
+			background-color: #f5f5f5;
+		}
+	</style>
+	<script>
+		$(function() {
+			var donutChartCanvas = $('#donutChart').get(0).getContext('2d');
+			var donutData = {
+				labels: [<?php foreach ($grouped_data as $jenis_perkara_nama => $jumlah_perkara) {
+								echo '"' . $jenis_perkara_nama . '",';
+							} ?>],
+				datasets: [{
+					data: [<?php foreach ($grouped_data as $jumlah_perkara) {
+								echo $jumlah_perkara . ',';
+							} ?>],
+					backgroundColor: [
+						'#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#3b8bba'
+					],
+				}]
+			};
+			var donutOptions = {
+				maintainAspectRatio: false,
+				responsive: true,
+				animation: {
+					animateScale: true,
+					animateRotate: true
+				},
+				plugins: {
+					datalabels: {
+						display: true,
+						formatter: (value, ctx) => {
+							let total = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+							let percentage = ((value / total) * 100).toFixed(2) + '%';
+							let label = ctx.chart.data.labels[ctx.dataIndex];
+							return `${label}: ${value} (${percentage})`;
+						},
+						color: '#FFFFFF',
+						anchor: 'end',
+						align: 'start',
+						offset: -10,
+						borderWidth: 2,
+						borderColor: '#000',
+						borderRadius: 4,
+						backgroundColor: '#000'
+					},
+					tooltip: {
+						enabled: true,
+						callbacks: {
+							label: function(tooltipItem) {
+								let total = tooltipItem.dataset.data.reduce((a, b) => a + b, 0);
+								let value = tooltipItem.raw;
+								let percentage = ((value / total) * 100).toFixed(2) + '%';
+								return `${tooltipItem.label}: ${value} (${percentage})`;
+							}
+						}
+					}
+				}
+			};
+			var donutChart = new Chart(donutChartCanvas, {
+				type: 'doughnut',
+				data: donutData,
+				options: donutOptions
+			});
 
-                    <!-- Video Links Section -->
-                    <div class="row">
-                        <?php foreach ($links as $id => $link): ?>
-                            <div class="col-md-4">
-                                <div class="video-link">
-                                    <h6 class="center-text" id="<?= $id ?>"><?= ucfirst(str_replace('_', ' ', $id)) ?></h6>
-                                    <iframe id="video-frame-<?= $id ?>" src="<?= $link ?>" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
-
-        <!-- Footer -->
-        <?php $this->load->view('template/new_footer'); ?>
-        <!-- /.footer -->
-    </div>
-    <!-- ./wrapper -->
-
-    <!-- jQuery -->
-    <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="<?php echo base_url() ?>assets/dist/js/adminlte.min.js"></script>
+			$('#donutChart').on('mousemove', function(evt) {
+				var activePoints = donutChart.getElementsAtEventForMode(evt, 'nearest', {
+					intersect: true
+				}, false);
+				if (activePoints.length > 0) {
+					var index = activePoints[0].index;
+					var label = donutChart.data.labels[index];
+					var color = donutChart.data.datasets[0].backgroundColor[index];
+					if (label && color) {
+						$('table tbody tr').removeClass('highlight').css('background-color', '');
+						$('table tbody tr').each(function() {
+							if ($(this).find('td:first').text().trim() === label.trim()) {
+								$(this).css('background-color', color);
+							}
+						});
+					}
+				} else {
+					$('table tbody tr').removeClass('highlight').css('background-color', '');
+				}
+			});
+		});
+	</script>
 </body>
 
 </html>
