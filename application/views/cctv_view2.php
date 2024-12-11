@@ -204,10 +204,10 @@
 		</div>
 		<div class="row text-center mt-4">
 			<div class="col-md-6">
-				<h5>Total Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?>: <?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?></h5>
+				<h5>Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?>: <?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?> Perkara </h5>
 			</div>
 			<div class="col-md-6">
-				<h5>Total Perkara Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?>: <?php echo array_sum($mediasi_data); ?></h5>
+				<h5>Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?>: <?php echo array_sum($mediasi_data); ?> Perkara</h5>
 			</div>
 		</div>
 		<div class="row">
