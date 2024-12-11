@@ -50,5 +50,23 @@ class CCTVModel2 extends CI_Model {
         ", [$year, $month]);
         return $query->row();
     }
+
+    public function getMediasiData($year, $month) {
+        $query = $this->db->query("
+            SELECT hasil_mediasi, COUNT(*) AS jumlah
+            FROM perkara p
+            LEFT JOIN perkara_mediasi a ON p.perkara_id = a.perkara_id
+            LEFT JOIN perkara_jadwal_mediasi b ON a.mediasi_id = b.mediasi_id
+            LEFT JOIN perkara_putusan c ON p.perkara_id = c.perkara_id
+            WHERE YEAR(dimulai_mediasi) = ? AND MONTH(dimulai_mediasi) = ?
+            GROUP BY hasil_mediasi
+        ", [$year, $month]);
+        $result = $query->result();
+        $data = ['D' => 0, 'S' => 0, 'T' => 0, 'Y2' => 0, 'Y1' => 0];
+        foreach ($result as $row) {
+            $data[$row->hasil_mediasi] = $row->jumlah;
+        }
+        return $data;
+    }
 }
 ?>

@@ -193,6 +193,16 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-md-6 chart-container">
+				<h5>Chart Penyelesaian Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
+				<div class="card-body">
+					<div class="chart">
+						<canvas id="mediasiChart" style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-md-6 table-container">
 				<h5>Data Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
 				<table class="table table-bordered table-hover sql-table">
@@ -272,6 +282,7 @@
 	<script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
 	<script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/adminlte.min.css">
 	<style>
@@ -361,6 +372,57 @@
 				} else {
 					$('table tbody tr').removeClass('highlight').css('background-color', '');
 				}
+			});
+
+			var mediasiChartCanvas = $('#mediasiChart').get(0).getContext('2d');
+			var mediasiData = {
+				labels: ['Tidak Dapat Dilaksanakan', 'Berhasil Sebagian', 'Tidak Berhasil', 'Berhasil Dengan Pencabutan', 'Berhasil Dengan Akta Perdamaian'],
+				datasets: [{
+					data: [<?php echo $mediasi_data['D']; ?>, <?php echo $mediasi_data['S']; ?>, <?php echo $mediasi_data['T']; ?>, <?php echo $mediasi_data['Y2']; ?>, <?php echo $mediasi_data['Y1']; ?>],
+					backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc'],
+				}]
+			};
+			var mediasiOptions = {
+				maintainAspectRatio: false,
+				responsive: true,
+				animation: {
+					animateScale: true,
+					animateRotate: true
+				},
+				plugins: {
+					datalabels: {
+						display: true,
+						formatter: (value, ctx) => {
+							let total = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+							let percentage = ((value / total) * 100).toFixed(2) + '%';
+							return `${value} (${percentage})`;
+						},
+						color: '#FFFFFF',
+						anchor: 'end',
+						align: 'start',
+						offset: -10,
+						borderWidth: 2,
+						borderColor: '#000',
+						borderRadius: 4,
+						backgroundColor: '#000'
+					},
+					tooltip: {
+						enabled: true,
+						callbacks: {
+							label: function(tooltipItem) {
+								let total = tooltipItem.dataset.data.reduce((a, b) => a + b, 0);
+								let value = tooltipItem.raw;
+								let percentage = ((value / total) * 100).toFixed(2) + '%';
+								return `${tooltipItem.label}: ${value} (${percentage})`;
+							}
+						}
+					}
+				}
+			};
+			var mediasiChart = new Chart(mediasiChartCanvas, {
+				type: 'pie',
+				data: mediasiData,
+				options: mediasiOptions
 			});
 		});
 	</script>
