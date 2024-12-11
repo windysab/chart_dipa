@@ -73,19 +73,22 @@
 			border-radius: 5px;
 			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 			overflow: hidden;
+			width: 80%;
+			margin: 0 auto;
+			font-size: 0.9rem;
 		}
 
 		.table-container .table th,
 		.table-container .table td {
 			text-align: center;
 			vertical-align: middle;
-			padding: 15px;
+			padding: 10px;
 		}
 
 		.table-container .table th {
-			background-color: #f8f9fa;
+			background-color: #007bff;
 			font-weight: bold;
-			color: #333;
+			color: #fff;
 		}
 
 		.table-container .table tbody tr:nth-child(odd) {
@@ -239,35 +242,31 @@
 		<div class="row total-perkara-container text-center">
 			<div class="col-md-3">
 				<div class="circle-card total-perkara">
-
 					<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?></p>
 				</div>
 				<p class="title">Total Perkara</p>
 			</div>
 			<div class="col-md-3">
 				<div class="circle-card total-perkara-ecourt">
-
 					<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
 				</div>
 				<p class="title">Total Perkara e-Court</p>
 			</div>
 			<div class="col-md-3">
 				<div class="circle-card persen-perkara-ecourt">
-
 					<p class="value"><?php echo number_format($total_perkara_data->persen_perkara_ecourt, 2) . '%'; ?></p>
 				</div>
 				<p class="title">Persentase Perkara e-Court</p>
 			</div>
 			<div class="col-md-3">
 				<div class="circle-card total-perkara-non-ecourt">
-
 					<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
 				</div>
 				<p class="title">Total Perkara Non e-Court</p>
 			</div>
 		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
@@ -286,8 +285,8 @@
 	</style>
 	<script>
 		$(function() {
-			var donutChartCanvas = $('#donutChart').get(0).getContext('2d');
-			var donutData = {
+			var pieChartCanvas = $('#donutChart').get(0).getContext('2d');
+			var pieData = {
 				labels: [<?php foreach ($grouped_data as $jenis_perkara_nama => $jumlah_perkara) {
 								echo '"' . $jenis_perkara_nama . '",';
 							} ?>],
@@ -300,7 +299,7 @@
 					],
 				}]
 			};
-			var donutOptions = {
+			var pieOptions = {
 				maintainAspectRatio: false,
 				responsive: true,
 				animation: {
@@ -313,8 +312,7 @@
 						formatter: (value, ctx) => {
 							let total = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
 							let percentage = ((value / total) * 100).toFixed(2) + '%';
-							let label = ctx.chart.data.labels[ctx.dataIndex];
-							return `${label}: ${value} (${percentage})`;
+							return `${value} (${percentage})`;
 						},
 						color: '#FFFFFF',
 						anchor: 'end',
@@ -338,20 +336,20 @@
 					}
 				}
 			};
-			var donutChart = new Chart(donutChartCanvas, {
-				type: 'doughnut',
-				data: donutData,
-				options: donutOptions
+			var pieChart = new Chart(pieChartCanvas, {
+				type: 'pie',
+				data: pieData,
+				options: pieOptions
 			});
 
 			$('#donutChart').on('mousemove', function(evt) {
-				var activePoints = donutChart.getElementsAtEventForMode(evt, 'nearest', {
+				var activePoints = pieChart.getElementsAtEventForMode(evt, 'nearest', {
 					intersect: true
 				}, false);
 				if (activePoints.length > 0) {
 					var index = activePoints[0].index;
-					var label = donutChart.data.labels[index];
-					var color = donutChart.data.datasets[0].backgroundColor[index];
+					var label = pieChart.data.labels[index];
+					var color = pieChart.data.datasets[0].backgroundColor[index];
 					if (label && color) {
 						$('table tbody tr').removeClass('highlight').css('background-color', '');
 						$('table tbody tr').each(function() {
