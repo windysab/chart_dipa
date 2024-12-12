@@ -275,9 +275,42 @@
 							<tr>
 								<td><?php echo htmlspecialchars($data->nomor_perkara, ENT_QUOTES, 'UTF-8'); ?></td>
 								<td><?php echo htmlspecialchars($data->mediator_text, ENT_QUOTES, 'UTF-8'); ?></td>
-								<td><?php echo htmlspecialchars($data->tanggal_mediasi, ENT_QUOTES, 'UTF-8'); ?></td>
-								<td><?php echo htmlspecialchars($data->hasil_mediasi, ENT_QUOTES, 'UTF-8'); ?></td>
-								<td><?php echo htmlspecialchars($data->tgl_kesepakatan_perdamaian, ENT_QUOTES, 'UTF-8'); ?></td>
+									<td>
+										<?php
+											$tanggal_mediasi = date_create($data->tanggal_mediasi);
+											echo date_format($tanggal_mediasi, 'd-m-Y');
+										?>
+									</td>
+									<td>
+										<?php
+											switch ($data->hasil_mediasi) {
+												case 'D':
+													echo 'Tidak Dapat Dilaksanakan';
+													break;
+												case 'S':
+													echo 'Berhasil Sebagian';
+													break;
+												case 'T':
+													echo 'Tidak Berhasil';
+													break;
+												case 'Y2':
+													echo 'Berhasil Dengan Pencabutan';
+													break;
+												case 'Y1':
+													echo 'Berhasil Dengan Akta Perdamaian';
+													break;
+												default:
+													echo htmlspecialchars($data->hasil_mediasi, ENT_QUOTES, 'UTF-8');
+													break;
+											}
+										?>
+									</td>
+									<td>
+										<?php
+											$tgl_kesepakatan_perdamaian = date_create($data->tgl_kesepakatan_perdamaian);
+											echo date_format($tgl_kesepakatan_perdamaian, 'd-m-Y');
+										?>
+									</td>
 							</tr>
 						<?php endforeach; ?>
 					</tbody>
