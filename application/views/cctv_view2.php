@@ -258,6 +258,39 @@
 					</tbody>
 				</table>
 			</div>
+			<div class="col-md-6 table-container">
+				<h5>Data Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
+				<table class="table table-bordered table-hover sql-table">
+					<thead>
+						<tr>
+							<th>Hasil Mediasi</th>
+							<th>Jumlah</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Tidak Dapat Dilaksanakan</td>
+							<td><?php echo $mediasi_data['D']; ?></td>
+						</tr>
+						<tr>
+							<td>Berhasil Sebagian</td>
+							<td><?php echo $mediasi_data['S']; ?></td>
+						</tr>
+						<tr>
+							<td>Tidak Berhasil</td>
+							<td><?php echo $mediasi_data['T']; ?></td>
+						</tr>
+						<tr>
+							<td>Berhasil Dengan Pencabutan</td>
+							<td><?php echo $mediasi_data['Y2']; ?></td>
+						</tr>
+						<tr>
+							<td>Berhasil Dengan Akta Perdamaian</td>
+							<td><?php echo $mediasi_data['Y1']; ?></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div class="row total-perkara-container text-center">
 			<div class="col-md-3">
