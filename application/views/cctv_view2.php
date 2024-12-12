@@ -263,31 +263,23 @@
 				<table class="table table-bordered table-hover sql-table">
 					<thead>
 						<tr>
+							<th>Nomor Perkara</th>
+							<th>Mediator</th>
+							<th>Tanggal Mediasi</th>
 							<th>Hasil Mediasi</th>
-							<th>Jumlah</th>
+							<th>Tanggal Kesepakatan Perdamaian</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Tidak Dapat Dilaksanakan</td>
-							<td><?php echo $mediasi_data['D']; ?></td>
-						</tr>
-						<tr>
-							<td>Berhasil Sebagian</td>
-							<td><?php echo $mediasi_data['S']; ?></td>
-						</tr>
-						<tr>
-							<td>Tidak Berhasil</td>
-							<td><?php echo $mediasi_data['T']; ?></td>
-						</tr>
-						<tr>
-							<td>Berhasil Dengan Pencabutan</td>
-							<td><?php echo $mediasi_data['Y2']; ?></td>
-						</tr>
-						<tr>
-							<td>Berhasil Dengan Akta Perdamaian</td>
-							<td><?php echo $mediasi_data['Y1']; ?></td>
-						</tr>
+						<?php foreach ($mediasi_data as $data): ?>
+							<tr>
+								<td><?php echo htmlspecialchars($data->nomor_perkara, ENT_QUOTES, 'UTF-8'); ?></td>
+								<td><?php echo htmlspecialchars($data->mediator_text, ENT_QUOTES, 'UTF-8'); ?></td>
+								<td><?php echo htmlspecialchars($data->tanggal_mediasi, ENT_QUOTES, 'UTF-8'); ?></td>
+								<td><?php echo htmlspecialchars($data->hasil_mediasi, ENT_QUOTES, 'UTF-8'); ?></td>
+								<td><?php echo htmlspecialchars($data->tgl_kesepakatan_perdamaian, ENT_QUOTES, 'UTF-8'); ?></td>
+							</tr>
+						<?php endforeach; ?>
 					</tbody>
 				</table>
 			</div>

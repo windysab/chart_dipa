@@ -18,13 +18,14 @@ class CCTVController2 extends CI_Controller {
 		$perkaraData = $this->model->getPerkaraData($year, $month);
 		$totalPerkaraData = $this->model->getTotalPerkaraData($year, $month);
 		$mediasiData = $this->model->getMediasiData($year, $month);
+		$detailedMediasiData = $this->model->getDetailedMediasiData($year, $month);
 		$this->load->view('template/new_header');
 		$this->load->view('template/new_sidebar');
 		$this->load->view('cctv_view2', [
 			'links' => $links, 
 			'chart_data' => $perkaraData,
 			'total_perkara_data' => $totalPerkaraData,
-			'mediasi_data' => $mediasiData
+			'mediasi_data' => $detailedMediasiData
 		]);
 		$this->load->view('template/new_footer');
 	}

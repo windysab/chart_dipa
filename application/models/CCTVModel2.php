@@ -30,7 +30,7 @@ class CCTVModel2 extends CI_Model {
                     WHEN jenis_perkara_nama LIKE '%ahli waris%' THEN 6
                     ELSE 7 
                 END
-        ", [$year, $month, 0, 1]); // Pastikan parameter diisi dengan nilai yang sesuai
+        ", [$year, $month, 0, 1]);
         return $query->result();
     }
 
@@ -67,6 +67,19 @@ class CCTVModel2 extends CI_Model {
             $data[$row->hasil_mediasi] = $row->jumlah;
         }
         return $data;
+    }
+
+    public function getDetailedMediasiData($year, $month) {
+        $query = $this->db->query("
+            SELECT nomor_perkara, mediator_text, tanggal_mediasi, hasil_mediasi, tgl_kesepakatan_perdamaian
+            FROM perkara p
+            LEFT JOIN perkara_mediasi a ON p.perkara_id = a.perkara_id
+            LEFT JOIN perkara_jadwal_mediasi b ON a.mediasi_id = b.mediasi_id
+            LEFT JOIN perkara_putusan c ON p.perkara_id = c.perkara_id
+            WHERE YEAR(dimulai_mediasi) = ? AND MONTH(dimulai_mediasi) = ?
+            ORDER BY p.perkara_id
+        ", [$year, $month]);
+        return $query->result();
     }
 }
 ?>
