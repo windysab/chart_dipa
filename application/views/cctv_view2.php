@@ -271,7 +271,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ($mediasi_data as $data): ?>
+						<?php foreach ($mediasi_data1 as $data): ?>
 							<tr>
 								<td><?php echo htmlspecialchars($data->nomor_perkara, ENT_QUOTES, 'UTF-8'); ?></td>
 								<td><?php echo htmlspecialchars($data->mediator_text, ENT_QUOTES, 'UTF-8'); ?></td>

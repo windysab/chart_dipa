@@ -25,7 +25,8 @@ class CCTVController2 extends CI_Controller {
 			'links' => $links, 
 			'chart_data' => $perkaraData,
 			'total_perkara_data' => $totalPerkaraData,
-			'mediasi_data' => $detailedMediasiData
+			'mediasi_data1' => $detailedMediasiData,
+			'mediasi_data' => $mediasiData
 		]);
 		$this->load->view('template/new_footer');
 	}
