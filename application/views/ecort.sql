@@ -41,14 +41,14 @@ SELECT
 
 
 SELECT 
-    COUNT(*) as jumlah_perkara
+    nomor_perkara, tanggal_pendaftaran, tanggal_putusan
 FROM
     perkara
 LEFT JOIN 
     perkara_efiling_id ON perkara.perkara_id = perkara_efiling_id.perkara_id
 LEFT JOIN perkara_efiling ON perkara_efiling_id.efiling_id = perkara_efiling.efiling_id
-LEFT JOIN ecourt_pihak on perkara_efiling_id.efiling_id = ecourt_pihak.efiling_id
-WHERE  
+LEFT JOIN ecourt_kuasa_hukum ON perkara_efiling_id.efiling_id = ecourt_kuasa_hukum.efiling_id
+WHERE
 	YEAR(perkara.tanggal_pendaftaran) = '2024' AND MONTH(perkara.tanggal_pendaftaran) = '11'
 ORDER BY perkara.perkara_id;
   
