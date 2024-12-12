@@ -202,6 +202,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="row text-center mt-4">
 			<div class="col-md-6">
 				<h5>Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
@@ -290,6 +291,16 @@
 						</tr>
 					</tbody>
 				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 chart-container">
+				<h5>Penanganan Perkara E-court Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
+				<div class="card-body">
+					<div class="chart">
+						<canvas id="barChart" style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="row total-perkara-container text-center">
@@ -466,6 +477,60 @@
 				type: 'pie',
 				data: mediasiData,
 				options: mediasiOptions
+			});
+
+			var barChartCanvas = $('#barChart').get(0).getContext('2d');
+			var barData = {
+				labels: ['Di Terima', 'Diputus', 'Sisa'],
+				datasets: [{
+					label: 'Perkara E-court',
+					data: [<?php echo $jumlah_perkara_terdaftar; ?>, <?php echo $jumlah_perkara_diputus; ?>, <?php echo $sisa_perkara; ?>],
+					backgroundColor: ['#007bff', '#28a745', '#dc3545'],
+					borderColor: ['#0056b3', '#1e7e34', '#c82333'],
+					borderWidth: 1,
+					hoverBackgroundColor: ['#0056b3', '#1e7e34', '#c82333'],
+					hoverBorderColor: ['#003f7f', '#155724', '#bd2130']
+				}]
+			};
+			var barOptions = {
+				maintainAspectRatio: false,
+				responsive: true,
+				scales: {
+					y: {
+						beginAtZero: true,
+						ticks: {
+							stepSize: 1
+						}
+					}
+				},
+				plugins: {
+					legend: {
+						display: true,
+						position: 'top',
+						labels: {
+							font: {
+								size: 14
+							}
+						}
+					},
+					tooltip: {
+						enabled: true,
+						callbacks: {
+							label: function(tooltipItem) {
+								return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+							}
+						}
+					}
+				},
+				animation: {
+					duration: 1000,
+					easing: 'easeInOutBounce'
+				}
+			};
+			var barChart = new Chart(barChartCanvas, {
+				type: 'bar',
+				data: barData,
+				options: barOptions
 			});
 		});
 	</script>
