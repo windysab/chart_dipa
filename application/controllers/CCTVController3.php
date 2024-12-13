@@ -1,0 +1,36 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class CCTVController3 extends CI_Controller
+{
+	private $model;
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('CCTVModel3');
+		$this->model = new CCTVModel3();
+	}
+
+	public function index()
+	{
+		$year = date('Y', strtotime('first day of last month'));
+		$month = date('m', strtotime('first day of last month'));
+		$links = $this->model->getLinks();
+		$perkaraData = $this->model->getPerkaraData($year, $month);
+		$totalPerkaraData = $this->model->getTotalPerkaraData($year, $month);
+		$mediasiData = $this->model->getMediasiData($year, $month);
+		$jumlahPerkaraTerdaftar = $this->model->getJumlahPerkaraTerdaftar($year, $month);
+		$jumlahPerkaraDiputus = $this->model->getJumlahPerkaraDiputus($year, $month);
+		$sisaPerkara = $this->model->getSisaPerkara($year, $month);
+		$this->load->view('cctv_view3', [
+			'links' => $links,
+			'chart_data' => $perkaraData,
+			'total_perkara_data' => $totalPerkaraData,
+			'mediasi_data' => $mediasiData,
+			'jumlah_perkara_terdaftar' => $jumlahPerkaraTerdaftar,
+			'jumlah_perkara_diputus' => $jumlahPerkaraDiputus,
+			'sisa_perkara' => $sisaPerkara
+		]);
+	}
+}

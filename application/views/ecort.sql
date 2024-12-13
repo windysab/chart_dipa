@@ -41,7 +41,7 @@ SELECT
 
 
 SELECT 
-    nomor_perkara, tanggal_pendaftaran, tanggal_putusan
+    perkara.nomor_perkara, perkara.tanggal_pendaftaran
 FROM
     perkara
 LEFT JOIN 
