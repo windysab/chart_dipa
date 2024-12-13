@@ -18,11 +18,16 @@ class CCTVController3 extends CI_Controller
 		$month = date('m', strtotime('first day of last month'));
 		$links = $this->model->getLinks();
 		$perkaraData = $this->model->getPerkaraData($year, $month);
-		$totalPerkaraData = $this->model->getTotalPerkaraData($year, $month);
-		$mediasiData = $this->model->getMediasiData($year, $month);
-		$jumlahPerkaraTerdaftar = $this->model->getJumlahPerkaraTerdaftar($year, $month);
-		$jumlahPerkaraDiputus = $this->model->getJumlahPerkaraDiputus($year, $month);
-		$sisaPerkara = $this->model->getSisaPerkara($year, $month);
+		$totalPerkaraData = $this->model->getTotalPerkaraData($year, $month) ? $this->model->getTotalPerkaraData($year, $month) : (object)[
+			'total_perkara' => 0,
+			'total_perkara_ecourt' => 0,
+			'persen_perkara_ecourt' => 0,
+			'total_perkara_non_ecourt' => 0
+		];
+		$mediasiData = $this->model->getMediasiData($year, $month) ? $this->model->getMediasiData($year, $month) : ['D' => 0, 'S' => 0, 'T' => 0, 'Y2' => 0, 'Y1' => 0];
+		$jumlahPerkaraTerdaftar = $this->model->getJumlahPerkaraTerdaftar($year, $month) ? $this->model->getJumlahPerkaraTerdaftar($year, $month) : 0;
+		$jumlahPerkaraDiputus = $this->model->getJumlahPerkaraDiputus($year, $month) ? $this->model->getJumlahPerkaraDiputus($year, $month) : 0;
+		$sisaPerkara = $this->model->getSisaPerkara($year, $month) ? $this->model->getSisaPerkara($year, $month) : 0;
 		$this->load->view('cctv_view3', [
 			'links' => $links,
 			'chart_data' => $perkaraData,
@@ -34,3 +39,4 @@ class CCTVController3 extends CI_Controller
 		]);
 	}
 }
+?>

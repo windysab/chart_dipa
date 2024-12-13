@@ -145,14 +145,16 @@
             <h5>Live CCTV PENGADILAN AGAMA AMUNTAI KELAS IB</h5>
         </div>
         <div class="row">
-            <?php foreach ($links as $name => $url): ?>
-                <div class="col-md-4">
-                    <div class="video-link">
-                        <h6><?php echo ucfirst(str_replace('_', ' ', $name)); ?></h6>
-                        <iframe src="<?php echo $url; ?>" allowfullscreen></iframe>
+            <?php if (isset($links)) : ?>
+                <?php foreach ($links as $name => $url): ?>
+                    <div class="col-md-4">
+                        <div class="video-link">
+                            <h6><?php echo ucfirst(str_replace('_', ' ', $name)); ?></h6>
+                            <iframe src="<?php echo $url; ?>" allowfullscreen></iframe>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
         <div class="row">
             <div class="col-md-12 text-center mt-4">
