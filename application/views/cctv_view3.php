@@ -161,6 +161,32 @@
                 <h2>KEADAAN PERKARA S/D <?php echo date('F Y', strtotime('first day of last month')); ?></h2>
             </div>
         </div>
+		<div class="row total-perkara-container text-center">
+            <div class="col-md-3">
+                <div class="circle-card total-perkara">
+                    <p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?></p>
+                </div>
+                <p class="title">Total Perkara</p>
+            </div>
+            <div class="col-md-3">
+                <div class="circle-card total-perkara-ecourt">
+                    <p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
+                </div>
+                <p class="title">Total Perkara e-Court</p>
+            </div>
+            <div class="col-md-3">
+                <div class="circle-card persen-perkara-ecourt">
+                    <p class="value"><?php echo number_format($total_perkara_data->persen_perkara_ecourt, 2) . '%'; ?></p>
+                </div>
+                <p class="title">Persentase Perkara e-Court</p>
+            </div>
+            <div class="col-md-3">
+                <div class="circle-card total-perkara-non-ecourt">
+                    <p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
+                </div>
+                <p class="title">Total Perkara Non e-Court</p>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-6 table-container">
                 <h5>Chart Data Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
@@ -280,32 +306,7 @@
                 </div>
             </div>
         </div>
-        <div class="row total-perkara-container text-center">
-            <div class="col-md-3">
-                <div class="circle-card total-perkara">
-                    <p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?></p>
-                </div>
-                <p class="title">Total Perkara</p>
-            </div>
-            <div class="col-md-3">
-                <div class="circle-card total-perkara-ecourt">
-                    <p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
-                </div>
-                <p class="title">Total Perkara e-Court</p>
-            </div>
-            <div class="col-md-3">
-                <div class="circle-card persen-perkara-ecourt">
-                    <p class="value"><?php echo number_format($total_perkara_data->persen_perkara_ecourt, 2) . '%'; ?></p>
-                </div>
-                <p class="title">Persentase Perkara e-Court</p>
-            </div>
-            <div class="col-md-3">
-                <div class="circle-card total-perkara-non-ecourt">
-                    <p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
-                </div>
-                <p class="title">Total Perkara Non e-Court</p>
-            </div>
-        </div>
+        
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
