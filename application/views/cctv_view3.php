@@ -479,15 +479,15 @@
             });
 			var barChartCanvas = $('#barChart').get(0).getContext('2d');
 			var barData = {
-				labels: ['Di Terima', 'Diputus', 'Sisa'],
+				labels: ['Sisa Bulan Lalu','Di Terima', 'Diputus', 'Sisa'],
 				datasets: [{
 					label: 'Perkara E-court',
-					data: [<?php echo $jumlah_perkara_terdaftar; ?>, <?php echo $jumlah_perkara_diputus; ?>, <?php echo $sisa_perkara; ?>],
-					backgroundColor: ['#007bff', '#28a745', '#dc3545'],
-					borderColor: ['#0056b3', '#1e7e34', '#c82333'],
+					data: [<?php echo $sisa_perkara_bulan_sebelumnya; ?>, <?php echo $jumlah_perkara_terdaftar; ?>, <?php echo $jumlah_perkara_diputus; ?>, <?php echo $sisa_perkara; ?>],
+					backgroundColor: ['#007bff', '#28a745', '#dc3545', '#ffc107'],
+					borderColor: ['#0056b3', '#1e7e34', '#c82333', '#e0a800'],
 					borderWidth: 1,
-					hoverBackgroundColor: ['#0056b3', '#1e7e34', '#c82333'],
-					hoverBorderColor: ['#003f7f', '#155724', '#bd2130']
+					hoverBackgroundColor: ['#0056b3', '#1e7e34', '#c82333', '#d39e00'],
+					hoverBorderColor: ['#003f7f', '#155724', '#bd2130', '#c69500']
 				}]
 			};
 			var barOptions = {

@@ -124,8 +124,8 @@ class CCTVModel3 extends CI_Model
 
 	public function getSisaPerkaraBulanSebelumnya($year, $month)
 	{
-		$previous_month = date('m', strtotime('-1 month', strtotime("$year-$month-01")));
-		$previous_year = date('Y', strtotime('-1 month', strtotime("$year-$month-01")));
+		$previous_month = date('m', strtotime('1 month', strtotime("$year-$month-01")));
+		$previous_year = date('Y', strtotime('1 month', strtotime("$year-$month-01")));
 		
 		$query = $this->db->query("
             SELECT 
