@@ -8,6 +8,7 @@ class CCTVController3 extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		date_default_timezone_set('Asia/Jakarta'); // Set the default timezone
 		$this->load->model('CCTVModel3');
 		$this->model = new CCTVModel3();
 	}
