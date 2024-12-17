@@ -126,9 +126,12 @@ class CCTVModel3 extends CI_Model
 
 	public function getSisaPerkaraBulanSebelumnya($year, $month)
 	{
-		// Menghitung bulan dan tahun sebelumnya
-		$previous_month = date('m', strtotime('1 month', strtotime("$year-$month-01")));
-		$previous_year = date('Y', strtotime('1 month', strtotime("$year-$month-01")));
+		// Menghitung bulan sebelumnya
+		$previous_month = $month - 1;
+		if ($previous_month == 0) {
+			$previous_month = 12;
+			$year -= 1;
+		}
 
 		// Menjalankan query SQL untuk menghitung sisa perkara
 		$query = $this->db->query("
@@ -147,7 +150,7 @@ class CCTVModel3 extends CI_Model
              LEFT JOIN perkara_putusan ON perkara.perkara_id = perkara_putusan.perkara_id
              WHERE YEAR(perkara_putusan.tanggal_putusan) = ? AND MONTH(perkara_putusan.tanggal_putusan) = ?) 
             AS sisa_perkara
-    ", [$previous_year, $previous_month, $previous_year, $previous_month]);
+    ", [$year, $previous_month, $year, $previous_month]);
 
 		// Mengembalikan hasil query sebagai jumlah sisa perkara
 		return $query->row()->sisa_perkara;
