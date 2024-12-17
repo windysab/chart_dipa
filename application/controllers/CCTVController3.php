@@ -43,4 +43,3 @@ class CCTVController3 extends CI_Controller
 		$this->load->view('template/footer');
 	}
 }
-?>
