@@ -277,12 +277,12 @@
                             <td><?php echo $mediasi_data['D']; ?></td>
                         </tr>
                         <tr>
-                            <td>Berhasil Sebagian</td>
-                            <td><?php echo $mediasi_data['S']; ?></td>
-                        </tr>
-                        <tr>
                             <td>Tidak Berhasil</td>
                             <td><?php echo $mediasi_data['T']; ?></td>
+                        </tr>
+						<tr>
+                            <td>Berhasil Sebagian</td>
+                            <td><?php echo $mediasi_data['S']; ?></td>
                         </tr>
                         <tr>
                             <td>Berhasil Dengan Pencabutan</td>
