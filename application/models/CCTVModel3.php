@@ -136,19 +136,19 @@ class CCTVModel3 extends CI_Model
 		// Menjalankan query SQL untuk menghitung sisa perkara
 		$query = $this->db->query("
         SELECT 
+		(SELECT COUNT(*) 
+             FROM perkara
+             LEFT JOIN perkara_efiling_id ON perkara.perkara_id = perkara_efiling_id.perkara_id
+             LEFT JOIN perkara_efiling ON perkara_efiling_id.efiling_id = perkara_efiling.efiling_id
+             LEFT JOIN perkara_putusan ON perkara.perkara_id = perkara_putusan.perkara_id
+             WHERE YEAR(perkara_putusan.tanggal_putusan) = ? AND MONTH(perkara_putusan.tanggal_putusan) = ?) 
+			 -
             (SELECT COUNT(*) 
              FROM perkara
              LEFT JOIN perkara_efiling_id ON perkara.perkara_id = perkara_efiling_id.perkara_id
              LEFT JOIN perkara_efiling ON perkara_efiling_id.efiling_id = perkara_efiling.efiling_id
              LEFT JOIN perkara_putusan ON perkara.perkara_id = perkara_putusan.perkara_id
              WHERE YEAR(perkara.tanggal_pendaftaran) = ? AND MONTH(perkara.tanggal_pendaftaran) = ?) 
-            - 
-            (SELECT COUNT(*) 
-             FROM perkara
-             LEFT JOIN perkara_efiling_id ON perkara.perkara_id = perkara_efiling_id.perkara_id
-             LEFT JOIN perkara_efiling ON perkara_efiling_id.efiling_id = perkara_efiling.efiling_id
-             LEFT JOIN perkara_putusan ON perkara.perkara_id = perkara_putusan.perkara_id
-             WHERE YEAR(perkara_putusan.tanggal_putusan) = ? AND MONTH(perkara_putusan.tanggal_putusan) = ?) 
             AS sisa_perkara
     ", [$year, $previous_month, $year, $previous_month]);
 
