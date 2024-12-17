@@ -63,7 +63,7 @@
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            width: 80%;
+            width: 100%;
             margin: 0 auto;
             font-size: 0.9rem;
         }
@@ -147,7 +147,7 @@
         <div class="row">
             <?php if (isset($links)) : ?>
                 <?php foreach ($links as $name => $url): ?>
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-6">
                         <div class="video-link">
                             <h6><?php echo ucfirst(str_replace('_', ' ', $name)); ?></h6>
                             <iframe src="<?php echo $url; ?>" allowfullscreen></iframe>
@@ -161,26 +161,26 @@
                 <h2>KEADAAN PERKARA S/D <?php echo date('F Y', strtotime('first day of last month')); ?></h2>
             </div>
         </div>
-		<div class="row total-perkara-container text-center">
-            <div class="col-md-3">
+        <div class="row total-perkara-container text-center">
+            <div class="col-md-3 col-sm-6">
                 <div class="circle-card total-perkara">
                     <p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?></p>
                 </div>
                 <p class="title">Total Perkara</p>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
                 <div class="circle-card total-perkara-ecourt">
                     <p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
                 </div>
                 <p class="title">Total Perkara e-Court</p>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
                 <div class="circle-card persen-perkara-ecourt">
                     <p class="value"><?php echo number_format($total_perkara_data->persen_perkara_ecourt) . '%'; ?></p>
                 </div>
                 <p class="title">Persentase Perkara e-Court</p>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
                 <div class="circle-card total-perkara-non-ecourt">
                     <p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
                 </div>
