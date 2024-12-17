@@ -176,7 +176,7 @@
             </div>
             <div class="col-md-3">
                 <div class="circle-card persen-perkara-ecourt">
-                    <p class="value"><?php echo number_format($total_perkara_data->persen_perkara_ecourt, 2) . '%'; ?></p>
+                    <p class="value"><?php echo number_format($total_perkara_data->persen_perkara_ecourt) . '%'; ?></p>
                 </div>
                 <p class="title">Persentase Perkara e-Court</p>
             </div>
