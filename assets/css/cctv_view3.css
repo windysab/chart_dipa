@@ -1,5 +1,9 @@
 .container {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
 }
 .header {
     text-align: center;
@@ -17,12 +21,12 @@
 }
 .video-link {
     background-color: #ffffff;
-    border: 1px solid #dee2e6;
+    border: 2px solid #007bff !important; /* Border dalam */
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 20px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 4px #dee2e6 !important; /* Border luar */
     transition: transform 0.3s, box-shadow 0.3s;
 }
 .video-link:hover {
@@ -42,6 +46,8 @@
 .chart-container,
 .table-container {
     margin-top: 40px;
+    width: 100%;
+    max-width: 1200px;
 }
 .chart-container h5,
 .table-container h5 {
@@ -51,8 +57,9 @@
 }
 .table-container .table {
     background-color: #ffffff;
+    border: 2px solid #007bff !important; /* Border dalam */
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 4px #dee2e6 !important; /* Border luar */
     overflow: hidden;
     width: 100%;
     margin: 0 auto;
@@ -77,24 +84,29 @@
 }
 .total-perkara-container {
     margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 .total-perkara-container h5 {
     text-align: center;
     margin-bottom: 20px;
     color: #007bff;
+    width: 100%;
 }
 .total-perkara-container .circle-card {
     width: 150px;
     height: 150px;
+    border: 2px solid #007bff !important; /* Border dalam */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
+    margin: 20px;
     color: #fff;
     font-size: 1.2rem;
     font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 4px #dee2e6 !important; /* Border luar */
     transition: transform 0.3s, box-shadow 0.3s;
     text-align: center;
 }
