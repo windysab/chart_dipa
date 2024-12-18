@@ -96,7 +96,7 @@
 		<div class="row">
 			<div class="col-md-6 table-container">
 				<h5>Data Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-				<table class="table table-bordered table-hover sql-table">
+				<table class="table table-hover sql-table">
 					<thead>
 						<tr>
 							<th>Jenis Perkara</th>
@@ -141,7 +141,7 @@
 			</div>
 			<div class="col-md-6 table-container">
 				<h5>Data Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-				<table class="table table-bordered table-hover sql-table">
+				<table class="table table-hover sql-table">
 					<thead>
 						<tr>
 							<th>Hasil Mediasi</th>

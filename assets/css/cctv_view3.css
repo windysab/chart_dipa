@@ -21,12 +21,12 @@
 }
 .video-link {
     background-color: #ffffff;
-    border: 2px solid #007bff !important; /* Border dalam */
+    border: 2px solid transparent !important; /* Border dalam */
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 20px;
     text-align: center;
-    box-shadow: 0 0 0 4px #dee2e6 !important; /* Border luar */
+    box-shadow: 0 0 0 4px transparent !important; /* Border luar */
     transition: transform 0.3s, box-shadow 0.3s;
 }
 .video-link:hover {
@@ -57,9 +57,9 @@
 }
 .table-container .table {
     background-color: #ffffff;
-    border: 2px solid #007bff !important; /* Border dalam */
+    border: 2px solid transparent !important; /* Border dalam */
     border-radius: 5px;
-    box-shadow: 0 0 0 4px #dee2e6 !important; /* Border luar */
+    box-shadow: 0 0 0 4px transparent !important; /* Border luar */
     overflow: hidden;
     width: 100%;
     margin: 0 auto;
@@ -97,7 +97,7 @@
 .total-perkara-container .circle-card {
     width: 150px;
     height: 150px;
-    border: 2px solid #007bff !important; /* Border dalam */
+    border: 2px solid transparent !important; /* Border dalam */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -106,7 +106,7 @@
     color: #fff;
     font-size: 1.2rem;
     font-weight: bold;
-    box-shadow: 0 0 0 4px #dee2e6 !important; /* Border luar */
+    box-shadow: 0 0 0 4px transparent !important; /* Border luar */
     transition: transform 0.3s, box-shadow 0.3s;
     text-align: center;
 }
