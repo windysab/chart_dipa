@@ -1,16 +1,20 @@
 $(function() {
+    // Parse the JSON data embedded in the HTML
+    var groupedData = JSON.parse($('#groupedData').text());
+    var mediasiData = JSON.parse($('#mediasiData').text());
+    var jumlahPerkaraTerdaftar = parseInt($('#jumlahPerkaraTerdaftar').text());
+    var jumlahPerkaraDiputus = parseInt($('#jumlahPerkaraDiputus').text());
+    var sisaPerkara = parseInt($('#sisaPerkara').text());
+
+    // Check if data is correctly parsed
+    console.log(groupedData, mediasiData, jumlahPerkaraTerdaftar, jumlahPerkaraDiputus, sisaPerkara);
+
     var pieChartCanvas = $('#donutChart').get(0).getContext('2d');
     var pieData = {
-        labels: [<?php foreach ($grouped_data as $jenis_perkara_nama => $jumlah_perkara) {
-                        echo '"' . $jenis_perkara_nama . '",';
-                    } ?>],
+        labels: Object.keys(groupedData),
         datasets: [{
-            data: [<?php foreach ($grouped_data as $jumlah_perkara) {
-                        echo $jumlah_perkara . ',';
-                    } ?>],
-            backgroundColor: [
-                '#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#3b8bba'
-            ],
+            data: Object.values(groupedData),
+            backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#3b8bba'],
         }]
     };
     var pieOptions = {
@@ -78,11 +82,11 @@ $(function() {
     });
 
     var mediasiChartCanvas = $('#mediasiChart').get(0).getContext('2d');
-    var mediasiData = {
+    var mediasiChartData = {
         labels: ['Tidak Dapat Dilaksanakan', 'Berhasil Sebagian', 'Tidak Berhasil', 'Berhasil Dengan Pencabutan', 'Berhasil Dengan Akta Perdamaian'],
         datasets: [{
-            data: [<?php echo $mediasi_data['D']; ?>, <?php echo $mediasi_data['S']; ?>, <?php echo $mediasi_data['T']; ?>, <?php echo $mediasi_data['Y2']; ?>, <?php echo $mediasi_data['Y1']; ?>],
-            backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#3b8bba']
+            data: [mediasiData['D'], mediasiData['S'], mediasiData['T'], mediasiData['Y2'], mediasiData['Y1']],
+            backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc']
         }]
     };
     var mediasiOptions = {
@@ -124,7 +128,7 @@ $(function() {
     };
     var mediasiChart = new Chart(mediasiChartCanvas, {
         type: 'pie',
-        data: mediasiData,
+        data: mediasiChartData,
         options: mediasiOptions
     });
 
@@ -147,5 +151,59 @@ $(function() {
         } else {
             $('table tbody tr').removeClass('highlight').css('background-color', '');
         }
+    });
+
+    var barChartCanvas = $('#barChart').get(0).getContext('2d');
+    var barData = {
+        labels: ['Di Terima', 'Diputus', 'Sisa'],
+        datasets: [{
+            label: 'Perkara E-court',
+            data: [jumlahPerkaraTerdaftar, jumlahPerkaraDiputus, sisaPerkara],
+            backgroundColor: ['#007bff', '#28a745', '#dc3545'],
+            borderColor: ['#0056b3', '#1e7e34', '#c82333'],
+            borderWidth: 1,
+            hoverBackgroundColor: ['#0056b3', '#1e7e34', '#c82333'],
+            hoverBorderColor: ['#003f7f', '#155724', '#bd2130']
+        }]
+    };
+    var barOptions = {
+        maintainAspectRatio: false,
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    stepSize: 1
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top',
+                labels: {
+                    font: {
+                        size: 14
+                    }
+                }
+            },
+            tooltip: {
+                enabled: true,
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+                    }
+                }
+            }
+        },
+        animation: {
+            duration: 1000,
+            easing: 'easeInOutBounce'
+        }
+    };
+    var barChart = new Chart(barChartCanvas, {
+        type: 'bar',
+        data: barData,
+        options: barOptions
     });
 });
