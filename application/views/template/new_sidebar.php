@@ -47,15 +47,15 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?php echo site_url('Data_Tamplate') ?>" class="nav-link">
+							<a href="<?php echo site_url('CCTVController2') ?>" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>
-								<p>TAMPLE</p>
+								<p>TAMPLE CCTV</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?php echo site_url('Statistik_pihak1') ?>" class="nav-link">
+							<a href="<?php echo site_url('CCTVController3') ?>" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>
-								<p>STATISTIK PIHAK 1</p>
+								<p>vide</p>
 							</a>
 						</li>
 						<li class="nav-item">

@@ -14,7 +14,7 @@ class M_Statistik_chart extends CI_Model
                 AND perkara_pihak1.urutan = ?
             GROUP BY jenis_perkara_nama
             ORDER BY 
-                CASE 
+                CASE  
                     WHEN jenis_perkara_nama LIKE '%cerai gugat%' THEN 1
                     WHEN jenis_perkara_nama LIKE '%cerai talak%' THEN 2
                     WHEN jenis_perkara_nama LIKE '%Asal Usul Anak%' THEN 3
