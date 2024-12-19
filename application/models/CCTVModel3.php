@@ -157,7 +157,13 @@ class CCTVModel3 extends CI_Model
 	public function getViewCount()
 	{
 		$query = $this->db->query("SELECT view_count FROM view_stats WHERE page_name = 'cctv_view3'");
-		return $query->row()->view_count;
+		if ($query->num_rows() > 0) {
+			return $query->row()->view_count;
+		} else {
+			// Jika tidak ada baris yang sesuai, tambahkan baris baru dengan view_count = 0
+			$this->db->query("INSERT INTO view_stats (page_name, view_count) VALUES ('cctv_view3', 0)");
+			return 0;
+		}
 	}
 
 	public function incrementViewCount()
