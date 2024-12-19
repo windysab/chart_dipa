@@ -163,7 +163,7 @@
         </div>
         <div class="row">
             <div class="col-md-12 text-center mt-4">
-                <h2>Jumlah Tampilan: <?php echo htmlspecialchars($view_count, ENT_QUOTES, 'UTF-8'); ?></h2>
+                <h2>Jumlah Tampilan: <?php echo isset($view_count) ? htmlspecialchars($view_count, ENT_QUOTES, 'UTF-8') : '0'; ?></h2>
             </div>
         </div>
         <div class="row total-perkara-container text-center">
