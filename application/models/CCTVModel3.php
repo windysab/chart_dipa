@@ -170,4 +170,27 @@ class CCTVModel3 extends CI_Model
 	{
 		$this->db->query("UPDATE view_stats SET view_count = view_count + 1 WHERE page_name = 'cctv_view3'");
 	}
+
+	public function getDailyViewCount()
+	{
+		$query = $this->db->query("SELECT COUNT(*) AS daily_count FROM view_logs WHERE page_name = 'cctv_view3' AND DATE(view_date) = CURDATE()");
+		return $query->row()->daily_count;
+	}
+
+	public function getMonthlyViewCount()
+	{
+		$query = $this->db->query("SELECT COUNT(*) AS monthly_count FROM view_logs WHERE page_name = 'cctv_view3' AND MONTH(view_date) = MONTH(CURDATE()) AND YEAR(view_date) = YEAR(CURDATE())");
+		return $query->row()->monthly_count;
+	}
+
+	public function getTotalViewCount()
+	{
+		$query = $this->db->query("SELECT COUNT(*) AS total_count FROM view_logs WHERE page_name = 'cctv_view3'");
+		return $query->row()->total_count;
+	}
+
+	public function logView()
+	{
+		$this->db->query("INSERT INTO view_logs (page_name, view_date) VALUES ('cctv_view3', NOW())");
+	}
 }
