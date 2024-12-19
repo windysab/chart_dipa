@@ -122,8 +122,6 @@ class CCTVModel3 extends CI_Model
 		return $query->row()->sisa_perkara;
 	}
 
-
-
 	public function getSisaPerkaraBulanSebelumnya($year, $month)
 	{
 		// Menghitung bulan sebelumnya
@@ -154,5 +152,16 @@ class CCTVModel3 extends CI_Model
 
 		// Mengembalikan hasil query sebagai jumlah sisa perkara
 		return $query->row()->sisa_perkara;
+	}
+
+	public function getViewCount()
+	{
+		$query = $this->db->query("SELECT view_count FROM view_stats WHERE page_name = 'cctv_view3'");
+		return $query->row()->view_count;
+	}
+
+	public function incrementViewCount()
+	{
+		$this->db->query("UPDATE view_stats SET view_count = view_count + 1 WHERE page_name = 'cctv_view3'");
 	}
 }
