@@ -312,6 +312,15 @@
             </div>
         </div>
 		<div class="row">
+            <div class="col-md-6 text-center mt-4">
+                <h5>Perkara E-filing Bulan Ini</h5>
+                <p>Masuk Bulan Ini: <?php echo htmlspecialchars($efiling_data->masuk_bulan_ini, ENT_QUOTES, 'UTF-8'); ?></p>
+                <p>Putus Bulan Ini: <?php echo htmlspecialchars($efiling_data->putus_bulan_ini, ENT_QUOTES, 'UTF-8'); ?></p>
+                <p>Sisa Bulan Lalu: <?php echo htmlspecialchars($efiling_data->sisa_bulan_lalu, ENT_QUOTES, 'UTF-8'); ?></p>
+                <p>Sisa Bulan Ini: <?php echo htmlspecialchars($efiling_data->sisa_bulan_ini, ENT_QUOTES, 'UTF-8'); ?></p>
+            </div>
+        </div>
+		<div class="row">
             <div class="col-md-12 text-center mt-4">
                 <h6>Jumlah yang melihat: <?php echo isset($view_count) ? htmlspecialchars($view_count, ENT_QUOTES, 'UTF-8') : '0'; ?></h6>
             </div>

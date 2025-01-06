@@ -34,6 +34,7 @@ class CCTVController3 extends CI_Controller
 		$monthlyViewCount = $this->model->getMonthlyViewCount();
 		$totalViewCount = $this->model->getTotalViewCount();
 		$viewCount = $this->model->getViewCount();
+		$efilingData = $this->model->getEfilingData($year, $month);
 		$this->load->view('template/header');
 		$this->load->view('cctv_view3', [
 			'links' => $links,
@@ -47,7 +48,8 @@ class CCTVController3 extends CI_Controller
 			'view_count' => $viewCount,
 			'daily_view_count' => $dailyViewCount,
 			'monthly_view_count' => $monthlyViewCount,
-			'total_view_count' => $totalViewCount
+			'total_view_count' => $totalViewCount,
+			'efiling_data' => $efilingData
 		]);
 		$this->load->view('template/footer');
 	}

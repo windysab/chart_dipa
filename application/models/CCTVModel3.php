@@ -193,4 +193,33 @@ class CCTVModel3 extends CI_Model
 	{
 		$this->db->query("INSERT INTO view_logs (page_name, view_date) VALUES ('cctv_view3', NOW())");
 	}
+
+	public function getEfilingData($year, $month)
+	{
+		$query = $this->db->query("
+			SELECT 
+				(SELECT COUNT(*) FROM perkara 
+				 LEFT JOIN perkara_efiling_id ON perkara.perkara_id = perkara_efiling_id.perkara_id 
+				 WHERE YEAR(perkara.tanggal_pendaftaran) = ? 
+				 AND MONTH(perkara.tanggal_pendaftaran) = ?) AS masuk_bulan_ini,
+				(SELECT COUNT(*) FROM perkara 
+				 LEFT JOIN perkara_efiling_id ON perkara.perkara_id = perkara_efiling_id.perkara_id 
+				 LEFT JOIN perkara_putusan ON perkara.perkara_id = perkara_putusan.perkara_id 
+				 WHERE YEAR(perkara_putusan.tanggal_putusan) = ? 
+				 AND MONTH(perkara_putusan.tanggal_putusan) = ?) AS putus_bulan_ini,
+				(SELECT COUNT(*) FROM perkara 
+				 LEFT JOIN perkara_efiling_id ON perkara.perkara_id = perkara_efiling_id.perkara_id 
+				 LEFT JOIN perkara_putusan ON perkara.perkara_id = perkara_putusan.perkara_id 
+				 WHERE YEAR(perkara.tanggal_pendaftaran) <= ? 
+				 AND MONTH(perkara.tanggal_pendaftaran) < ? 
+				 AND (perkara_putusan.tanggal_putusan IS NULL OR perkara_putusan.tanggal_minutasi IS NULL)) AS sisa_bulan_lalu,
+				(SELECT COUNT(*) FROM perkara 
+				 LEFT JOIN perkara_efiling_id ON perkara.perkara_id = perkara_efiling_id.perkara_id 
+				 LEFT JOIN perkara_putusan ON perkara.perkara_id = perkara_putusan.perkara_id 
+				 WHERE YEAR(perkara.tanggal_pendaftaran) <= ? 
+				 AND MONTH(perkara.tanggal_pendaftaran) <= ? 
+				 AND (perkara_putusan.tanggal_putusan IS NULL OR perkara_putusan.tanggal_minutasi IS NULL)) AS sisa_bulan_ini
+		", [$year, $month, $year, $month, $year, $month, $year, $month]);
+		return $query->row();
+	}
 }
