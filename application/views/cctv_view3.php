@@ -177,7 +177,7 @@
                 <div class="circle-card total-perkara-ecourt">
                     <p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
                 </div>
-                <p class="title">Total Perkara e-Court</p>
+                <p class="title">Perkara e-Court</p>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="circle-card persen-perkara-ecourt">
@@ -189,7 +189,7 @@
                 <div class="circle-card total-perkara-non-ecourt">
                     <p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
                 </div>
-                <p class="title">Total Perkara Non e-Court</p>
+                <p class="title">Perkara Non e-Court</p>
             </div>
         </div>
         <div class="row">
