@@ -516,7 +516,7 @@
 			var efilingData = {
 				labels: ['Sisa Bulan Lalu', 'Masuk Bulan Ini', 'Putus Bulan Ini', 'Sisa Bulan Ini'],
 				datasets: [{
-					label: 'Perkara E-filing',
+					label: 'Perkara E-Court',
 					data: [<?php echo $efiling_data->sisa_bulan_lalu; ?>, <?php echo $efiling_data->masuk_bulan_ini; ?>, <?php echo $efiling_data->putus_bulan_ini; ?>, <?php echo $efiling_data->sisa_bulan_ini; ?>],
 					backgroundColor: ['#007bff', '#28a745', '#dc3545', '#ffc107'],
 					borderColor: ['#0056b3', '#1e7e34', '#c82333', '#e0a800'],
