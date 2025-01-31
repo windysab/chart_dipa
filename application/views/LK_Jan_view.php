@@ -129,134 +129,134 @@
                 <tr>
                     <td>1</td>
                     <td>Sisa Awal</td>
-                    <td>934000</td>
+                    <td>934.000</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>Penerimaan bulan ini</td>
-                    <td>21438500</td>
+                    <td>21.438.500</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>Biaya Proses/ATK/Pemberkasan *)</td>
                     <td></td>
-                    <td>8600000</td>
+                    <td>Rp 8.600.000</td>
                 </tr>
                 <tr>
                     <td>4</td>
                     <td>Biaya Panggilan</td>
                     <td></td>
-                    <td>1902000</td>
+                    <td>Rp 1.902.000</td>
                 </tr>
                 <tr>
                     <td>5</td>
                     <td>Biaya Penterjemah</td>
                     <td></td>
-                    <td>0</td>
+                    <td>Rp 0</td>
                 </tr>
                 <tr>
                     <td>6</td>
                     <td>Biaya Pemberitahuan</td>
                     <td></td>
-                    <td>283000</td>
+                    <td>Rp 283.000</td>
                 </tr>
                 <tr>
                     <td>7</td>
                     <td>Biaya Sita</td>
                     <td></td>
-                    <td>0</td>
+                    <td>Rp 0</td>
                 </tr>
                 <tr>
                     <td>8</td>
                     <td>Biaya Pemeriksaan Setempat</td>
                     <td></td>
-                    <td>0</td>
+                    <td>Rp 0</td>
                 </tr>
                 <tr>
                     <td>9</td>
                     <td>Biaya Sumpah</td>
                     <td></td>
-                    <td>0</td>
+                    <td>Rp 0</td>
                 </tr>
                 <tr>
                     <td>10</td>
                     <td>Biaya Pengiriman</td>
                     <td></td>
-                    <td>0</td>
+                    <td>Rp 0</td>
                 </tr>
                 <tr>
                     <td>11</td>
                     <td>Materai</td>
                     <td></td>
-                    <td>260000</td>
+                    <td>Rp 260.000</td>
                 </tr>
                 <tr>
                     <td>12</td>
                     <td>PNBP</td>
                     <td></td>
-                    <td>0</td>
+                    <td>Rp 0</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Biaya Pendaftaran Tk I</td>
                     <td></td>
-                    <td>2580000</td>
+                    <td>Rp 2.580.000</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Biaya Pendaftaran Banding</td>
                     <td></td>
-                    <td>0</td>
+                    <td>Rp 0</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Biaya Pendaftaran Kasasi</td>
                     <td></td>
-                    <td>0</td>
+                    <td>Rp 0</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Redaksi</td>
                     <td></td>
-                    <td>260000</td>
+                    <td>Rp 260.000</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>PNBP lainnya</td>
                     <td></td>
-                    <td>1960000</td>
+                    <td>Rp 1.960.000</td>
                 </tr>
                 <tr>
                     <td>13</td>
                     <td>Pengembalian Sisa Panjar</td>
                     <td></td>
-                    <td>1011500</td>
+                    <td>Rp 1.011.500</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Jumlah</td>
-                    <td>22372500</td>
-                    <td>17271500</td>
+                    <td>22.372.500</td>
+                    <td>Rp 17.271.500</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Saldo Akhir</td>
                     <td></td>
-                    <td>5101000</td>
+                    <td>Rp 5.101.000</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Saldo Bank</td>
                     <td></td>
-                    <td>712500</td>
+                    <td>Rp 712.500</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Saldo Kas Tunai</td>
                     <td></td>
-                    <td>4388500</td>
+                    <td>Rp 4.388.500</td>
                 </tr>
             </tbody>
         </table>
