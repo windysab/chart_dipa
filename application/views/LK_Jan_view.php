@@ -102,9 +102,7 @@
     </style>
 </head>
 <body>
-    <div class="header">
-		<img src="<?php echo base_url() ?>assets/dist/img/logo-mahkamah-agung.png" alt="Logo MA" class="brand-image img-circle elevation-3">
-		<h1>LAPORAN PERKARA</h1>
+    
     <div class="table-container">
         <table class="custom-table">
             <thead>
