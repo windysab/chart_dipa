@@ -129,13 +129,13 @@
                 <tr>
                     <td>1</td>
                     <td>Sisa Awal</td>
-                    <td>934.000</td>
+                    <td>Rp 934.000</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>Penerimaan bulan ini</td>
-                    <td>21.438.500</td>
+                    <td>Rp 21.438.500</td>
                     <td></td>
                 </tr>
                 <tr>
