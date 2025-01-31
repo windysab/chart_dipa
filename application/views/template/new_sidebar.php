@@ -77,6 +77,26 @@
 					</a>
 				</li>
 
+				<li class="nav-item">
+					<a href="<?php echo site_url('Lipa8') ?>" class="nav-link">
+						<i class="nav-icon fas fa-file-alt"></i>
+						<p>
+							Laporan Perkara
+							<i class="right fas fa-angle-left"></i>
+						</p>
+					</a>
+				</li>
+
+				<li class="nav-item">
+					<a href="<?php echo site_url('StatistikController') ?>" class="nav-link">
+						<i class="nav-icon fas fa-chart-bar"></i>
+						<p>
+							Statistics
+							<i class="right fas fa-angle-left"></i>
+						</p>
+					</a>
+				</li>
+
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->
