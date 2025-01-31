@@ -677,16 +677,16 @@
                 <tr>
                     <td colspan="2">J U M L A H</td>
                     <td>5</td>
-                    <td>84</td>
-                    <td>89</td>
+                    <td>86</td>
+                    <td>91</td>
                     <td>0</td>
-                    <td>19</td>
+                    <td>25</td>
                     <td>1</td>
                     <td>0</td>
                     <td>0</td>
                     <td>0</td>
-                    <td>20</td>
-                    <td>69</td>
+                    <td>26</td>
+                    <td>65</td>
                     <td>0</td>
                     <td>0</td>
                     <td>0</td>
