@@ -237,7 +237,7 @@
                 <tr>
                     <td></td>
                     <td>Jumlah</td>
-                    <td>22.372.500</td>
+                    <td>Rp 22.372.500</td>
                     <td>Rp 17.271.500</td>
                 </tr>
                 <tr>
