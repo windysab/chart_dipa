@@ -2,9 +2,9 @@
 class CCTVModel3 extends CI_Model
 {
 	private $links = [
-		'Halaman Parkir' => 'rtsp://admin:admin123@103.159.221.43:554/cam/realmonitor?channel=7&subtype=0',
-		'ruang_tunggu' => 'rtsp://admin:admin123@103.159.221.43:554/cam/realmonitor?channel=4&subtype=0',
-		'PTSP' => 'rtsp://admin:admin123@103.159.221.43:554/cam/realmonitor?channel=3&subtype=0'
+		'Halaman Parkir' => 'https://admin:admin123@103.159.221.43:554/cam/realmonitor?channel=7&subtype=0',
+		'ruang_tunggu' => 'https://admin:admin123@103.159.221.43:554/cam/realmonitor?channel=4&subtype=0',
+		'PTSP' => 'https://admin:admin123@103.159.221.43:554/cam/realmonitor?channel=3&subtype=0'
 	];
 
 	public function getLinks()
