@@ -2,9 +2,9 @@
 class CCTVModel3 extends CI_Model
 {
 	private $links = [
-		'Halaman Parkir' => 'https://bjm1.cctvbadilag.my.id:5443/402556PAAMUNTAI/play.html?name=903585192303189000139601',
-		'ruang_tunggu' => 'https://bjm1.cctvbadilag.my.id:5443/402556PAAMUNTAI/play.html?name=748949181548419094064971',
-		'PTSP' => 'https://bjm1.cctvbadilag.my.id:5443/402556PAAMUNTAI/play.html?name=753561690560730572756385'
+		'Halaman Parkir' => 'rtsp://admin:admin123@103.159.221.43:554/cam/realmonitor?channel=7&subtype=0',
+		'ruang_tunggu' => 'rtsp://admin:admin123@103.159.221.43:554/cam/realmonitor?channel=4&subtype=0',
+		'PTSP' => 'rtsp://admin:admin123@103.159.221.43:554/cam/realmonitor?channel=3&subtype=0'
 	];
 
 	public function getLinks()
@@ -156,7 +156,7 @@ class CCTVModel3 extends CI_Model
 
 	public function getViewCount()
 	{
- 		$query = $this->db->query("SELECT view_count FROM view_stats WHERE page_name = 'cctv_view3'");
+		$query = $this->db->query("SELECT view_count FROM view_stats WHERE page_name = 'cctv_view3'");
 		if ($query->num_rows() > 0) {
 			return $query->row()->view_count;
 		} else {
