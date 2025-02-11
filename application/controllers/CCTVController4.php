@@ -17,6 +17,6 @@
 			$links = $this->model->getLinks();
 			$this->load->view('template/header');
 			$this->load->view('cctv_view4', ['links' => $links]);
-			$this->load->view('template/footer');
+			// $this->load->view('template/footer');
 		}
 	}
