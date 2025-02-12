@@ -1,14 +1,15 @@
 <footer class="main-footer">
 
 	<strong>Developed by <a href="https://github.com/windysab">Windy Sabtami, S.Kom</a> | 2025.</strong>
+	<div class="row justify-content-center my-5 text-center">
+		<div id="histats_counter"></div>
+	</div>
 
 	<div class="float-right d-none d-sm-inline-block">
 
 
 	</div>
-	<div class="row justify-content-center my-5 text-center">
-		<div id="histats_counter"></div>
-	</div>
+	
 	<!-- Histats.com  (div with counter) -->
 	<!-- Histats.com  START  (aync)-->
 	<script type="text/javascript">
