@@ -9,7 +9,7 @@
 
 
 	</div>
-	
+
 	<!-- Histats.com  (div with counter) -->
 	<!-- Histats.com  START  (aync)-->
 	<script type="text/javascript">
@@ -23,6 +23,12 @@
 			hs.async = true;
 			hs.src = ('//s10.histats.com/js15_as.js');
 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+			hs.onload = function() {
+				console.log('Histats script loaded successfully');
+			};
+			hs.onerror = function() {
+				console.error('Error loading Histats script');
+			};
 		})();
 	</script>
 	<noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4636066&101" alt="" border="0"></a></noscript>
