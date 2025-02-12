@@ -336,11 +336,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-md-12 text-center mt-4">
 				<h6>Jumlah yang melihat: <?php echo isset($view_count) ? htmlspecialchars($view_count, ENT_QUOTES, 'UTF-8') : '0'; ?></h6>
 			</div>
-		</div>
+		</div> -->
 		<!-- Bagian counter pengunjung -->
 		<div class="row justify-content-center my-5 text-center">
 			<div id="histats_counter"></div>
