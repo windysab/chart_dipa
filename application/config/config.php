@@ -3,8 +3,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 
 // $config['base_url'] = 'http://192.168.1.11/laporan_perkara/';
-// $config['base_url'] = 'http://localhost/chart_dipa/';
-$config['base_url'] = 'https://cctv.pa-amuntai.go.id/';
+$config['base_url'] = 'http://localhost:8080/chart_dipa/';
+// $config['base_url'] = 'https://cctv.pa-amuntai.go.id/';
 
 
 $config['uri_protocol']	= 'REQUEST_URI';
