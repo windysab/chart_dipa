@@ -122,8 +122,6 @@ class CCTVModel3 extends CI_Model
 		return $query->row()->sisa_perkara;
 	}
 
-
-
 	public function getSisaPerkaraBulanSebelumnya($year, $month)
 	{
 		// Menghitung bulan sebelumnya
@@ -154,5 +152,20 @@ class CCTVModel3 extends CI_Model
 
 		// Mengembalikan hasil query sebagai jumlah sisa perkara
 		return $query->row()->sisa_perkara;
+	}
+
+	public function getPerkaraSummary($year, $month)
+	{
+		$query = $this->db->query("
+			SELECT
+				SUM(CASE WHEN YEAR(A.tanggal_pendaftaran) <= ? - 1 AND MONTH(A.tanggal_pendaftaran) AND (YEAR(B.tanggal_minutasi) >= ? OR (B.tanggal_minutasi IS NULL OR B.tanggal_minutasi = '')) THEN 1 ELSE 0 END) AS sisa,
+				SUM(CASE WHEN YEAR(A.tanggal_pendaftaran) <= ? AND MONTH(A.tanggal_pendaftaran) = ? AND (YEAR(B.tanggal_minutasi) >= ? OR (B.tanggal_minutasi IS NULL OR B.tanggal_minutasi = '')) THEN 1 ELSE 0 END) AS sisa_bulan_ini,
+				SUM(CASE WHEN YEAR(A.tanggal_pendaftaran) = ? AND MONTH(A.tanggal_pendaftaran) = ? THEN 1 ELSE 0 END) AS masuk,
+				SUM(CASE WHEN YEAR(A.tanggal_pendaftaran) <= ? AND MONTH(A.tanggal_pendaftaran) = ? AND YEAR(B.tanggal_putusan) = ? THEN 1 ELSE 0 END) AS putus
+			FROM perkara AS A
+			LEFT JOIN perkara_putusan AS B ON A.perkara_id = B.perkara_id
+			WHERE A.alur_perkara_id <> 114
+		", [$year, $year, $year, $month, $year, $year, $month, $year, $month, $year]);
+		return $query->row();
 	}
 }

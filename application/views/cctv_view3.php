@@ -330,6 +330,14 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-md-6 chart-container">
+				<h5>Summary Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
+				<div class="card-body">
+					<div class="chart">
+						<canvas id="summaryChart" style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
+					</div>
+				</div>
+			</div>
 		</div>
 
 	</div>
@@ -554,6 +562,58 @@
 				type: 'bar',
 				data: barData,
 				options: barOptions
+			});
+
+			var summaryChartCanvas = $('#summaryChart').get(0).getContext('2d');
+			var summaryData = {
+				labels: ['Sisa', 'Sisa Bulan Ini', 'Masuk', 'Putus'],
+				datasets: [{
+					label: 'Perkara Summary',
+					data: [<?php echo $perkara_summary->sisa; ?>, <?php echo $perkara_summary->sisa_bulan_ini; ?>, <?php echo $perkara_summary->masuk; ?>, <?php echo $perkara_summary->putus; ?>],
+					backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef'],
+					borderColor: ['#d9534f', '#5cb85c', '#f0ad4e', '#5bc0de'],
+					borderWidth: 1
+				}]
+			};
+			var summaryOptions = {
+				maintainAspectRatio: false,
+				responsive: true,
+				scales: {
+					y: {
+						beginAtZero: true,
+						ticks: {
+							stepSize: 1
+						}
+					}
+				},
+				plugins: {
+					legend: {
+						display: true,
+						position: 'top',
+						labels: {
+							font: {
+								size: 14
+							}
+						}
+					},
+					tooltip: {
+						enabled: true,
+						callbacks: {
+							label: function(tooltipItem) {
+								return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+							}
+						}
+					}
+				},
+				animation: {
+					duration: 1000,
+					easing: 'easeInOutBounce'
+				}
+			};
+			var summaryChart = new Chart(summaryChartCanvas, {
+				type: 'bar',
+				data: summaryData,
+				options: summaryOptions
 			});
 		});
 	</script>

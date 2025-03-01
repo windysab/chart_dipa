@@ -30,6 +30,7 @@ class CCTVController3 extends CI_Controller
 		$jumlahPerkaraDiputus = $this->model->getJumlahPerkaraDiputus($year, $month) ? $this->model->getJumlahPerkaraDiputus($year, $month) : 0;
 		$sisaPerkara = $this->model->getSisaPerkara($year, $month) ? $this->model->getSisaPerkara($year, $month) : 0;
 		$sisaPerkaraBulanSebelumnya = $this->model->getSisaPerkaraBulanSebelumnya($year, $month) ? $this->model->getSisaPerkaraBulanSebelumnya($year, $month) : 0;
+		$perkaraSummary = $this->model->getPerkaraSummary($year, $month);
 		$this->load->view('template/header');
 		$this->load->view('cctv_view3', [
 			'links' => $links,
@@ -39,7 +40,8 @@ class CCTVController3 extends CI_Controller
 			'jumlah_perkara_terdaftar' => $jumlahPerkaraTerdaftar,
 			'jumlah_perkara_diputus' => $jumlahPerkaraDiputus,
 			'sisa_perkara' => $sisaPerkara,
-			'sisa_perkara_bulan_sebelumnya' => $sisaPerkaraBulanSebelumnya
+			'sisa_perkara_bulan_sebelumnya' => $sisaPerkaraBulanSebelumnya,
+			'perkara_summary' => $perkaraSummary
 		]);
 		$this->load->view('template/footer');
 	}
