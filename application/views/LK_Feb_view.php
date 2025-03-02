@@ -144,7 +144,7 @@
 						<th width="25%">PENGELUARAN (Rp)</th>
 					</tr>
 				</thead>
-				// ... existing code ...
+				
 				<tbody>
 					<tr>
 						<td>1</td>
@@ -277,7 +277,7 @@
 						<td class="amount-cell">2.565.500</td>
 					</tr>
 				</tbody>
-				// ... existing code ...
+				
 			</table>
 
 		</div>
