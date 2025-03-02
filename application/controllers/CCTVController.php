@@ -12,13 +12,14 @@ class CCTVController extends CI_Controller {
 
     public function index() {
         $links = $this->model->getLinks();
-        $this->load->view('cctv_view', ['links' => $links]);
+        $perkaraData = $this->model->getPerkaraData();
+        $this->load->view('cctv_view', ['links' => $links, 'perkaraData' => $perkaraData]);
+
 		$this->load->view('template/new_header');
         $this->load->view('template/new_sidebar');
-       
+        
         $this->load->view('template/new_footer');
 
-		
     }
 }
 ?>
