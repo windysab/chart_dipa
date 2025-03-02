@@ -144,140 +144,140 @@
 						<th width="25%">PENGELUARAN (Rp)</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>Sisa Awal</td>
-						<td class="amount-cell">934.000</td>
-						<td class="amount-cell">-</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>Penerimaan bulan ini</td>
-						<td class="amount-cell">21.438.500</td>
-						<td class="amount-cell">-</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>Biaya Proses/ATK/Pemberkasan *)</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">8.600.000</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>Biaya Panggilan</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">1.902.000</td>
-					</tr>
-					<tr>
-						<td>5</td>
-						<td>Biaya Penterjemah</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">0</td>
-					</tr>
-					<tr>
-						<td>6</td>
-						<td>Biaya Pemberitahuan</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">283.000</td>
-					</tr>
-					<tr>
-						<td>7</td>
-						<td>Biaya Sita</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">0</td>
-					</tr>
-					<tr>
-						<td>8</td>
-						<td>Biaya Pemeriksaan Setempat</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">0</td>
-					</tr>
-					<tr>
-						<td>9</td>
-						<td>Biaya Sumpah</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">0</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>Biaya Pengiriman</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">0</td>
-					</tr>
-					<tr>
-						<td>11</td>
-						<td>Materai</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">260.000</td>
-					</tr>
-					<tr>
-						<td>12</td>
-						<td>PNBP</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">0</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>Biaya Pendaftaran Tk I</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">2.580.000</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>Biaya Pendaftaran Banding</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">0</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>Biaya Pendaftaran Kasasi</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">0</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>Redaksi</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">260.000</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>PNBP lainnya</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">1.960.000</td>
-					</tr>
-					<tr>
-						<td>13</td>
-						<td>Pengembalian Sisa Panjar</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">1.011.500</td>
-					</tr>
-					<tr class="total-row">
-						<td></td>
-						<td>Jumlah</td>
-						<td class="amount-cell">22.372.500</td>
-						<td class="amount-cell">17.271.500</td>
-					</tr>
+				// ... existing code ...
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Sisa Awal</td>
+                        <td class="amount-cell">5.516.000</td>
+                        <td class="amount-cell">-</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Penerimaan bulan ini</td>
+                        <td class="amount-cell">26.467.500</td>
+                        <td class="amount-cell">-</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Biaya Proses/ATK/Pemberkasan *)</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">9.500.000</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Biaya Panggilan</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">2.930.500</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Biaya Penterjemah</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">-</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Biaya Pemberitahuan</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">1.076.500</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Biaya Sita</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">-</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Biaya Pemeriksaan Setempat</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">-</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Biaya Sumpah</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">-</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Biaya Pengiriman</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">-</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Materai</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">950.000</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>PNBP</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">-</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Biaya Pendaftaran Tk I</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">2.850.000</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Biaya Pendaftaran Banding</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">-</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Biaya Pendaftaran Kasasi</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">-</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Redaksi</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">950.000</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>PNBP lainnya</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">2.460.000</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Pengembalian Sisa Panjar</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">3.023.000</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td></td>
+                        <td>Jumlah</td>
+                        <td class="amount-cell">31.983.500</td>
+                        <td class="amount-cell">23.740.000</td>
+                    </tr>
 
-
-
-					<tr>
-						<td colspan="2">Saldo Akhir</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">5.101.000</td>
-					</tr>
-					<tr>
-						<td colspan="2">Saldo Bank</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">712.500</td>
-					</tr>
-					<tr>
-						<td colspan="2">Saldo Kas Tunai</td>
-						<td class="amount-cell">-</td>
-						<td class="amount-cell">4.388.500</td>
-					</tr>
-				</tbody>
+                    <tr>
+                        <td colspan="2">Saldo Akhir</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">8.243.500</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Saldo Bank</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">5.678.000</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Saldo Kas Tunai</td>
+                        <td class="amount-cell">-</td>
+                        <td class="amount-cell">2.565.500</td>
+                    </tr>
+                </tbody>
+// ... existing code ...
 			</table>
 
 		</div>
