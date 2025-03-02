@@ -128,7 +128,7 @@
 		<div class="header">
 			<h1>LAPORAN KEUANGAN PERKARA</h1>
 			<h2>PENGADILAN AGAMA AMUNTAI</h2>
-			<h3>BULAN JANUARI 2025</h3>
+			<h3>BULAN FEBRUARI 2025</h3>
 			<p>LIPA 7a</p>
 		</div>
 
