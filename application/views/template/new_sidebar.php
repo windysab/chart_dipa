@@ -102,6 +102,15 @@
 						</p>
 					</a>
 				</li>
+				<li class="nav-item">
+					<a href="<?php echo site_url('StatistikFebController')?>" class="nav-link">
+						<i class="nav-icon fas fa-chart-bar"></i>
+						<p>
+							Statistics Februari
+							<i class="right fas fa-angle-left"></i>
+						</p>
+					</a>
+				</li>
 
 				<li class="nav-item">
 					<a href="<?php echo site_url('LKJanController') ?>" class="nav-link">
