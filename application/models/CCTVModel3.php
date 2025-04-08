@@ -3,7 +3,7 @@ class CCTVModel3 extends CI_Model
 {
 	private $links = [
         'Halaman Parkir' => 'https://paamuntai.cctvbadilag2.my.id/402556PAAMUNTAI/play.html?name=883576768194955166649178',
-        'ruang_tunggu' => 'https://paamuntai.cctvbadilag2.my.id/402556PAAMUNTAI/play.html?name=303329746330290962284656',
+        'Ruang Tunggu' => 'https://paamuntai.cctvbadilag2.my.id/402556PAAMUNTAI/play.html?name=303329746330290962284656',
         'PTSP' => 'https://paamuntai.cctvbadilag2.my.id/402556PAAMUNTAI/play.html?name=514391471773000873180345'
     ];
 
