@@ -977,11 +977,11 @@
         <div class="signature-section">
             <div class="signature-box">
                 <h4><i class="fas fa-pen-fancy"></i> Pengesahan</h4>
-                <p>Amuntai, 31 Maret 2025</p>
+                <p>Amuntai, 27 Maret 2025</p>
                 <p>Panitera</p>
                 <div class="signature-line"></div>
-                <p><strong>H. Muhammad Arsyad, S.Ag., M.H.</strong></p>
-                <p>NIP. 19750615 200112 1 002</p>
+                <p><strong>H. Ahmad Salim Ridha, S.Ag., M.H</strong></p>
+                <p>NIP. 19780630 200704 1 00</p>
             </div>
         </div>
     </div>
