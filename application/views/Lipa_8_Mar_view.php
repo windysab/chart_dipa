@@ -316,6 +316,31 @@
             .summary-card {
                 flex: 1 1 100%;
             }
+			.custom-table tfoot {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+
+        .custom-table tfoot td {
+            padding: 15px;
+        }
+
+        .highlight-cell {
+            background-color: rgba(139, 195, 74, 0.1);
+            font-weight: 500;
+        }
+
+        /* Adding new style for sum results */
+        .sum-result {
+            color: white;
+            font-weight: bold;
+            background-color: var(--primary-color);
+        }
+
+        .zero-value {
+            color: #bbb;
+        }
         }
     </style>
 </head>
