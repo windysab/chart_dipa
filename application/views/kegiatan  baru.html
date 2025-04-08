@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .blockheader {
+            background: linear-gradient(to right, #2c3e50, #3498db);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            margin-bottom: -1px;
+        }
+        
+        .scrollable {
+            overflow-y: scroll;
+            max-height: 300px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0 0 8px 8px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .event {
+            padding: 1.5rem;
+            margin: 1rem;
+            background: white;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .event:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .event-time {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .date {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #3498db;
+            min-width: 60px;
+        }
+
+        .month {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .event a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 600;
+            line-height: 1.5;
+            font-size: 1.05rem;
+            display: block;
+            transition: color 0.2s ease;
+        }
+
+        .event a:hover {
+            color: #e74c3c;
+            text-decoration: underline;
+        }
+
+        .fa-calendar-alt {
+            margin-left: 10px;
+            font-size: 1.2em;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="blockheader" style="text-align: center;">
+        <p class="t">Bulan MARET 2025 <i class="fas fa-calendar-alt"></i></p>
+    </div>
+    <div class="scrollable box-body blockcontent-body">
+        <div class="event">
+            <p class="event-time">
+                <span class="date">03</span>
+                <span class="month">FEBRUARI</span>
+            </p>
+            <a href="https://www.pa-amuntai.go.id/index.php?option=com_content&view=article&id=16042:ketua-pa-amuntai-hadiri-rapat-paripurna-dprd-hsu,-saksikan-serah-terima-jabatan-pj-bupati-kepada-bupati-terpilih&catid=115&Itemid=539">
+                Ketua PA Amuntai Hadiri Rapat Paripurna DPRD HSU, Saksikan Serah Terima Jabatan PJ Bupati kepada Bupati Terpilih
+            </a>
+        </div>
+        <!-- Add more event blocks as needed -->
+    </div>
+
+    <script>
+        var speed = 40;
+        function startScroll() {
+            var scrollBox = document.querySelector('.scrollable');
+            var scrollHeight = scrollBox.scrollHeight;
+            var scrollTop = scrollBox.scrollTop;
+            if (scrollTop < scrollHeight - scrollBox.clientHeight) {
+                scrollBox.scrollTop = scrollTop + 1;
+            } else {
+                scrollBox.scrollTop = 0;
+            }
+        }
+        var scrollInterval = setInterval(startScroll, speed);
+        var scrollBox = document.querySelector('.scrollable');
+        scrollBox.addEventListener('mouseenter', function () {
+            clearInterval(scrollInterval);
+        });
+        scrollBox.addEventListener('mouseleave', function () {
+            scrollInterval = setInterval(startScroll, speed);
+        });
+    </script>
+</body>
+</html>
