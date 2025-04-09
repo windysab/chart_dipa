@@ -259,17 +259,17 @@
                                 <td rowspan="4"><?= $financial_data['months'][2] ?></td>
                                 <td class="category-cell"><?= array_keys($financial_data['categories'])[0] ?></td>
                                 <td><?= number_format($financial_data['categories']['Belanja Pegawai']['pagu'][2]) ?></td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td><?= number_format($financial_data['categories']['Belanja Pegawai']['realisasi'][2]) ?></td>
+                                <td class="percentage-cell"><?= $financial_data['categories']['Belanja Pegawai']['percentage'][2] ?> %</td>
+                                <td><?= number_format($financial_data['categories']['Belanja Pegawai']['sisa_pagu'][2]) ?></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td class="category-cell"><?= array_keys($financial_data['categories'])[1] ?></td>
                                 <td><?= number_format($financial_data['categories']['Belanja Barang']['pagu'][2]) ?></td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td><?= number_format($financial_data['categories']['Belanja Barang']['realisasi'][2]) ?></td>
+                                <td class="percentage-cell"><?= $financial_data['categories']['Belanja Barang']['percentage'][2] ?> %</td>
+                                <td><?= number_format($financial_data['categories']['Belanja Barang']['sisa_pagu'][2]) ?></td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -283,16 +283,16 @@
                             <tr class="total-row">
                                 <td class="category-cell">Total</td>
                                 <td><?= number_format($financial_data['totals']['pagu'][2]) ?></td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td><?= number_format($financial_data['categories']['Belanja Pegawai']['realisasi'][2] + $financial_data['categories']['Belanja Barang']['realisasi'][2]) ?></td>
+                                <td class="percentage-cell"><?= round(($financial_data['categories']['Belanja Pegawai']['realisasi'][2] + $financial_data['categories']['Belanja Barang']['realisasi'][2]) / $financial_data['totals']['pagu'][2] * 100, 2) ?> %</td>
+                                <td><?= number_format($financial_data['categories']['Belanja Pegawai']['sisa_pagu'][2] + $financial_data['categories']['Belanja Barang']['sisa_pagu'][2]) ?></td>
                                 <td></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 
-                <p class="note">* Data realisasi anggaran bulan Maret 2025 belum tersedia</p>
+                <p class="note">* Data realisasi anggaran sampai dengan bulan Maret 2025</p>
             </div>
         </div>
         
