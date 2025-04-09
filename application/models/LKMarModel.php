@@ -20,7 +20,7 @@ class LKMarModel extends CI_Model {
                     'sisa_pagu' => [2541779045, 2323439812, 1886272814]
                 ],
                 'Belanja Barang' => [
-                    'pagu' => [1312916000, 811077000, 811077000],
+                    'pagu' => [1312916000, 811077000, 1312916000],
                     'realisasi' => [24405000, 64280768, 107981737], // March data not available yet
                     'percentage' => [1.86, 0, 0],
                     'sisa_pagu' => [1288511000, 722351716, 1116208979]
