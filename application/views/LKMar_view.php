@@ -305,32 +305,41 @@
     </div>
 
     <!-- Add Chart.js for visualization -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Get the canvas element
             var ctx = document.getElementById('budgetChart').getContext('2d');
             
-            var chart = new Chart(ctx, {
+            // Define the chart data
+            var chartData = {
+                labels: ['Januari', 'Februari', 'Maret'],
+                datasets: [
+                    {
+                        label: 'Pagu Anggaran',
+                        data: [<?= $financial_data['totals']['pagu'][0] ?>, 
+                               <?= $financial_data['totals']['pagu'][1] ?>, 
+                               <?= $financial_data['totals']['pagu'][2] ?>],
+                        backgroundColor: 'rgba(30, 86, 49, 0.7)',
+                        borderColor: 'rgba(30, 86, 49, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Realisasi',
+                        data: [<?= $financial_data['totals']['realisasi'][0] ?>, 
+                               <?= $financial_data['totals']['realisasi'][1] ?>, 
+                               <?= $financial_data['totals']['realisasi'][2] ?>],
+                        backgroundColor: 'rgba(60, 141, 188, 0.7)',
+                        borderColor: 'rgba(60, 141, 188, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            };
+            
+            // Create the chart
+            var budgetChart = new Chart(ctx, {
                 type: 'bar',
-                data: {
-                    labels: ['Januari', 'Februari', 'Maret'],
-                    datasets: [
-                        {
-                            label: 'Pagu Anggaran',
-                            data: [4198424000, 3571588000, 4198424000],
-                            backgroundColor: 'rgba(30, 86, 49, 0.7)',
-                            borderColor: 'rgba(30, 86, 49, 1)',
-                            borderWidth: 1
-                        },
-                        {
-                            label: 'Realisasi',
-                            data: [243136171, 282620001, 545148735],
-                            backgroundColor: 'rgba(60, 141, 188, 0.7)',
-                            borderColor: 'rgba(60, 141, 188, 1)',
-                            borderWidth: 1
-                        }
-                    ]
-                },
+                data: chartData,
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
@@ -339,7 +348,7 @@
                             beginAtZero: true,
                             ticks: {
                                 callback: function(value) {
-                                    return value.toLocaleString('id-ID');
+                                    return new Intl.NumberFormat('id-ID').format(value);
                                 }
                             }
                         }
@@ -352,7 +361,12 @@
                                     if (label) {
                                         label += ': ';
                                     }
-                                    label += new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(context.raw);
+                                    label += new Intl.NumberFormat('id-ID', { 
+                                        style: 'currency', 
+                                        currency: 'IDR',
+                                        minimumFractionDigits: 0,
+                                        maximumFractionDigits: 0
+                                    }).format(context.raw);
                                     return label;
                                 }
                             }
@@ -362,11 +376,17 @@
                         },
                         title: {
                             display: true,
-                            text: 'Perbandingan Pagu dan Realisasi Anggaran 2025'
+                            text: 'Perbandingan Pagu dan Realisasi Anggaran 2025',
+                            font: {
+                                size: 16
+                            }
                         }
                     }
                 }
             });
+            
+            // Log to check if chart is created
+            console.log('Chart initialized:', budgetChart);
         });
     </script>
 </body>
