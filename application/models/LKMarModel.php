@@ -15,15 +15,15 @@ class LKMarModel extends CI_Model {
             'categories' => [
                 'Belanja Pegawai' => [
                     'pagu' => [2760471000, 2760471000, 2760471000],
-                    'realisasi' => [218691955, 218339233, 0], // March data not available yet
+                    'realisasi' => [218691955, 218339233, 437166998], // March data not available yet
                     'percentage' => [7.92, 0, 0],
-                    'sisa_pagu' => [2541779045, 2323439812, 0]
+                    'sisa_pagu' => [2541779045, 2323439812, 1886272814]
                 ],
                 'Belanja Barang' => [
                     'pagu' => [1312916000, 811077000, 811077000],
-                    'realisasi' => [24405000, 64280768, 0], // March data not available yet
+                    'realisasi' => [24405000, 64280768, 107981737], // March data not available yet
                     'percentage' => [1.86, 0, 0],
-                    'sisa_pagu' => [1288511000, 722351716, 0]
+                    'sisa_pagu' => [1288511000, 722351716, 1116208979]
                 ],
                 'Belanja Modal' => [
                     'pagu' => [0, 0, 0],
@@ -33,7 +33,7 @@ class LKMarModel extends CI_Model {
                 ]
             ],
             'totals' => [
-                'pagu' => [4198424000, 3571588000, 3571548000], // Updated March total pagu
+                'pagu' => [4198424000, 3571588000, 4198424000], // Updated March total pagu
                 'realisasi' => [243136171, 282620001, 0], // March data not available yet
                 'percentage' => [5.79, 0, 0],
                 'sisa_pagu' => [3955287529, 3045831528, 0]
