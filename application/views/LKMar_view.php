@@ -317,14 +317,14 @@
                     datasets: [
                         {
                             label: 'Pagu Anggaran',
-                            data: [4198424000, 3571588000, 3571588000],
+                            data: [4198424000, 3571588000, 4198424000],
                             backgroundColor: 'rgba(30, 86, 49, 0.7)',
                             borderColor: 'rgba(30, 86, 49, 1)',
                             borderWidth: 1
                         },
                         {
                             label: 'Realisasi',
-                            data: [243136171, 282620001, 0],
+                            data: [243136171, 282620001, 545148735],
                             backgroundColor: 'rgba(60, 141, 188, 0.7)',
                             borderColor: 'rgba(60, 141, 188, 1)',
                             borderWidth: 1
