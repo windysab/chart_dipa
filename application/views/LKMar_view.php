@@ -254,38 +254,38 @@
                                 <td></td>
                             </tr>
                             
-                            <!-- Maret -->
+                            <!-- Maret section in the table -->
                             <tr>
                                 <td rowspan="4"><?= $financial_data['months'][2] ?></td>
                                 <td class="category-cell"><?= array_keys($financial_data['categories'])[0] ?></td>
                                 <td><?= number_format($financial_data['categories']['Belanja Pegawai']['pagu'][2]) ?></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td class="category-cell"><?= array_keys($financial_data['categories'])[1] ?></td>
                                 <td><?= number_format($financial_data['categories']['Belanja Barang']['pagu'][2]) ?></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td class="category-cell"><?= array_keys($financial_data['categories'])[2] ?></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
                                 <td></td>
                             </tr>
                             <tr class="total-row">
                                 <td class="category-cell">Total</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?= number_format($financial_data['totals']['pagu'][2]) ?></td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
                                 <td></td>
                             </tr>
                         </tbody>
