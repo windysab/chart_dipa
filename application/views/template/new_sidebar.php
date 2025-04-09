@@ -145,6 +145,14 @@
 						</p>
 					</a>
 				</li>
+				<li class="nav-item">
+					<a href="<?php echo site_url('KUMARController')?>" class="nav-link">
+						<i class="nav-icon fas fa-file-alt"></i>
+						<p>
+							LRA Mare
+						</p>
+					</a>
+				</li>
 
 			</ul>
 		</nav>
