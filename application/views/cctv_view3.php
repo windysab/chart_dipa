@@ -168,7 +168,8 @@
 
 		.video-link .video-container {
 			position: relative;
-			padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+			padding-bottom: 56.25%;
+			/* 16:9 Aspect Ratio */
 			height: 0;
 			overflow: hidden;
 			border-radius: 8px;
@@ -210,9 +211,11 @@
 			0% {
 				opacity: 1;
 			}
+
 			50% {
 				opacity: 0.5;
 			}
+
 			100% {
 				opacity: 1;
 			}
@@ -437,11 +440,11 @@
 				width: 140px;
 				height: 140px;
 			}
-			
+
 			.circle-card p.value {
 				font-size: 1.8rem;
 			}
-			
+
 			.header h5 {
 				font-size: 1.8rem;
 			}
@@ -451,29 +454,29 @@
 			.container {
 				margin-top: 20px;
 			}
-			
+
 			.header h5 {
 				font-size: 1.5rem;
 			}
-			
+
 			.section-title h4 {
 				font-size: 1.5rem;
 			}
-			
+
 			.circle-card {
 				width: 120px;
 				height: 120px;
 				margin-bottom: 15px;
 			}
-			
+
 			.circle-card p.value {
 				font-size: 1.5rem;
 			}
-			
+
 			.circle-card-title {
 				font-size: 0.9rem;
 			}
-			
+
 			.visitor-counter .counter-item {
 				margin: 5px 10px;
 			}
@@ -483,15 +486,15 @@
 			.header {
 				padding: 15px;
 			}
-			
+
 			.header h5 {
 				font-size: 1.3rem;
 			}
-			
+
 			.visitor-counter h6 {
 				flex-direction: column;
 			}
-			
+
 			.visitor-counter .counter-item {
 				margin: 5px 0;
 			}
@@ -507,6 +510,7 @@
 				opacity: 0;
 				transform: translateY(20px);
 			}
+
 			to {
 				opacity: 1;
 				transform: translateY(0);
@@ -539,12 +543,12 @@
 			</div>
 			<div class="row">
 				<?php if (isset($links)) : ?>
-					<?php 
+					<?php
 					$icons = [
 						'Halaman Parkir' => 'fas fa-car',
 						'Ruang Tunggu' => 'fas fa-couch',
 						'PTSP' => 'fas fa-info-circle',
-						
+
 					];
 					?>
 					<?php foreach ($links as $name => $url): ?>
@@ -754,252 +758,133 @@
 		</div>
 	</div>
 
+	<!-- Update the script section -->
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
-	<script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
-	<link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/adminlte.min.css">
-	
+	<!-- Remove duplicate jQuery and use latest Chart.js -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+
 	<script>
-		// Add animation to elements when they come into view
-		function animateOnScroll() {
-			const elements = document.querySelectorAll('.fade-in');
-			
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
-					if (entry.isIntersecting) {
-						entry.target.style.opacity = 1;
-						entry.target.style.transform = 'translateY(0)';
-						observer.unobserve(entry.target);
-					}
-				});
-			}, {
-				threshold: 0.1
-			});
-			
-			elements.forEach(element => {
-				element.style.opacity = 0;
-				element.style.transform = 'translateY(20px)';
-				element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-				observer.observe(element);
-			});
-		}
-		
-		// Call the animation function when the page loads
-		document.addEventListener('DOMContentLoaded', animateOnScroll);
-		
-		// Initialize charts
-		$(function() {
+		// Register the datalabels plugin
+		Chart.register(ChartDataLabels);
+
+		document.addEventListener('DOMContentLoaded', function() {
 			// Donut chart for case types
-			var donutChartCanvas = $('#donutChart').get(0).getContext('2d');
-			var donutData = {
-				labels: <?php echo json_encode(array_keys($grouped_data)); ?>,
-				datasets: [{
-					data: <?php echo json_encode(array_values($grouped_data)); ?>,
-					backgroundColor: ['#1a73e8', '#34a853', '#fbbc05', '#ea4335', '#5f6368', '#4285f4', '#46bdc6', '#ff6d01', '#7baaf7', '#174ea6'],
-				}]
-			};
-			var donutOptions = {
-				maintainAspectRatio: false,
-				responsive: true,
-				plugins: {
-					legend: {
-						position: 'bottom',
-						labels: {
-							padding: 20,
-							boxWidth: 12
-						}
+			const donutChartCanvas = document.getElementById('donutChart');
+			if (donutChartCanvas) {
+				new Chart(donutChartCanvas, {
+					type: 'doughnut',
+					data: {
+						labels: <?php echo json_encode(array_keys($grouped_data)); ?>,
+						datasets: [{
+							data: <?php echo json_encode(array_values($grouped_data)); ?>,
+							backgroundColor: ['#1a73e8', '#34a853', '#fbbc05', '#ea4335', '#5f6368', '#4285f4', '#46bdc6', '#ff6d01', '#7baaf7', '#174ea6'],
+						}]
 					},
-					datalabels: {
-						formatter: (value, ctx) => {
-							let sum = 0;
-							let dataArr = ctx.chart.data.datasets[0].data;
-							dataArr.map(data => {
-								sum += data;
-							});
-							let percentage = (value * 100 / sum).toFixed(1) + "%";
-							return percentage;
-						},
-						color: '#fff',
-						font: {
-							weight: 'bold',
-							size: 12
-						}
-					},
-					tooltip: {
-						callbacks: {
-							label: function(context) {
-								let label = context.label || '';
-								let value = context.raw || 0;
-								let sum = context.dataset.data.reduce((a, b) => a + b, 0);
-								let percentage = Math.round((value / sum) * 100);
-								return `${label}: ${value} (${percentage}%)`;
+					options: {
+						responsive: true,
+						maintainAspectRatio: false,
+						plugins: {
+							legend: {
+								position: 'bottom',
+								labels: {
+									padding: 20,
+									boxWidth: 12
+								}
+							},
+							datalabels: {
+								color: '#fff',
+								formatter: (value, ctx) => {
+									const sum = ctx.dataset.data.reduce((a, b) => a + b, 0);
+									const percentage = (value * 100 / sum).toFixed(1) + '%';
+									return percentage;
+								}
 							}
 						}
 					}
-				},
-				cutout: '60%',
-				animation: {
-					animateScale: true,
-					animateRotate: true,
-					duration: 2000
-				}
-			};
-			
-			new Chart(donutChartCanvas, {
-				type: 'doughnut',
-				data: donutData,
-				options: donutOptions,
-				plugins: [ChartDataLabels]
-			});
-			
+				});
+			}
+
 			// Mediasi chart
-			var mediasiChartCanvas = $('#mediasiChart').get(0).getContext('2d');
-			var mediasiData = {
-				labels: ['Tidak Dapat Dilaksanakan', 'Tidak Berhasil', 'Berhasil Sebagian', 'Berhasil Dengan Pencabutan', 'Berhasil Dengan Akta Perdamaian'],
-				datasets: [{
-					data: [
-						<?php echo $mediasi_data['D']; ?>,
-						<?php echo $mediasi_data['T']; ?>,
-						<?php echo $mediasi_data['S']; ?>,
-						<?php echo $mediasi_data['Y2']; ?>,
-						<?php echo $mediasi_data['Y1']; ?>
-					],
-					backgroundColor: ['#ea4335', '#fbbc05', '#4285f4', '#34a853', '#1a73e8'],
-				}]
-			};
-			
-			var mediasiOptions = {
-				maintainAspectRatio: false,
-				responsive: true,
-				plugins: {
-					legend: {
-						position: 'bottom',
-						labels: {
-							padding: 20,
-							boxWidth: 12
-						}
+			const mediasiChartCanvas = document.getElementById('mediasiChart');
+			if (mediasiChartCanvas) {
+				new Chart(mediasiChartCanvas, {
+					type: 'doughnut',
+					data: {
+						labels: ['Tidak Dapat Dilaksanakan', 'Tidak Berhasil', 'Berhasil Sebagian', 'Berhasil Dengan Pencabutan', 'Berhasil Dengan Akta Perdamaian'],
+						datasets: [{
+							data: [
+								<?php echo $mediasi_data['D']; ?>,
+								<?php echo $mediasi_data['T']; ?>,
+								<?php echo $mediasi_data['S']; ?>,
+								<?php echo $mediasi_data['Y2']; ?>,
+								<?php echo $mediasi_data['Y1']; ?>
+							],
+							backgroundColor: ['#ea4335', '#fbbc05', '#4285f4', '#34a853', '#1a73e8'],
+						}]
 					},
-					datalabels: {
-						formatter: (value, ctx) => {
-							if (value === 0) return '';
-							return value;
-						},
-						color: '#fff',
-						font: {
-							weight: 'bold',
-							size: 12
+					options: {
+						responsive: true,
+						maintainAspectRatio: false,
+						plugins: {
+							legend: {
+								position: 'bottom',
+								labels: {
+									padding: 20,
+									boxWidth: 12
+								}
+							},
+							datalabels: {
+								color: '#fff',
+								formatter: (value) => value || ''
+							}
 						}
 					}
-				},
-				cutout: '60%',
-				animation: {
-					animateScale: true,
-					animateRotate: true,
-					duration: 2000
-				}
-			};
-			
-			new Chart(mediasiChartCanvas, {
-				type: 'doughnut',
-				data: mediasiData,
-				options: mediasiOptions,
-				plugins: [ChartDataLabels]
-			});
-			
+				});
+			}
+
 			// E-filing chart
-			var efilingChartCanvas = $('#efilingChart').get(0).getContext('2d');
-			var efilingData = {
-				labels: ['E-Court', 'Non E-Court'],
-				datasets: [{
-					data: [
-						<?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?>,
-						<?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?>
-					],
-					backgroundColor: ['#34a853', '#ea4335'],
-				}]
-			};
-			
-			var efilingOptions = {
-				maintainAspectRatio: false,
-				responsive: true,
-				plugins: {
-					legend: {
-						position: 'bottom',
-						labels: {
-							padding: 20,
-							boxWidth: 12
-						}
+			const efilingChartCanvas = document.getElementById('efilingChart');
+			if (efilingChartCanvas) {
+				new Chart(efilingChartCanvas, {
+					type: 'doughnut',
+					data: {
+						labels: ['E-Court', 'Non E-Court'],
+						datasets: [{
+							data: [
+								<?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?>,
+								<?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?>
+							],
+							backgroundColor: ['#34a853', '#ea4335'],
+						}]
 					},
-					datalabels: {
-						formatter: (value, ctx) => {
-							let sum = 0;
-							let dataArr = ctx.chart.data.datasets[0].data;
-							dataArr.map(data => {
-								sum += data;
-							});
-							let percentage = (value * 100 / sum).toFixed(1) + "%";
-							return percentage;
-						},
-						color: '#fff',
-						font: {
-							weight: 'bold',
-							size: 12
+					options: {
+						responsive: true,
+						maintainAspectRatio: false,
+						plugins: {
+							legend: {
+								position: 'bottom',
+								labels: {
+									padding: 20,
+									boxWidth: 12
+								}
+							},
+							datalabels: {
+								color: '#fff',
+								formatter: (value, ctx) => {
+									const sum = ctx.dataset.data.reduce((a, b) => a + b, 0);
+									const percentage = (value * 100 / sum).toFixed(1) + '%';
+									return percentage;
+								}
+							}
 						}
 					}
-				},
-				cutout: '60%',
-				animation: {
-					animateScale: true,
-					animateRotate: true,
-					duration: 2000
-				}
-			};
-			
-			new Chart(efilingChartCanvas, {
-				type: 'doughnut',
-				data: efilingData,
-				options: efilingOptions,
-				plugins: [ChartDataLabels]
-			});
-		});
-		
-		// Add a simple hover effect to the CCTV video containers
-		document.querySelectorAll('.video-link').forEach(link => {
-			link.addEventListener('mouseenter', function() {
-				this.style.transform = 'translateY(-10px)';
-				this.style.boxShadow = 'var(--shadow-lg)';
-			});
-			
-			link.addEventListener('mouseleave', function() {
-				this.style.transform = '';
-				this.style.boxShadow = 'var(--shadow-md)';
-			});
-		});
-		
-		// Add a counter for the visitor stats
-		function animateCounter(element, target, duration) {
-			let start = 0;
-			const increment = target / (duration / 16);
-			const timer = setInterval(() => {
-				start += increment;
-				element.textContent = Math.floor(start);
-				if (start >= target) {
-					element.textContent = target;
-					clearInterval(timer);
-				}
-			}, 16);
-		}
-		
-		document.querySelectorAll('.count').forEach(counter => {
-			const target = parseInt(counter.textContent, 10);
-			counter.textContent = '0';
-			animateCounter(counter, target, 1500);
+				});
+			}
 		});
 	</script>
 </body>
+
 </html>
