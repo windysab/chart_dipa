@@ -1,0 +1,61 @@
+{source}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .scrollable {
+            overflow-y: scroll;
+            max-height: 300px;
+            /* atur tinggi maksimum scroll */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bar blockheader" style="text-align: center;">
+        <div class="bar blockheader" style="text-align: center;">
+            <p class="t">Bulan APRIL 2025</p>
+        </div>
+        <div class="scrollable box-body blockcontent-body">
+            <div class="event">
+                <p class="event-time"><span class="date">03</span><span class="month">APRIL</span></p>
+                <a href="https://www.pa-amuntai.go.id/index.php?option=com_content&view=article&id=16042:ketua-pa-amuntai-hadiri-rapat-paripurna-dprd-hsu,-saksikan-serah-terima-jabatan-pj-bupati-kepada-bupati-terpilih&catid=115&Itemid=539">Ketua PA Amuntai Hadiri Rapat Paripurna DPRD HSU, Saksikan Serah Terima Jabatan PJ Bupati kepada Bupati Terpilih</a><br>
+            </div>
+           
+        </div>
+    </div>
+    <script>
+        // atur kecepatan scroll (semakin kecil nilai speed, semakin lambat)
+        var speed = 40;
+        // fungsi untuk menjalankan scroll otomatis
+        function startScroll() {
+            var scrollBox = document.querySelector('.scrollable');
+            var scrollHeight = scrollBox.scrollHeight;
+            var scrollTop = scrollBox.scrollTop;
+            if (scrollTop < scrollHeight - scrollBox.clientHeight) {
+                scrollBox.scrollTop = scrollTop + 1;
+            } else {
+                scrollBox.scrollTop = 0;
+            }
+        }
+        // jalankan fungsi scroll otomatis
+        var scrollInterval = setInterval(startScroll, speed);
+        // hentikan scroll otomatis ketika mouse berada di atas elemen scroll
+        var scrollBox = document.querySelector('.scrollable');
+        scrollBox.addEventListener('mouseenter', function () {
+            clearInterval(scrollInterval);
+        });
+        // lanjutkan scroll otomatis ketika mouse meninggalkan elemen scroll
+        scrollBox.addEventListener('mouseleave', function () {
+            scrollInterval = setInterval(startScroll, speed);
+        });
+    </script>
+</body>
+
+</html>
+<!--
+-->
+{/source}
