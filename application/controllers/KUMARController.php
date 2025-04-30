@@ -19,4 +19,19 @@ class KUMARController extends CI_Controller
 		$this->load->view('LKMar_view', $data);
 		$this->load->view('template/footer');
 	}
+
+	public function showChart($month_index, $category)
+	{
+		$data['title'] = 'Detail Chart';
+		$data['financial_data'] = $this->LKMarModel->get_financial_data();
+		$data['month_index'] = $month_index;
+		$data['category'] = urldecode($category);
+
+		// Convert month index to month name
+		$data['month_name'] = $data['financial_data']['months'][$month_index];
+
+		$this->load->view('template/header', $data);
+		$this->load->view('chart_detail_view', $data);
+		$this->load->view('template/footer');
+	}
 }

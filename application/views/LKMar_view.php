@@ -198,7 +198,7 @@
 								<td><?= number_format($financial_data['categories']['Belanja Pegawai']['realisasi'][0]) ?></td>
 								<td class="percentage-cell"><?= $financial_data['categories']['Belanja Pegawai']['percentage'][0] ?> %</td>
 								<td><?= number_format($financial_data['categories']['Belanja Pegawai']['sisa_pagu'][0]) ?></td>
-								<td class="link-cell">Link</td>
+								<td class="link-cell"><a href="<?= site_url('KUMARController/showChart/0/Belanja%20Pegawai') ?>">Chart</a></td>
 							</tr>
 							<tr>
 								<td class="category-cell"><?= array_keys($financial_data['categories'])[1] ?></td>
@@ -206,7 +206,7 @@
 								<td><?= number_format($financial_data['categories']['Belanja Barang']['realisasi'][0]) ?></td>
 								<td class="percentage-cell"><?= $financial_data['categories']['Belanja Barang']['percentage'][0] ?> %</td>
 								<td><?= number_format($financial_data['categories']['Belanja Barang']['sisa_pagu'][0]) ?></td>
-								<td></td>
+								<td class="link-cell"><a href="<?= site_url('KUMARController/showChart/0/Belanja%20Barang') ?>">Chart</a></td>
 							</tr>
 							<tr>
 								<td class="category-cell"><?= array_keys($financial_data['categories'])[2] ?></td>
@@ -234,7 +234,7 @@
 								<td><?= number_format($financial_data['categories']['Belanja Pegawai']['realisasi'][1]) ?></td>
 								<td class="percentage-cell">-</td>
 								<td><?= number_format($financial_data['categories']['Belanja Pegawai']['sisa_pagu'][1]) ?></td>
-								<td class="link-cell">Link</td>
+								<td class="link-cell"><a href="<?= site_url('KUMARController/showChart/1/Belanja%20Pegawai') ?>">Chart</a></td>
 							</tr>
 							<tr>
 								<td class="category-cell"><?= array_keys($financial_data['categories'])[1] ?></td>
@@ -269,7 +269,7 @@
 								<td><?= number_format($financial_data['categories']['Belanja Pegawai']['realisasi'][2]) ?></td>
 								<td class="percentage-cell"><?= $financial_data['categories']['Belanja Pegawai']['percentage'][2] ?> %</td>
 								<td><?= number_format($financial_data['categories']['Belanja Pegawai']['sisa_pagu'][2]) ?></td>
-								<td></td>
+								<td class="link-cell"><a href="<?= site_url('KUMARController/showChart/2/Belanja%20Pegawai') ?>">Chart</a></td>
 							</tr>
 							<tr>
 								<td class="category-cell"><?= array_keys($financial_data['categories'])[1] ?></td>
@@ -304,7 +304,7 @@
 								<td><?= number_format($financial_data['categories']['Belanja Pegawai']['realisasi'][3]) ?></td>
 								<td class="percentage-cell"><?= $financial_data['categories']['Belanja Pegawai']['percentage'][3] ?> %</td>
 								<td><?= number_format($financial_data['categories']['Belanja Pegawai']['sisa_pagu'][3]) ?></td>
-								<td></td>
+								<td class="link-cell"><a href="<?= site_url('KUMARController/showChart/3/Belanja%20Pegawai') ?>">Chart</a></td>
 							</tr>
 							<tr>
 								<td class="category-cell"><?= array_keys($financial_data['categories'])[1] ?></td>
