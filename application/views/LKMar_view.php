@@ -126,6 +126,10 @@
 
 		.chart-wrapper {
 			height: 400px;
+			position: relative;
+			/* Add this */
+			width: 100%;
+			/* Add this */
 		}
 
 		.link-cell {
@@ -338,7 +342,10 @@
 			<div class="chart-title">
 				<i class="fas fa-chart-bar"></i> Grafik Realisasi Anggaran Tahun 2025
 			</div>
-			<div class="chart-wrapper" id="budgetChart"></div>
+			<div class="chart-wrapper">
+				<canvas id="budgetChart"></canvas>
+			</div>
+			<div id="chartDebugInfo" style="margin-top: 10px; font-size: 12px; color: #666;"></div>
 		</div>
 	</div>
 
@@ -346,88 +353,110 @@
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
-			// Get the canvas element
-			var ctx = document.getElementById('budgetChart').getContext('2d');
+			try {
+				// Get the canvas element
+				var ctx = document.getElementById('budgetChart').getContext('2d');
 
-			// Define the chart data
-			var chartData = {
-				labels: ['Januari', 'Februari', 'Maret', 'April'],
-				datasets: [{
-						label: 'Pagu Anggaran',
-						data: [<?= $financial_data['totals']['pagu'][0] ?>,
-							<?= $financial_data['totals']['pagu'][1] ?>,
-							<?= $financial_data['totals']['pagu'][2] ?>,
-							<?= $financial_data['totals']['pagu'][3] ?>
-						],
-						backgroundColor: 'rgba(30, 86, 49, 0.7)',
-						borderColor: 'rgba(30, 86, 49, 1)',
-						borderWidth: 1
-					},
-					{
-						label: 'Realisasi',
-						data: [<?= $financial_data['totals']['realisasi'][0] ?>,
-							<?= $financial_data['totals']['realisasi'][1] ?>,
-							<?= $financial_data['totals']['realisasi'][2] ?>,
-							<?= $financial_data['totals']['realisasi'][3] ?>
-						],
-						backgroundColor: 'rgba(60, 141, 188, 0.7)',
-						borderColor: 'rgba(60, 141, 188, 1)',
-						borderWidth: 1
-					}
-				]
-			};
+				// Display debug info
+				var debugElement = document.getElementById('chartDebugInfo');
 
-			// Create the chart
-			var budgetChart = new Chart(ctx, {
-				type: 'bar',
-				data: chartData,
-				options: {
-					responsive: true,
-					maintainAspectRatio: false,
-					scales: {
-						y: {
-							beginAtZero: true,
-							ticks: {
-								callback: function(value) {
-									return new Intl.NumberFormat('id-ID').format(value);
-								}
-							}
+				// Define the chart data
+				var paguData = [
+					<?= $financial_data['totals']['pagu'][0] ?>,
+					<?= $financial_data['totals']['pagu'][1] ?>,
+					<?= $financial_data['totals']['pagu'][2] ?>,
+					<?= $financial_data['totals']['pagu'][3] ?>
+				];
+
+				var realisasiData = [
+					<?= $financial_data['totals']['realisasi'][0] ?>,
+					<?= $financial_data['totals']['realisasi'][1] ?>,
+					<?= $financial_data['totals']['realisasi'][2] ?>,
+					<?= $financial_data['totals']['realisasi'][3] ?>
+				];
+
+				// Log the data for debugging
+				console.log("Pagu data:", paguData);
+				console.log("Realisasi data:", realisasiData);
+
+				// Show debug info on page
+				debugElement.innerHTML = "Data loaded - Pagu: " + paguData.join(", ") + " | Realisasi: " + realisasiData.join(", ");
+
+				var chartData = {
+					labels: ['Januari', 'Februari', 'Maret', 'April'],
+					datasets: [{
+							label: 'Pagu Anggaran',
+							data: paguData,
+							backgroundColor: 'rgba(30, 86, 49, 0.7)',
+							borderColor: 'rgba(30, 86, 49, 1)',
+							borderWidth: 1
+						},
+						{
+							label: 'Realisasi',
+							data: realisasiData,
+							backgroundColor: 'rgba(60, 141, 188, 0.7)',
+							borderColor: 'rgba(60, 141, 188, 1)',
+							borderWidth: 1
 						}
-					},
-					plugins: {
-						tooltip: {
-							callbacks: {
-								label: function(context) {
-									var label = context.dataset.label || '';
-									if (label) {
-										label += ': ';
+					]
+				};
+
+				// Create the chart
+				var budgetChart = new Chart(ctx, {
+					type: 'bar',
+					data: chartData,
+					options: {
+						responsive: true,
+						maintainAspectRatio: false,
+						scales: {
+							y: {
+								beginAtZero: true,
+								ticks: {
+									callback: function(value) {
+										return new Intl.NumberFormat('id-ID').format(value);
 									}
-									label += new Intl.NumberFormat('id-ID', {
-										style: 'currency',
-										currency: 'IDR',
-										minimumFractionDigits: 0,
-										maximumFractionDigits: 0
-									}).format(context.raw);
-									return label;
 								}
 							}
 						},
-						legend: {
-							position: 'top',
-						},
-						title: {
-							display: true,
-							text: 'Perbandingan Pagu dan Realisasi Anggaran 2025',
-							font: {
-								size: 16
+						plugins: {
+							tooltip: {
+								callbacks: {
+									label: function(context) {
+										var label = context.dataset.label || '';
+										if (label) {
+											label += ': ';
+										}
+										label += new Intl.NumberFormat('id-ID', {
+											style: 'currency',
+											currency: 'IDR',
+											minimumFractionDigits: 0,
+											maximumFractionDigits: 0
+										}).format(context.raw);
+										return label;
+									}
+								}
+							},
+							legend: {
+								position: 'top',
+							},
+							title: {
+								display: true,
+								text: 'Perbandingan Pagu dan Realisasi Anggaran 2025',
+								font: {
+									size: 16
+								}
 							}
 						}
 					}
-				}
-			});
+				});
 
-			// Log to check if chart is created
-			console.log('Chart initialized:', budgetChart);
+				// Log to check if chart is created
+				console.log('Chart initialized successfully:', budgetChart);
+
+			} catch (error) {
+				console.error('Error initializing chart:', error);
+				document.getElementById('chartDebugInfo').innerHTML = 'Error initializing chart: ' + error.message;
+			}
 		});
 	</script>
 </body>
