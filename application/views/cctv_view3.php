@@ -10,18 +10,28 @@
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	<style>
 		:root {
-			--primary-color: #1a73e8;
-			--secondary-color: #34a853;
-			--accent-color: #fbbc05;
-			--danger-color: #ea4335;
-			--dark-color: #202124;
-			--light-color: #f8f9fa;
-			--border-color: #dadce0;
-			--text-color: #3c4043;
-			--shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.08);
-			--shadow-md: 0 4px 10px rgba(0, 0, 0, 0.12);
-			--shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.15);
-			--transition: all 0.3s ease;
+			/* Refined Color Scheme: Professional Blue & Gray */
+			--primary-color: #0056b3; /* Deeper Blue */
+			--secondary-color: #6c757d; /* Medium Gray */
+			--success-color: #198754; /* Darker Green */
+			--warning-color: #ffc107; /* Standard Yellow */
+			--danger-color: #dc3545; /* Standard Red */
+			--info-color: #0dcaf0; /* Standard Cyan */
+			--light-color: #f8f9fa; /* Light Gray Background */
+			--dark-color: #343a40; /* Darker Gray */
+			--text-color: #495057;
+			--border-color: #dee2e6;
+			--header-gradient: linear-gradient(135deg, #0056b3, #007bff); /* Blue Gradient */
+			--card-bg: #ffffff;
+			--shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+			--shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
+			--shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+			--border-radius-sm: .25rem;
+			--border-radius-md: .5rem; /* Increased default radius */
+			--border-radius-lg: .75rem; /* Increased large radius */
+			--transition: all 0.25s ease-in-out;
+			--primary-color-rgb: 0, 86, 179; /* RGB for primary color */
+			--success-color-rgb: 25, 135, 84; /* RGB for success color */
 		}
 
 		body {
@@ -31,7 +41,9 @@
 			line-height: 1.6;
 		}
 
-		.container {
+		.container-fluid { /* Use container-fluid for full width */
+			padding-left: 30px;
+			padding-right: 30px;
 			margin-top: 30px;
 			margin-bottom: 50px;
 		}
@@ -41,23 +53,25 @@
 			text-align: center;
 			margin-bottom: 40px;
 			position: relative;
-			padding: 20px;
-			background: linear-gradient(135deg, #1a73e8, #4285f4);
-			border-radius: 15px;
+			padding: 30px 20px; /* Increased padding */
+			background: linear-gradient(135deg, var(--primary-color), #4dabf7); /* Softer gradient */
+			border-radius: var(--border-radius-lg);
 			box-shadow: var(--shadow-md);
 			color: white;
+			overflow: hidden; /* Hide overflow for pseudo-elements */
 		}
 
-		.header::before {
+		.header::before { /* Subtle pattern or texture */
 			content: '';
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,5 C60,20 40,20 0,5 Z" fill="rgba(255,255,255,0.1)"/></svg>');
-			background-size: 100% 100%;
-			border-radius: 15px;
+			background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+			background-size: 10px 10px;
+			opacity: 0.5;
+			border-radius: var(--border-radius-lg);
 			z-index: 0;
 		}
 
@@ -67,30 +81,30 @@
 		}
 
 		.header img {
-			width: 120px;
-			height: auto;
+			width: 100px; /* Slightly smaller */
+			height: 100px;
 			margin-bottom: 15px;
 			border-radius: 50%;
-			border: 5px solid rgba(255, 255, 255, 0.3);
+			border: 4px solid rgba(255, 255, 255, 0.5); /* Thicker border */
 			box-shadow: var(--shadow-sm);
 			transition: var(--transition);
 		}
 
 		.header img:hover {
-			transform: scale(1.05);
+			transform: scale(1.1); /* More pronounced hover effect */
 			box-shadow: var(--shadow-md);
 		}
 
 		.header h5 {
-			font-size: 2.2rem;
-			font-weight: 700;
-			margin-bottom: 10px;
-			text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+			font-size: 2rem; /* Adjusted size */
+			font-weight: 600; /* Slightly less bold */
+			margin-bottom: 8px;
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
 		}
 
 		.header p {
-			font-size: 1.1rem;
-			opacity: 0.9;
+			font-size: 1rem;
+			opacity: 0.95; /* More opaque */
 		}
 
 		/* CCTV Video Section */
@@ -100,13 +114,13 @@
 
 		.section-title {
 			text-align: center;
-			margin-bottom: 30px;
+			margin-bottom: 35px; /* Increased margin */
 			position: relative;
 			padding-bottom: 15px;
 		}
 
 		.section-title h4 {
-			font-size: 1.8rem;
+			font-size: 1.7rem; /* Adjusted size */
 			font-weight: 600;
 			color: var(--primary-color);
 		}
@@ -117,19 +131,19 @@
 			bottom: 0;
 			left: 50%;
 			transform: translateX(-50%);
-			width: 80px;
-			height: 4px;
-			background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-			border-radius: 2px;
+			width: 70px; /* Slightly shorter */
+			height: 3px; /* Thinner */
+			background: linear-gradient(to right, var(--primary-color), var(--info-color)); /* Different gradient */
+			border-radius: 3px;
 		}
 
 		.video-link {
 			background-color: #ffffff;
-			border-radius: 12px;
-			padding: 20px;
+			border-radius: var(--border-radius-lg); /* Consistent radius */
+			padding: 15px; /* Adjusted padding */
 			margin-bottom: 30px;
 			text-align: center;
-			box-shadow: var(--shadow-md);
+			box-shadow: var(--shadow-sm); /* Softer shadow */
 			transition: var(--transition);
 			position: relative;
 			overflow: hidden;
@@ -137,33 +151,27 @@
 		}
 
 		.video-link:hover {
-			transform: translateY(-10px);
-			box-shadow: var(--shadow-lg);
+			transform: translateY(-5px); /* Subtle lift */
+			box-shadow: var(--shadow-md); /* Enhanced shadow on hover */
 		}
 
-		.video-link::before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 5px;
-			background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+		.video-link::before { /* Removed top border line */
+			content: none;
 		}
 
 		.video-link h6 {
-			margin: 0 0 15px 0;
-			font-weight: 600;
-			color: var(--primary-color);
-			font-size: 1.2rem;
+			margin: 0 0 10px 0; /* Reduced bottom margin */
+			font-weight: 500; /* Normal weight */
+			color: var(--dark-color); /* Darker color */
+			font-size: 1.1rem; /* Adjusted size */
 			display: flex;
 			align-items: center;
 			justify-content: center;
 		}
 
 		.video-link h6 i {
-			margin-right: 10px;
-			color: var(--accent-color);
+			margin-right: 8px;
+			color: var(--primary-color); /* Primary color icon */
 		}
 
 		.video-link .video-container {
@@ -172,8 +180,9 @@
 			/* 16:9 Aspect Ratio */
 			height: 0;
 			overflow: hidden;
-			border-radius: 8px;
-			box-shadow: var(--shadow-sm);
+			border-radius: var(--border-radius-md); /* Consistent radius */
+			box-shadow: none; /* Remove inner shadow */
+			border: 1px solid var(--border-color); /* Add subtle border */
 		}
 
 		.video-link iframe {
@@ -183,95 +192,102 @@
 			width: 100%;
 			height: 100%;
 			border: none;
-			border-radius: 8px;
+			border-radius: var(--border-radius-md); /* Match container radius */
 		}
 
 		.video-status {
 			position: absolute;
-			top: 10px;
-			right: 10px;
-			background-color: rgba(52, 168, 83, 0.8);
+			top: 8px; /* Adjusted position */
+			right: 8px;
+			background-color: rgba(var(--success-color-rgb, 25, 135, 84), 0.85); /* Use success color with alpha */
 			color: white;
-			padding: 5px 10px;
-			border-radius: 20px;
-			font-size: 0.8rem;
+			padding: 3px 8px; /* Smaller padding */
+			border-radius: var(--border-radius-sm); /* Smaller radius */
+			font-size: 0.75rem; /* Smaller font */
 			font-weight: 500;
 			z-index: 10;
-			display: flex;
+			display: inline-flex; /* Use inline-flex */
 			align-items: center;
+			box-shadow: var(--shadow-sm);
 		}
 
 		.video-status i {
-			margin-right: 5px;
-			font-size: 0.7rem;
-			animation: pulse 1.5s infinite;
+			margin-right: 4px;
+			font-size: 0.65rem; /* Smaller icon */
+			animation: pulse 2s infinite ease-in-out; /* Slower pulse */
 		}
 
+		/* Add RGB variable for success color */
+		:root {
+			--success-color-rgb: 25, 135, 84;
+		}
+
+
 		@keyframes pulse {
-			0% {
+			0%, 100% {
 				opacity: 1;
+				transform: scale(1);
 			}
-
 			50% {
-				opacity: 0.5;
-			}
-
-			100% {
-				opacity: 1;
+				opacity: 0.7;
+				transform: scale(0.9);
 			}
 		}
 
 		/* Visitor Counter */
 		.visitor-counter {
 			background: white;
-			border-radius: 12px;
+			border-radius: var(--border-radius-lg);
 			padding: 15px 20px;
 			margin: 30px 0;
-			box-shadow: var(--shadow-md);
+			box-shadow: var(--shadow-sm);
 			text-align: center;
 			border: 1px solid var(--border-color);
 		}
 
 		.visitor-counter h6 {
 			margin: 0;
-			font-size: 1.1rem;
+			font-size: 1rem; /* Adjusted size */
 			color: var(--dark-color);
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			flex-wrap: wrap;
+			gap: 15px; /* Add gap between items */
 		}
 
 		.visitor-counter .counter-item {
 			display: inline-flex;
 			align-items: center;
-			margin: 0 15px;
+			/* margin: 0 15px; Remove margin, use gap */
 			padding: 5px 0;
 		}
 
 		.visitor-counter i {
-			margin-right: 8px;
-			color: var(--primary-color);
+			margin-right: 6px; /* Reduced margin */
+			color: var(--secondary-color); /* Use secondary color */
+			font-size: 1.1em; /* Slightly larger icon */
 		}
 
 		.visitor-counter .count {
 			font-weight: 600;
 			color: var(--primary-color);
+			font-size: 1.1em; /* Slightly larger count */
 		}
 
 		/* Case Status Section */
 		.case-status-header {
 			text-align: center;
 			margin: 40px 0 30px;
-			background: linear-gradient(135deg, var(--dark-color), #3c4043);
-			padding: 20px;
-			border-radius: 12px;
+			background: linear-gradient(135deg, var(--dark-color), #495057); /* Darker gradient */
+			padding: 25px 20px; /* Increased padding */
+			border-radius: var(--border-radius-lg);
 			color: white;
 			box-shadow: var(--shadow-md);
 		}
 
 		.case-status-header h2 {
-			font-size: 1.8rem;
+			font-size: 1.7rem; /* Adjusted size */
 			font-weight: 600;
 			margin: 0;
 		}
@@ -283,14 +299,15 @@
 
 		.circle-card-wrapper {
 			position: relative;
-			margin-bottom: 20px;
+			margin-bottom: 25px; /* Increased margin */
 		}
 
 		.circle-card {
-			width: 160px;
-			height: 160px;
+			width: 150px; /* Slightly smaller */
+			height: 150px;
 			border-radius: 50%;
 			display: flex;
+			flex-direction: column; /* Stack value and title */
 			align-items: center;
 			justify-content: center;
 			margin: 0 auto;
@@ -300,439 +317,360 @@
 			text-align: center;
 			position: relative;
 			z-index: 1;
+			border: 3px solid rgba(255, 255, 255, 0.3); /* Add inner border */
 		}
 
-		.circle-card::before {
+		.circle-card::before { /* Softer glow effect */
 			content: '';
 			position: absolute;
-			top: -5px;
-			left: -5px;
-			right: -5px;
-			bottom: -5px;
+			top: -8px;
+			left: -8px;
+			right: -8px;
+			bottom: -8px;
 			background: inherit;
 			border-radius: 50%;
 			z-index: -1;
-			opacity: 0.4;
-			filter: blur(10px);
+			opacity: 0.3;
+			filter: blur(12px);
 			transition: var(--transition);
 		}
 
 		.circle-card:hover {
-			transform: translateY(-10px) scale(1.05);
+			transform: translateY(-8px) scale(1.03); /* Adjusted hover effect */
+			border-color: rgba(255, 255, 255, 0.5);
 		}
 
 		.circle-card:hover::before {
-			opacity: 0.6;
-			filter: blur(15px);
+			opacity: 0.5;
+			filter: blur(18px);
 		}
 
-		.circle-card.total-perkara {
-			background: linear-gradient(135deg, var(--primary-color), #4285f4);
-		}
+		/* Specific Circle Card Colors (Using Bootstrap variables) */
+		.circle-card.total-perkara { background: linear-gradient(135deg, var(--primary-color), #4dabf7); }
+		.circle-card.total-perkara-ecourt { background: linear-gradient(135deg, var(--success-color), #48c9b0); }
+		.circle-card.persen-perkara-ecourt { background: linear-gradient(135deg, var(--warning-color), #f7dc6f); color: var(--dark-color); /* Dark text for yellow */}
+		.circle-card.total-perkara-non-ecourt { background: linear-gradient(135deg, var(--danger-color), #f1948a); }
 
-		.circle-card.total-perkara-ecourt {
-			background: linear-gradient(135deg, var(--secondary-color), #66bb6a);
-		}
-
-		.circle-card.persen-perkara-ecourt {
-			background: linear-gradient(135deg, var(--accent-color), #ffd54f);
-		}
-
-		.circle-card.total-perkara-non-ecourt {
-			background: linear-gradient(135deg, var(--danger-color), #ef5350);
-		}
 
 		.circle-card p.value {
-			font-size: 2rem;
+			font-size: 1.8rem; /* Adjusted size */
 			font-weight: 700;
 			margin: 0;
-			line-height: 1;
+			line-height: 1.1; /* Adjusted line height */
 		}
 
-		.circle-card-title {
-			margin-top: 15px;
+		/* Title inside circle card */
+		.circle-card .card-internal-title {
+			font-size: 0.8rem;
+			font-weight: 400;
+			margin-top: 5px;
+			opacity: 0.9;
+		}
+
+
+		.circle-card-title { /* Title below circle card */
+			margin-top: 12px; /* Reduced margin */
 			text-align: center;
-			font-weight: 600;
-			color: var(--dark-color);
-			font-size: 1.1rem;
+			font-weight: 500; /* Normal weight */
+			color: var(--text-color); /* Use standard text color */
+			font-size: 1rem; /* Adjusted size */
 		}
 
-		/* Chart Containers */
+		/* Chart Containers & Table Containers */
 		.chart-container,
 		.table-container {
 			background: white;
-			border-radius: 12px;
-			padding: 20px;
+			border-radius: var(--border-radius-lg);
+			padding: 25px; /* Increased padding */
 			margin-bottom: 30px;
-			box-shadow: var(--shadow-md);
+			box-shadow: var(--shadow-sm);
 			border: 1px solid var(--border-color);
 			transition: var(--transition);
 		}
 
 		.chart-container:hover,
 		.table-container:hover {
-			box-shadow: var(--shadow-lg);
+			box-shadow: var(--shadow-md); /* Enhanced shadow on hover */
+			transform: translateY(-3px); /* Subtle lift */
 		}
 
 		.chart-container h5,
 		.table-container h5 {
 			text-align: center;
-			margin-bottom: 20px;
+			margin-bottom: 25px; /* Increased margin */
 			color: var(--primary-color);
 			font-weight: 600;
-			padding-bottom: 10px;
-			border-bottom: 2px solid #f0f0f0;
+			padding-bottom: 12px; /* Increased padding */
+			border-bottom: 1px solid var(--border-color); /* Thinner border */
+			font-size: 1.3rem; /* Adjusted size */
 		}
 
-		.card-body {
-			padding: 0;
+		/* Table Styling */
+		.table {
+			margin-bottom: 0; /* Remove default bottom margin */
 		}
 
-		/* Tables */
-		.table-container .table {
-			border-radius: 8px;
-			overflow: hidden;
-			box-shadow: none;
-			margin-bottom: 0;
-		}
-
-		.table-container .table th {
-			background: linear-gradient(135deg, var(--primary-color), #4285f4);
-			color: white;
-			font-weight: 600;
-			border: none;
-		}
-
-		.table-container .table td {
-			vertical-align: middle;
-			border-color: #f0f0f0;
-		}
-
-		.table-container .table tbody tr:hover {
-			background-color: rgba(26, 115, 232, 0.05);
-		}
-
-		/* Summary Section */
-		.summary-section {
-			background: white;
-			border-radius: 12px;
-			padding: 20px;
-			margin: 30px 0;
-			box-shadow: var(--shadow-md);
-			text-align: center;
-			border: 1px solid var(--border-color);
-		}
-
-		.summary-section h5 {
-			color: var(--primary-color);
-			font-weight: 600;
-			margin-bottom: 10px;
-		}
-
-		.summary-section h5.count {
-			font-size: 1.5rem;
+		.table thead th {
+			background-color: var(--light-color); /* Light background for header */
 			color: var(--dark-color);
+			font-weight: 600;
+			border-bottom: 2px solid var(--primary-color); /* Primary color bottom border */
+			text-align: center;
+			vertical-align: middle;
 		}
+
+		.table tbody td {
+			vertical-align: middle;
+			text-align: center; /* Center align table data */
+		}
+
+		.table-striped tbody tr:nth-of-type(odd) {
+			background-color: rgba(0, 0, 0, 0.03); /* Subtler stripe */
+		}
+
+		.table-hover tbody tr:hover {
+			background-color: rgba(var(--primary-color-rgb, 13, 110, 253), 0.1); /* Use primary color with alpha on hover */
+			cursor: default;
+		}
+
+		/* Add RGB variable for primary color */
+		:root {
+			/* ... other variables ... */
+			--primary-color-rgb: 13, 110, 253;
+		}
+
 
 		/* Responsive Adjustments */
-		@media (max-width: 992px) {
-			.circle-card {
-				width: 140px;
-				height: 140px;
-			}
-
-			.circle-card p.value {
-				font-size: 1.8rem;
-			}
-
-			.header h5 {
-				font-size: 1.8rem;
-			}
-		}
-
 		@media (max-width: 768px) {
-			.container {
-				margin-top: 20px;
-			}
-
 			.header h5 {
-				font-size: 1.5rem;
+				font-size: 1.8rem;
 			}
-
-			.section-title h4 {
-				font-size: 1.5rem;
-			}
-
-			.circle-card {
-				width: 120px;
-				height: 120px;
-				margin-bottom: 15px;
-			}
-
-			.circle-card p.value {
-				font-size: 1.5rem;
-			}
-
-			.circle-card-title {
+			.header p {
 				font-size: 0.9rem;
 			}
-
-			.visitor-counter .counter-item {
-				margin: 5px 10px;
+			.circle-card {
+				width: 130px;
+				height: 130px;
+			}
+			.circle-card p.value {
+				font-size: 1.5rem;
+			}
+			.visitor-counter h6 {
+				font-size: 0.9rem;
+				gap: 10px;
+			}
+			.chart-container h5,
+			.table-container h5 {
+				font-size: 1.1rem;
 			}
 		}
 
 		@media (max-width: 576px) {
-			.header {
-				padding: 15px;
+			.container-fluid {
+				padding-left: 15px;
+				padding-right: 15px;
 			}
-
+			.header img {
+				width: 80px;
+				height: 80px;
+			}
 			.header h5 {
-				font-size: 1.3rem;
+				font-size: 1.6rem;
 			}
-
-			.visitor-counter h6 {
-				flex-direction: column;
+			.section-title h4 {
+				font-size: 1.5rem;
 			}
-
+			.circle-card-wrapper {
+				margin-bottom: 30px; /* Ensure spacing on small screens */
+			}
 			.visitor-counter .counter-item {
-				margin: 5px 0;
+				margin: 5px 8px; /* Add some margin back on small screens */
+			}
+			.visitor-counter h6 {
+				justify-content: space-around; /* Space out items */
 			}
 		}
 
-		/* Animation */
-		.fade-in {
-			animation: fadeIn 0.8s ease-in-out;
-		}
-
-		@keyframes fadeIn {
-			from {
-				opacity: 0;
-				transform: translateY(20px);
-			}
-
-			to {
-				opacity: 1;
-				transform: translateY(0);
-			}
-		}
-
-		.highlight {
-			background-color: rgba(251, 188, 5, 0.2) !important;
-		}
-
-		.table-hover tbody tr:hover {
-			background-color: rgba(26, 115, 232, 0.05);
-		}
 	</style>
 </head>
 
 <body>
-	<div class="container">
-		<div class="header fade-in">
+	<div class="container-fluid"> <!-- Changed to container-fluid -->
+		<div class="header">
 			<div class="header-content">
-				<img src="<?php echo base_url('assets/images/Logo PA Amuntai - Trans.png'); ?>" class="img-fluid" alt="Logo PA Amuntai">
-				<h5>LIVE CCTV MONITORING</h5>
-				<p>PENGADILAN AGAMA AMUNTAI KELAS IB</p>
+				<img src="<?php echo base_url('public/assets/img/logo-pa-amuntai.png'); ?>" alt="Logo PA Amuntai">
+				<h5>CCTV Monitoring & Statistik Perkara</h5>
+				<p>Pengadilan Agama Amuntai Kelas IB</p>
 			</div>
 		</div>
 
-		<div class="cctv-section fade-in">
+		<!-- Visitor Counter -->
+		<div class="visitor-counter">
+			<h6>
+				<span class="counter-item"><i class="fas fa-eye"></i> Hari Ini: <span class="count"><?= $daily_view_count; ?></span></span>
+				<span class="counter-item"><i class="fas fa-calendar-week"></i> Bulan Ini: <span class="count"><?= $monthly_view_count; ?></span></span>
+				<span class="counter-item"><i class="fas fa-chart-line"></i> Total: <span class="count"><?= $total_view_count; ?></span></span>
+				<!-- <span class="counter-item"><i class="fas fa-users"></i> Total Pengunjung: <span class="count"><?= $view_count; ?></span></span> -->
+			</h6>
+		</div>
+
+
+		<!-- CCTV Section -->
+		<div class="cctv-section">
 			<div class="section-title">
-				<h4><i class="fas fa-video"></i> Pantauan CCTV</h4>
+				<h4><i class="fas fa-video"></i> Live CCTV Monitoring</h4>
 			</div>
 			<div class="row">
-				<?php if (isset($links)) : ?>
-					<?php
-					$icons = [
-						'Halaman Parkir' => 'fas fa-car',
-						'Ruang Tunggu' => 'fas fa-couch',
-						'PTSP' => 'fas fa-info-circle',
-
-					];
-					?>
-					<?php foreach ($links as $name => $url): ?>
-						<div class="col-md-4 col-sm-6">
+				<?php if (!empty($links)) : ?>
+					<?php foreach ($links as $name => $url) : ?>
+						<div class="col-lg-4 col-md-6">
 							<div class="video-link">
-								<h6><i class="<?php echo isset($icons[$name]) ? $icons[$name] : 'fas fa-video'; ?>"></i> <?php echo ucfirst(str_replace('_', ' ', $name)); ?></h6>
-								<div class="video-status">
-									<i class="fas fa-circle"></i> Live
-								</div>
+								<h6><i class="fas fa-map-marker-alt"></i> <?= htmlspecialchars($name); ?></h6>
 								<div class="video-container">
-									<iframe src="<?php echo $url; ?>" allowfullscreen></iframe>
+									<iframe src="<?= htmlspecialchars($url); ?>" allowfullscreen></iframe>
+									<div class="video-status">
+										<i class="fas fa-circle"></i> Live
+									</div>
 								</div>
 							</div>
 						</div>
 					<?php endforeach; ?>
+				<?php else : ?>
+					<div class="col-12">
+						<p class="text-center">Tidak ada link CCTV yang tersedia.</p>
+					</div>
 				<?php endif; ?>
 			</div>
 		</div>
 
-		<div class="visitor-counter fade-in">
-			<h6>
-				<div class="counter-item">
-					<i class="fas fa-users"></i> Pengunjung Hari Ini: <span class="count"><?php echo htmlspecialchars($daily_view_count, ENT_QUOTES, 'UTF-8'); ?></span>
-				</div>
-				<div class="counter-item">
-					<i class="fas fa-calendar-alt"></i> Bulan Ini: <span class="count"><?php echo htmlspecialchars($monthly_view_count, ENT_QUOTES, 'UTF-8'); ?></span>
-				</div>
-				<div class="counter-item">
-					<i class="fas fa-chart-line"></i> Total: <span class="count"><?php echo htmlspecialchars($total_view_count, ENT_QUOTES, 'UTF-8'); ?></span>
-				</div>
-			</h6>
+		<!-- Case Status Header -->
+		<div class="case-status-header">
+			<h2><i class="fas fa-chart-bar"></i> Statistik Perkara Bulan Ini</h2>
 		</div>
 
-		<div class="case-status-header fade-in">
-			<h2><i class="fas fa-balance-scale"></i> KEADAAN PERKARA S/D <?php echo date('F Y', strtotime('first day of last month')); ?></h2>
-		</div>
-
-		<div class="row total-perkara-container text-center fade-in">
-			<div class="col-md-3 col-sm-6">
-				<div class="circle-card-wrapper">
+		<!-- Total Perkara Circle Cards -->
+		<div class="total-perkara-container">
+			<div class="row justify-content-center">
+				<div class="col-lg-2 col-md-4 col-sm-6 col-6 circle-card-wrapper">
 					<div class="circle-card total-perkara">
-						<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?></p>
+						<div>
+							<p class="value"><?= number_format($total_perkara_data->total_perkara); ?></p>
+							<p class="card-internal-title">Total Perkara</p>
+						</div>
 					</div>
+					<!-- <p class="circle-card-title">Total Perkara</p> -->
 				</div>
-				<p class="circle-card-title">Total Perkara</p>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="circle-card-wrapper">
+				<div class="col-lg-2 col-md-4 col-sm-6 col-6 circle-card-wrapper">
 					<div class="circle-card total-perkara-ecourt">
-						<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
+						<div>
+							<p class="value"><?= number_format($total_perkara_data->total_perkara_ecourt); ?></p>
+							<p class="card-internal-title">E-Court</p>
+						</div>
 					</div>
+					<!-- <p class="circle-card-title">Total E-Court</p> -->
 				</div>
-				<p class="circle-card-title">Perkara e-Court</p>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="circle-card-wrapper">
+				<div class="col-lg-2 col-md-4 col-sm-6 col-6 circle-card-wrapper">
 					<div class="circle-card persen-perkara-ecourt">
-						<p class="value"><?php echo number_format($total_perkara_data->persen_perkara_ecourt) . '%'; ?></p>
+						<div>
+							<p class="value"><?= number_format($total_perkara_data->persen_perkara_ecourt, 1); ?>%</p>
+							<p class="card-internal-title">Persentase E-Court</p>
+						</div>
 					</div>
+					<!-- <p class="circle-card-title">Persentase E-Court</p> -->
 				</div>
-				<p class="circle-card-title">Persentase e-Court</p>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="circle-card-wrapper">
+				<div class="col-lg-2 col-md-4 col-sm-6 col-6 circle-card-wrapper">
 					<div class="circle-card total-perkara-non-ecourt">
-						<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
-					</div>
-				</div>
-				<p class="circle-card-title">Perkara Non e-Court</p>
-			</div>
-		</div>
-
-		<div class="row fade-in">
-			<div class="col-md-6">
-				<div class="chart-container">
-					<h5><i class="fas fa-chart-pie"></i> Data Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-					<div class="card-body">
-						<div class="chart">
-							<canvas id="donutChart" style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
+						<div>
+							<p class="value"><?= number_format($total_perkara_data->total_perkara_non_ecourt); ?></p>
+							<p class="card-internal-title">Non E-Court</p>
 						</div>
 					</div>
+					<!-- <p class="circle-card-title">Total Non E-Court</p> -->
 				</div>
 			</div>
-			<div class="col-md-6">
+		</div>
+
+
+		<!-- Charts and Tables Section -->
+		<div class="row">
+			<!-- Chart Perkara Diterima -->
+			<div class="col-lg-6">
 				<div class="chart-container">
-					<h5><i class="fas fa-handshake"></i> Penyelesaian Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-					<div class="card-body">
-						<div class="chart">
-							<canvas id="mediasiChart" style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
-						</div>
-					</div>
+					<h5><i class="fas fa-chart-pie"></i> Komposisi Perkara Diterima</h5>
+					<canvas id="perkaraChart"></canvas>
+				</div>
+			</div>
+
+			<!-- Chart Mediasi -->
+			<div class="col-lg-6">
+				<div class="chart-container">
+					<h5><i class="fas fa-balance-scale"></i> Hasil Mediasi</h5>
+					<canvas id="mediasiChart"></canvas>
 				</div>
 			</div>
 		</div>
 
-		<div class="row summary-section fade-in">
-			<div class="col-md-6">
-				<h5><i class="fas fa-folder-open"></i> Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-				<h5 class="count"><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?> Perkara</h5>
-			</div>
-			<div class="col-md-6">
-				<h5><i class="fas fa-handshake"></i> Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-				<h5 class="count"><?php echo array_sum($mediasi_data); ?> Perkara</h5>
-			</div>
-		</div>
-
-		<div class="row fade-in">
-			<div class="col-md-6">
+		<div class="row">
+			<!-- Table Laporan Perkara -->
+			<div class="col-lg-6">
 				<div class="table-container">
-					<h5><i class="fas fa-list-alt"></i> Data Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-					<table class="table table-bordered table-hover sql-table">
-						<thead>
+					<h5><i class="fas fa-file-alt"></i> Laporan Perkara</h5>
+					<table class="table table-bordered table-striped table-hover">
+						<thead class="thead-light">
 							<tr>
-								<th>Jenis Perkara</th>
+								<th>Keterangan</th>
 								<th>Jumlah</th>
-								<th>Persentase</th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php
-							$previous_month = date('Y-m', strtotime('first day of last month'));
-							$filtered_chart_data = array_filter($chart_data, function ($data) use ($previous_month) {
-								$data_month = isset($data->tanggal_pendaftaran) ? date('Y-m', strtotime($data->tanggal_pendaftaran)) : '';
-								return $data_month == $previous_month;
-							});
-
-							$grouped_data = [];
-							foreach ($filtered_chart_data as $data) {
-								if (!isset($grouped_data[$data->jenis_perkara_nama])) {
-									$grouped_data[$data->jenis_perkara_nama] = 0;
-								}
-								$grouped_data[$data->jenis_perkara_nama] += $data->jumlah_perkara;
-							}
-
-							$total_perkara = array_sum($grouped_data);
-							foreach ($grouped_data as $jenis_perkara_nama => $jumlah_perkara): ?>
-								<tr>
-									<td><?php echo htmlspecialchars($jenis_perkara_nama, ENT_QUOTES, 'UTF-8'); ?></td>
-									<td><?php echo htmlspecialchars($jumlah_perkara, ENT_QUOTES, 'UTF-8'); ?></td>
-									<td>
-										<?php
-										if ($total_perkara > 0) {
-											echo number_format(($jumlah_perkara / $total_perkara * 100), 2) . '%';
-										} else {
-											echo '0.00%';
-										}
-										?>
-									</td>
-								</tr>
-							<?php endforeach; ?>
+							<tr>
+								<td>Sisa Bulan Lalu</td>
+								<td><?= number_format($sisa_perkara_bulan_sebelumnya); ?></td>
+							</tr>
+							<tr>
+								<td>Diterima Bulan Ini</td>
+								<td><?= number_format($jumlah_perkara_terdaftar); ?></td>
+							</tr>
+							<tr>
+								<td>Diputus Bulan Ini</td>
+								<td><?= number_format($jumlah_perkara_diputus); ?></td>
+							</tr>
+							<tr>
+								<td>Sisa Bulan Ini</td>
+								<td><?= number_format($sisa_perkara); ?></td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
-			<div class="col-md-6">
+
+			<!-- Table E-Filing -->
+			<div class="col-lg-6">
 				<div class="table-container">
-					<h5><i class="fas fa-handshake"></i> Data Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-					<table class="table table-bordered table-hover sql-table">
-						<thead>
+					<h5><i class="fas fa-laptop-code"></i> Laporan E-Filing</h5>
+					<table class="table table-bordered table-striped table-hover">
+						<thead class="thead-light">
 							<tr>
-								<th>Hasil Mediasi</th>
+								<th>Keterangan</th>
 								<th>Jumlah</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td><i class="fas fa-times-circle text-danger"></i> Tidak Dapat Dilaksanakan</td>
-								<td><?php echo $mediasi_data['D']; ?></td>
+								<td>Sisa Bulan Lalu</td>
+								<td><?= number_format($efiling_data->sisa_bulan_lalu); ?></td>
 							</tr>
 							<tr>
-								<td><i class="fas fa-thumbs-down text-warning"></i> Tidak Berhasil</td>
-								<td><?php echo $mediasi_data['T']; ?></td>
+								<td>Masuk Bulan Ini</td>
+								<td><?= number_format($efiling_data->masuk_bulan_ini); ?></td>
 							</tr>
 							<tr>
-								<td><i class="fas fa-adjust text-info"></i> Berhasil Sebagian</td>
-								<td><?php echo $mediasi_data['S']; ?></td>
+								<td>Putus Bulan Ini</td>
+								<td><?= number_format($efiling_data->putus_bulan_ini); ?></td>
 							</tr>
 							<tr>
-								<td><i class="fas fa-check-circle text-success"></i> Berhasil Dengan Pencabutan</td>
-								<td><?php echo $mediasi_data['Y2']; ?></td>
-							</tr>
-							<tr>
-								<td><i class="fas fa-award text-primary"></i> Berhasil Dengan Akta Perdamaian</td>
-								<td><?php echo $mediasi_data['Y1']; ?></td>
+								<td>Sisa Bulan Ini</td>
+								<td><?= number_format($efiling_data->sisa_bulan_ini); ?></td>
 							</tr>
 						</tbody>
 					</table>
@@ -740,151 +678,147 @@
 			</div>
 		</div>
 
-		<div class="row fade-in">
-			<div class="col-md-6 mx-auto">
-				<div class="chart-container">
-					<h5><i class="fas fa-balance-scale"></i> Penanganan Perkara E-court Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-					<div class="card-body">
-						<div class="chart">
-							<canvas id="efilingChart" style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	</div> <!-- End Container -->
 
-		<div class="row justify-content-center my-5 text-center fade-in">
-			<div id="histats_counter"></div>
-		</div>
-	</div>
-
-	<!-- Update the script section -->
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<!-- Remove duplicate jQuery and use latest Chart.js -->
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
-
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script>
-		// Register the datalabels plugin
-		Chart.register(ChartDataLabels);
+		// Data from PHP
+		const perkaraData = <?= json_encode($chart_data); ?>;
+		const mediasiData = <?= json_encode($mediasi_data); ?>;
 
-		document.addEventListener('DOMContentLoaded', function() {
-			// Donut chart for case types
-			const donutChartCanvas = document.getElementById('donutChart');
-			if (donutChartCanvas) {
-				new Chart(donutChartCanvas, {
-					type: 'doughnut',
-					data: {
-						labels: <?php echo json_encode(array_keys($grouped_data)); ?>,
-						datasets: [{
-							data: <?php echo json_encode(array_values($grouped_data)); ?>,
-							backgroundColor: ['#1a73e8', '#34a853', '#fbbc05', '#ea4335', '#5f6368', '#4285f4', '#46bdc6', '#ff6d01', '#7baaf7', '#174ea6'],
-						}]
+		// Process Perkara Data for Chart
+		const perkaraLabels = [];
+		const perkaraCounts = [];
+		const backgroundColorsPerkara = [
+			'rgba(26, 115, 232, 0.8)', // Primary Blue
+			'rgba(52, 168, 83, 0.8)',  // Green
+			'rgba(251, 188, 5, 0.8)',  // Yellow
+			'rgba(234, 67, 53, 0.8)',  // Red
+			'rgba(66, 133, 244, 0.8)', // Lighter Blue
+			'rgba(24, 206, 150, 0.8)', // Teal
+			'rgba(108, 117, 125, 0.8)' // Gray
+		];
+		const borderColorsPerkara = backgroundColorsPerkara.map(color => color.replace('0.8', '1'));
+
+		// Aggregate data by jenis_perkara_nama
+        const aggregatedPerkara = perkaraData.reduce((acc, curr) => {
+            const key = curr.jenis_perkara_nama;
+            if (!acc[key]) {
+                acc[key] = 0;
+            }
+            acc[key] += parseInt(curr.jumlah_perkara, 10);
+            return acc;
+        }, {});
+
+        // Populate labels and counts from aggregated data
+        for (const [label, count] of Object.entries(aggregatedPerkara)) {
+            perkaraLabels.push(label);
+            perkaraCounts.push(count);
+        }
+
+
+		// Perkara Chart (Pie Chart)
+		const ctxPerkara = document.getElementById('perkaraChart').getContext('2d');
+		const perkaraChart = new Chart(ctxPerkara, {
+			type: 'pie',
+			data: {
+				labels: perkaraLabels,
+				datasets: [{
+					label: 'Jumlah Perkara',
+					data: perkaraCounts,
+					backgroundColor: backgroundColorsPerkara,
+					borderColor: borderColorsPerkara,
+					borderWidth: 1
+				}]
+			},
+			options: {
+				responsive: true,
+				plugins: {
+					legend: {
+						position: 'bottom', // Position legend at the bottom
+						labels: {
+							boxWidth: 15,
+							padding: 15
+						}
 					},
-					options: {
-						responsive: true,
-						maintainAspectRatio: false,
-						plugins: {
-							legend: {
-								position: 'bottom',
-								labels: {
-									padding: 20,
-									boxWidth: 12
+					tooltip: {
+						callbacks: {
+							label: function(context) {
+								let label = context.label || '';
+								if (label) {
+									label += ': ';
 								}
-							},
-							datalabels: {
-								color: '#fff',
-								formatter: (value, ctx) => {
-									const sum = ctx.dataset.data.reduce((a, b) => a + b, 0);
-									const percentage = (value * 100 / sum).toFixed(1) + '%';
-									return percentage;
+								if (context.parsed !== null) {
+									label += context.parsed;
 								}
+								// Calculate percentage
+								const total = context.dataset.data.reduce((sum, value) => sum + value, 0);
+								const percentage = ((context.raw / total) * 100).toFixed(1) + '%';
+								label += ` (${percentage})`;
+								return label;
 							}
 						}
 					}
-				});
+				}
 			}
+		});
 
-			// Mediasi chart
-			const mediasiChartCanvas = document.getElementById('mediasiChart');
-			if (mediasiChartCanvas) {
-				new Chart(mediasiChartCanvas, {
-					type: 'doughnut',
-					data: {
-						labels: ['Tidak Dapat Dilaksanakan', 'Tidak Berhasil', 'Berhasil Sebagian', 'Berhasil Dengan Pencabutan', 'Berhasil Dengan Akta Perdamaian'],
-						datasets: [{
-							data: [
-								<?php echo $mediasi_data['D']; ?>,
-								<?php echo $mediasi_data['T']; ?>,
-								<?php echo $mediasi_data['S']; ?>,
-								<?php echo $mediasi_data['Y2']; ?>,
-								<?php echo $mediasi_data['Y1']; ?>
-							],
-							backgroundColor: ['#ea4335', '#fbbc05', '#4285f4', '#34a853', '#1a73e8'],
-						}]
+		// Process Mediasi Data for Chart
+		const mediasiLabels = ['Berhasil Sebagian', 'Berhasil Dicabut', 'Tidak Berhasil', 'Berhasil Akta Perdamaian', 'Berhasil'];
+		const mediasiCounts = [
+			mediasiData['S'] || 0,
+			mediasiData['D'] || 0,
+			mediasiData['T'] || 0,
+			mediasiData['Y2'] || 0,
+			mediasiData['Y1'] || 0
+		];
+		const backgroundColorsMediasi = [
+			'rgba(255, 159, 64, 0.8)', // Orange
+			'rgba(255, 99, 132, 0.8)',  // Red
+			'rgba(153, 102, 255, 0.8)', // Purple
+			'rgba(75, 192, 192, 0.8)',  // Teal
+			'rgba(54, 162, 235, 0.8)'   // Blue
+		];
+		const borderColorsMediasi = backgroundColorsMediasi.map(color => color.replace('0.8', '1'));
+
+		// Mediasi Chart (Doughnut Chart)
+		const ctxMediasi = document.getElementById('mediasiChart').getContext('2d');
+		const mediasiChart = new Chart(ctxMediasi, {
+			type: 'doughnut', // Changed to doughnut for variety
+			data: {
+				labels: mediasiLabels,
+				datasets: [{
+					label: 'Hasil Mediasi',
+					data: mediasiCounts,
+					backgroundColor: backgroundColorsMediasi,
+					borderColor: borderColorsMediasi,
+					borderWidth: 1
+				}]
+			},
+			options: {
+				responsive: true,
+				plugins: {
+					legend: {
+						position: 'top',
 					},
-					options: {
-						responsive: true,
-						maintainAspectRatio: false,
-						plugins: {
-							legend: {
-								position: 'bottom',
-								labels: {
-									padding: 20,
-									boxWidth: 12
+					tooltip: {
+						callbacks: {
+							label: function(context) {
+								let label = context.label || '';
+								if (label) {
+									label += ': ';
 								}
-							},
-							datalabels: {
-								color: '#fff',
-								formatter: (value) => value || ''
+								if (context.parsed !== null) {
+									label += context.parsed;
+								}
+								return label;
 							}
 						}
 					}
-				});
-			}
-
-			// E-filing chart
-			const efilingChartCanvas = document.getElementById('efilingChart');
-			if (efilingChartCanvas) {
-				new Chart(efilingChartCanvas, {
-					type: 'doughnut',
-					data: {
-						labels: ['E-Court', 'Non E-Court'],
-						datasets: [{
-							data: [
-								<?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?>,
-								<?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?>
-							],
-							backgroundColor: ['#34a853', '#ea4335'],
-						}]
-					},
-					options: {
-						responsive: true,
-						maintainAspectRatio: false,
-						plugins: {
-							legend: {
-								position: 'bottom',
-								labels: {
-									padding: 20,
-									boxWidth: 12
-								}
-							},
-							datalabels: {
-								color: '#fff',
-								formatter: (value, ctx) => {
-									const sum = ctx.dataset.data.reduce((a, b) => a + b, 0);
-									const percentage = (value * 100 / sum).toFixed(1) + '%';
-									return percentage;
-								}
-							}
-						}
-					}
-				});
+				}
 			}
 		});
 	</script>
-</body>
-
-</html>
