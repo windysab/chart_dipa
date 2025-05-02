@@ -7,178 +7,173 @@
 	<title>CCTV Monitoring - PA Amuntai</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	<style>
 		:root {
-			/* Skema Warna Modern */
-			--primary-color: #1a73e8; /* Biru Google */
-			--secondary-color: #5f6368; /* Abu-abu Google */
-			--success-color: #34a853; /* Hijau Google */
-			--warning-color: #fbbc05; /* Kuning Google */
-			--danger-color: #ea4335; /* Merah Google */
-			--info-color: #4285f4; /* Biru Muda Google */
-			--light-color: #f8f9fa;
+			--primary-color: #1a73e8;
+			--secondary-color: #34a853;
+			--accent-color: #fbbc05;
+			--danger-color: #ea4335;
 			--dark-color: #202124;
-			--text-color: #3c4043;
+			--light-color: #f8f9fa;
 			--border-color: #dadce0;
-			--card-bg: #ffffff;
-			--shadow-sm: 0 1px 2px rgba(60, 64, 67, 0.1);
-			--shadow-md: 0 2px 6px rgba(60, 64, 67, 0.15);
-			--shadow-lg: 0 4px 12px rgba(60, 64, 67, 0.2);
-			--border-radius-sm: 4px;
-			--border-radius-md: 8px;
-			--border-radius-lg: 12px;
-			--transition: all 0.2s ease-in-out;
+			--text-color: #3c4043;
+			--shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.08);
+			--shadow-md: 0 4px 10px rgba(0, 0, 0, 0.12);
+			--shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.15);
+			--transition: all 0.3s ease;
 		}
 
 		body {
-			font-family: 'Nunito', sans-serif;
-			background-color: #f1f3f4;
+			font-family: 'Poppins', sans-serif;
+			background-color: var(--light-color);
 			color: var(--text-color);
-			line-height: 1.5;
+			line-height: 1.6;
 		}
 
-		.container-fluid {
-			max-width: 1400px;
-			margin: 0 auto;
-			padding: 15px;
+		.container {
+			margin-top: 30px;
+			margin-bottom: 50px;
 		}
 
-		/* Header Styling - Lebih Kompak */
+		/* Header Styling */
 		.header {
 			text-align: center;
-			margin-bottom: 20px;
+			margin-bottom: 40px;
 			position: relative;
-			padding: 20px 15px;
-			background: var(--primary-color);
-			border-radius: var(--border-radius-md);
+			padding: 20px;
+			background: linear-gradient(135deg, #1a73e8, #4285f4);
+			border-radius: 15px;
 			box-shadow: var(--shadow-md);
 			color: white;
 		}
 
-		.header img {
-			width: 60px;
-			height: 60px;
-			margin-bottom: 10px;
-			border-radius: 50%;
-			border: 2px solid rgba(255, 255, 255, 0.7);
+		.header::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,5 C60,20 40,20 0,5 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+			background-size: 100% 100%;
+			border-radius: 15px;
+			z-index: 0;
 		}
 
-		.header h5 {
-			font-size: 1.5rem;
-			font-weight: 700;
-			margin-bottom: 5px;
-		}
-
-		.header p {
-			font-size: 0.9rem;
-			opacity: 0.9;
-			margin-bottom: 0;
-		}
-
-		/* Visitor Counter - Lebih Ringkas */
-		.visitor-counter {
-			background: var(--card-bg);
-			border-radius: var(--border-radius-md);
-			padding: 10px 15px;
-			margin: 15px 0;
-			box-shadow: var(--shadow-sm);
-			text-align: center;
-			border: 1px solid var(--border-color);
-		}
-
-		.visitor-counter h6 {
-			margin: 0;
-			font-size: 0.85rem;
-			color: var(--secondary-color);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex-wrap: wrap;
-			gap: 15px;
-		}
-
-		.visitor-counter .counter-item {
-			display: inline-flex;
-			align-items: center;
-			padding: 3px 0;
-		}
-
-		.visitor-counter i {
-			margin-right: 5px;
-			color: var(--primary-color);
-		}
-
-		.visitor-counter .count {
-			font-weight: 700;
-			color: var(--dark-color);
-		}
-
-		/* Section Title - Lebih Ringkas */
-		.section-title {
-			text-align: center;
-			margin-bottom: 15px;
+		.header-content {
 			position: relative;
+			z-index: 1;
 		}
 
-		.section-title h4 {
-			font-size: 1.2rem;
-			font-weight: 700;
-			color: var(--primary-color);
-			display: inline-block;
-			padding: 0 15px 8px;
-			border-bottom: 2px solid var(--primary-color);
-		}
-
-		.section-title h4 i {
-			margin-right: 8px;
-		}
-
-		/* CCTV Video Section - Lebih Kompak */
-		.cctv-section {
-			margin-bottom: 20px;
-		}
-
-		.video-link {
-			background-color: var(--card-bg);
-			border-radius: var(--border-radius-md);
-			padding: 12px;
+		.header img {
+			width: 120px;
+			height: auto;
 			margin-bottom: 15px;
-			text-align: center;
+			border-radius: 50%;
+			border: 5px solid rgba(255, 255, 255, 0.3);
 			box-shadow: var(--shadow-sm);
 			transition: var(--transition);
-			position: relative;
-			border: 1px solid var(--border-color);
-			height: 100%;
 		}
 
-		.video-link:hover {
-			transform: translateY(-3px);
+		.header img:hover {
+			transform: scale(1.05);
 			box-shadow: var(--shadow-md);
 		}
 
-		.video-link h6 {
-			margin: 0 0 8px 0;
+		.header h5 {
+			font-size: 2.2rem;
+			font-weight: 700;
+			margin-bottom: 10px;
+			text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+		}
+
+		.header p {
+			font-size: 1.1rem;
+			opacity: 0.9;
+		}
+
+		/* CCTV Video Section */
+		.cctv-section {
+			margin-bottom: 40px;
+		}
+
+		.section-title {
+			text-align: center;
+			margin-bottom: 30px;
+			position: relative;
+			padding-bottom: 15px;
+		}
+
+		.section-title h4 {
+			font-size: 1.8rem;
 			font-weight: 600;
-			color: var(--dark-color);
-			font-size: 0.95rem;
+			color: var(--primary-color);
+		}
+
+		.section-title::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 80px;
+			height: 4px;
+			background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+			border-radius: 2px;
+		}
+
+		.video-link {
+			background-color: #ffffff;
+			border-radius: 12px;
+			padding: 20px;
+			margin-bottom: 30px;
+			text-align: center;
+			box-shadow: var(--shadow-md);
+			transition: var(--transition);
+			position: relative;
+			overflow: hidden;
+			border: 1px solid var(--border-color);
+		}
+
+		.video-link:hover {
+			transform: translateY(-10px);
+			box-shadow: var(--shadow-lg);
+		}
+
+		.video-link::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 5px;
+			background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+		}
+
+		.video-link h6 {
+			margin: 0 0 15px 0;
+			font-weight: 600;
+			color: var(--primary-color);
+			font-size: 1.2rem;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 		}
 
 		.video-link h6 i {
-			margin-right: 6px;
-			color: var(--primary-color);
+			margin-right: 10px;
+			color: var(--accent-color);
 		}
 
 		.video-link .video-container {
 			position: relative;
-			padding-bottom: 56.25%; /* 16:9 */
+			padding-bottom: 56.25%;
+			/* 16:9 Aspect Ratio */
 			height: 0;
 			overflow: hidden;
-			border-radius: var(--border-radius-sm);
-			border: 1px solid var(--border-color);
+			border-radius: 8px;
+			box-shadow: var(--shadow-sm);
 		}
 
 		.video-link iframe {
@@ -188,381 +183,556 @@
 			width: 100%;
 			height: 100%;
 			border: none;
+			border-radius: 8px;
 		}
 
 		.video-status {
 			position: absolute;
-			top: 5px;
-			right: 5px;
-			background-color: var(--success-color);
+			top: 10px;
+			right: 10px;
+			background-color: rgba(52, 168, 83, 0.8);
 			color: white;
-			padding: 2px 6px;
-			border-radius: var(--border-radius-sm);
-			font-size: 0.65rem;
-			font-weight: 600;
+			padding: 5px 10px;
+			border-radius: 20px;
+			font-size: 0.8rem;
+			font-weight: 500;
 			z-index: 10;
-			display: inline-flex;
+			display: flex;
 			align-items: center;
 		}
 
 		.video-status i {
-			margin-right: 3px;
-			font-size: 0.6rem;
-			animation: pulse 2s infinite ease-in-out;
+			margin-right: 5px;
+			font-size: 0.7rem;
+			animation: pulse 1.5s infinite;
 		}
 
 		@keyframes pulse {
-			0%, 100% { opacity: 1; }
-			50% { opacity: 0.5; }
+			0% {
+				opacity: 1;
+			}
+
+			50% {
+				opacity: 0.5;
+			}
+
+			100% {
+				opacity: 1;
+			}
 		}
 
-		/* Case Status Header - Lebih Ringkas */
+		/* Visitor Counter */
+		.visitor-counter {
+			background: white;
+			border-radius: 12px;
+			padding: 15px 20px;
+			margin: 30px 0;
+			box-shadow: var(--shadow-md);
+			text-align: center;
+			border: 1px solid var(--border-color);
+		}
+
+		.visitor-counter h6 {
+			margin: 0;
+			font-size: 1.1rem;
+			color: var(--dark-color);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+
+		.visitor-counter .counter-item {
+			display: inline-flex;
+			align-items: center;
+			margin: 0 15px;
+			padding: 5px 0;
+		}
+
+		.visitor-counter i {
+			margin-right: 8px;
+			color: var(--primary-color);
+		}
+
+		.visitor-counter .count {
+			font-weight: 600;
+			color: var(--primary-color);
+		}
+
+		/* Case Status Section */
 		.case-status-header {
 			text-align: center;
-			margin: 20px 0 15px;
-			background: var(--dark-color);
-			padding: 12px 15px;
-			border-radius: var(--border-radius-md);
+			margin: 40px 0 30px;
+			background: linear-gradient(135deg, var(--dark-color), #3c4043);
+			padding: 20px;
+			border-radius: 12px;
 			color: white;
-			box-shadow: var(--shadow-sm);
+			box-shadow: var(--shadow-md);
 		}
 
 		.case-status-header h2 {
-			font-size: 1.2rem;
-			font-weight: 700;
+			font-size: 1.8rem;
+			font-weight: 600;
 			margin: 0;
 		}
 
-		.case-status-header h2 i {
-			margin-right: 8px;
-			color: var(--warning-color);
-		}
-
-		/* Circle Cards - Lebih Kecil */
+		/* Circle Cards */
 		.total-perkara-container {
-			margin: 20px 0;
+			margin: 40px 0;
 		}
 
 		.circle-card-wrapper {
 			position: relative;
-			margin-bottom: 15px;
+			margin-bottom: 20px;
 		}
 
 		.circle-card {
-			width: 110px;
-			height: 110px;
+			width: 160px;
+			height: 160px;
 			border-radius: 50%;
 			display: flex;
-			flex-direction: column;
 			align-items: center;
 			justify-content: center;
 			margin: 0 auto;
 			color: #fff;
-			box-shadow: var(--shadow-sm);
+			box-shadow: var(--shadow-md);
 			transition: var(--transition);
 			text-align: center;
+			position: relative;
+			z-index: 1;
+		}
+
+		.circle-card::before {
+			content: '';
+			position: absolute;
+			top: -5px;
+			left: -5px;
+			right: -5px;
+			bottom: -5px;
+			background: inherit;
+			border-radius: 50%;
+			z-index: -1;
+			opacity: 0.4;
+			filter: blur(10px);
+			transition: var(--transition);
 		}
 
 		.circle-card:hover {
-			transform: scale(1.05);
-			box-shadow: var(--shadow-md);
+			transform: translateY(-10px) scale(1.05);
 		}
 
-		/* Warna Card */
-		.circle-card.total-perkara { background: var(--primary-color); }
-		.circle-card.total-perkara-ecourt { background: var(--success-color); }
-		.circle-card.persen-perkara-ecourt { background: var(--warning-color); color: var(--dark-color); }
-		.circle-card.total-perkara-non-ecourt { background: var(--danger-color); }
+		.circle-card:hover::before {
+			opacity: 0.6;
+			filter: blur(15px);
+		}
+
+		.circle-card.total-perkara {
+			background: linear-gradient(135deg, var(--primary-color), #4285f4);
+		}
+
+		.circle-card.total-perkara-ecourt {
+			background: linear-gradient(135deg, var(--secondary-color), #66bb6a);
+		}
+
+		.circle-card.persen-perkara-ecourt {
+			background: linear-gradient(135deg, var(--accent-color), #ffd54f);
+		}
+
+		.circle-card.total-perkara-non-ecourt {
+			background: linear-gradient(135deg, var(--danger-color), #ef5350);
+		}
 
 		.circle-card p.value {
-			font-size: 1.5rem;
+			font-size: 2rem;
 			font-weight: 700;
 			margin: 0;
 			line-height: 1;
 		}
 
-		.circle-card .card-internal-title {
-			font-size: 0.7rem;
+		.circle-card-title {
+			margin-top: 15px;
+			text-align: center;
 			font-weight: 600;
-			margin-top: 5px;
-			opacity: 0.9;
+			color: var(--dark-color);
+			font-size: 1.1rem;
 		}
 
-		/* Chart & Table Containers - Lebih Ringkas */
+		/* Chart Containers */
 		.chart-container,
 		.table-container {
-			background: var(--card-bg);
-			border-radius: var(--border-radius-md);
-			padding: 15px;
-			margin-bottom: 15px;
-			box-shadow: var(--shadow-sm);
+			background: white;
+			border-radius: 12px;
+			padding: 20px;
+			margin-bottom: 30px;
+			box-shadow: var(--shadow-md);
 			border: 1px solid var(--border-color);
 			transition: var(--transition);
-			height: 100%;
 		}
 
 		.chart-container:hover,
 		.table-container:hover {
-			box-shadow: var(--shadow-md);
+			box-shadow: var(--shadow-lg);
 		}
 
 		.chart-container h5,
 		.table-container h5 {
-			text-align: left;
-			margin-bottom: 15px;
-			color: var(--dark-color);
-			font-weight: 700;
-			font-size: 1rem;
-			display: flex;
-			align-items: center;
-		}
-
-		.chart-container h5 i,
-		.table-container h5 i {
-			margin-right: 8px;
+			text-align: center;
+			margin-bottom: 20px;
 			color: var(--primary-color);
+			font-weight: 600;
+			padding-bottom: 10px;
+			border-bottom: 2px solid #f0f0f0;
 		}
 
-		/* Table Styling - Lebih Ringkas */
-		.table {
+		.card-body {
+			padding: 0;
+		}
+
+		/* Tables */
+		.table-container .table {
+			border-radius: 8px;
+			overflow: hidden;
+			box-shadow: none;
 			margin-bottom: 0;
-			font-size: 0.85rem;
 		}
 
-		.table thead th {
-			background-color: #f1f3f4;
+		.table-container .table th {
+			background: linear-gradient(135deg, var(--primary-color), #4285f4);
+			color: white;
+			font-weight: 600;
+			border: none;
+		}
+
+		.table-container .table td {
+			vertical-align: middle;
+			border-color: #f0f0f0;
+		}
+
+		.table-container .table tbody tr:hover {
+			background-color: rgba(26, 115, 232, 0.05);
+		}
+
+		/* Summary Section */
+		.summary-section {
+			background: white;
+			border-radius: 12px;
+			padding: 20px;
+			margin: 30px 0;
+			box-shadow: var(--shadow-md);
+			text-align: center;
+			border: 1px solid var(--border-color);
+		}
+
+		.summary-section h5 {
+			color: var(--primary-color);
+			font-weight: 600;
+			margin-bottom: 10px;
+		}
+
+		.summary-section h5.count {
+			font-size: 1.5rem;
 			color: var(--dark-color);
-			font-weight: 700;
-			border-bottom: 2px solid var(--primary-color);
-			padding: 8px;
-		}
-
-		.table tbody td {
-			padding: 8px;
 		}
 
 		/* Responsive Adjustments */
 		@media (max-width: 992px) {
 			.circle-card {
-				width: 100px;
-				height: 100px;
+				width: 140px;
+				height: 140px;
 			}
+
 			.circle-card p.value {
-				font-size: 1.3rem;
+				font-size: 1.8rem;
+			}
+
+			.header h5 {
+				font-size: 1.8rem;
 			}
 		}
 
 		@media (max-width: 768px) {
+			.container {
+				margin-top: 20px;
+			}
+
 			.header h5 {
-				font-size: 1.3rem;
+				font-size: 1.5rem;
 			}
+
 			.section-title h4 {
-				font-size: 1.1rem;
+				font-size: 1.5rem;
 			}
-			.case-status-header h2 {
-				font-size: 1.1rem;
+
+			.circle-card {
+				width: 120px;
+				height: 120px;
+				margin-bottom: 15px;
+			}
+
+			.circle-card p.value {
+				font-size: 1.5rem;
+			}
+
+			.circle-card-title {
+				font-size: 0.9rem;
+			}
+
+			.visitor-counter .counter-item {
+				margin: 5px 10px;
 			}
 		}
 
 		@media (max-width: 576px) {
-			.circle-card {
-				width: 90px;
-				height: 90px;
+			.header {
+				padding: 15px;
 			}
-			.circle-card p.value {
-				font-size: 1.1rem;
+
+			.header h5 {
+				font-size: 1.3rem;
 			}
-			.circle-card .card-internal-title {
-				font-size: 0.65rem;
-			}
+
 			.visitor-counter h6 {
 				flex-direction: column;
-				gap: 5px;
 			}
+
 			.visitor-counter .counter-item {
-				justify-content: center;
+				margin: 5px 0;
 			}
+		}
+
+		/* Animation */
+		.fade-in {
+			animation: fadeIn 0.8s ease-in-out;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.highlight {
+			background-color: rgba(251, 188, 5, 0.2) !important;
+		}
+
+		.table-hover tbody tr:hover {
+			background-color: rgba(26, 115, 232, 0.05);
 		}
 	</style>
 </head>
 
 <body>
-	<div class="container-fluid"> <!-- Changed to container-fluid -->
-		<div class="header">
+	<div class="container">
+		<div class="header fade-in">
 			<div class="header-content">
-				<img src="<?php echo base_url('public/assets/img/logo-pa-amuntai.png'); ?>" alt="Logo PA Amuntai">
-				<h5>CCTV Monitoring & Statistik Perkara</h5>
-				<p>Pengadilan Agama Amuntai Kelas IB</p>
+				<img src="<?php echo base_url('assets/images/Logo PA Amuntai - Trans.png'); ?>" class="img-fluid" alt="Logo PA Amuntai">
+				<h5>LIVE CCTV MONITORING</h5>
+				<p>PENGADILAN AGAMA AMUNTAI KELAS IB</p>
 			</div>
 		</div>
 
-		<!-- Visitor Counter -->
-		<div class="visitor-counter">
-			<h6>
-				<span class="counter-item"><i class="fas fa-eye"></i> Hari Ini: <span class="count"><?= $daily_view_count; ?></span></span>
-				<span class="counter-item"><i class="fas fa-calendar-week"></i> Bulan Ini: <span class="count"><?= $monthly_view_count; ?></span></span>
-				<span class="counter-item"><i class="fas fa-chart-line"></i> Total: <span class="count"><?= $total_view_count; ?></span></span>
-				<!-- <span class="counter-item"><i class="fas fa-users"></i> Total Pengunjung: <span class="count"><?= $view_count; ?></span></span> -->
-			</h6>
-		</div>
-
-
-		<!-- CCTV Section -->
-		<div class="cctv-section">
+		<div class="cctv-section fade-in">
 			<div class="section-title">
-				<h4><i class="fas fa-video"></i> Live CCTV Monitoring</h4>
+				<h4><i class="fas fa-video"></i> Pantauan CCTV</h4>
 			</div>
 			<div class="row">
-				<?php if (!empty($links)) : ?>
-					<?php foreach ($links as $name => $url) : ?>
-						<div class="col-lg-4 col-md-6">
+				<?php if (isset($links)) : ?>
+					<?php
+					$icons = [
+						'Halaman Parkir' => 'fas fa-car',
+						'Ruang Tunggu' => 'fas fa-couch',
+						'PTSP' => 'fas fa-info-circle',
+
+					];
+					?>
+					<?php foreach ($links as $name => $url): ?>
+						<div class="col-md-4 col-sm-6">
 							<div class="video-link">
-								<h6><i class="fas fa-map-marker-alt"></i> <?= htmlspecialchars($name); ?></h6>
+								<h6><i class="<?php echo isset($icons[$name]) ? $icons[$name] : 'fas fa-video'; ?>"></i> <?php echo ucfirst(str_replace('_', ' ', $name)); ?></h6>
+								<div class="video-status">
+									<i class="fas fa-circle"></i> Live
+								</div>
 								<div class="video-container">
-									<iframe src="<?= htmlspecialchars($url); ?>" allowfullscreen></iframe>
-									<div class="video-status">
-										<i class="fas fa-circle"></i> Live
-									</div>
+									<iframe src="<?php echo $url; ?>" allowfullscreen></iframe>
 								</div>
 							</div>
 						</div>
 					<?php endforeach; ?>
-				<?php else : ?>
-					<div class="col-12">
-						<p class="text-center">Tidak ada link CCTV yang tersedia.</p>
-					</div>
 				<?php endif; ?>
 			</div>
 		</div>
 
-		<!-- Case Status Header -->
-		<div class="case-status-header">
-			<h2><i class="fas fa-chart-bar"></i> Statistik Perkara Bulan Ini</h2>
+		<div class="visitor-counter fade-in">
+			<h6>
+				<div class="counter-item">
+					<i class="fas fa-users"></i> Pengunjung Hari Ini: <span class="count"><?php echo htmlspecialchars($daily_view_count, ENT_QUOTES, 'UTF-8'); ?></span>
+				</div>
+				<div class="counter-item">
+					<i class="fas fa-calendar-alt"></i> Bulan Ini: <span class="count"><?php echo htmlspecialchars($monthly_view_count, ENT_QUOTES, 'UTF-8'); ?></span>
+				</div>
+				<div class="counter-item">
+					<i class="fas fa-chart-line"></i> Total: <span class="count"><?php echo htmlspecialchars($total_view_count, ENT_QUOTES, 'UTF-8'); ?></span>
+				</div>
+			</h6>
 		</div>
 
-		<!-- Total Perkara Circle Cards -->
-		<div class="total-perkara-container">
-			<div class="row justify-content-center">
-				<div class="col-lg-2 col-md-4 col-sm-6 col-6 circle-card-wrapper">
+		<div class="case-status-header fade-in">
+			<h2><i class="fas fa-balance-scale"></i> KEADAAN PERKARA S/D <?php echo date('F Y', strtotime('first day of last month')); ?></h2>
+		</div>
+
+		<div class="row total-perkara-container text-center fade-in">
+			<div class="col-md-3 col-sm-6">
+				<div class="circle-card-wrapper">
 					<div class="circle-card total-perkara">
-						<div>
-							<p class="value"><?= number_format($total_perkara_data->total_perkara); ?></p>
-							<p class="card-internal-title">Total Perkara</p>
-						</div>
+						<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?></p>
 					</div>
-					<!-- <p class="circle-card-title">Total Perkara</p> -->
 				</div>
-				<div class="col-lg-2 col-md-4 col-sm-6 col-6 circle-card-wrapper">
+				<p class="circle-card-title">Total Perkara</p>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="circle-card-wrapper">
 					<div class="circle-card total-perkara-ecourt">
-						<div>
-							<p class="value"><?= number_format($total_perkara_data->total_perkara_ecourt); ?></p>
-							<p class="card-internal-title">E-Court</p>
-						</div>
+						<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
 					</div>
-					<!-- <p class="circle-card-title">Total E-Court</p> -->
 				</div>
-				<div class="col-lg-2 col-md-4 col-sm-6 col-6 circle-card-wrapper">
+				<p class="circle-card-title">Perkara e-Court</p>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="circle-card-wrapper">
 					<div class="circle-card persen-perkara-ecourt">
-						<div>
-							<p class="value"><?= number_format($total_perkara_data->persen_perkara_ecourt, 1); ?>%</p>
-							<p class="card-internal-title">Persentase E-Court</p>
-						</div>
+						<p class="value"><?php echo number_format($total_perkara_data->persen_perkara_ecourt) . '%'; ?></p>
 					</div>
-					<!-- <p class="circle-card-title">Persentase E-Court</p> -->
 				</div>
-				<div class="col-lg-2 col-md-4 col-sm-6 col-6 circle-card-wrapper">
+				<p class="circle-card-title">Persentase e-Court</p>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="circle-card-wrapper">
 					<div class="circle-card total-perkara-non-ecourt">
-						<div>
-							<p class="value"><?= number_format($total_perkara_data->total_perkara_non_ecourt); ?></p>
-							<p class="card-internal-title">Non E-Court</p>
+						<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
+					</div>
+				</div>
+				<p class="circle-card-title">Perkara Non e-Court</p>
+			</div>
+		</div>
+
+		<div class="row fade-in">
+			<div class="col-md-6">
+				<div class="chart-container">
+					<h5><i class="fas fa-chart-pie"></i> Data Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
+					<div class="card-body">
+						<div class="chart">
+							<canvas id="donutChart" style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
 						</div>
 					</div>
-					<!-- <p class="circle-card-title">Total Non E-Court</p> -->
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="chart-container">
+					<h5><i class="fas fa-handshake"></i> Penyelesaian Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
+					<div class="card-body">
+						<div class="chart">
+							<canvas id="mediasiChart" style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 
-
-		<!-- Charts and Tables Section -->
-		<div class="row">
-			<!-- Chart Perkara Diterima -->
-			<div class="col-lg-6">
-				<div class="chart-container">
-					<h5><i class="fas fa-chart-pie"></i> Komposisi Perkara Diterima</h5>
-					<canvas id="perkaraChart"></canvas>
-				</div>
+		<div class="row summary-section fade-in">
+			<div class="col-md-6">
+				<h5><i class="fas fa-folder-open"></i> Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
+				<h5 class="count"><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?> Perkara</h5>
 			</div>
-
-			<!-- Chart Mediasi -->
-			<div class="col-lg-6">
-				<div class="chart-container">
-					<h5><i class="fas fa-balance-scale"></i> Hasil Mediasi</h5>
-					<canvas id="mediasiChart"></canvas>
-				</div>
+			<div class="col-md-6">
+				<h5><i class="fas fa-handshake"></i> Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
+				<h5 class="count"><?php echo array_sum($mediasi_data); ?> Perkara</h5>
 			</div>
 		</div>
 
-		<div class="row">
-			<!-- Table Laporan Perkara -->
-			<div class="col-lg-6">
+		<div class="row fade-in">
+			<div class="col-md-6">
 				<div class="table-container">
-					<h5><i class="fas fa-file-alt"></i> Laporan Perkara</h5>
-					<table class="table table-bordered table-striped table-hover">
-						<thead class="thead-light">
+					<h5><i class="fas fa-list-alt"></i> Data Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
+					<table class="table table-bordered table-hover sql-table">
+						<thead>
 							<tr>
-								<th>Keterangan</th>
+								<th>Jenis Perkara</th>
+								<th>Jumlah</th>
+								<th>Persentase</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							$previous_month = date('Y-m', strtotime('first day of last month'));
+							$filtered_chart_data = array_filter($chart_data, function ($data) use ($previous_month) {
+								$data_month = isset($data->tanggal_pendaftaran) ? date('Y-m', strtotime($data->tanggal_pendaftaran)) : '';
+								return $data_month == $previous_month;
+							});
+
+							$grouped_data = [];
+							foreach ($filtered_chart_data as $data) {
+								if (!isset($grouped_data[$data->jenis_perkara_nama])) {
+									$grouped_data[$data->jenis_perkara_nama] = 0;
+								}
+								$grouped_data[$data->jenis_perkara_nama] += $data->jumlah_perkara;
+							}
+
+							$total_perkara = array_sum($grouped_data);
+							foreach ($grouped_data as $jenis_perkara_nama => $jumlah_perkara): ?>
+								<tr>
+									<td><?php echo htmlspecialchars($jenis_perkara_nama, ENT_QUOTES, 'UTF-8'); ?></td>
+									<td><?php echo htmlspecialchars($jumlah_perkara, ENT_QUOTES, 'UTF-8'); ?></td>
+									<td>
+										<?php
+										if ($total_perkara > 0) {
+											echo number_format(($jumlah_perkara / $total_perkara * 100), 2) . '%';
+										} else {
+											echo '0.00%';
+										}
+										?>
+									</td>
+								</tr>
+							<?php endforeach; ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="table-container">
+					<h5><i class="fas fa-handshake"></i> Data Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
+					<table class="table table-bordered table-hover sql-table">
+						<thead>
+							<tr>
+								<th>Hasil Mediasi</th>
 								<th>Jumlah</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td>Sisa Bulan Lalu</td>
-								<td><?= number_format($sisa_perkara_bulan_sebelumnya); ?></td>
+								<td><i class="fas fa-times-circle text-danger"></i> Tidak Dapat Dilaksanakan</td>
+								<td><?php echo $mediasi_data['D']; ?></td>
 							</tr>
 							<tr>
-								<td>Diterima Bulan Ini</td>
-								<td><?= number_format($jumlah_perkara_terdaftar); ?></td>
+								<td><i class="fas fa-thumbs-down text-warning"></i> Tidak Berhasil</td>
+								<td><?php echo $mediasi_data['T']; ?></td>
 							</tr>
 							<tr>
-								<td>Diputus Bulan Ini</td>
-								<td><?= number_format($jumlah_perkara_diputus); ?></td>
+								<td><i class="fas fa-adjust text-info"></i> Berhasil Sebagian</td>
+								<td><?php echo $mediasi_data['S']; ?></td>
 							</tr>
 							<tr>
-								<td>Sisa Bulan Ini</td>
-								<td><?= number_format($sisa_perkara); ?></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-
-			<!-- Table E-Filing -->
-			<div class="col-lg-6">
-				<div class="table-container">
-					<h5><i class="fas fa-laptop-code"></i> Laporan E-Filing</h5>
-					<table class="table table-bordered table-striped table-hover">
-						<thead class="thead-light">
-							<tr>
-								<th>Keterangan</th>
-								<th>Jumlah</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Sisa Bulan Lalu</td>
-								<td><?= number_format($efiling_data->sisa_bulan_lalu); ?></td>
+								<td><i class="fas fa-check-circle text-success"></i> Berhasil Dengan Pencabutan</td>
+								<td><?php echo $mediasi_data['Y2']; ?></td>
 							</tr>
 							<tr>
-								<td>Masuk Bulan Ini</td>
-								<td><?= number_format($efiling_data->masuk_bulan_ini); ?></td>
-							</tr>
-							<tr>
-								<td>Putus Bulan Ini</td>
-								<td><?= number_format($efiling_data->putus_bulan_ini); ?></td>
-							</tr>
-							<tr>
-								<td>Sisa Bulan Ini</td>
-								<td><?= number_format($efiling_data->sisa_bulan_ini); ?></td>
+								<td><i class="fas fa-award text-primary"></i> Berhasil Dengan Akta Perdamaian</td>
+								<td><?php echo $mediasi_data['Y1']; ?></td>
 							</tr>
 						</tbody>
 					</table>
@@ -570,147 +740,151 @@
 			</div>
 		</div>
 
-	</div> <!-- End Container -->
+		<div class="row fade-in">
+			<div class="col-md-6 mx-auto">
+				<div class="chart-container">
+					<h5><i class="fas fa-balance-scale"></i> Penanganan Perkara E-court Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
+					<div class="card-body">
+						<div class="chart">
+							<canvas id="efilingChart" style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<div class="row justify-content-center my-5 text-center fade-in">
+			<div id="histats_counter"></div>
+		</div>
+	</div>
+
+	<!-- Update the script section -->
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<!-- Remove duplicate jQuery and use latest Chart.js -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+
 	<script>
-		// Data from PHP
-		const perkaraData = <?= json_encode($chart_data); ?>;
-		const mediasiData = <?= json_encode($mediasi_data); ?>;
+		// Register the datalabels plugin
+		Chart.register(ChartDataLabels);
 
-		// Process Perkara Data for Chart
-		const perkaraLabels = [];
-		const perkaraCounts = [];
-		const backgroundColorsPerkara = [
-			'rgba(26, 115, 232, 0.8)', // Primary Blue
-			'rgba(52, 168, 83, 0.8)',  // Green
-			'rgba(251, 188, 5, 0.8)',  // Yellow
-			'rgba(234, 67, 53, 0.8)',  // Red
-			'rgba(66, 133, 244, 0.8)', // Lighter Blue
-			'rgba(24, 206, 150, 0.8)', // Teal
-			'rgba(108, 117, 125, 0.8)' // Gray
-		];
-		const borderColorsPerkara = backgroundColorsPerkara.map(color => color.replace('0.8', '1'));
-
-		// Aggregate data by jenis_perkara_nama
-        const aggregatedPerkara = perkaraData.reduce((acc, curr) => {
-            const key = curr.jenis_perkara_nama;
-            if (!acc[key]) {
-                acc[key] = 0;
-            }
-            acc[key] += parseInt(curr.jumlah_perkara, 10);
-            return acc;
-        }, {});
-
-        // Populate labels and counts from aggregated data
-        for (const [label, count] of Object.entries(aggregatedPerkara)) {
-            perkaraLabels.push(label);
-            perkaraCounts.push(count);
-        }
-
-
-		// Perkara Chart (Pie Chart)
-		const ctxPerkara = document.getElementById('perkaraChart').getContext('2d');
-		const perkaraChart = new Chart(ctxPerkara, {
-			type: 'pie',
-			data: {
-				labels: perkaraLabels,
-				datasets: [{
-					label: 'Jumlah Perkara',
-					data: perkaraCounts,
-					backgroundColor: backgroundColorsPerkara,
-					borderColor: borderColorsPerkara,
-					borderWidth: 1
-				}]
-			},
-			options: {
-				responsive: true,
-				plugins: {
-					legend: {
-						position: 'bottom', // Position legend at the bottom
-						labels: {
-							boxWidth: 15,
-							padding: 15
-						}
+		document.addEventListener('DOMContentLoaded', function() {
+			// Donut chart for case types
+			const donutChartCanvas = document.getElementById('donutChart');
+			if (donutChartCanvas) {
+				new Chart(donutChartCanvas, {
+					type: 'doughnut',
+					data: {
+						labels: <?php echo json_encode(array_keys($grouped_data)); ?>,
+						datasets: [{
+							data: <?php echo json_encode(array_values($grouped_data)); ?>,
+							backgroundColor: ['#1a73e8', '#34a853', '#fbbc05', '#ea4335', '#5f6368', '#4285f4', '#46bdc6', '#ff6d01', '#7baaf7', '#174ea6'],
+						}]
 					},
-					tooltip: {
-						callbacks: {
-							label: function(context) {
-								let label = context.label || '';
-								if (label) {
-									label += ': ';
+					options: {
+						responsive: true,
+						maintainAspectRatio: false,
+						plugins: {
+							legend: {
+								position: 'bottom',
+								labels: {
+									padding: 20,
+									boxWidth: 12
 								}
-								if (context.parsed !== null) {
-									label += context.parsed;
+							},
+							datalabels: {
+								color: '#fff',
+								formatter: (value, ctx) => {
+									const sum = ctx.dataset.data.reduce((a, b) => a + b, 0);
+									const percentage = (value * 100 / sum).toFixed(1) + '%';
+									return percentage;
 								}
-								// Calculate percentage
-								const total = context.dataset.data.reduce((sum, value) => sum + value, 0);
-								const percentage = ((context.raw / total) * 100).toFixed(1) + '%';
-								label += ` (${percentage})`;
-								return label;
 							}
 						}
 					}
-				}
+				});
 			}
-		});
 
-		// Process Mediasi Data for Chart
-		const mediasiLabels = ['Berhasil Sebagian', 'Berhasil Dicabut', 'Tidak Berhasil', 'Berhasil Akta Perdamaian', 'Berhasil'];
-		const mediasiCounts = [
-			mediasiData['S'] || 0,
-			mediasiData['D'] || 0,
-			mediasiData['T'] || 0,
-			mediasiData['Y2'] || 0,
-			mediasiData['Y1'] || 0
-		];
-		const backgroundColorsMediasi = [
-			'rgba(255, 159, 64, 0.8)', // Orange
-			'rgba(255, 99, 132, 0.8)',  // Red
-			'rgba(153, 102, 255, 0.8)', // Purple
-			'rgba(75, 192, 192, 0.8)',  // Teal
-			'rgba(54, 162, 235, 0.8)'   // Blue
-		];
-		const borderColorsMediasi = backgroundColorsMediasi.map(color => color.replace('0.8', '1'));
-
-		// Mediasi Chart (Doughnut Chart)
-		const ctxMediasi = document.getElementById('mediasiChart').getContext('2d');
-		const mediasiChart = new Chart(ctxMediasi, {
-			type: 'doughnut', // Changed to doughnut for variety
-			data: {
-				labels: mediasiLabels,
-				datasets: [{
-					label: 'Hasil Mediasi',
-					data: mediasiCounts,
-					backgroundColor: backgroundColorsMediasi,
-					borderColor: borderColorsMediasi,
-					borderWidth: 1
-				}]
-			},
-			options: {
-				responsive: true,
-				plugins: {
-					legend: {
-						position: 'top',
+			// Mediasi chart
+			const mediasiChartCanvas = document.getElementById('mediasiChart');
+			if (mediasiChartCanvas) {
+				new Chart(mediasiChartCanvas, {
+					type: 'doughnut',
+					data: {
+						labels: ['Tidak Dapat Dilaksanakan', 'Tidak Berhasil', 'Berhasil Sebagian', 'Berhasil Dengan Pencabutan', 'Berhasil Dengan Akta Perdamaian'],
+						datasets: [{
+							data: [
+								<?php echo $mediasi_data['D']; ?>,
+								<?php echo $mediasi_data['T']; ?>,
+								<?php echo $mediasi_data['S']; ?>,
+								<?php echo $mediasi_data['Y2']; ?>,
+								<?php echo $mediasi_data['Y1']; ?>
+							],
+							backgroundColor: ['#ea4335', '#fbbc05', '#4285f4', '#34a853', '#1a73e8'],
+						}]
 					},
-					tooltip: {
-						callbacks: {
-							label: function(context) {
-								let label = context.label || '';
-								if (label) {
-									label += ': ';
+					options: {
+						responsive: true,
+						maintainAspectRatio: false,
+						plugins: {
+							legend: {
+								position: 'bottom',
+								labels: {
+									padding: 20,
+									boxWidth: 12
 								}
-								if (context.parsed !== null) {
-									label += context.parsed;
-								}
-								return label;
+							},
+							datalabels: {
+								color: '#fff',
+								formatter: (value) => value || ''
 							}
 						}
 					}
-				}
+				});
+			}
+
+			// E-filing chart
+			const efilingChartCanvas = document.getElementById('efilingChart');
+			if (efilingChartCanvas) {
+				new Chart(efilingChartCanvas, {
+					type: 'doughnut',
+					data: {
+						labels: ['E-Court', 'Non E-Court'],
+						datasets: [{
+							data: [
+								<?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?>,
+								<?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?>
+							],
+							backgroundColor: ['#34a853', '#ea4335'],
+						}]
+					},
+					options: {
+						responsive: true,
+						maintainAspectRatio: false,
+						plugins: {
+							legend: {
+								position: 'bottom',
+								labels: {
+									padding: 20,
+									boxWidth: 12
+								}
+							},
+							datalabels: {
+								color: '#fff',
+								formatter: (value, ctx) => {
+									const sum = ctx.dataset.data.reduce((a, b) => a + b, 0);
+									const percentage = (value * 100 / sum).toFixed(1) + '%';
+									return percentage;
+								}
+							}
+						}
+					}
+				});
 			}
 		});
 	</script>
+</body>
+
+</html>
