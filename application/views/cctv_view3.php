@@ -7,182 +7,178 @@
 	<title>CCTV Monitoring - PA Amuntai</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 	<style>
 		:root {
-			/* Refined Color Scheme: Professional Blue & Gray */
-			--primary-color: #0056b3; /* Deeper Blue */
-			--secondary-color: #6c757d; /* Medium Gray */
-			--success-color: #198754; /* Darker Green */
-			--warning-color: #ffc107; /* Standard Yellow */
-			--danger-color: #dc3545; /* Standard Red */
-			--info-color: #0dcaf0; /* Standard Cyan */
-			--light-color: #f8f9fa; /* Light Gray Background */
-			--dark-color: #343a40; /* Darker Gray */
-			--text-color: #495057;
-			--border-color: #dee2e6;
-			--header-gradient: linear-gradient(135deg, #0056b3, #007bff); /* Blue Gradient */
+			/* Skema Warna Modern */
+			--primary-color: #1a73e8; /* Biru Google */
+			--secondary-color: #5f6368; /* Abu-abu Google */
+			--success-color: #34a853; /* Hijau Google */
+			--warning-color: #fbbc05; /* Kuning Google */
+			--danger-color: #ea4335; /* Merah Google */
+			--info-color: #4285f4; /* Biru Muda Google */
+			--light-color: #f8f9fa;
+			--dark-color: #202124;
+			--text-color: #3c4043;
+			--border-color: #dadce0;
 			--card-bg: #ffffff;
-			--shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-			--shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
-			--shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
-			--border-radius-sm: .25rem;
-			--border-radius-md: .5rem; /* Increased default radius */
-			--border-radius-lg: .75rem; /* Increased large radius */
-			--transition: all 0.25s ease-in-out;
-			--primary-color-rgb: 0, 86, 179; /* RGB for primary color */
-			--success-color-rgb: 25, 135, 84; /* RGB for success color */
+			--shadow-sm: 0 1px 2px rgba(60, 64, 67, 0.1);
+			--shadow-md: 0 2px 6px rgba(60, 64, 67, 0.15);
+			--shadow-lg: 0 4px 12px rgba(60, 64, 67, 0.2);
+			--border-radius-sm: 4px;
+			--border-radius-md: 8px;
+			--border-radius-lg: 12px;
+			--transition: all 0.2s ease-in-out;
 		}
 
 		body {
-			font-family: 'Poppins', sans-serif;
-			background-color: var(--light-color);
+			font-family: 'Nunito', sans-serif;
+			background-color: #f1f3f4;
 			color: var(--text-color);
-			line-height: 1.6;
+			line-height: 1.5;
 		}
 
-		.container-fluid { /* Use container-fluid for full width */
-			padding-left: 30px;
-			padding-right: 30px;
-			margin-top: 30px;
-			margin-bottom: 50px;
+		.container-fluid {
+			max-width: 1400px;
+			margin: 0 auto;
+			padding: 15px;
 		}
 
-		/* Header Styling */
+		/* Header Styling - Lebih Kompak */
 		.header {
 			text-align: center;
-			margin-bottom: 40px;
+			margin-bottom: 20px;
 			position: relative;
-			padding: 30px 20px; /* Increased padding */
-			background: linear-gradient(135deg, var(--primary-color), #4dabf7); /* Softer gradient */
-			border-radius: var(--border-radius-lg);
+			padding: 20px 15px;
+			background: var(--primary-color);
+			border-radius: var(--border-radius-md);
 			box-shadow: var(--shadow-md);
 			color: white;
-			overflow: hidden; /* Hide overflow for pseudo-elements */
-		}
-
-		.header::before { /* Subtle pattern or texture */
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-			background-size: 10px 10px;
-			opacity: 0.5;
-			border-radius: var(--border-radius-lg);
-			z-index: 0;
-		}
-
-		.header-content {
-			position: relative;
-			z-index: 1;
 		}
 
 		.header img {
-			width: 100px; /* Slightly smaller */
-			height: 100px;
-			margin-bottom: 15px;
+			width: 60px;
+			height: 60px;
+			margin-bottom: 10px;
 			border-radius: 50%;
-			border: 4px solid rgba(255, 255, 255, 0.5); /* Thicker border */
-			box-shadow: var(--shadow-sm);
-			transition: var(--transition);
-		}
-
-		.header img:hover {
-			transform: scale(1.1); /* More pronounced hover effect */
-			box-shadow: var(--shadow-md);
+			border: 2px solid rgba(255, 255, 255, 0.7);
 		}
 
 		.header h5 {
-			font-size: 2rem; /* Adjusted size */
-			font-weight: 600; /* Slightly less bold */
-			margin-bottom: 8px;
-			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+			font-size: 1.5rem;
+			font-weight: 700;
+			margin-bottom: 5px;
 		}
 
 		.header p {
-			font-size: 1rem;
-			opacity: 0.95; /* More opaque */
+			font-size: 0.9rem;
+			opacity: 0.9;
+			margin-bottom: 0;
 		}
 
-		/* CCTV Video Section */
-		.cctv-section {
-			margin-bottom: 40px;
-		}
-
-		.section-title {
+		/* Visitor Counter - Lebih Ringkas */
+		.visitor-counter {
+			background: var(--card-bg);
+			border-radius: var(--border-radius-md);
+			padding: 10px 15px;
+			margin: 15px 0;
+			box-shadow: var(--shadow-sm);
 			text-align: center;
-			margin-bottom: 35px; /* Increased margin */
-			position: relative;
-			padding-bottom: 15px;
-		}
-
-		.section-title h4 {
-			font-size: 1.7rem; /* Adjusted size */
-			font-weight: 600;
-			color: var(--primary-color);
-		}
-
-		.section-title::after {
-			content: '';
-			position: absolute;
-			bottom: 0;
-			left: 50%;
-			transform: translateX(-50%);
-			width: 70px; /* Slightly shorter */
-			height: 3px; /* Thinner */
-			background: linear-gradient(to right, var(--primary-color), var(--info-color)); /* Different gradient */
-			border-radius: 3px;
-		}
-
-		.video-link {
-			background-color: #ffffff;
-			border-radius: var(--border-radius-lg); /* Consistent radius */
-			padding: 15px; /* Adjusted padding */
-			margin-bottom: 30px;
-			text-align: center;
-			box-shadow: var(--shadow-sm); /* Softer shadow */
-			transition: var(--transition);
-			position: relative;
-			overflow: hidden;
 			border: 1px solid var(--border-color);
 		}
 
-		.video-link:hover {
-			transform: translateY(-5px); /* Subtle lift */
-			box-shadow: var(--shadow-md); /* Enhanced shadow on hover */
+		.visitor-counter h6 {
+			margin: 0;
+			font-size: 0.85rem;
+			color: var(--secondary-color);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 15px;
 		}
 
-		.video-link::before { /* Removed top border line */
-			content: none;
+		.visitor-counter .counter-item {
+			display: inline-flex;
+			align-items: center;
+			padding: 3px 0;
+		}
+
+		.visitor-counter i {
+			margin-right: 5px;
+			color: var(--primary-color);
+		}
+
+		.visitor-counter .count {
+			font-weight: 700;
+			color: var(--dark-color);
+		}
+
+		/* Section Title - Lebih Ringkas */
+		.section-title {
+			text-align: center;
+			margin-bottom: 15px;
+			position: relative;
+		}
+
+		.section-title h4 {
+			font-size: 1.2rem;
+			font-weight: 700;
+			color: var(--primary-color);
+			display: inline-block;
+			padding: 0 15px 8px;
+			border-bottom: 2px solid var(--primary-color);
+		}
+
+		.section-title h4 i {
+			margin-right: 8px;
+		}
+
+		/* CCTV Video Section - Lebih Kompak */
+		.cctv-section {
+			margin-bottom: 20px;
+		}
+
+		.video-link {
+			background-color: var(--card-bg);
+			border-radius: var(--border-radius-md);
+			padding: 12px;
+			margin-bottom: 15px;
+			text-align: center;
+			box-shadow: var(--shadow-sm);
+			transition: var(--transition);
+			position: relative;
+			border: 1px solid var(--border-color);
+			height: 100%;
+		}
+
+		.video-link:hover {
+			transform: translateY(-3px);
+			box-shadow: var(--shadow-md);
 		}
 
 		.video-link h6 {
-			margin: 0 0 10px 0; /* Reduced bottom margin */
-			font-weight: 500; /* Normal weight */
-			color: var(--dark-color); /* Darker color */
-			font-size: 1.1rem; /* Adjusted size */
+			margin: 0 0 8px 0;
+			font-weight: 600;
+			color: var(--dark-color);
+			font-size: 0.95rem;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 		}
 
 		.video-link h6 i {
-			margin-right: 8px;
-			color: var(--primary-color); /* Primary color icon */
+			margin-right: 6px;
+			color: var(--primary-color);
 		}
 
 		.video-link .video-container {
 			position: relative;
-			padding-bottom: 56.25%;
-			/* 16:9 Aspect Ratio */
+			padding-bottom: 56.25%; /* 16:9 */
 			height: 0;
 			overflow: hidden;
-			border-radius: var(--border-radius-md); /* Consistent radius */
-			box-shadow: none; /* Remove inner shadow */
-			border: 1px solid var(--border-color); /* Add subtle border */
+			border-radius: var(--border-radius-sm);
+			border: 1px solid var(--border-color);
 		}
 
 		.video-link iframe {
@@ -192,305 +188,201 @@
 			width: 100%;
 			height: 100%;
 			border: none;
-			border-radius: var(--border-radius-md); /* Match container radius */
 		}
 
 		.video-status {
 			position: absolute;
-			top: 8px; /* Adjusted position */
-			right: 8px;
-			background-color: rgba(var(--success-color-rgb, 25, 135, 84), 0.85); /* Use success color with alpha */
+			top: 5px;
+			right: 5px;
+			background-color: var(--success-color);
 			color: white;
-			padding: 3px 8px; /* Smaller padding */
-			border-radius: var(--border-radius-sm); /* Smaller radius */
-			font-size: 0.75rem; /* Smaller font */
-			font-weight: 500;
+			padding: 2px 6px;
+			border-radius: var(--border-radius-sm);
+			font-size: 0.65rem;
+			font-weight: 600;
 			z-index: 10;
-			display: inline-flex; /* Use inline-flex */
+			display: inline-flex;
 			align-items: center;
-			box-shadow: var(--shadow-sm);
 		}
 
 		.video-status i {
-			margin-right: 4px;
-			font-size: 0.65rem; /* Smaller icon */
-			animation: pulse 2s infinite ease-in-out; /* Slower pulse */
+			margin-right: 3px;
+			font-size: 0.6rem;
+			animation: pulse 2s infinite ease-in-out;
 		}
-
-		/* Add RGB variable for success color */
-		:root {
-			--success-color-rgb: 25, 135, 84;
-		}
-
 
 		@keyframes pulse {
-			0%, 100% {
-				opacity: 1;
-				transform: scale(1);
-			}
-			50% {
-				opacity: 0.7;
-				transform: scale(0.9);
-			}
+			0%, 100% { opacity: 1; }
+			50% { opacity: 0.5; }
 		}
 
-		/* Visitor Counter */
-		.visitor-counter {
-			background: white;
-			border-radius: var(--border-radius-lg);
-			padding: 15px 20px;
-			margin: 30px 0;
-			box-shadow: var(--shadow-sm);
-			text-align: center;
-			border: 1px solid var(--border-color);
-		}
-
-		.visitor-counter h6 {
-			margin: 0;
-			font-size: 1rem; /* Adjusted size */
-			color: var(--dark-color);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex-wrap: wrap;
-			gap: 15px; /* Add gap between items */
-		}
-
-		.visitor-counter .counter-item {
-			display: inline-flex;
-			align-items: center;
-			/* margin: 0 15px; Remove margin, use gap */
-			padding: 5px 0;
-		}
-
-		.visitor-counter i {
-			margin-right: 6px; /* Reduced margin */
-			color: var(--secondary-color); /* Use secondary color */
-			font-size: 1.1em; /* Slightly larger icon */
-		}
-
-		.visitor-counter .count {
-			font-weight: 600;
-			color: var(--primary-color);
-			font-size: 1.1em; /* Slightly larger count */
-		}
-
-		/* Case Status Section */
+		/* Case Status Header - Lebih Ringkas */
 		.case-status-header {
 			text-align: center;
-			margin: 40px 0 30px;
-			background: linear-gradient(135deg, var(--dark-color), #495057); /* Darker gradient */
-			padding: 25px 20px; /* Increased padding */
-			border-radius: var(--border-radius-lg);
+			margin: 20px 0 15px;
+			background: var(--dark-color);
+			padding: 12px 15px;
+			border-radius: var(--border-radius-md);
 			color: white;
-			box-shadow: var(--shadow-md);
+			box-shadow: var(--shadow-sm);
 		}
 
 		.case-status-header h2 {
-			font-size: 1.7rem; /* Adjusted size */
-			font-weight: 600;
+			font-size: 1.2rem;
+			font-weight: 700;
 			margin: 0;
 		}
 
-		/* Circle Cards */
+		.case-status-header h2 i {
+			margin-right: 8px;
+			color: var(--warning-color);
+		}
+
+		/* Circle Cards - Lebih Kecil */
 		.total-perkara-container {
-			margin: 40px 0;
+			margin: 20px 0;
 		}
 
 		.circle-card-wrapper {
 			position: relative;
-			margin-bottom: 25px; /* Increased margin */
+			margin-bottom: 15px;
 		}
 
 		.circle-card {
-			width: 150px; /* Slightly smaller */
-			height: 150px;
+			width: 110px;
+			height: 110px;
 			border-radius: 50%;
 			display: flex;
-			flex-direction: column; /* Stack value and title */
+			flex-direction: column;
 			align-items: center;
 			justify-content: center;
 			margin: 0 auto;
 			color: #fff;
-			box-shadow: var(--shadow-md);
+			box-shadow: var(--shadow-sm);
 			transition: var(--transition);
 			text-align: center;
-			position: relative;
-			z-index: 1;
-			border: 3px solid rgba(255, 255, 255, 0.3); /* Add inner border */
-		}
-
-		.circle-card::before { /* Softer glow effect */
-			content: '';
-			position: absolute;
-			top: -8px;
-			left: -8px;
-			right: -8px;
-			bottom: -8px;
-			background: inherit;
-			border-radius: 50%;
-			z-index: -1;
-			opacity: 0.3;
-			filter: blur(12px);
-			transition: var(--transition);
 		}
 
 		.circle-card:hover {
-			transform: translateY(-8px) scale(1.03); /* Adjusted hover effect */
-			border-color: rgba(255, 255, 255, 0.5);
+			transform: scale(1.05);
+			box-shadow: var(--shadow-md);
 		}
 
-		.circle-card:hover::before {
-			opacity: 0.5;
-			filter: blur(18px);
-		}
-
-		/* Specific Circle Card Colors (Using Bootstrap variables) */
-		.circle-card.total-perkara { background: linear-gradient(135deg, var(--primary-color), #4dabf7); }
-		.circle-card.total-perkara-ecourt { background: linear-gradient(135deg, var(--success-color), #48c9b0); }
-		.circle-card.persen-perkara-ecourt { background: linear-gradient(135deg, var(--warning-color), #f7dc6f); color: var(--dark-color); /* Dark text for yellow */}
-		.circle-card.total-perkara-non-ecourt { background: linear-gradient(135deg, var(--danger-color), #f1948a); }
-
+		/* Warna Card */
+		.circle-card.total-perkara { background: var(--primary-color); }
+		.circle-card.total-perkara-ecourt { background: var(--success-color); }
+		.circle-card.persen-perkara-ecourt { background: var(--warning-color); color: var(--dark-color); }
+		.circle-card.total-perkara-non-ecourt { background: var(--danger-color); }
 
 		.circle-card p.value {
-			font-size: 1.8rem; /* Adjusted size */
+			font-size: 1.5rem;
 			font-weight: 700;
 			margin: 0;
-			line-height: 1.1; /* Adjusted line height */
+			line-height: 1;
 		}
 
-		/* Title inside circle card */
 		.circle-card .card-internal-title {
-			font-size: 0.8rem;
-			font-weight: 400;
+			font-size: 0.7rem;
+			font-weight: 600;
 			margin-top: 5px;
 			opacity: 0.9;
 		}
 
-
-		.circle-card-title { /* Title below circle card */
-			margin-top: 12px; /* Reduced margin */
-			text-align: center;
-			font-weight: 500; /* Normal weight */
-			color: var(--text-color); /* Use standard text color */
-			font-size: 1rem; /* Adjusted size */
-		}
-
-		/* Chart Containers & Table Containers */
+		/* Chart & Table Containers - Lebih Ringkas */
 		.chart-container,
 		.table-container {
-			background: white;
-			border-radius: var(--border-radius-lg);
-			padding: 25px; /* Increased padding */
-			margin-bottom: 30px;
+			background: var(--card-bg);
+			border-radius: var(--border-radius-md);
+			padding: 15px;
+			margin-bottom: 15px;
 			box-shadow: var(--shadow-sm);
 			border: 1px solid var(--border-color);
 			transition: var(--transition);
+			height: 100%;
 		}
 
 		.chart-container:hover,
 		.table-container:hover {
-			box-shadow: var(--shadow-md); /* Enhanced shadow on hover */
-			transform: translateY(-3px); /* Subtle lift */
+			box-shadow: var(--shadow-md);
 		}
 
 		.chart-container h5,
 		.table-container h5 {
-			text-align: center;
-			margin-bottom: 25px; /* Increased margin */
-			color: var(--primary-color);
-			font-weight: 600;
-			padding-bottom: 12px; /* Increased padding */
-			border-bottom: 1px solid var(--border-color); /* Thinner border */
-			font-size: 1.3rem; /* Adjusted size */
+			text-align: left;
+			margin-bottom: 15px;
+			color: var(--dark-color);
+			font-weight: 700;
+			font-size: 1rem;
+			display: flex;
+			align-items: center;
 		}
 
-		/* Table Styling */
+		.chart-container h5 i,
+		.table-container h5 i {
+			margin-right: 8px;
+			color: var(--primary-color);
+		}
+
+		/* Table Styling - Lebih Ringkas */
 		.table {
-			margin-bottom: 0; /* Remove default bottom margin */
+			margin-bottom: 0;
+			font-size: 0.85rem;
 		}
 
 		.table thead th {
-			background-color: var(--light-color); /* Light background for header */
+			background-color: #f1f3f4;
 			color: var(--dark-color);
-			font-weight: 600;
-			border-bottom: 2px solid var(--primary-color); /* Primary color bottom border */
-			text-align: center;
-			vertical-align: middle;
+			font-weight: 700;
+			border-bottom: 2px solid var(--primary-color);
+			padding: 8px;
 		}
 
 		.table tbody td {
-			vertical-align: middle;
-			text-align: center; /* Center align table data */
+			padding: 8px;
 		}
-
-		.table-striped tbody tr:nth-of-type(odd) {
-			background-color: rgba(0, 0, 0, 0.03); /* Subtler stripe */
-		}
-
-		.table-hover tbody tr:hover {
-			background-color: rgba(var(--primary-color-rgb, 13, 110, 253), 0.1); /* Use primary color with alpha on hover */
-			cursor: default;
-		}
-
-		/* Add RGB variable for primary color */
-		:root {
-			/* ... other variables ... */
-			--primary-color-rgb: 13, 110, 253;
-		}
-
 
 		/* Responsive Adjustments */
-		@media (max-width: 768px) {
-			.header h5 {
-				font-size: 1.8rem;
-			}
-			.header p {
-				font-size: 0.9rem;
-			}
+		@media (max-width: 992px) {
 			.circle-card {
-				width: 130px;
-				height: 130px;
+				width: 100px;
+				height: 100px;
 			}
 			.circle-card p.value {
-				font-size: 1.5rem;
+				font-size: 1.3rem;
 			}
-			.visitor-counter h6 {
-				font-size: 0.9rem;
-				gap: 10px;
+		}
+
+		@media (max-width: 768px) {
+			.header h5 {
+				font-size: 1.3rem;
 			}
-			.chart-container h5,
-			.table-container h5 {
+			.section-title h4 {
+				font-size: 1.1rem;
+			}
+			.case-status-header h2 {
 				font-size: 1.1rem;
 			}
 		}
 
 		@media (max-width: 576px) {
-			.container-fluid {
-				padding-left: 15px;
-				padding-right: 15px;
+			.circle-card {
+				width: 90px;
+				height: 90px;
 			}
-			.header img {
-				width: 80px;
-				height: 80px;
+			.circle-card p.value {
+				font-size: 1.1rem;
 			}
-			.header h5 {
-				font-size: 1.6rem;
-			}
-			.section-title h4 {
-				font-size: 1.5rem;
-			}
-			.circle-card-wrapper {
-				margin-bottom: 30px; /* Ensure spacing on small screens */
-			}
-			.visitor-counter .counter-item {
-				margin: 5px 8px; /* Add some margin back on small screens */
+			.circle-card .card-internal-title {
+				font-size: 0.65rem;
 			}
 			.visitor-counter h6 {
-				justify-content: space-around; /* Space out items */
+				flex-direction: column;
+				gap: 5px;
+			}
+			.visitor-counter .counter-item {
+				justify-content: center;
 			}
 		}
-
 	</style>
 </head>
 
