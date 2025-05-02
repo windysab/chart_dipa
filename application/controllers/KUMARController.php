@@ -34,4 +34,10 @@ class KUMARController extends CI_Controller
 		$this->load->view('chart_detail_view', $data);
 		$this->load->view('template/footer');
 	}
+  /// hpaus
+	public function perkara()
+	{
+		$data['title'] = 'Laporan Keuangan Perkara April 2025';
+		$this->load->view('LK_Apr_Perkara_view');
+	}
 }
