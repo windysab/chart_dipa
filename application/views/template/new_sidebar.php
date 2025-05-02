@@ -162,6 +162,14 @@
 					</a>
 				</li>
 				<li class="nav-item">
+					<a href="<?php echo site_url('LipaAprController') ?>" class="nav-link">
+						<i class="nav-icon fas fa-balance-scale"></i>
+						<p>
+							Laporan Perkara LIPA 6
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
 					<a href="<?php echo site_url('KUMARController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-file-alt"></i>
 						<p>
