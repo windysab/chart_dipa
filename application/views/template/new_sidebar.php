@@ -103,7 +103,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo site_url('StatistikFebController')?>" class="nav-link">
+					<a href="<?php echo site_url('StatistikFebController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-chart-bar"></i>
 						<p>
 							Statistics Februari
@@ -112,7 +112,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo site_url('StatistikMarController')?>" class="nav-link">
+					<a href="<?php echo site_url('StatistikMarController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-chart-bar"></i>
 						<p>
 							Statistics Maret
@@ -130,7 +130,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo site_url('LKFebController')?>" class="nav-link">
+					<a href="<?php echo site_url('LKFebController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-file-alt"></i>
 						<p>
 							Laporan Keuangan Februari
@@ -138,7 +138,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo site_url('LKMarController')?>" class="nav-link">
+					<a href="<?php echo site_url('LKMarController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-file-alt"></i>
 						<p>
 							Laporan Keuangan Maret
@@ -146,7 +146,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo site_url('LKAprController')?>" class="nav-link">
+					<a href="<?php echo site_url('LKAprController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-file-alt"></i>
 						<p>
 							Laporan Keuangan April
@@ -154,7 +154,15 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo site_url('KUMARController')?>" class="nav-link">
+					<a href="<?php echo site_url('KUMARController/perkara') ?>" class="nav-link">
+						<i class="nav-icon fas fa-money-bill"></i>
+						<p>
+							Laporan Keuangan Perkara
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?php echo site_url('KUMARController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-file-alt"></i>
 						<p>
 							LRA Mare
