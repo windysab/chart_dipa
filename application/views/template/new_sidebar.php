@@ -170,6 +170,14 @@
 					</a>
 				</li>
 				<li class="nav-item">
+					<a href="<?php echo site_url('LipaJunController') ?>" class="nav-link">
+						<i class="nav-icon fas fa-file-signature"></i>
+						<p>
+							Laporan Perkara Juni
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
 					<a href="<?php echo site_url('LipaAprController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-balance-scale"></i>
 						<p>
