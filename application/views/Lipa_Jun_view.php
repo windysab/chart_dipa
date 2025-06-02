@@ -394,7 +394,7 @@
                 <h1>LAPORAN PERKARA PA AMUNTAI</h1>
                 <h2>Statistik Perkara Diterima, Dicabut dan Diputus Menurut Jenis</h2>
             </div>
-            <div class="dashboard-date">JUNI 2025</div>
+            <div class="dashboard-date">MEI 2025</div>
         </div>
 
         <div class="stats-container">
