@@ -186,6 +186,14 @@
 					</a>
 				</li>
 				<li class="nav-item">
+					<a href="<?php echo site_url('AgendaSatkerController') ?>" class="nav-link">
+						<i class="nav-icon fas fa-calendar-check"></i>
+						<p>
+							Agenda Kegiatan Satker
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
 					<a href="<?php echo site_url('LipaAprController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-balance-scale"></i>
 						<p>
