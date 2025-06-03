@@ -985,22 +985,243 @@
 
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
-					// Set chart defaults
-					Chart.defaults.font.family = "'Inter', sans-serif";
-					Chart.defaults.color = '#64748b';
-
-					// Donut Chart for Case Types
+			// Set chart defaults
+			Chart.defaults.font.family = "'Inter', sans-serif";
+			Chart.defaults.color = '#64748b';
+			
+			// Debug data to verify it exists
+			console.log("Chart data:", <?php echo json_encode($chart_data); ?>);
+			console.log("Mediasi data:", <?php echo json_encode($mediasi_data); ?>);
+			console.log("Total perkara data:", <?php echo json_encode($total_perkara_data); ?>);
+			
+			try {
+				// Process data for pie chart
+				const perkaraData = <?php echo json_encode($chart_data); ?>;
+				const previousMonth = "<?php echo date('Y-m', strtotime('first day of last month')); ?>";
+				
+				// Filter chart data for previous month
+				const filteredChartData = perkaraData.filter(function(data) {
+					const dataMonth = data.tanggal_pendaftaran ? 
+						data.tanggal_pendaftaran.substring(0, 7) : '';
+					return dataMonth === previousMonth;
+				});
+				
+				// Group data by jenis_perkara_nama
+				const groupedData = {};
+				filteredChartData.forEach(function(data) {
+					if (!groupedData[data.jenis_perkara_nama]) {
+						groupedData[data.jenis_perkara_nama] = 0;
+					}
+					groupedData[data.jenis_perkara_nama] += parseInt(data.jumlah_perkara);
+				});
+				
+				// Extract labels and values
+				const labels = Object.keys(groupedData);
+				const values = Object.values(groupedData);
+				
+				// Log processed data
+				console.log("Processed labels:", labels);
+				console.log("Processed values:", values);
+				
+				// Donut Chart for Case Types
+				if (document.getElementById('donutChart')) {
 					const donutChartCtx = document.getElementById('donutChart').getContext('2d');
 					new Chart(donutChartCtx, {
-								type: 'doughnut',
-								data: {
-									labels: <?php echo json_encode(array_keys($grouped_data)); ?>,
-									datasets: [{
-										data: <?php echo json_encode(array_values($grouped_data)); ?>,
-										backgroundColor: [
-											'#4361ee', '#4cc9f0', '#4ade80', '#f59e0b',
-											'#f43f5e', '#8b5cf6', '#ec4899', '#0ea5e9'
-										],
-										borderWidth: 0,
-										hoverOffset: 15
-									}]
+						type: 'doughnut',
+						data: {
+							labels: labels.length > 0 ? labels : ['No Data'],
+							datasets: [{
+								data: values.length > 0 ? values : [1],
+								backgroundColor: [
+									'#4361ee', '#4cc9f0', '#4ade80', '#f59e0b', 
+									'#f43f5e', '#8b5cf6', '#ec4899', '#0ea5e9'
+								],
+								borderWidth: 0,
+								hoverOffset: 15
+							}]
+						},
+						options: {
+							responsive: true,
+							maintainAspectRatio: false,
+							cutout: '70%',
+							plugins: {
+								legend: {
+									position: 'bottom',
+									labels: {
+										padding: 20,
+										usePointStyle: true,
+										pointStyle: 'circle'
+									}
+								},
+								tooltip: {
+									backgroundColor: 'rgba(30, 41, 59, 0.8)',
+									padding: 12,
+									titleFont: {
+										size: 14,
+										weight: 'bold'
+									},
+									bodyFont: {
+										size: 13
+									},
+									cornerRadius: 8,
+									displayColors: false,
+									callbacks: {
+										label: function(context) {
+											if (labels[0] === 'No Data') return 'No data available';
+											const total = context.dataset.data.reduce((a, b) => a + b, 0);
+											const value = context.raw;
+											const percentage = ((value / total) * 100).toFixed(1);
+											return `${value} perkara (${percentage}%)`;
+										}
+									}
+								}
+							},
+							animation: {
+								animateScale: true,
+								animateRotate: true
+							}
+						}
+					});
+				} else {
+					console.error("donutChart element not found");
+				}
+
+				// Mediasi Chart
+				if (document.getElementById('mediasiChart')) {
+					const mediasiChartCtx = document.getElementById('mediasiChart').getContext('2d');
+					const mediasiData = <?php echo json_encode($mediasi_data); ?>;
+					new Chart(mediasiChartCtx, {
+						type: 'doughnut',
+						data: {
+							labels: [
+								'Tidak Dapat Dilaksanakan', 
+								'Tidak Berhasil', 
+								'Berhasil Sebagian', 
+								'Berhasil Dengan Pencabutan', 
+								'Berhasil Dengan Akta Perdamaian'
+							],
+							datasets: [{
+								data: [
+									parseInt(mediasiData.D || 0),
+									parseInt(mediasiData.T || 0),
+									parseInt(mediasiData.S || 0),
+									parseInt(mediasiData.Y2 || 0),
+									parseInt(mediasiData.Y1 || 0)
+								],
+								backgroundColor: [
+									'#f43f5e', '#f59e0b', '#0ea5e9', '#4ade80', '#4361ee'
+								],
+								borderWidth: 0,
+								hoverOffset: 15
+							}]
+						},
+						options: {
+							responsive: true,
+							maintainAspectRatio: false,
+							cutout: '65%',
+							plugins: {
+								legend: {
+									position: 'bottom',
+									labels: {
+										padding: 20,
+										usePointStyle: true,
+										pointStyle: 'circle'
+									}
+								},
+								tooltip: {
+									backgroundColor: 'rgba(30, 41, 59, 0.8)',
+									padding: 12,
+									titleFont: {
+										size: 14,
+										weight: 'bold'
+									},
+									bodyFont: {
+										size: 13
+									},
+									cornerRadius: 8,
+									displayColors: false
+								}
+							},
+							animation: {
+								animateScale: true,
+								animateRotate: true
+							}
+						}
+					});
+				} else {
+					console.error("mediasiChart element not found");
+				}
+
+				// E-filing Chart
+				if (document.getElementById('efilingChart')) {
+					const efilingChartCtx = document.getElementById('efilingChart').getContext('2d');
+					const totalPerkaraData = <?php echo json_encode($total_perkara_data); ?>;
+					new Chart(efilingChartCtx, {
+						type: 'doughnut',
+						data: {
+							labels: ['E-Court', 'Non E-Court'],
+							datasets: [{
+								data: [
+									parseInt(totalPerkaraData.total_perkara_ecourt || 0),
+									parseInt(totalPerkaraData.total_perkara_non_ecourt || 0)
+								],
+								backgroundColor: [
+									'#4ade80', '#f43f5e'
+								],
+								borderWidth: 0,
+								hoverOffset: 15
+							}]
+						},
+						options: {
+							responsive: true,
+							maintainAspectRatio: false,
+							cutout: '65%',
+							plugins: {
+								legend: {
+									position: 'bottom',
+									labels: {
+										padding: 20,
+										usePointStyle: true,
+										pointStyle: 'circle'
+									}
+								},
+								tooltip: {
+									backgroundColor: 'rgba(30, 41, 59, 0.8)',
+									padding: 12,
+									titleFont: {
+										size: 14,
+										weight: 'bold'
+									},
+									bodyFont: {
+										size: 13
+									},
+									cornerRadius: 8,
+									displayColors: false,
+									callbacks: {
+										label: function(context) {
+											const total = context.dataset.data.reduce((a, b) => a + b, 0);
+											const value = context.raw;
+											const percentage = total > 0 ? ((value / total) * 100).toFixed(1) : '0.0';
+											return `${value} perkara (${percentage}%)`;
+										}
+									}
+								}
+							},
+							animation: {
+								animateScale: true,
+								animateRotate: true
+							}
+						}
+					});
+				} else {
+					console.error("efilingChart element not found");
+				}
+			
+			} catch (error) {
+				console.error("Error initializing charts:", error);
+			}
+		});
+	</script>
+</body>
+
+</html>
