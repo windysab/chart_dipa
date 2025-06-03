@@ -178,6 +178,14 @@
 					</a>
 				</li>
 				<li class="nav-item">
+					<a href="<?php echo site_url('AgendaController') ?>" class="nav-link">
+						<i class="nav-icon fas fa-calendar-alt"></i>
+						<p>
+							Agenda Kerja Pimpinan
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
 					<a href="<?php echo site_url('LipaAprController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-balance-scale"></i>
 						<p>
@@ -205,11 +213,4 @@
 
 <script>
 	$(document).ready(function() {
-		$('.nav-link').on('click', function() {
-			$('.nav-link').removeClass('active');
-			$(this).addClass('active');
-			$('.nav-item').removeClass('active'); // Menghapus kelas 'active' dari semua item
-			$(this).parent().addClass('active'); // Menambahkan kelas 'active' ke item yang diklik
-		});
-	});
-</script>
+</script> }); }); $(this).parent().addClass('active'); // Menambahkan kelas 'active' ke item yang diklik $('.nav-item').removeClass('active'); // Menghapus kelas 'active' dari semua item $(this).addClass('active'); $('.nav-link').removeClass('active'); $('.nav-link').on('click', function() {
