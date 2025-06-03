@@ -63,9 +63,12 @@
 			padding: 2.5rem;
 			margin-bottom: 2rem;
 			display: flex;
+			flex-direction: column; /* Changed from row to column layout */
 			align-items: center;
+			justify-content: center; /* Added to center content vertically */
 			box-shadow: var(--box-shadow-lg);
 			color: white;
+			text-align: center; /* Added to center text */
 		}
 
 		.dashboard-header::before {
@@ -86,7 +89,8 @@
 			object-fit: cover;
 			border: 4px solid rgba(255, 255, 255, 0.3);
 			box-shadow: var(--box-shadow);
-			margin-right: 2rem;
+			margin-right: 0; /* Changed from 2rem to 0 */
+			margin-bottom: 1.5rem; /* Added margin bottom for spacing */
 			transition: var(--transition);
 		}
 
@@ -96,9 +100,10 @@
 		}
 
 		.header-content {
-			flex: 1;
+			width: 100%; /* Added to ensure content takes full width */
 			position: relative;
 			z-index: 2;
+			text-align: center; /* Added to center text */
 		}
 
 		.header-title {
@@ -107,12 +112,14 @@
 			margin-bottom: 0.5rem;
 			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 			letter-spacing: -0.5px;
+			text-align: center; /* Ensure title is centered */
 		}
 
 		.header-subtitle {
 			font-size: 1.25rem;
 			font-weight: 500;
 			opacity: 0.9;
+			text-align: center; /* Ensure subtitle is centered */
 		}
 
 		/* Stats Section */
@@ -631,14 +638,11 @@
 
 		@media (max-width: 992px) {
 			.dashboard-header {
-				flex-direction: column;
-				text-align: center;
 				padding: 2rem;
 			}
 
 			.header-logo {
-				margin-right: 0;
-				margin-bottom: 1.5rem;
+				margin-bottom: 1.5rem; /* Maintain bottom margin on smaller screens */
 			}
 
 			.circle-stats-grid {
