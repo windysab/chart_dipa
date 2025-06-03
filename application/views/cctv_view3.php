@@ -7,203 +7,292 @@
 	<title>CCTV Monitoring - PA Amuntai</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	<style>
 		:root {
-			--primary-color: #1a73e8;
-			--secondary-color: #34a853;
-			--accent-color: #fbbc05;
-			--danger-color: #ea4335;
-			--dark-color: #202124;
-			--light-color: #f8f9fa;
-			--border-color: #dadce0;
-			--text-color: #3c4043;
-			--shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.08);
-			--shadow-md: 0 4px 10px rgba(0, 0, 0, 0.12);
-			--shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.15);
-			--transition: all 0.3s ease;
+			--primary: #4361ee;
+			--primary-light: #4895ef;
+			--primary-dark: #3f37c9;
+			--secondary: #4cc9f0;
+			--success: #4ade80;
+			--info: #0ea5e9;
+			--warning: #f59e0b;
+			--danger: #f43f5e;
+			--dark: #1e293b;
+			--light: #f8fafc;
+			--gray: #64748b;
+			--gray-light: #e2e8f0;
+			--card-bg: #ffffff;
+			--body-bg: #f1f5f9;
+			--sidebar-bg: #0f172a;
+			--border-radius-sm: 0.5rem;
+			--border-radius: 1rem;
+			--border-radius-lg: 1.5rem;
+			--box-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+			--box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+			--box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+			--box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+			--transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
 		}
 
 		body {
-			font-family: 'Poppins', sans-serif;
-			background-color: var(--light-color);
-			color: var(--text-color);
+			font-family: 'Inter', sans-serif;
+			background-color: var(--body-bg);
+			color: var(--dark);
 			line-height: 1.6;
 		}
 
-		.container {
-			margin-top: 30px;
-			margin-bottom: 50px;
+		.container-fluid {
+			padding: 2rem;
+			max-width: 1600px;
+			margin: 0 auto;
 		}
 
-		/* Header Styling */
-		.header {
-			text-align: center;
-			margin-bottom: 40px;
+		/* Header Section */
+		.dashboard-header {
 			position: relative;
-			padding: 20px;
-			background: linear-gradient(135deg, #1a73e8, #4285f4);
-			border-radius: 15px;
-			box-shadow: var(--shadow-md);
+			overflow: hidden;
+			background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light));
+			border-radius: var(--border-radius-lg);
+			padding: 2.5rem;
+			margin-bottom: 2rem;
+			display: flex;
+			align-items: center;
+			box-shadow: var(--box-shadow-lg);
 			color: white;
 		}
 
-		.header::before {
+		.dashboard-header::before {
 			content: '';
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,5 C60,20 40,20 0,5 Z" fill="rgba(255,255,255,0.1)"/></svg>');
-			background-size: 100% 100%;
-			border-radius: 15px;
-			z-index: 0;
+			background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='rgba(255,255,255,0.05)' fill-rule='evenodd'/%3E%3C/svg%3E");
+			opacity: 0.3;
+		}
+
+		.header-logo {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 4px solid rgba(255, 255, 255, 0.3);
+			box-shadow: var(--box-shadow);
+			margin-right: 2rem;
+			transition: var(--transition);
+		}
+
+		.header-logo:hover {
+			transform: scale(1.05);
+			box-shadow: var(--box-shadow-lg);
 		}
 
 		.header-content {
+			flex: 1;
 			position: relative;
-			z-index: 1;
+			z-index: 2;
 		}
 
-		.header img {
-			width: 120px;
-			height: auto;
-			margin-bottom: 15px;
-			border-radius: 50%;
-			border: 5px solid rgba(255, 255, 255, 0.3);
-			box-shadow: var(--shadow-sm);
-			transition: var(--transition);
-		}
-
-		.header img:hover {
-			transform: scale(1.05);
-			box-shadow: var(--shadow-md);
-		}
-
-		.header h5 {
-			font-size: 2.2rem;
+		.header-title {
+			font-size: 2.5rem;
 			font-weight: 700;
-			margin-bottom: 10px;
-			text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+			margin-bottom: 0.5rem;
+			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			letter-spacing: -0.5px;
 		}
 
-		.header p {
-			font-size: 1.1rem;
+		.header-subtitle {
+			font-size: 1.25rem;
+			font-weight: 500;
 			opacity: 0.9;
 		}
 
-		/* CCTV Video Section */
-		.cctv-section {
-			margin-bottom: 40px;
+		/* Stats Section */
+		.stats-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+			gap: 1.5rem;
+			margin-bottom: 2rem;
 		}
 
-		.section-title {
-			text-align: center;
-			margin-bottom: 30px;
-			position: relative;
-			padding-bottom: 15px;
-		}
-
-		.section-title h4 {
-			font-size: 1.8rem;
-			font-weight: 600;
-			color: var(--primary-color);
-		}
-
-		.section-title::after {
-			content: '';
-			position: absolute;
-			bottom: 0;
-			left: 50%;
-			transform: translateX(-50%);
-			width: 80px;
-			height: 4px;
-			background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-			border-radius: 2px;
-		}
-
-		.video-link {
-			background-color: #ffffff;
-			border-radius: 12px;
-			padding: 20px;
-			margin-bottom: 30px;
-			text-align: center;
-			box-shadow: var(--shadow-md);
+		.stat-card {
+			background: var(--card-bg);
+			border-radius: var(--border-radius);
+			padding: 1.5rem;
+			box-shadow: var(--box-shadow);
 			transition: var(--transition);
 			position: relative;
 			overflow: hidden;
-			border: 1px solid var(--border-color);
+			display: flex;
+			flex-direction: column;
+			height: 100%;
 		}
 
-		.video-link:hover {
-			transform: translateY(-10px);
-			box-shadow: var(--shadow-lg);
+		.stat-card:hover {
+			transform: translateY(-5px);
+			box-shadow: var(--box-shadow-lg);
 		}
 
-		.video-link::before {
+		.stat-card::after {
 			content: '';
 			position: absolute;
-			top: 0;
+			bottom: 0;
 			left: 0;
 			width: 100%;
-			height: 5px;
-			background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+			height: 4px;
 		}
 
-		.video-link h6 {
-			margin: 0 0 15px 0;
-			font-weight: 600;
-			color: var(--primary-color);
-			font-size: 1.2rem;
+		.stat-card.primary::after {
+			background: linear-gradient(to right, var(--primary-dark), var(--primary-light));
+		}
+
+		.stat-card.success::after {
+			background: linear-gradient(to right, #059669, var(--success));
+		}
+
+		.stat-card.warning::after {
+			background: linear-gradient(to right, #d97706, var(--warning));
+		}
+
+		.stat-card.info::after {
+			background: linear-gradient(to right, #0284c7, var(--info));
+		}
+
+		.stat-icon {
+			width: 60px;
+			height: 60px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-		}
-
-		.video-link h6 i {
-			margin-right: 10px;
-			color: var(--accent-color);
-		}
-
-		.video-link .video-container {
-			position: relative;
-			padding-bottom: 56.25%;
-			/* 16:9 Aspect Ratio */
-			height: 0;
-			overflow: hidden;
-			border-radius: 8px;
-			box-shadow: var(--shadow-sm);
-		}
-
-		.video-link iframe {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			border: none;
-			border-radius: 8px;
-		}
-
-		.video-status {
-			position: absolute;
-			top: 10px;
-			right: 10px;
-			background-color: rgba(52, 168, 83, 0.8);
+			border-radius: 50%;
+			font-size: 1.5rem;
+			margin-bottom: 1rem;
 			color: white;
-			padding: 5px 10px;
-			border-radius: 20px;
-			font-size: 0.8rem;
-			font-weight: 500;
-			z-index: 10;
+		}
+
+		.stat-card.primary .stat-icon {
+			background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+		}
+
+		.stat-card.success .stat-icon {
+			background: linear-gradient(135deg, #059669, var(--success));
+		}
+
+		.stat-card.warning .stat-icon {
+			background: linear-gradient(135deg, #d97706, var(--warning));
+		}
+
+		.stat-card.info .stat-icon {
+			background: linear-gradient(135deg, #0284c7, var(--info));
+		}
+
+		.stat-value {
+			font-size: 2.5rem;
+			font-weight: 700;
+			margin-bottom: 0.5rem;
+			color: var(--dark);
+		}
+
+		.stat-label {
+			font-size: 1rem;
+			color: var(--gray);
+			margin-bottom: 0.25rem;
+		}
+
+		.stat-description {
+			font-size: 0.875rem;
+			color: var(--gray);
+			margin-top: auto;
+		}
+
+		/* CCTV Section */
+		.section-title {
+			margin-bottom: 1.5rem;
+			position: relative;
+			padding-left: 1rem;
+			font-size: 1.5rem;
+			font-weight: 600;
+			color: var(--dark);
 			display: flex;
 			align-items: center;
+			gap: 0.75rem;
 		}
 
-		.video-status i {
-			margin-right: 5px;
-			font-size: 0.7rem;
+		.section-title::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 4px;
+			height: 70%;
+			background: var(--primary);
+			border-radius: 2px;
+		}
+
+		.section-title i {
+			color: var(--primary);
+		}
+
+		.cctv-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+			gap: 1.5rem;
+			margin-bottom: 2.5rem;
+		}
+
+		.cctv-card {
+			background: var(--card-bg);
+			border-radius: var(--border-radius);
+			overflow: hidden;
+			box-shadow: var(--box-shadow);
+			transition: var(--transition);
+			position: relative;
+		}
+
+		.cctv-card:hover {
+			transform: translateY(-5px);
+			box-shadow: var(--box-shadow-lg);
+		}
+
+		.cctv-header {
+			padding: 1rem;
+			background: var(--primary);
+			color: white;
+			font-weight: 600;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.cctv-title {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-size: 1rem;
+		}
+
+		.cctv-status {
+			display: flex;
+			align-items: center;
+			font-size: 0.75rem;
+			background: rgba(255, 255, 255, 0.2);
+			padding: 0.25rem 0.75rem;
+			border-radius: 1rem;
+			backdrop-filter: blur(4px);
+		}
+
+		.cctv-status i {
+			font-size: 0.625rem;
+			margin-right: 0.25rem;
 			animation: pulse 1.5s infinite;
 		}
 
@@ -221,288 +310,304 @@
 			}
 		}
 
+		.cctv-body {
+			position: relative;
+			padding-top: 56.25%;
+			/* 16:9 Aspect Ratio */
+			height: 0;
+			overflow: hidden;
+		}
+
+		.cctv-iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border: none;
+		}
+
 		/* Visitor Counter */
 		.visitor-counter {
-			background: white;
-			border-radius: 12px;
-			padding: 15px 20px;
-			margin: 30px 0;
-			box-shadow: var(--shadow-md);
-			text-align: center;
-			border: 1px solid var(--border-color);
+			background: var(--card-bg);
+			border-radius: var(--border-radius);
+			padding: 1.25rem;
+			margin-bottom: 2rem;
+			box-shadow: var(--box-shadow);
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 2rem;
 		}
 
-		.visitor-counter h6 {
-			margin: 0;
-			font-size: 1.1rem;
-			color: var(--dark-color);
+		.visitor-counter-item {
 			display: flex;
 			align-items: center;
-			justify-content: center;
-			flex-wrap: wrap;
+			gap: 0.75rem;
 		}
 
-		.visitor-counter .counter-item {
-			display: inline-flex;
-			align-items: center;
-			margin: 0 15px;
-			padding: 5px 0;
-		}
-
-		.visitor-counter i {
-			margin-right: 8px;
-			color: var(--primary-color);
-		}
-
-		.visitor-counter .count {
-			font-weight: 600;
-			color: var(--primary-color);
-		}
-
-		/* Case Status Section */
-		.case-status-header {
-			text-align: center;
-			margin: 40px 0 30px;
-			background: linear-gradient(135deg, var(--dark-color), #3c4043);
-			padding: 20px;
-			border-radius: 12px;
-			color: white;
-			box-shadow: var(--shadow-md);
-		}
-
-		.case-status-header h2 {
-			font-size: 1.8rem;
-			font-weight: 600;
-			margin: 0;
-		}
-
-		/* Circle Cards */
-		.total-perkara-container {
-			margin: 40px 0;
-		}
-
-		.circle-card-wrapper {
-			position: relative;
-			margin-bottom: 20px;
-		}
-
-		.circle-card {
-			width: 160px;
-			height: 160px;
+		.visitor-counter-icon {
+			width: 40px;
+			height: 40px;
 			border-radius: 50%;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			margin: 0 auto;
-			color: #fff;
-			box-shadow: var(--shadow-md);
-			transition: var(--transition);
-			text-align: center;
-			position: relative;
-			z-index: 1;
+			color: white;
+			font-size: 1rem;
 		}
 
-		.circle-card::before {
+		.visitor-counter-item:nth-child(1) .visitor-counter-icon {
+			background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+		}
+
+		.visitor-counter-item:nth-child(2) .visitor-counter-icon {
+			background: linear-gradient(135deg, #0284c7, var(--info));
+		}
+
+		.visitor-counter-item:nth-child(3) .visitor-counter-icon {
+			background: linear-gradient(135deg, #059669, var(--success));
+		}
+
+		.visitor-counter-content {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.visitor-counter-label {
+			font-size: 0.875rem;
+			color: var(--gray);
+		}
+
+		.visitor-counter-value {
+			font-size: 1.25rem;
+			font-weight: 600;
+			color: var(--dark);
+		}
+
+		/* Case Data Section */
+		.case-header {
+			background: linear-gradient(135deg, var(--dark), #334155);
+			color: white;
+			border-radius: var(--border-radius);
+			padding: 1.5rem;
+			margin-bottom: 2rem;
+			box-shadow: var(--box-shadow);
+			text-align: center;
+		}
+
+		.case-header h2 {
+			font-size: 1.5rem;
+			font-weight: 600;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.75rem;
+		}
+
+		/* Data Cards */
+		.data-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 1.5rem;
+			margin-bottom: 2.5rem;
+		}
+
+		.data-card {
+			background: var(--card-bg);
+			border-radius: var(--border-radius);
+			padding: 1.5rem;
+			box-shadow: var(--box-shadow);
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.data-card-title {
+			font-size: 1.125rem;
+			font-weight: 600;
+			color: var(--dark);
+			margin-bottom: 1.5rem;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.data-card-title i {
+			color: var(--primary);
+		}
+
+		.chart-container {
+			flex: 1;
+			position: relative;
+			height: 350px;
+		}
+
+		/* Tables */
+		.table-card {
+			background: var(--card-bg);
+			border-radius: var(--border-radius);
+			overflow: hidden;
+			box-shadow: var(--box-shadow);
+			margin-bottom: 2rem;
+		}
+
+		.table-card-title {
+			padding: 1.25rem 1.5rem;
+			font-size: 1.125rem;
+			font-weight: 600;
+			color: var(--dark);
+			border-bottom: 1px solid var(--gray-light);
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.table-card-title i {
+			color: var(--primary);
+		}
+
+		.table-card-body {
+			padding: 1rem;
+		}
+
+		.modern-table {
+			width: 100%;
+			border-collapse: separate;
+			border-spacing: 0;
+		}
+
+		.modern-table th {
+			background: rgba(241, 245, 249, 0.5);
+			color: var(--dark);
+			font-weight: 600;
+			padding: 1rem;
+			text-align: left;
+			border-bottom: 1px solid var(--gray-light);
+			font-size: 0.875rem;
+		}
+
+		.modern-table td {
+			padding: 1rem;
+			border-bottom: 1px solid var(--gray-light);
+			vertical-align: middle;
+			color: var(--gray);
+			font-size: 0.875rem;
+		}
+
+		.modern-table tr:last-child td {
+			border-bottom: none;
+		}
+
+		.modern-table tr {
+			transition: var(--transition);
+		}
+
+		.modern-table tr:hover td {
+			background: #f8fafc;
+		}
+
+		/* Circle Stats */
+		.circle-stats-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+			gap: 1.5rem;
+			margin-bottom: 2.5rem;
+		}
+
+		.circle-stat {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
+
+		.circle-stat-value-container {
+			width: 140px;
+			height: 140px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 1rem;
+			box-shadow: var(--box-shadow);
+			position: relative;
+			transition: var(--transition);
+		}
+
+		.circle-stat-value-container:hover {
+			transform: scale(1.05);
+			box-shadow: var(--box-shadow-lg);
+		}
+
+		.circle-stat-value-container::before {
 			content: '';
 			position: absolute;
 			top: -5px;
 			left: -5px;
 			right: -5px;
 			bottom: -5px;
-			background: inherit;
 			border-radius: 50%;
-			z-index: -1;
+			background: inherit;
 			opacity: 0.4;
 			filter: blur(10px);
-			transition: var(--transition);
+			z-index: -1;
 		}
 
-		.circle-card:hover {
-			transform: translateY(-10px) scale(1.05);
-		}
-
-		.circle-card:hover::before {
-			opacity: 0.6;
-			filter: blur(15px);
-		}
-
-		.circle-card.total-perkara {
-			background: linear-gradient(135deg, var(--primary-color), #4285f4);
-		}
-
-		.circle-card.total-perkara-ecourt {
-			background: linear-gradient(135deg, var(--secondary-color), #66bb6a);
-		}
-
-		.circle-card.persen-perkara-ecourt {
-			background: linear-gradient(135deg, var(--accent-color), #ffd54f);
-		}
-
-		.circle-card.total-perkara-non-ecourt {
-			background: linear-gradient(135deg, var(--danger-color), #ef5350);
-		}
-
-		.circle-card p.value {
+		.circle-stat-value {
 			font-size: 2rem;
 			font-weight: 700;
-			margin: 0;
-			line-height: 1;
-		}
-
-		.circle-card-title {
-			margin-top: 15px;
-			text-align: center;
-			font-weight: 600;
-			color: var(--dark-color);
-			font-size: 1.1rem;
-		}
-
-		/* Chart Containers */
-		.chart-container,
-		.table-container {
-			background: white;
-			border-radius: 12px;
-			padding: 20px;
-			margin-bottom: 30px;
-			box-shadow: var(--shadow-md);
-			border: 1px solid var(--border-color);
-			transition: var(--transition);
-		}
-
-		.chart-container:hover,
-		.table-container:hover {
-			box-shadow: var(--shadow-lg);
-		}
-
-		.chart-container h5,
-		.table-container h5 {
-			text-align: center;
-			margin-bottom: 20px;
-			color: var(--primary-color);
-			font-weight: 600;
-			padding-bottom: 10px;
-			border-bottom: 2px solid #f0f0f0;
-		}
-
-		.card-body {
-			padding: 0;
-		}
-
-		/* Tables */
-		.table-container .table {
-			border-radius: 8px;
-			overflow: hidden;
-			box-shadow: none;
-			margin-bottom: 0;
-		}
-
-		.table-container .table th {
-			background: linear-gradient(135deg, var(--primary-color), #4285f4);
 			color: white;
-			font-weight: 600;
-			border: none;
 		}
 
-		.table-container .table td {
-			vertical-align: middle;
-			border-color: #f0f0f0;
+		.circle-stat-label {
+			font-size: 1rem;
+			font-weight: 500;
+			color: var(--dark);
 		}
 
-		.table-container .table tbody tr:hover {
-			background-color: rgba(26, 115, 232, 0.05);
+		.circle-stat-1 .circle-stat-value-container {
+			background: linear-gradient(135deg, var(--primary-dark), var(--primary));
 		}
 
-		/* Summary Section */
-		.summary-section {
-			background: white;
-			border-radius: 12px;
-			padding: 20px;
-			margin: 30px 0;
-			box-shadow: var(--shadow-md);
+		.circle-stat-2 .circle-stat-value-container {
+			background: linear-gradient(135deg, #0284c7, var(--info));
+		}
+
+		.circle-stat-3 .circle-stat-value-container {
+			background: linear-gradient(135deg, #d97706, var(--warning));
+		}
+
+		.circle-stat-4 .circle-stat-value-container {
+			background: linear-gradient(135deg, #dc2626, var(--danger));
+		}
+
+		/* Footer */
+		.dashboard-footer {
+			background: var(--card-bg);
+			border-radius: var(--border-radius);
+			padding: 1.5rem;
+			margin-top: 3rem;
 			text-align: center;
-			border: 1px solid var(--border-color);
+			box-shadow: var(--box-shadow);
 		}
 
-		.summary-section h5 {
-			color: var(--primary-color);
-			font-weight: 600;
-			margin-bottom: 10px;
-		}
-
-		.summary-section h5.count {
-			font-size: 1.5rem;
-			color: var(--dark-color);
-		}
-
-		/* Responsive Adjustments */
-		@media (max-width: 992px) {
-			.circle-card {
-				width: 140px;
-				height: 140px;
-			}
-
-			.circle-card p.value {
-				font-size: 1.8rem;
-			}
-
-			.header h5 {
-				font-size: 1.8rem;
-			}
-		}
-
-		@media (max-width: 768px) {
-			.container {
-				margin-top: 20px;
-			}
-
-			.header h5 {
-				font-size: 1.5rem;
-			}
-
-			.section-title h4 {
-				font-size: 1.5rem;
-			}
-
-			.circle-card {
-				width: 120px;
-				height: 120px;
-				margin-bottom: 15px;
-			}
-
-			.circle-card p.value {
-				font-size: 1.5rem;
-			}
-
-			.circle-card-title {
-				font-size: 0.9rem;
-			}
-
-			.visitor-counter .counter-item {
-				margin: 5px 10px;
-			}
-		}
-
-		@media (max-width: 576px) {
-			.header {
-				padding: 15px;
-			}
-
-			.header h5 {
-				font-size: 1.3rem;
-			}
-
-			.visitor-counter h6 {
-				flex-direction: column;
-			}
-
-			.visitor-counter .counter-item {
-				margin: 5px 0;
-			}
-		}
-
-		/* Animation */
+		/* Animations */
 		.fade-in {
-			animation: fadeIn 0.8s ease-in-out;
+			animation: fadeIn 0.6s ease-in-out;
+		}
+
+		.fade-in-delay-1 {
+			animation: fadeIn 0.6s ease-in-out 0.1s both;
+		}
+
+		.fade-in-delay-2 {
+			animation: fadeIn 0.6s ease-in-out 0.2s both;
+		}
+
+		.fade-in-delay-3 {
+			animation: fadeIn 0.6s ease-in-out 0.3s both;
 		}
 
 		@keyframes fadeIn {
@@ -517,374 +622,381 @@
 			}
 		}
 
-		.highlight {
-			background-color: rgba(251, 188, 5, 0.2) !important;
+		/* Responsive Design */
+		@media (max-width: 1400px) {
+			.container-fluid {
+				padding: 1.5rem;
+			}
 		}
 
-		.table-hover tbody tr:hover {
-			background-color: rgba(26, 115, 232, 0.05);
+		@media (max-width: 992px) {
+			.dashboard-header {
+				flex-direction: column;
+				text-align: center;
+				padding: 2rem;
+			}
+
+			.header-logo {
+				margin-right: 0;
+				margin-bottom: 1.5rem;
+			}
+
+			.circle-stats-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			.header-title {
+				font-size: 2rem;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.container-fluid {
+				padding: 1rem;
+			}
+
+			.header-title {
+				font-size: 1.75rem;
+			}
+
+			.header-subtitle {
+				font-size: 1.1rem;
+			}
+
+			.section-title {
+				font-size: 1.25rem;
+			}
+
+			.visitor-counter {
+				flex-direction: column;
+				align-items: center;
+				gap: 1rem;
+			}
+
+			.circle-stats-grid {
+				grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+			}
+
+			.circle-stat-value-container {
+				width: 120px;
+				height: 120px;
+			}
+
+			.circle-stat-value {
+				font-size: 1.75rem;
+			}
+		}
+
+		@media (max-width: 576px) {
+			.stats-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.cctv-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.data-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.circle-stats-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
 		}
 	</style>
 </head>
 
 <body>
-	<div class="container">
-		<div class="header fade-in">
+	<div class="container-fluid">
+		<!-- Header Section -->
+		<div class="dashboard-header fade-in">
+			<img src="<?php echo base_url('assets/images/Logo PA Amuntai - Trans.png'); ?>" class="header-logo" alt="Logo PA Amuntai">
 			<div class="header-content">
-				<img src="<?php echo base_url('assets/images/Logo PA Amuntai - Trans.png'); ?>" class="img-fluid" alt="Logo PA Amuntai">
-				<h5>LIVE CCTV MONITORING</h5>
-				<p>PENGADILAN AGAMA AMUNTAI KELAS IB</p>
+				<h1 class="header-title">MONITORING DASHBOARD</h1>
+				<p class="header-subtitle">PENGADILAN AGAMA AMUNTAI KELAS IB</p>
 			</div>
 		</div>
 
-		<div class="cctv-section fade-in">
-			<div class="section-title">
-				<h4><i class="fas fa-video"></i> Pantauan CCTV</h4>
+		<!-- Stats Section -->
+		<div class="stats-grid fade-in-delay-1">
+			<div class="stat-card primary">
+				<div class="stat-icon">
+					<i class="fas fa-folder-open"></i>
+				</div>
+				<div class="stat-value"><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?></div>
+				<div class="stat-label">Total Perkara</div>
+				<div class="stat-description">Total perkara bulan <?php echo date('F Y', strtotime('first day of last month')); ?></div>
 			</div>
-			<div class="row">
-				<?php if (isset($links)) : ?>
-					<?php
-					$icons = [
-						'Halaman Parkir' => 'fas fa-car',
-						'Ruang Tunggu' => 'fas fa-couch',
-						'PTSP' => 'fas fa-info-circle',
+			<div class="stat-card success">
+				<div class="stat-icon">
+					<i class="fas fa-gavel"></i>
+				</div>
+				<div class="stat-value"><?php echo htmlspecialchars($jumlah_perkara_diputus, ENT_QUOTES, 'UTF-8'); ?></div>
+				<div class="stat-label">Perkara Diputus</div>
+				<div class="stat-description">Perkara yang telah diputuskan</div>
+			</div>
+			<div class="stat-card warning">
+				<div class="stat-icon">
+					<i class="fas fa-balance-scale"></i>
+				</div>
+				<div class="stat-value"><?php echo htmlspecialchars($sisa_perkara, ENT_QUOTES, 'UTF-8'); ?></div>
+				<div class="stat-label">Sisa Perkara</div>
+				<div class="stat-description">Perkara yang masih dalam proses</div>
+			</div>
+			<div class="stat-card info">
+				<div class="stat-icon">
+					<i class="fas fa-users"></i>
+				</div>
+				<div class="stat-value"><?php echo htmlspecialchars($daily_view_count, ENT_QUOTES, 'UTF-8'); ?></div>
+				<div class="stat-label">Pengunjung Hari Ini</div>
+				<div class="stat-description">Total pengunjung dashboard ini</div>
+			</div>
+		</div>
 
-					];
-					?>
-					<?php foreach ($links as $name => $url): ?>
-						<div class="col-md-4 col-sm-6">
-							<div class="video-link">
-								<h6><i class="<?php echo isset($icons[$name]) ? $icons[$name] : 'fas fa-video'; ?>"></i> <?php echo ucfirst(str_replace('_', ' ', $name)); ?></h6>
-								<div class="video-status">
-									<i class="fas fa-circle"></i> Live
-								</div>
-								<div class="video-container">
-									<iframe src="<?php echo $url; ?>" allowfullscreen></iframe>
-								</div>
+		<!-- CCTV Section -->
+		<h2 class="section-title fade-in-delay-1"><i class="fas fa-video"></i> Pantauan CCTV Live</h2>
+		<div class="cctv-grid fade-in-delay-2">
+			<?php if (isset($links)) : ?>
+				<?php
+				$icons = [
+					'Halaman Parkir' => 'fas fa-car',
+					'Ruang Tunggu' => 'fas fa-couch',
+					'PTSP' => 'fas fa-info-circle',
+				];
+				?>
+				<?php foreach ($links as $name => $url): ?>
+					<div class="cctv-card">
+						<div class="cctv-header">
+							<div class="cctv-title">
+								<i class="<?php echo isset($icons[$name]) ? $icons[$name] : 'fas fa-video'; ?>"></i>
+								<?php echo ucfirst(str_replace('_', ' ', $name)); ?>
+							</div>
+							<div class="cctv-status">
+								<i class="fas fa-circle"></i> Live
 							</div>
 						</div>
-					<?php endforeach; ?>
-				<?php endif; ?>
+						<div class="cctv-body">
+							<iframe src="<?php echo $url; ?>" allowfullscreen class="cctv-iframe"></iframe>
+						</div>
+					</div>
+				<?php endforeach; ?>
+			<?php endif; ?>
+		</div>
+
+		<!-- Visitor Counter -->
+		<div class="visitor-counter fade-in-delay-2">
+			<div class="visitor-counter-item">
+				<div class="visitor-counter-icon">
+					<i class="fas fa-users"></i>
+				</div>
+				<div class="visitor-counter-content">
+					<div class="visitor-counter-label">Pengunjung Hari Ini</div>
+					<div class="visitor-counter-value"><?php echo htmlspecialchars($daily_view_count, ENT_QUOTES, 'UTF-8'); ?></div>
+				</div>
+			</div>
+			<div class="visitor-counter-item">
+				<div class="visitor-counter-icon">
+					<i class="fas fa-calendar-alt"></i>
+				</div>
+				<div class="visitor-counter-content">
+					<div class="visitor-counter-label">Bulan Ini</div>
+					<div class="visitor-counter-value"><?php echo htmlspecialchars($monthly_view_count, ENT_QUOTES, 'UTF-8'); ?></div>
+				</div>
+			</div>
+			<div class="visitor-counter-item">
+				<div class="visitor-counter-icon">
+					<i class="fas fa-chart-line"></i>
+				</div>
+				<div class="visitor-counter-content">
+					<div class="visitor-counter-label">Total Pengunjung</div>
+					<div class="visitor-counter-value"><?php echo htmlspecialchars($total_view_count, ENT_QUOTES, 'UTF-8'); ?></div>
+				</div>
 			</div>
 		</div>
 
-		<div class="visitor-counter fade-in">
-			<h6>
-				<div class="counter-item">
-					<i class="fas fa-users"></i> Pengunjung Hari Ini: <span class="count"><?php echo htmlspecialchars($daily_view_count, ENT_QUOTES, 'UTF-8'); ?></span>
-				</div>
-				<div class="counter-item">
-					<i class="fas fa-calendar-alt"></i> Bulan Ini: <span class="count"><?php echo htmlspecialchars($monthly_view_count, ENT_QUOTES, 'UTF-8'); ?></span>
-				</div>
-				<div class="counter-item">
-					<i class="fas fa-chart-line"></i> Total: <span class="count"><?php echo htmlspecialchars($total_view_count, ENT_QUOTES, 'UTF-8'); ?></span>
-				</div>
-			</h6>
-		</div>
-
-		<div class="case-status-header fade-in">
+		<!-- Case Data Section -->
+		<div class="case-header fade-in-delay-2">
 			<h2><i class="fas fa-balance-scale"></i> KEADAAN PERKARA S/D <?php echo date('F Y', strtotime('first day of last month')); ?></h2>
 		</div>
 
-		<div class="row total-perkara-container text-center fade-in">
-			<div class="col-md-3 col-sm-6">
-				<div class="circle-card-wrapper">
-					<div class="circle-card total-perkara">
-						<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?></p>
-					</div>
+		<!-- Circle Stats -->
+		<div class="circle-stats-grid fade-in-delay-3">
+			<div class="circle-stat circle-stat-1">
+				<div class="circle-stat-value-container">
+					<div class="circle-stat-value"><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?></div>
 				</div>
-				<p class="circle-card-title">Total Perkara</p>
+				<div class="circle-stat-label">Total Perkara</div>
 			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="circle-card-wrapper">
-					<div class="circle-card total-perkara-ecourt">
-						<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
-					</div>
+			<div class="circle-stat circle-stat-2">
+				<div class="circle-stat-value-container">
+					<div class="circle-stat-value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?></div>
 				</div>
-				<p class="circle-card-title">Perkara e-Court</p>
+				<div class="circle-stat-label">Perkara e-Court</div>
 			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="circle-card-wrapper">
-					<div class="circle-card persen-perkara-ecourt">
-						<p class="value"><?php echo number_format($total_perkara_data->persen_perkara_ecourt) . '%'; ?></p>
-					</div>
+			<div class="circle-stat circle-stat-3">
+				<div class="circle-stat-value-container">
+					<div class="circle-stat-value"><?php echo number_format($total_perkara_data->persen_perkara_ecourt) . '%'; ?></div>
 				</div>
-				<p class="circle-card-title">Persentase e-Court</p>
+				<div class="circle-stat-label">Persentase e-Court</div>
 			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="circle-card-wrapper">
-					<div class="circle-card total-perkara-non-ecourt">
-						<p class="value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?></p>
-					</div>
+			<div class="circle-stat circle-stat-4">
+				<div class="circle-stat-value-container">
+					<div class="circle-stat-value"><?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?></div>
 				</div>
-				<p class="circle-card-title">Perkara Non e-Court</p>
+				<div class="circle-stat-label">Perkara Non e-Court</div>
 			</div>
 		</div>
 
-		<div class="row fade-in">
-			<div class="col-md-6">
+		<!-- Charts -->
+		<div class="data-grid fade-in-delay-3">
+			<div class="data-card">
+				<h3 class="data-card-title"><i class="fas fa-chart-pie"></i> Data Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h3>
 				<div class="chart-container">
-					<h5><i class="fas fa-chart-pie"></i> Data Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-					<div class="card-body">
-						<div class="chart">
-							<canvas id="donutChart" style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
-						</div>
-					</div>
+					<canvas id="donutChart"></canvas>
 				</div>
 			</div>
-			<div class="col-md-6">
+			<div class="data-card">
+				<h3 class="data-card-title"><i class="fas fa-handshake"></i> Penyelesaian Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h3>
 				<div class="chart-container">
-					<h5><i class="fas fa-handshake"></i> Penyelesaian Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-					<div class="card-body">
-						<div class="chart">
-							<canvas id="mediasiChart" style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
-						</div>
-					</div>
+					<canvas id="mediasiChart"></canvas>
 				</div>
 			</div>
 		</div>
 
-		<div class="row summary-section fade-in">
-			<div class="col-md-6">
-				<h5><i class="fas fa-folder-open"></i> Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-				<h5 class="count"><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?> Perkara</h5>
-			</div>
-			<div class="col-md-6">
-				<h5><i class="fas fa-handshake"></i> Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-				<h5 class="count"><?php echo array_sum($mediasi_data); ?> Perkara</h5>
+		<div class="data-grid fade-in-delay-3">
+			<div class="data-card">
+				<h3 class="data-card-title"><i class="fas fa-balance-scale"></i> Penanganan Perkara E-court</h3>
+				<div class="chart-container">
+					<canvas id="efilingChart"></canvas>
+				</div>
 			</div>
 		</div>
 
-		<div class="row fade-in">
+		<!-- Tables -->
+		<div class="row fade-in-delay-3">
 			<div class="col-md-6">
-				<div class="table-container">
-					<h5><i class="fas fa-list-alt"></i> Data Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-					<table class="table table-bordered table-hover sql-table">
-						<thead>
-							<tr>
-								<th>Jenis Perkara</th>
-								<th>Jumlah</th>
-								<th>Persentase</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php
-							$previous_month = date('Y-m', strtotime('first day of last month'));
-							$filtered_chart_data = array_filter($chart_data, function ($data) use ($previous_month) {
-								$data_month = isset($data->tanggal_pendaftaran) ? date('Y-m', strtotime($data->tanggal_pendaftaran)) : '';
-								return $data_month == $previous_month;
-							});
-
-							$grouped_data = [];
-							foreach ($filtered_chart_data as $data) {
-								if (!isset($grouped_data[$data->jenis_perkara_nama])) {
-									$grouped_data[$data->jenis_perkara_nama] = 0;
-								}
-								$grouped_data[$data->jenis_perkara_nama] += $data->jumlah_perkara;
-							}
-
-							$total_perkara = array_sum($grouped_data);
-							foreach ($grouped_data as $jenis_perkara_nama => $jumlah_perkara): ?>
+				<div class="table-card">
+					<div class="table-card-title">
+						<i class="fas fa-list-alt"></i> Data Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?>
+					</div>
+					<div class="table-card-body">
+						<table class="modern-table">
+							<thead>
 								<tr>
-									<td><?php echo htmlspecialchars($jenis_perkara_nama, ENT_QUOTES, 'UTF-8'); ?></td>
-									<td><?php echo htmlspecialchars($jumlah_perkara, ENT_QUOTES, 'UTF-8'); ?></td>
-									<td>
-										<?php
-										if ($total_perkara > 0) {
-											echo number_format(($jumlah_perkara / $total_perkara * 100), 2) . '%';
-										} else {
-											echo '0.00%';
-										}
-										?>
-									</td>
+									<th>Jenis Perkara</th>
+									<th>Jumlah</th>
+									<th>Persentase</th>
 								</tr>
-							<?php endforeach; ?>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								<?php
+								$previous_month = date('Y-m', strtotime('first day of last month'));
+								$filtered_chart_data = array_filter($chart_data, function ($data) use ($previous_month) {
+									$data_month = isset($data->tanggal_pendaftaran) ? date('Y-m', strtotime($data->tanggal_pendaftaran)) : '';
+									return $data_month == $previous_month;
+								});
+
+								$grouped_data = [];
+								foreach ($filtered_chart_data as $data) {
+									if (!isset($grouped_data[$data->jenis_perkara_nama])) {
+										$grouped_data[$data->jenis_perkara_nama] = 0;
+									}
+									$grouped_data[$data->jenis_perkara_nama] += $data->jumlah_perkara;
+								}
+
+								$total_perkara = array_sum($grouped_data);
+								foreach ($grouped_data as $jenis_perkara_nama => $jumlah_perkara): ?>
+									<tr>
+										<td><?php echo htmlspecialchars($jenis_perkara_nama, ENT_QUOTES, 'UTF-8'); ?></td>
+										<td><?php echo htmlspecialchars($jumlah_perkara, ENT_QUOTES, 'UTF-8'); ?></td>
+										<td>
+											<?php
+											if ($total_perkara > 0) {
+												echo number_format(($jumlah_perkara / $total_perkara * 100), 2) . '%';
+											} else {
+												echo '0.00%';
+											}
+											?>
+										</td>
+									</tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class="table-container">
-					<h5><i class="fas fa-handshake"></i> Data Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-					<table class="table table-bordered table-hover sql-table">
-						<thead>
-							<tr>
-								<th>Hasil Mediasi</th>
-								<th>Jumlah</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><i class="fas fa-times-circle text-danger"></i> Tidak Dapat Dilaksanakan</td>
-								<td><?php echo $mediasi_data['D']; ?></td>
-							</tr>
-							<tr>
-								<td><i class="fas fa-thumbs-down text-warning"></i> Tidak Berhasil</td>
-								<td><?php echo $mediasi_data['T']; ?></td>
-							</tr>
-							<tr>
-								<td><i class="fas fa-adjust text-info"></i> Berhasil Sebagian</td>
-								<td><?php echo $mediasi_data['S']; ?></td>
-							</tr>
-							<tr>
-								<td><i class="fas fa-check-circle text-success"></i> Berhasil Dengan Pencabutan</td>
-								<td><?php echo $mediasi_data['Y2']; ?></td>
-							</tr>
-							<tr>
-								<td><i class="fas fa-award text-primary"></i> Berhasil Dengan Akta Perdamaian</td>
-								<td><?php echo $mediasi_data['Y1']; ?></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-
-		<div class="row fade-in">
-			<div class="col-md-6 mx-auto">
-				<div class="chart-container">
-					<h5><i class="fas fa-balance-scale"></i> Penanganan Perkara E-court Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h5>
-					<div class="card-body">
-						<div class="chart">
-							<canvas id="efilingChart" style="min-height: 400px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
-						</div>
+				<div class="table-card">
+					<div class="table-card-title">
+						<i class="fas fa-handshake"></i> Data Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?>
+					</div>
+					<div class="table-card-body">
+						<table class="modern-table">
+							<thead>
+								<tr>
+									<th>Hasil Mediasi</th>
+									<th>Jumlah</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><i class="fas fa-times-circle text-danger"></i> Tidak Dapat Dilaksanakan</td>
+									<td><?php echo $mediasi_data['D']; ?></td>
+								</tr>
+								<tr>
+									<td><i class="fas fa-thumbs-down text-warning"></i> Tidak Berhasil</td>
+									<td><?php echo $mediasi_data['T']; ?></td>
+								</tr>
+								<tr>
+									<td><i class="fas fa-adjust text-info"></i> Berhasil Sebagian</td>
+									<td><?php echo $mediasi_data['S']; ?></td>
+								</tr>
+								<tr>
+									<td><i class="fas fa-check-circle text-success"></i> Berhasil Dengan Pencabutan</td>
+									<td><?php echo $mediasi_data['Y2']; ?></td>
+								</tr>
+								<tr>
+									<td><i class="fas fa-award text-primary"></i> Berhasil Dengan Akta Perdamaian</td>
+									<td><?php echo $mediasi_data['Y1']; ?></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="row justify-content-center my-5 text-center fade-in">
+		<!-- Footer Counter -->
+		<div class="dashboard-footer fade-in-delay-3">
 			<div id="histats_counter"></div>
 		</div>
 	</div>
 
-	<!-- Update the script section -->
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+	<!-- Scripts -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<!-- Remove duplicate jQuery and use latest Chart.js -->
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 	<script>
-		// Register the datalabels plugin
-		Chart.register(ChartDataLabels);
-
 		document.addEventListener('DOMContentLoaded', function() {
-			// Donut chart for case types
-			const donutChartCanvas = document.getElementById('donutChart');
-			if (donutChartCanvas) {
-				new Chart(donutChartCanvas, {
-					type: 'doughnut',
-					data: {
-						labels: <?php echo json_encode(array_keys($grouped_data)); ?>,
-						datasets: [{
-							data: <?php echo json_encode(array_values($grouped_data)); ?>,
-							backgroundColor: ['#1a73e8', '#34a853', '#fbbc05', '#ea4335', '#5f6368', '#4285f4', '#46bdc6', '#ff6d01', '#7baaf7', '#174ea6'],
-						}]
-					},
-					options: {
-						responsive: true,
-						maintainAspectRatio: false,
-						plugins: {
-							legend: {
-								position: 'bottom',
-								labels: {
-									padding: 20,
-									boxWidth: 12
-								}
-							},
-							datalabels: {
-								color: '#fff',
-								formatter: (value, ctx) => {
-									const sum = ctx.dataset.data.reduce((a, b) => a + b, 0);
-									const percentage = (value * 100 / sum).toFixed(1) + '%';
-									return percentage;
-								}
-							}
-						}
-					}
-				});
-			}
+					// Set chart defaults
+					Chart.defaults.font.family = "'Inter', sans-serif";
+					Chart.defaults.color = '#64748b';
 
-			// Mediasi chart
-			const mediasiChartCanvas = document.getElementById('mediasiChart');
-			if (mediasiChartCanvas) {
-				new Chart(mediasiChartCanvas, {
-					type: 'doughnut',
-					data: {
-						labels: ['Tidak Dapat Dilaksanakan', 'Tidak Berhasil', 'Berhasil Sebagian', 'Berhasil Dengan Pencabutan', 'Berhasil Dengan Akta Perdamaian'],
-						datasets: [{
-							data: [
-								<?php echo $mediasi_data['D']; ?>,
-								<?php echo $mediasi_data['T']; ?>,
-								<?php echo $mediasi_data['S']; ?>,
-								<?php echo $mediasi_data['Y2']; ?>,
-								<?php echo $mediasi_data['Y1']; ?>
-							],
-							backgroundColor: ['#ea4335', '#fbbc05', '#4285f4', '#34a853', '#1a73e8'],
-						}]
-					},
-					options: {
-						responsive: true,
-						maintainAspectRatio: false,
-						plugins: {
-							legend: {
-								position: 'bottom',
-								labels: {
-									padding: 20,
-									boxWidth: 12
-								}
-							},
-							datalabels: {
-								color: '#fff',
-								formatter: (value) => value || ''
-							}
-						}
-					}
-				});
-			}
-
-			// E-filing chart
-			const efilingChartCanvas = document.getElementById('efilingChart');
-			if (efilingChartCanvas) {
-				new Chart(efilingChartCanvas, {
-					type: 'doughnut',
-					data: {
-						labels: ['E-Court', 'Non E-Court'],
-						datasets: [{
-							data: [
-								<?php echo htmlspecialchars($total_perkara_data->total_perkara_ecourt, ENT_QUOTES, 'UTF-8'); ?>,
-								<?php echo htmlspecialchars($total_perkara_data->total_perkara_non_ecourt, ENT_QUOTES, 'UTF-8'); ?>
-							],
-							backgroundColor: ['#34a853', '#ea4335'],
-						}]
-					},
-					options: {
-						responsive: true,
-						maintainAspectRatio: false,
-						plugins: {
-							legend: {
-								position: 'bottom',
-								labels: {
-									padding: 20,
-									boxWidth: 12
-								}
-							},
-							datalabels: {
-								color: '#fff',
-								formatter: (value, ctx) => {
-									const sum = ctx.dataset.data.reduce((a, b) => a + b, 0);
-									const percentage = (value * 100 / sum).toFixed(1) + '%';
-									return percentage;
-								}
-							}
-						}
-					}
-				});
-			}
-		});
-	</script>
-</body>
-
-</html>
+					// Donut Chart for Case Types
+					const donutChartCtx = document.getElementById('donutChart').getContext('2d');
+					new Chart(donutChartCtx, {
+								type: 'doughnut',
+								data: {
+									labels: <?php echo json_encode(array_keys($grouped_data)); ?>,
+									datasets: [{
+										data: <?php echo json_encode(array_values($grouped_data)); ?>,
+										backgroundColor: [
+											'#4361ee', '#4cc9f0', '#4ade80', '#f59e0b',
+											'#f43f5e', '#8b5cf6', '#ec4899', '#0ea5e9'
+										],
+										borderWidth: 0,
+										hoverOffset: 15
+									}]
