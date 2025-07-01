@@ -225,6 +225,14 @@
 						</p>
 					</a>
 				</li>
+				<li class="nav-item">
+					<a href="<?php echo site_url('LipaJuni1Controller') ?>" class="nav-link">
+						<i class="nav-icon fas fa-file-contract"></i>
+						<p>
+							Laporan LIPA Juni 1
+						</p>
+					</a>
+				</li>
 
 			</ul>
 		</nav>
