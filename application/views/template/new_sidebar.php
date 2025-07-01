@@ -186,7 +186,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo site_url('AgendaController/juni') ?>" class="nav-link">
+					<a href="<?php echo site_url('AgendaJuniController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-calendar-day"></i>
 						<p>
 							Agenda Kegiatan Bulan Juni
