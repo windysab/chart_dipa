@@ -16,4 +16,12 @@ class AgendaController extends CI_Controller
         $this->load->view('agenda_view');
         $this->load->view('template/footer');
     }
+
+    public function juni()
+    {
+        $data['title'] = 'Agenda Kerja Pimpinan - Juni 2025';
+        $this->load->view('template/header', $data);
+        $this->load->view('agenda_juni_view');
+        $this->load->view('template/footer');
+    }
 }
