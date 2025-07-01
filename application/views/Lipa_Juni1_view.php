@@ -166,6 +166,98 @@
             </div>
         </div>
     </div>
+    <div class="chart-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; margin-bottom: 30px;">
+        <div class="chart-card" style="background: #fff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 20px;">
+            <div class="chart-title" style="font-size: 1.2rem; color: #2c3e50; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #f0f0f0; font-weight: 600;"><i class="fas fa-chart-pie"></i> Distribusi Perkara</div>
+            <div class="chart-wrapper" style="height: 350px; width: 100%;">
+                <canvas id="caseDistribution"></canvas>
+            </div>
+        </div>
+        <div class="chart-card" style="background: #fff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 20px;">
+            <div class="chart-title" style="font-size: 1.2rem; color: #2c3e50; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #f0f0f0; font-weight: 600;"><i class="fas fa-chart-bar"></i> Tren Penyelesaian Perkara</div>
+            <div class="chart-wrapper" style="height: 350px; width: 100%;">
+                <canvas id="caseTrend"></canvas>
+            </div>
+        </div>
+    </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Pie/Donut Chart: Distribusi Perkara
+        const caseDistributionCtx = document.getElementById('caseDistribution').getContext('2d');
+        new Chart(caseDistributionCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Cerai Talak', 'Cerai Gugat', 'Asal Usul Anak', 'Isbat Nikah', 'Dispensasi Kawin', 'Lain-lain'],
+                datasets: [{
+                    data: [36, 84, 4, 19, 2, 23],
+                    backgroundColor: [
+                        '#27ae60',
+                        '#e67e22',
+                        '#2ecc71',
+                        '#f39c12',
+                        '#9b59b6',
+                        '#1abc9c'
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 15
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'right' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.raw;
+                                const total = context.dataset.data.reduce((acc, data) => acc + data, 0);
+                                const percentage = Math.round((value / total) * 100);
+                                return `${label}: ${value} perkara (${percentage}%)`;
+                            }
+                        }
+                    }
+                },
+                cutout: '65%',
+            }
+        });
+        // Bar Chart: Tren Penyelesaian Perkara
+        const caseTrendCtx = document.getElementById('caseTrend').getContext('2d');
+        new Chart(caseTrendCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'],
+                datasets: [
+                    {
+                        label: 'Perkara Masuk',
+                        data: [70, 75, 80, 90, 110, 82], // Dummy data, update if real data available
+                        backgroundColor: '#27ae60',
+                        borderWidth: 0
+                    },
+                    {
+                        label: 'Perkara Selesai',
+                        data: [65, 70, 78, 85, 99, 85], // Dummy data, update if real data available
+                        backgroundColor: '#e67e22',
+                        borderWidth: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'top' } },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Jumlah Perkara' }
+                    }
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html> 
