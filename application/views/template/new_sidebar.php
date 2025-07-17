@@ -41,33 +41,9 @@
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="<?php echo site_url('Statistik') ?>" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>STATISTIK PERKARA</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="<?php echo site_url('CCTVController2') ?>" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>TAMPLE CCTV</p>
-							</a>
-						</li>
-						<li class="nav-item">
 							<a href="<?php echo site_url('CCTVController3') ?>" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>
 								<p>vide</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="<?php echo site_url('CCTVController4') ?>" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>vide3</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="<?php echo site_url('Statistik_pihak2') ?>" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>STATISTIK PIHAK 2</p>
 							</a>
 						</li>
 					</ul>
