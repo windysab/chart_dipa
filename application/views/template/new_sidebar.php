@@ -198,6 +198,15 @@
 					</a>
 				</li>
 
+				<li class="nav-item">
+					<a href="<?php echo site_url('PersyaratanController') ?>" class="nav-link">
+						<i class="nav-icon fas fa-balance-scale"></i>
+						<p>
+							Persyaratan Perkara Cerai
+						</p>
+					</a>
+				</li>
+
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->
@@ -215,4 +224,3 @@
 		});
 	});
 </script>
-
