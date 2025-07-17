@@ -48,27 +48,7 @@
 						</li>
 					</ul>
 				</li>
-
-				<li class="nav-item">
-					<a href="<?php echo site_url('CCTVController') ?>" class="nav-link">
-						<i class="nav-icon fas fa-video"></i>
-						<p>
-							CCTV
-							<i class="right fas fa-angle-left"></i>
-						</p>
-					</a>
-				</li>
-
-				<li class="nav-item">
-					<a href="<?php echo site_url('Lipa8') ?>" class="nav-link">
-						<i class="nav-icon fas fa-file-alt"></i>
-						<p>
-							Laporan Perkara
-							<i class="right fas fa-angle-left"></i>
-						</p>
-					</a>
-				</li>
-
+				
 				<li class="nav-item">
 					<a href="<?php echo site_url('StatistikController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-chart-bar"></i>
