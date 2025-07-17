@@ -16,6 +16,8 @@
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/adminlte.min.css">
+	<!-- Custom Dashboard Styles -->
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/dashboard-custom.css">
 
 	<link rel="icon" type="image/png" href="<?php echo base_url() ?>assets/dist/img/Logo PA Amuntai - Trans.png?>" />
 

@@ -48,7 +48,7 @@
 						</li>
 					</ul>
 				</li>
-				
+
 				<li class="nav-item">
 					<a href="<?php echo site_url('StatistikController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-chart-bar"></i>
@@ -209,4 +209,10 @@
 
 <script>
 	$(document).ready(function() {
-</script> }); }); $(this).parent().addClass('active'); // Menambahkan kelas 'active' ke item yang diklik $('.nav-item').removeClass('active'); // Menghapus kelas 'active' dari semua item $(this).addClass('active'); $('.nav-link').removeClass('active'); $('.nav-link').on('click', function() {
+		$('.nav-link').on('click', function() {
+			$('.nav-item').removeClass('active');
+			$(this).parent().addClass('active');
+		});
+	});
+</script>
+
