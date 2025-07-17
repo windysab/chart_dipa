@@ -13,7 +13,7 @@ class PersyaratanController extends CI_Controller
 	{
 		$data['title'] = 'Persyaratan Mengajukan Perkara Cerai (Talak/Gugat)';
 
-		$this->load->view('template/new_header', $data);
+		// $this->load->view('template/new_header', $data);
 		// $this->load->view('template/new_sidebar');
 		$this->load->view('persyaratan_perkara');
 		$this->load->view('template/new_footer');
