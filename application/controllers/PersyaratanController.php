@@ -16,6 +16,6 @@ class PersyaratanController extends CI_Controller
 		// $this->load->view('template/new_header', $data);
 		// $this->load->view('template/new_sidebar');
 		$this->load->view('persyaratan_perkara');
-		$this->load->view('template/new_footer');
+		// $this->load->view('template/new_footer');
 	}
 }

@@ -48,8 +48,8 @@
 		}
 
 		.container-fluid {
-			padding: 2rem;
-			max-width: 1600px;
+			padding: 1.5rem;
+			max-width: 1200px;
 			margin: 0 auto;
 		}
 
@@ -59,8 +59,8 @@
 			overflow: hidden;
 			background: linear-gradient(135deg, #059669, var(--success), #34d399);
 			border-radius: var(--border-radius-lg);
-			padding: 2.5rem;
-			margin-bottom: 2rem;
+			padding: 1.5rem;
+			margin-bottom: 1.5rem;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -82,13 +82,13 @@
 		}
 
 		.header-logo {
-			width: 100px;
-			height: 100px;
+			width: 70px;
+			height: 70px;
 			border-radius: 50%;
 			object-fit: cover;
-			border: 4px solid rgba(255, 255, 255, 0.3);
+			border: 3px solid rgba(255, 255, 255, 0.3);
 			box-shadow: var(--box-shadow);
-			margin-bottom: 1.5rem;
+			margin-bottom: 1rem;
 			transition: var(--transition);
 		}
 
@@ -105,7 +105,7 @@
 		}
 
 		.header-title {
-			font-size: 2.5rem;
+			font-size: 1.8rem;
 			font-weight: 700;
 			margin-bottom: 0.5rem;
 			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -113,17 +113,17 @@
 		}
 
 		.header-subtitle {
-			font-size: 1.25rem;
+			font-size: 1rem;
 			font-weight: 500;
 			opacity: 0.9;
 		}
 
 		/* Section Title */
 		.section-title {
-			margin-bottom: 1.5rem;
+			margin-bottom: 1rem;
 			position: relative;
 			padding-left: 1rem;
-			font-size: 1.5rem;
+			font-size: 1.25rem;
 			font-weight: 600;
 			color: var(--dark);
 			display: flex;
@@ -150,9 +150,9 @@
 		/* Requirements Grid */
 		.requirements-grid {
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-			gap: 1.5rem;
-			margin-bottom: 2rem;
+			grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+			gap: 1rem;
+			margin-bottom: 1.5rem;
 		}
 
 		.requirement-card {
@@ -180,7 +180,7 @@
 		}
 
 		.requirement-header {
-			padding: 1.5rem;
+			padding: 1rem;
 			background: linear-gradient(135deg, #059669, var(--success));
 			color: white;
 			font-weight: 600;
@@ -190,7 +190,7 @@
 		}
 
 		.requirement-body {
-			padding: 1.5rem;
+			padding: 1rem;
 		}
 
 		.requirement-list {
@@ -222,15 +222,15 @@
 		/* Info Cards */
 		.info-grid {
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-			gap: 1.5rem;
-			margin-bottom: 2rem;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 1rem;
+			margin-bottom: 1.5rem;
 		}
 
 		.info-card {
 			background: var(--card-bg);
 			border-radius: var(--border-radius);
-			padding: 1.5rem;
+			padding: 1rem;
 			box-shadow: var(--box-shadow);
 			transition: var(--transition);
 		}
@@ -259,14 +259,14 @@
 		/* Contact Cards */
 		.contact-grid {
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-			gap: 1.5rem;
+			grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+			gap: 1rem;
 		}
 
 		.contact-card {
 			background: var(--card-bg);
 			border-radius: var(--border-radius);
-			padding: 2rem 1rem;
+			padding: 1.5rem 1rem;
 			text-align: center;
 			box-shadow: var(--box-shadow);
 			transition: var(--transition);
@@ -279,9 +279,9 @@
 		}
 
 		.contact-icon {
-			font-size: 2.5rem;
+			font-size: 2rem;
 			color: var(--primary);
-			margin-bottom: 1rem;
+			margin-bottom: 0.75rem;
 		}
 
 		.contact-label {
@@ -327,11 +327,11 @@
 		/* Responsive Design */
 		@media (max-width: 992px) {
 			.dashboard-header {
-				padding: 2rem;
+				padding: 1.25rem;
 			}
 
 			.header-title {
-				font-size: 2rem;
+				font-size: 1.5rem;
 			}
 
 			.requirements-grid {
@@ -341,19 +341,19 @@
 
 		@media (max-width: 768px) {
 			.container-fluid {
-				padding: 1rem;
+				padding: 0.75rem;
 			}
 
 			.header-title {
-				font-size: 1.75rem;
+				font-size: 1.4rem;
 			}
 
 			.header-subtitle {
-				font-size: 1.1rem;
+				font-size: 0.9rem;
 			}
 
 			.section-title {
-				font-size: 1.25rem;
+				font-size: 1.1rem;
 			}
 
 			.contact-grid {
