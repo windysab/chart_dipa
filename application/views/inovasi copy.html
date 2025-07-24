@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEMMAS - Inovasi Layanan Pengadilan Agama Amuntai Kelas IB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .main-wrapper {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 2.5rem 0 1.5rem 0;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: white;
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .services-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-title {
+            background: #059669;
+            color: white;
+            padding: 0.6rem 1rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .service-description {
+            color: #374151;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .service-features {
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .service-features li {
+            padding: 0.4rem 0;
+            color: #6b7280;
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #059669;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .special-card {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+        }
+
+        .special-card .service-title {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .special-card .service-description {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #fbbf24;
+            text-align: center;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            margin: 0.5rem 0;
+        }
+
+        .highlight-text {
+            font-size: 1rem;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .services-row {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .service-card {
+                padding: 1.2rem;
+                min-height: 180px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin: 2rem 0 1rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-row {
+                grid-template-columns: 1fr;
+            }
+
+            .main-wrapper {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-wrapper">
+            <header class="header">
+                <h1>MANTAP</h1>
+                <div class="subtitle">MODERN, AMANAH, NYAMAN, TRANSPARAN, AKUNTABEL DAN PROFESIONAL</div>
+            </header>
+
+            <h2 class="section-title">Layanan Inti Digital</h2>
+            <div class="services-row">
+                <article class="service-card">
+                    <h3 class="service-title">KIAI</h3>
+                    <p class="service-description">Kolaborasi Antar Instansi</p>
+                    <ul class="service-features">
+                        <li>Koordinasi multi-instansi</li>
+                        <li>Sinergi pelayanan</li>
+                        <li>Efisiensi proses</li>
+                    </ul>
+                </article>
+
+                <article class="service-card special-card">
+                    <h3 class="service-title">PEPES</h3>
+                    <p class="service-description">Maksimal Perkara Putus</p>
+                    <div class="highlight-number">28</div>
+                    <div class="highlight-text">Hari</div>
+                </article>
+
+                <article class="service-card">
+                    <h3 class="service-title">SIPEDAR</h3>
+                    <p class="service-description">Sidang Secara Daring</p>
+                    <ul class="service-features">
+                        <li>Fleksibilitas waktu</li>
+                        <li>Efisiensi biaya</li>
+                        <li>Akses mudah</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <h3 class="service-title">E-PAISAN+</h3>
+                    <p class="service-description">Penyampaian Putusan secara Elektronik</p>
+                    <ul class="service-features">
+                        <li>Notifikasi real-time</li>
+                        <li>Akses digital</li>
+                        <li>Ramah lingkungan</li>
+                    </ul>
+                </article>
+            </div>
+
+            <h2 class="section-title">Layanan Pelanggan</h2>
+            <div class="services-row">
+                <article class="service-card">
+                    <h3 class="service-title">SIPETOK</h3>
+                    <p class="service-description">Buku Tamu Elektronik</p>
+                    <ul class="service-features">
+                        <li>Pendaftaran digital</li>
+                        <li>Data terintegrasi</li>
+                        <li>Proses cepat</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <h3 class="service-title">SIPARAM</h3>
+                    <p class="service-description">Pelayanan Ramah</p>
+                    <ul class="service-features">
+                        <li>Customer service excellent</li>
+                        <li>Informasi lengkap</li>
+                        <li>Pelayanan prima</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <h3 class="service-title">APIK</h3>
+                    <p class="service-description">Pelayanan Informasi dan Konsultasi Online</p>
+                    <ul class="service-features">
+                        <li>Konsultasi 24/7</li>
+                        <li>Informasi akurat</li>
+                        <li>Respon cepat</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <h3 class="service-title">DIFA</h3>
+                    <p class="service-description">Daftar Informasi Perkara Banding</p>
+                    <ul class="service-features">
+                        <li>Database terintegrasi</li>
+                        <li>Search engine</li>
+                        <li>Export data</li>
+                    </ul>
+                </article>
+            </div>
+
+            <h2 class="section-title">Manajemen Internal</h2>
+            <div class="services-row">
+                <article class="service-card">
+                    <h3 class="service-title">SIDIN</h3>
+                    <p class="service-description">Sistem Informasi Dinas</p>
+                    <ul class="service-features">
+                        <li>Manajemen data</li>
+                        <li>Monitoring real-time</li>
+                        <li>Laporan otomatis</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <h3 class="service-title">SILUCUT</h3>
+                    <p class="service-description">Layanan Cuti Online</p>
+                    <ul class="service-features">
+                        <li>Pengajuan online</li>
+                        <li>Approval digital</li>
+                        <li>Tracking status</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <h3 class="service-title">e-MA</h3>
+                    <p class="service-description">Pengelolaan Administrasi Secara Elektronik</p>
+                    <ul class="service-features">
+                        <li>Paperless office</li>
+                        <li>Workflow digital</li>
+                        <li>Arsip elektronik</li>
+                    </ul>
+                </article>
+
+                <article class="service-card special-card">
+                    <h3 class="service-title">BERAKHLAK</h3>
+                    <p class="service-description">Bangga Melayani Bangsa</p>
+                    <ul class="service-features">
+                        <li>Integritas tinggi</li>
+                        <li>Pelayanan terbaik</li>
+                        <li>Komitmen moral</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
