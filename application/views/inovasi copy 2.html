@@ -88,22 +88,11 @@
 			min-height: 200px;
 			display: flex;
 			flex-direction: column;
-			cursor: pointer;
-			text-decoration: none;
-			color: inherit;
 		}
 
 		.service-card:hover {
 			transform: translateY(-5px);
 			box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-		}
-
-		.service-image {
-			width: 100%;
-			height: 120px;
-			object-fit: cover;
-			border-radius: 10px;
-			margin-bottom: 1rem;
 		}
 
 		.service-title {
@@ -227,8 +216,7 @@
 
 			<h2 class="section-title">Layanan Inti Digital</h2>
 			<div class="services-row">
-				<a href="https://example.com/kiai" class="service-card" target="_blank">
-					<img src="file_attach/fhoto ucapan/a.jpg" alt="KIAI" class="service-image">
+				<article class="service-card">
 					<h3 class="service-title">KIAI</h3>
 					<p class="service-description">Kolaborasi Antar Instansi</p>
 					<ul class="service-features">
@@ -236,18 +224,16 @@
 						<li>Sinergi pelayanan</li>
 						<li>Efisiensi proses</li>
 					</ul>
-				</a>
+				</article>
 
-				<a href="https://example.com/pepes" class="service-card special-card" target="_blank">
-					<img src="file_attach/fhoto ucapan/b.jpg" alt="PEPES" class="service-image">
-					<h3 class="service-title">Promil</h3>
-					<p class="service-description">Pesan Produl Ambil</p>
-					<div class="highlight-number">Drive True</div>
-					<div class="highlight-text">Pengadilan Agama Amuntai</div>
-				</a>
+				<article class="service-card special-card">
+					<h3 class="service-title">PEPES</h3>
+					<p class="service-description">Maksimal Perkara Putus</p>
+					<div class="highlight-number">28</div>
+					<div class="highlight-text">Hari</div>
+				</article>
 
-				<a href="https://example.com/sipedar" class="service-card" target="_blank">
-					<img src="file_attach/fhoto ucapan/c.jpg" alt="SIPEDAR" class="service-image">
+				<article class="service-card">
 					<h3 class="service-title">SIPEDAR</h3>
 					<p class="service-description">Sidang Secara Daring</p>
 					<ul class="service-features">
@@ -255,10 +241,9 @@
 						<li>Efisiensi biaya</li>
 						<li>Akses mudah</li>
 					</ul>
-				</a>
+				</article>
 
-				<a href="https://example.com/epaisan" class="service-card" target="_blank">
-					<img src="file_attach/fhoto ucapan/d.jpg" alt="E-PAISAN+" class="service-image">
+				<article class="service-card">
 					<h3 class="service-title">E-PAISAN+</h3>
 					<p class="service-description">Penyampaian Putusan secara Elektronik</p>
 					<ul class="service-features">
@@ -266,13 +251,12 @@
 						<li>Akses digital</li>
 						<li>Ramah lingkungan</li>
 					</ul>
-				</a>
+				</article>
 			</div>
 
 			<h2 class="section-title">Layanan Pelanggan</h2>
 			<div class="services-row">
-				<a href="https://example.com/sipetok" class="service-card" target="_blank">
-					<img src="file_attach/fhoto ucapan/e.jpg" alt="SIPETOK" class="service-image">
+				<article class="service-card">
 					<h3 class="service-title">SIPETOK</h3>
 					<p class="service-description">Buku Tamu Elektronik</p>
 					<ul class="service-features">
@@ -280,10 +264,9 @@
 						<li>Data terintegrasi</li>
 						<li>Proses cepat</li>
 					</ul>
-				</a>
+				</article>
 
-				<a href="https://example.com/siparam" class="service-card" target="_blank">
-					<img src="file_attach/fhoto ucapan/f.jpg" alt="SIPARAM" class="service-image">
+				<article class="service-card">
 					<h3 class="service-title">SIPARAM</h3>
 					<p class="service-description">Pelayanan Ramah</p>
 					<ul class="service-features">
@@ -291,10 +274,9 @@
 						<li>Informasi lengkap</li>
 						<li>Pelayanan prima</li>
 					</ul>
-				</a>
+				</article>
 
-				<a href="https://example.com/apik" class="service-card" target="_blank">
-					<img src="file_attach/fhoto ucapan/g.jpg" alt="APIK" class="service-image">
+				<article class="service-card">
 					<h3 class="service-title">APIK</h3>
 					<p class="service-description">Pelayanan Informasi dan Konsultasi Online</p>
 					<ul class="service-features">
@@ -302,10 +284,9 @@
 						<li>Informasi akurat</li>
 						<li>Respon cepat</li>
 					</ul>
-				</a>
+				</article>
 
-				<a href="https://example.com/difa" class="service-card" target="_blank">
-					<img src="file_attach/fhoto ucapan/h.jpg" alt="DIFA" class="service-image">
+				<article class="service-card">
 					<h3 class="service-title">DIFA</h3>
 					<p class="service-description">Daftar Informasi Perkara Banding</p>
 					<ul class="service-features">
@@ -313,13 +294,12 @@
 						<li>Search engine</li>
 						<li>Export data</li>
 					</ul>
-				</a>
+				</article>
 			</div>
 
 			<h2 class="section-title">Manajemen Internal</h2>
 			<div class="services-row">
-				<a href="https://example.com/sidin" class="service-card" target="_blank">
-					<img src="file_attach/fhoto ucapan/i.jpg" alt="SIDIN" class="service-image">
+				<article class="service-card">
 					<h3 class="service-title">SIDIN</h3>
 					<p class="service-description">Sistem Informasi Dinas</p>
 					<ul class="service-features">
@@ -327,10 +307,9 @@
 						<li>Monitoring real-time</li>
 						<li>Laporan otomatis</li>
 					</ul>
-				</a>
+				</article>
 
-				<a href="https://example.com/silucut" class="service-card" target="_blank">
-					<img src="file_attach/fhoto ucapan/j.jpg" alt="SILUCUT" class="service-image">
+				<article class="service-card">
 					<h3 class="service-title">SILUCUT</h3>
 					<p class="service-description">Layanan Cuti Online</p>
 					<ul class="service-features">
@@ -338,10 +317,9 @@
 						<li>Approval digital</li>
 						<li>Tracking status</li>
 					</ul>
-				</a>
+				</article>
 
-				<a href="https://example.com/ema" class="service-card" target="_blank">
-					<img src="file_attach/fhoto ucapan/k.jpg" alt="e-MA" class="service-image">
+				<article class="service-card">
 					<h3 class="service-title">e-MA</h3>
 					<p class="service-description">Pengelolaan Administrasi Secara Elektronik</p>
 					<ul class="service-features">
@@ -349,10 +327,9 @@
 						<li>Workflow digital</li>
 						<li>Arsip elektronik</li>
 					</ul>
-				</a>
+				</article>
 
-				<a href="https://example.com/berakhlak" class="service-card special-card" target="_blank">
-					<img src="file_attach/fhoto ucapan/l.jpg" alt="BERAKHLAK" class="service-image">
+				<article class="service-card special-card">
 					<h3 class="service-title">BERAKHLAK</h3>
 					<p class="service-description">Bangga Melayani Bangsa</p>
 					<ul class="service-features">
@@ -360,7 +337,7 @@
 						<li>Pelayanan terbaik</li>
 						<li>Komitmen moral</li>
 					</ul>
-				</a>
+				</article>
 			</div>
 		</div>
 	</div>
