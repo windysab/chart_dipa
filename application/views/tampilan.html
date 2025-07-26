@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Inovasi Layanan Pengadilan Agama Amuntai</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<style>
+		
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background: #2d8a5a;
+			min-height: 100vh;
+			padding: 20px;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.header {
+			text-align: center;
+			margin-bottom: 50px;
+			color: white;
+			padding: 40px 20px;
+		}
+
+		.header-icon {
+			font-size: 4rem;
+			margin-bottom: 20px;
+			color: white;
+		}
+
+		.header h1 {
+			font-size: 2.8rem;
+			margin-bottom: 15px;
+			font-weight: 300;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+		}
+
+		.header p {
+			font-size: 1.3rem;
+			opacity: 0.9;
+			font-weight: 300;
+		}
+
+		.services-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 20px;
+			margin-bottom: 30px;
+		}
+
+		.service-card {
+			background: white;
+			border-radius: 15px;
+			padding: 30px 20px;
+			text-align: center;
+			box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+			transition: all 0.3s ease;
+			cursor: pointer;
+			position: relative;
+			min-height: 280px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.service-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+		}
+
+		.service-icon {
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto 20px;
+			font-size: 2rem;
+			color: #2d8a5a;
+		}
+
+		.service-title {
+			font-size: 1.5rem;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 15px;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+
+		.service-description {
+			color: #666;
+			font-size: 0.9rem;
+			line-height: 1.6;
+			margin-bottom: 20px;
+			flex-grow: 1;
+		}
+
+		.service-badge {
+			display: inline-block;
+			background: #2d8a5a;
+			color: white;
+			padding: 8px 20px;
+			border-radius: 25px;
+			font-size: 0.8rem;
+			font-weight: bold;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+
+		@media (max-width: 768px) {
+			.header h1 {
+				font-size: 2rem;
+			}
+
+			.services-grid {
+				grid-template-columns: 1fr;
+				gap: 20px;
+			}
+
+			.service-card {
+				padding: 20px;
+				min-height: auto;
+			}
+		}
+
+		@media (max-width: 1024px) and (min-width: 769px) {
+			.services-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="header-icon">
+				<i class="fas fa-university"></i>
+			</div>
+			<h1>INOVASI LAYANAN PENGADILAN AGAMA AMUNTAI</h1>
+			<p>Sistem Terintegrasi Modern untuk Pelayanan Hukum yang Lebih Baik</p>
+		</div>
+
+		<div class="services-grid">
+			<div class="service-card">
+				<div class="service-icon">
+					<i class="fas fa-handshake"></i>
+				</div>
+				<div class="service-title">KIAI</div>
+				<div class="service-description">Kolaborasi Antar Instansi - Sistem koordinasi dan kerjasama antar
+					lembaga peradilan untuk efisiensi penanganan perkara
+				</div>
+				<div class="service-badge">KOLABORASI</div>
+			</div>
+
+			<div class="service-card">
+				<div class="service-icon">
+					<i class="fas fa-clock"></i>
+				</div>
+				<div class="service-title">PEPES</div>
+				<div class="service-description">Maksimal Perkara Putus 28 Hari - Sistem pemantauan dan manajemen waktu
+					untuk penyelesaian perkara yang efisien
+				</div>
+				<div class="service-badge">28 HARI</div>
+			</div>
+
+			<div class="service-card">
+				<div class="service-icon">
+					<i class="fas fa-video"></i>
+				</div>
+				<div class="service-title">SIPEDAR</div>
+				<div class="service-description">Sidang Secara Daring - Platform persidangan online yang memudahkan
+					akses keadilan dari mana saja
+				</div>
+				<div class="service-badge">ONLINE</div>
+			</div>
+
+			<div class="service-card">
+				<div class="service-icon">
+					<i class="fas fa-mobile-alt"></i>
+				</div>
+				<div class="service-title">E-PAISAN+</div>
+				<div class="service-description">Penyampaian Putusan Secara Elektronik - Sistem digital untuk pengiriman
+					dan penerimaan putusan pengadilan
+				</div>
+				<div class="service-badge">DIGITAL</div>
+			</div>
+
+			<div class="service-card">
+				<div class="service-icon">
+					<i class="fas fa-book"></i>
+				</div>
+				<div class="service-title">SIPETOK</div>
+				<div class="service-description">Buku Tamu Elektronik - Sistem registrasi digital pengunjung untuk
+					keamanan dan efisiensi administrasi
+				</div>
+				<div class="service-badge">E-REGISTRY</div>
+			</div>
+
+			<div class="service-card">
+				<div class="service-icon">
+					<i class="fas fa-heart"></i>
+				</div>
+				<div class="service-title">SIPARAM</div>
+				<div class="service-description">Pelayanan Ramah - Sistem pelayanan terpadu yang mengutamakan kenyamanan
+					dan kemudahan masyarakat
+				</div>
+				<div class="service-badge">RAMAH</div>
+			</div>
+
+			<div class="service-card">
+				<div class="service-icon">
+					<i class="fas fa-qrcode"></i>
+				</div>
+				<div class="service-title">SIDIN</div>
+				<div class="service-description">Sistem Identifikasi Digital - Platform identifikasi dan verifikasi
+					digital untuk keamanan dan akurasi data
+				</div>
+				<div class="service-badge">QR CODE</div>
+			</div>
+
+			<div class="service-card">
+				<div class="service-icon">
+					<i class="fas fa-calendar-check"></i>
+				</div>
+				<div class="service-title">SILUCUT</div>
+				<div class="service-description">Layanan Cuti Online - Sistem manajemen cuti dan izin pegawai berbasis
+					digital yang terintegrasi
+				</div>
+				<div class="service-badge">HR DIGITAL</div>
+			</div>
+
+			<div class="service-card">
+				<div class="service-icon">
+					<i class="fas fa-headset"></i>
+				</div>
+				<div class="service-title">APIK</div>
+				<div class="service-description">Pelayanan Informasi dan Konsultasi Online - Layanan bantuan dan
+					konsultasi hukum secara digital
+				</div>
+				<div class="service-badge">KONSULTASI</div>
+			</div>
+
+			<div class="service-card">
+				<div class="service-icon">
+					<i class="fas fa-laptop"></i>
+				</div>
+				<div class="service-title">E-MA</div>
+				<div class="service-description">Pengelolaan Administrasi Secara Elektronik - Sistem manajemen dokumen
+					dan administrasi terintegrasi
+				</div>
+				<div class="service-badge">E-ADMIN</div>
+			</div>
+
+			<div class="service-card">
+				<div class="service-icon">
+					<i class="fas fa-clipboard-list"></i>
+				</div>
+				<div class="service-title">DIPA</div>
+				<div class="service-description">Daftar Informasi Perkara Banding - Sistem tracking dan monitoring
+					perkara banding secara real-time
+				</div>
+				<div class="service-badge">TRACKING</div>
+			</div>
+
+			<div class="service-card">
+				<div class="service-icon">
+					<i class="fas fa-award"></i>
+				</div>
+				<div class="service-title">BERAKHLAK</div>
+				<div class="service-description">Program Pengembangan Karakter dan Integritas - Sistem evaluasi dan
+					pengembangan nilai-nilai pelayanan
+				</div>
+				<div class="service-badge">INTEGRITAS</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		// Animasi untuk service cards
+		const serviceCards = document.querySelectorAll('.service-card');
+
+		serviceCards.forEach((card, index) => {
+			card.style.opacity = '0';
+			card.style.transform = 'translateY(30px)';
+
+			setTimeout(() => {
+				card.style.transition = 'all 0.6s ease';
+				card.style.opacity = '1';
+				card.style.transform = 'translateY(0)';
+			}, index * 100);
+		});
+
+		// Efek klik pada service cards
+		serviceCards.forEach(card => {
+			card.addEventListener('click', function () {
+				this.style.transform = 'scale(0.98) translateY(-5px)';
+				setTimeout(() => {
+					this.style.transform = 'translateY(-5px)';
+				}, 150);
+			});
+		});
+	</script>
+</body>
+
+</html>
