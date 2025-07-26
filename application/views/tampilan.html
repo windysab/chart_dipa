@@ -8,10 +8,55 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 	<style>
 		
+
 		body {
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			background: #2d8a5a;
+			background: #f5f5f5;
 			min-height: 100vh;
+		}
+
+		.mantap-section {
+			background: white;
+			padding: 40px 20px;
+			text-align: center;
+			border-bottom: 3px solid #2d8a5a;
+		}
+
+		.mantap-title {
+			font-size: 3rem;
+			font-weight: bold;
+			color: #2d8a5a;
+			letter-spacing: 8px;
+			margin-bottom: 15px;
+		}
+
+		.mantap-subtitle {
+			font-size: 1rem;
+			color: #666;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			margin-bottom: 20px;
+		}
+
+		.layanan-title {
+			font-size: 1.8rem;
+			color: #333;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+
+		.layanan-subtitle {
+			display: inline-block;
+			background: #2d8a5a;
+			color: white;
+			padding: 8px 25px;
+			border-radius: 20px;
+			font-size: 0.9rem;
+			font-weight: 500;
+		}
+
+		.main-section {
+			background: #2d8a5a;
 			padding: 20px;
 		}
 
@@ -117,6 +162,11 @@
 		}
 
 		@media (max-width: 768px) {
+			.mantap-title {
+				font-size: 2rem;
+				letter-spacing: 4px;
+			}
+
 			.header h1 {
 				font-size: 2rem;
 			}
@@ -141,146 +191,153 @@
 </head>
 
 <body>
-	<div class="container">
-		<div class="header">
-			<div class="header-icon">
-				<i class="fas fa-university"></i>
-			</div>
-			<h1>INOVASI LAYANAN PENGADILAN AGAMA AMUNTAI</h1>
-			<p>Sistem Terintegrasi Modern untuk Pelayanan Hukum yang Lebih Baik</p>
-		</div>
+	<div class="mantap-section">
+		<div class="mantap-title">MANTAP</div>
+		<div class="mantap-subtitle">MODERN, AMANAH, NYAMAN, TRANSPARAN, AKUNTABEL DAN PROFESIONAL</div>
+		<div class="layanan-title">Layanan Inti Digital</div>
+		<div class="layanan-subtitle">Inovasi Terdepan</div>
+	</div>
 
-		<div class="services-grid">
-			<div class="service-card">
-				<div class="service-icon">
-					<i class="fas fa-handshake"></i>
+	<div class="main-section">
+		<div class="container">
+			
+			<div class="services-grid">
+				<div class="service-card">
+					<div class="service-icon">
+						<i class="fas fa-handshake"></i>
+					</div>
+					<div class="service-title">KIAI</div>
+					<div class="service-description">Kolaborasi Antar Instansi - Sistem koordinasi dan kerjasama antar
+						lembaga peradilan untuk efisiensi penanganan perkara
+					</div>
+					<div class="service-badge">KOLABORASI</div>
 				</div>
-				<div class="service-title">KIAI</div>
-				<div class="service-description">Kolaborasi Antar Instansi - Sistem koordinasi dan kerjasama antar
-					lembaga peradilan untuk efisiensi penanganan perkara
-				</div>
-				<div class="service-badge">KOLABORASI</div>
-			</div>
 
-			<div class="service-card">
-				<div class="service-icon">
-					<i class="fas fa-clock"></i>
+				<div class="service-card">
+					<div class="service-icon">
+						<i class="fas fa-clock"></i>
+					</div>
+					<div class="service-title">PEPES</div>
+					<div class="service-description">Maksimal Perkara Putus 28 Hari - Sistem pemantauan dan manajemen
+						waktu
+						untuk penyelesaian perkara yang efisien
+					</div>
+					<div class="service-badge">28 HARI</div>
 				</div>
-				<div class="service-title">PEPES</div>
-				<div class="service-description">Maksimal Perkara Putus 28 Hari - Sistem pemantauan dan manajemen waktu
-					untuk penyelesaian perkara yang efisien
-				</div>
-				<div class="service-badge">28 HARI</div>
-			</div>
 
-			<div class="service-card">
-				<div class="service-icon">
-					<i class="fas fa-video"></i>
+				<div class="service-card">
+					<div class="service-icon">
+						<i class="fas fa-video"></i>
+					</div>
+					<div class="service-title">SIPEDAR</div>
+					<div class="service-description">Sidang Secara Daring - Platform persidangan online yang memudahkan
+						akses keadilan dari mana saja
+					</div>
+					<div class="service-badge">ONLINE</div>
 				</div>
-				<div class="service-title">SIPEDAR</div>
-				<div class="service-description">Sidang Secara Daring - Platform persidangan online yang memudahkan
-					akses keadilan dari mana saja
-				</div>
-				<div class="service-badge">ONLINE</div>
-			</div>
 
-			<div class="service-card">
-				<div class="service-icon">
-					<i class="fas fa-mobile-alt"></i>
+				<div class="service-card">
+					<div class="service-icon">
+						<i class="fas fa-mobile-alt"></i>
+					</div>
+					<div class="service-title">E-PAISAN+</div>
+					<div class="service-description">Penyampaian Putusan Secara Elektronik - Sistem digital untuk
+						pengiriman
+						dan penerimaan putusan pengadilan
+					</div>
+					<div class="service-badge">DIGITAL</div>
 				</div>
-				<div class="service-title">E-PAISAN+</div>
-				<div class="service-description">Penyampaian Putusan Secara Elektronik - Sistem digital untuk pengiriman
-					dan penerimaan putusan pengadilan
-				</div>
-				<div class="service-badge">DIGITAL</div>
-			</div>
 
-			<div class="service-card">
-				<div class="service-icon">
-					<i class="fas fa-book"></i>
+				<div class="service-card">
+					<div class="service-icon">
+						<i class="fas fa-book"></i>
+					</div>
+					<div class="service-title">SIPETOK</div>
+					<div class="service-description">Buku Tamu Elektronik - Sistem registrasi digital pengunjung untuk
+						keamanan dan efisiensi administrasi
+					</div>
+					<div class="service-badge">E-REGISTRY</div>
 				</div>
-				<div class="service-title">SIPETOK</div>
-				<div class="service-description">Buku Tamu Elektronik - Sistem registrasi digital pengunjung untuk
-					keamanan dan efisiensi administrasi
-				</div>
-				<div class="service-badge">E-REGISTRY</div>
-			</div>
 
-			<div class="service-card">
-				<div class="service-icon">
-					<i class="fas fa-heart"></i>
+				<div class="service-card">
+					<div class="service-icon">
+						<i class="fas fa-heart"></i>
+					</div>
+					<div class="service-title">SIPARAM</div>
+					<div class="service-description">Pelayanan Ramah - Sistem pelayanan terpadu yang mengutamakan
+						kenyamanan
+						dan kemudahan masyarakat
+					</div>
+					<div class="service-badge">RAMAH</div>
 				</div>
-				<div class="service-title">SIPARAM</div>
-				<div class="service-description">Pelayanan Ramah - Sistem pelayanan terpadu yang mengutamakan kenyamanan
-					dan kemudahan masyarakat
-				</div>
-				<div class="service-badge">RAMAH</div>
-			</div>
 
-			<div class="service-card">
-				<div class="service-icon">
-					<i class="fas fa-qrcode"></i>
+				<div class="service-card">
+					<div class="service-icon">
+						<i class="fas fa-qrcode"></i>
+					</div>
+					<div class="service-title">SIDIN</div>
+					<div class="service-description">Sistem Identifikasi Digital - Platform identifikasi dan verifikasi
+						digital untuk keamanan dan akurasi data
+					</div>
+					<div class="service-badge">QR CODE</div>
 				</div>
-				<div class="service-title">SIDIN</div>
-				<div class="service-description">Sistem Identifikasi Digital - Platform identifikasi dan verifikasi
-					digital untuk keamanan dan akurasi data
-				</div>
-				<div class="service-badge">QR CODE</div>
-			</div>
 
-			<div class="service-card">
-				<div class="service-icon">
-					<i class="fas fa-calendar-check"></i>
+				<div class="service-card">
+					<div class="service-icon">
+						<i class="fas fa-calendar-check"></i>
+					</div>
+					<div class="service-title">SILUCUT</div>
+					<div class="service-description">Layanan Cuti Online - Sistem manajemen cuti dan izin pegawai
+						berbasis
+						digital yang terintegrasi
+					</div>
+					<div class="service-badge">HR DIGITAL</div>
 				</div>
-				<div class="service-title">SILUCUT</div>
-				<div class="service-description">Layanan Cuti Online - Sistem manajemen cuti dan izin pegawai berbasis
-					digital yang terintegrasi
-				</div>
-				<div class="service-badge">HR DIGITAL</div>
-			</div>
 
-			<div class="service-card">
-				<div class="service-icon">
-					<i class="fas fa-headset"></i>
+				<div class="service-card">
+					<div class="service-icon">
+						<i class="fas fa-headset"></i>
+					</div>
+					<div class="service-title">APIK</div>
+					<div class="service-description">Pelayanan Informasi dan Konsultasi Online - Layanan bantuan dan
+						konsultasi hukum secara digital
+					</div>
+					<div class="service-badge">KONSULTASI</div>
 				</div>
-				<div class="service-title">APIK</div>
-				<div class="service-description">Pelayanan Informasi dan Konsultasi Online - Layanan bantuan dan
-					konsultasi hukum secara digital
-				</div>
-				<div class="service-badge">KONSULTASI</div>
-			</div>
 
-			<div class="service-card">
-				<div class="service-icon">
-					<i class="fas fa-laptop"></i>
+				<div class="service-card">
+					<div class="service-icon">
+						<i class="fas fa-laptop"></i>
+					</div>
+					<div class="service-title">E-MA</div>
+					<div class="service-description">Pengelolaan Administrasi Secara Elektronik - Sistem manajemen
+						dokumen
+						dan administrasi terintegrasi
+					</div>
+					<div class="service-badge">E-ADMIN</div>
 				</div>
-				<div class="service-title">E-MA</div>
-				<div class="service-description">Pengelolaan Administrasi Secara Elektronik - Sistem manajemen dokumen
-					dan administrasi terintegrasi
-				</div>
-				<div class="service-badge">E-ADMIN</div>
-			</div>
 
-			<div class="service-card">
-				<div class="service-icon">
-					<i class="fas fa-clipboard-list"></i>
+				<div class="service-card">
+					<div class="service-icon">
+						<i class="fas fa-clipboard-list"></i>
+					</div>
+					<div class="service-title">DIPA</div>
+					<div class="service-description">Daftar Informasi Perkara Banding - Sistem tracking dan monitoring
+						perkara banding secara real-time
+					</div>
+					<div class="service-badge">TRACKING</div>
 				</div>
-				<div class="service-title">DIPA</div>
-				<div class="service-description">Daftar Informasi Perkara Banding - Sistem tracking dan monitoring
-					perkara banding secara real-time
-				</div>
-				<div class="service-badge">TRACKING</div>
-			</div>
 
-			<div class="service-card">
-				<div class="service-icon">
-					<i class="fas fa-award"></i>
+				<div class="service-card">
+					<div class="service-icon">
+						<i class="fas fa-award"></i>
+					</div>
+					<div class="service-title">BERAKHLAK</div>
+					<div class="service-description">Program Pengembangan Karakter dan Integritas - Sistem evaluasi dan
+						pengembangan nilai-nilai pelayanan
+					</div>
+					<div class="service-badge">INTEGRITAS</div>
 				</div>
-				<div class="service-title">BERAKHLAK</div>
-				<div class="service-description">Program Pengembangan Karakter dan Integritas - Sistem evaluasi dan
-					pengembangan nilai-nilai pelayanan
-				</div>
-				<div class="service-badge">INTEGRITAS</div>
 			</div>
 		</div>
 	</div>
