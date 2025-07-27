@@ -113,6 +113,8 @@
 			justify-content: space-between;
 			transform-style: preserve-3d;
 			perspective: 1000px;
+			text-decoration: none;
+			color: inherit;
 		}
 
 		.service-card::before {
@@ -136,6 +138,8 @@
 		.service-card:hover {
 			transform: translateY(-15px) scale(1.03);
 			box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+			text-decoration: none;
+			color: inherit;
 		}
 
 		.service-card.card-tilt {
@@ -288,6 +292,14 @@
 			}
 		}
 
+		.service-image {
+			width: 100%;
+			height: 150px;
+			object-fit: cover;
+			border-radius: 10px;
+			margin-bottom: 15px;
+		}
+
 		@media (max-width: 768px) {
 			.mantap-title {
 				font-size: 2rem;
@@ -330,18 +342,20 @@
 	<div class="main-section">
 		<div class="container">
 			<div class="services-grid">
-				<div class="service-card">
+				<a href="https://drive.google.com/file/d/1lxnJn1gUqUMbC75OS69Tb7j5kEjJVUNg/view" class="service-card"
+					target="_blank">
 					<div class="service-icon">
-						<i class="fas fa-handshake"></i>
+						<i class="fas fa-car"></i>
 					</div>
-					<div class="service-title">KIAI</div>
-					<div class="service-description">Kolaborasi Antar Instansi - Sistem koordinasi dan kerjasama antar
-						lembaga peradilan untuk efisiensi penanganan perkara
+					<img src="file_attach/inovasi/Promil.png" alt="PROMIL" class="service-image">
+					<div class="service-title">PROMIL</div>
+					<div class="service-description">Pesan Produk Ambil - Inovasi layanan pengambilan produk pengadilan
+						secara drive thru (layanan tanpa turun dari kendaraan)
 					</div>
-					<div class="service-badge">KOLABORASI</div>
-				</div>
+					<div class="service-badge">DRIVE THRU</div>
+				</a>
 
-				<div class="service-card">
+				<a href="https://example.com/pepes" class="service-card" target="_blank">
 					<div class="service-icon">
 						<i class="fas fa-clock"></i>
 					</div>
@@ -351,9 +365,9 @@
 						untuk penyelesaian perkara yang efisien
 					</div>
 					<div class="service-badge">28 HARI</div>
-				</div>
+				</a>
 
-				<div class="service-card">
+				<a href="https://example.com/sipedar" class="service-card" target="_blank">
 					<div class="service-icon">
 						<i class="fas fa-video"></i>
 					</div>
@@ -362,9 +376,9 @@
 						akses keadilan dari mana saja
 					</div>
 					<div class="service-badge">ONLINE</div>
-				</div>
+				</a>
 
-				<div class="service-card">
+				<a href="https://example.com/epaisan" class="service-card" target="_blank">
 					<div class="service-icon">
 						<i class="fas fa-mobile-alt"></i>
 					</div>
@@ -374,9 +388,9 @@
 						dan penerimaan putusan pengadilan
 					</div>
 					<div class="service-badge">DIGITAL</div>
-				</div>
+				</a>
 
-				<div class="service-card">
+				<a href="https://example.com/sipetok" class="service-card" target="_blank">
 					<div class="service-icon">
 						<i class="fas fa-book"></i>
 					</div>
@@ -385,9 +399,9 @@
 						keamanan dan efisiensi administrasi
 					</div>
 					<div class="service-badge">E-REGISTRY</div>
-				</div>
+				</a>
 
-				<div class="service-card">
+				<a href="https://example.com/siparam" class="service-card" target="_blank">
 					<div class="service-icon">
 						<i class="fas fa-heart"></i>
 					</div>
@@ -397,9 +411,9 @@
 						dan kemudahan masyarakat
 					</div>
 					<div class="service-badge">RAMAH</div>
-				</div>
+				</a>
 
-				<div class="service-card">
+				<a href="https://example.com/sidin" class="service-card" target="_blank">
 					<div class="service-icon">
 						<i class="fas fa-qrcode"></i>
 					</div>
@@ -408,9 +422,9 @@
 						digital untuk keamanan dan akurasi data
 					</div>
 					<div class="service-badge">QR CODE</div>
-				</div>
+				</a>
 
-				<div class="service-card">
+				<a href="https://example.com/silucut" class="service-card" target="_blank">
 					<div class="service-icon">
 						<i class="fas fa-calendar-check"></i>
 					</div>
@@ -420,9 +434,9 @@
 						digital yang terintegrasi
 					</div>
 					<div class="service-badge">HR DIGITAL</div>
-				</div>
+				</a>
 
-				<div class="service-card">
+				<a href="https://example.com/apik" class="service-card" target="_blank">
 					<div class="service-icon">
 						<i class="fas fa-headset"></i>
 					</div>
@@ -431,9 +445,9 @@
 						konsultasi hukum secara digital
 					</div>
 					<div class="service-badge">KONSULTASI</div>
-				</div>
+				</a>
 
-				<div class="service-card">
+				<a href="https://example.com/ema" class="service-card" target="_blank">
 					<div class="service-icon">
 						<i class="fas fa-laptop"></i>
 					</div>
@@ -443,9 +457,9 @@
 						dan administrasi terintegrasi
 					</div>
 					<div class="service-badge">E-ADMIN</div>
-				</div>
+				</a>
 
-				<div class="service-card">
+				<a href="https://example.com/dipa" class="service-card" target="_blank">
 					<div class="service-icon">
 						<i class="fas fa-clipboard-list"></i>
 					</div>
@@ -454,9 +468,9 @@
 						perkara banding secara real-time
 					</div>
 					<div class="service-badge">TRACKING</div>
-				</div>
+				</a>
 
-				<div class="service-card">
+				<a href="https://example.com/berakhlak" class="service-card" target="_blank">
 					<div class="service-icon">
 						<i class="fas fa-award"></i>
 					</div>
@@ -465,7 +479,7 @@
 						pengembangan nilai-nilai pelayanan
 					</div>
 					<div class="service-badge">INTEGRITAS</div>
-				</div>
+				</a>
 			</div>
 		</div>
 	</div>
@@ -568,7 +582,7 @@
 			}, index * 150);
 		});
 
-		// Click effect with ripple
+		// Click effect with ripple (modified for links)
 		serviceCards.forEach(card => {
 			card.addEventListener('click', function (e) {
 				const ripple = document.createElement('div');
