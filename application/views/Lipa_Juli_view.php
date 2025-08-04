@@ -58,7 +58,7 @@
 <div class="container">
     <div class="dashboard-header">
         <div class="dashboard-title">
-            <h1>LAPORAN PERKARA LIPA JULI 2025</h1>
+            <h1>LAPORAN PERKARA LIPA JULI</h1>
             <h2>Statistik Perkara Diterima, Dicabut, dan Diputus Menurut Jenis</h2>
         </div>
         <div class="dashboard-date">JULI 2025</div>

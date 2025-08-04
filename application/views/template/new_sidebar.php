@@ -193,7 +193,7 @@
 					<a href="<?php echo site_url('LipaJuliController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-file-signature"></i>
 						<p>
-							Laporan LIPA Juli 2025
+							Laporan LIPA Juli 2025 
 						</p>
 					</a>
 				</li>
