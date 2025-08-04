@@ -221,6 +221,14 @@
 						</p>
 					</a>
 				</li>
+				<li class="nav-item">
+					<a href="<?php echo site_url('AgendaPimpinanJuliController') ?>" class="nav-link">
+						<i class="nav-icon fas fa-user-tie"></i>
+						<p>
+							Agenda Pimpinan Juli
+						</p>
+					</a>
+				</li>
 
 				<li class="nav-item">
 					<a href="<?php echo site_url('PersyaratanController') ?>" class="nav-link">
