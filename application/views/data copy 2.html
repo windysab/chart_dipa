@@ -10,309 +10,219 @@
 		body {
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 			background: #f5f5f5;
+			margin: 0;
+			padding: 0;
 			min-height: 100vh;
 			overflow-x: hidden;
 		}
 
 		.mantap-section {
-			background: white;
-			padding: 40px 20px;
+			background: #fff;
+			padding: 32px 10px 24px 10px;
 			text-align: center;
-			border-bottom: 3px solid #2d8a5a;
+			border-radius: 16px;
+			max-width: 700px;
+			margin: 32px auto 0 auto;
+			box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
 		}
 
 		.mantap-title {
-			font-size: 3rem;
+			font-size: 2.7rem;
 			font-weight: bold;
 			color: #2d8a5a;
 			letter-spacing: 8px;
-			margin-bottom: 15px;
+			margin-bottom: 8px;
 		}
 
 		.mantap-subtitle {
-			font-size: 1rem;
-			color: #666;
+			font-size: 1.1rem;
+			color: #444;
 			text-transform: uppercase;
 			letter-spacing: 2px;
-			margin-bottom: 20px;
+			margin-bottom: 10px;
+			font-weight: 500;
 		}
 
 		.layanan-title {
-			font-size: 1.8rem;
-			color: #333;
-			font-weight: bold;
-			margin-bottom: 10px;
+			font-size: 1.5rem;
+			color: #222;
+			font-weight: 800;
+			margin-bottom: 8px;
+			letter-spacing: 1px;
 		}
 
 		.layanan-subtitle {
 			display: inline-block;
 			background: #2d8a5a;
-			color: white;
-			padding: 8px 25px;
+			color: #fff;
+			padding: 10px 32px;
 			border-radius: 20px;
-			font-size: 0.9rem;
-			font-weight: 500;
+			font-size: 1.05rem;
+			font-weight: 600;
+			margin-bottom: 0;
 		}
 
 		.main-section {
-			background: #2d8a5a;
-			padding: 20px;
+			background: transparent;
+			padding: 40px 0 60px 0;
 		}
 
 		.container {
-			max-width: 1200px;
+			max-width: 1300px;
 			margin: 0 auto;
-		}
-
-		.header {
-			text-align: center;
-			margin-bottom: 50px;
-			color: white;
-			padding: 40px 20px;
-		}
-
-		.header-icon {
-			font-size: 4rem;
-			margin-bottom: 20px;
-			color: white;
-		}
-
-		.header h1 {
-			font-size: 2.8rem;
-			margin-bottom: 15px;
-			font-weight: 300;
-			letter-spacing: 2px;
-			text-transform: uppercase;
-		}
-
-		.header p {
-			font-size: 1.3rem;
-			opacity: 0.9;
-			font-weight: 300;
+			padding: 0 16px;
 		}
 
 		.services-grid {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			gap: 20px;
-			margin-bottom: 30px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 36px;
 		}
 
 		.service-card {
-			background: white;
-			border-radius: 15px;
-			padding: 30px 20px;
+			background: #fff;
+			border-radius: 22px;
+			box-shadow: 0 4px 24px rgba(44, 62, 80, 0.10);
+			padding: 0 0 32px 0;
 			text-align: center;
-			box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-			transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-			cursor: pointer;
-			position: relative;
-			min-height: 280px;
 			display: flex;
 			flex-direction: column;
-			justify-content: space-between;
-			transform-style: preserve-3d;
-			perspective: 1000px;
+			align-items: center;
+			transition: box-shadow 0.25s, transform 0.22s;
+			min-height: 440px;
+			width: 340px;
+			position: relative;
 			text-decoration: none;
 			color: inherit;
-		}
-
-		.service-card::before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background: linear-gradient(135deg, rgba(45, 138, 90, 0.1), rgba(45, 138, 90, 0.05));
-			border-radius: 15px;
-			opacity: 0;
-			transition: opacity 0.3s ease;
-			pointer-events: none;
-		}
-
-		.service-card:hover::before {
-			opacity: 1;
+			overflow: hidden;
 		}
 
 		.service-card:hover {
-			transform: translateY(-15px) scale(1.03);
-			box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+			box-shadow: 0 12px 36px rgba(44, 62, 80, 0.18);
+			transform: translateY(-10px) scale(1.025);
 			text-decoration: none;
-			color: inherit;
 		}
 
-		.service-card.card-tilt {
-			transform-origin: center center;
+		.service-image {
+			width: 100%;
+			max-width: 340px;
+			height: 160px;
+			object-fit: cover;
+			border-radius: 22px 22px 0 0;
+			background: #f2f2f2;
 		}
 
 		.service-title {
-			font-size: 1.5rem;
-			font-weight: bold;
-			color: #333;
-			margin-bottom: 15px;
+			font-size: 1.35rem;
+			font-weight: 900;
+			color: #1a3d2d;
+			margin: 28px 0 12px 0;
 			text-transform: uppercase;
-			letter-spacing: 1px;
-			transition: all 0.3s ease;
-			position: relative;
-			z-index: 2;
-		}
-
-		.service-card:hover .service-title {
-			color: #2d8a5a;
+			letter-spacing: 1.5px;
 		}
 
 		.service-description {
-			color: #666;
-			font-size: 0.9rem;
+			color: #444;
+			font-size: 1.05rem;
 			line-height: 1.6;
-			margin-bottom: 20px;
+			margin: 0 22px 18px 22px;
+			text-align: center;
+			font-weight: 400;
 			flex-grow: 1;
-			transition: all 0.3s ease;
-			position: relative;
-			z-index: 2;
-		}
-
-		.service-card:hover .service-description {
-			/* Remove translateZ */
 		}
 
 		.service-badge {
 			display: inline-block;
 			background: #2d8a5a;
-			color: white;
-			padding: 8px 20px;
-			border-radius: 25px;
-			font-size: 0.8rem;
-			font-weight: bold;
+			color: #fff;
+			padding: 12px 28px;
+			border-radius: 22px;
+			font-size: 1.05rem;
+			font-weight: 800;
 			text-transform: uppercase;
-			letter-spacing: 0.5px;
-			transition: all 0.3s ease;
-			position: relative;
-			z-index: 2;
+			letter-spacing: 1.2px;
+			margin-top: 10px;
+			box-shadow: 0 2px 10px rgba(45, 138, 90, 0.10);
+			transition: background 0.2s;
 		}
 
 		.service-card:hover .service-badge {
-			background: linear-gradient(45deg, #2d8a5a, #4caf50);
-			transform: scale(1.05);
-			box-shadow: 0 5px 15px rgba(45, 138, 90, 0.4);
+			background: #217043;
 		}
 
-		/* Floating particles effect */
-		.floating-particles {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			pointer-events: none;
-			overflow: hidden;
+		/* Card khusus "Selanjutnya" */
+		.service-card.next-card {
+			background: linear-gradient(135deg, #2d8a5a 80%, #4caf50 100%);
+			color: #fff;
+			box-shadow: 0 8px 32px rgba(44, 62, 80, 0.18);
 		}
 
-		.particle {
-			position: absolute;
-			width: 4px;
-			height: 4px;
-			background: rgba(45, 138, 90, 0.3);
-			border-radius: 50%;
-			animation: float-particle 6s infinite linear;
+		.service-card.next-card .service-title,
+		.service-card.next-card .service-description {
+			color: #fff;
 		}
 
-		@keyframes float-particle {
-			0% {
-				opacity: 0;
-				transform: translateY(100vh) translateX(0);
-			}
-
-			10% {
-				opacity: 1;
-			}
-
-			90% {
-				opacity: 1;
-			}
-
-			100% {
-				opacity: 0;
-				transform: translateY(-100px) translateX(100px);
-			}
+		.service-card.next-card .service-badge {
+			background: rgba(255, 255, 255, 0.18);
+			color: #fff;
+			border: 2px solid #fff;
 		}
 
-		/* Glow effect on hover */
-		.service-card::after {
-			content: '';
-			position: absolute;
-			top: -2px;
-			left: -2px;
-			right: -2px;
-			bottom: -2px;
-			background: linear-gradient(45deg, #2d8a5a, #4caf50, #2d8a5a);
-			border-radius: 17px;
-			z-index: -1;
-			opacity: 0;
-			transition: opacity 0.3s ease;
+		.service-card.next-card:hover .service-badge {
+			background: #fff;
+			color: #2d8a5a;
 		}
 
-		.service-card:hover::after {
-			opacity: 0.7;
-			animation: glow-pulse 2s infinite alternate;
-		}
-
-		@keyframes glow-pulse {
-			0% {
-				opacity: 0.7;
-				transform: scale(1);
-			}
-
-			100% {
-				opacity: 0.9;
-				transform: scale(1.02);
-			}
-		}
-
-		.service-image {
-			width: 100%;
-			height: 150px;
-			object-fit: cover;
-			border-radius: 10px;
-			margin-bottom: 15px;
-		}
-
-		@media (max-width: 768px) {
-			.mantap-title {
-				font-size: 2rem;
-				letter-spacing: 4px;
-			}
-
-			.header h1 {
-				font-size: 2rem;
-			}
-
+		@media (max-width: 1100px) {
 			.services-grid {
-				grid-template-columns: 1fr;
-				gap: 20px;
+				gap: 24px;
 			}
 
 			.service-card {
-				padding: 20px;
-				min-height: auto;
+				width: 95vw;
+				max-width: 400px;
 			}
 		}
 
-		@media (max-width: 1024px) and (min-width: 769px) {
+		@media (max-width: 900px) {
 			.services-grid {
-				grid-template-columns: repeat(2, 1fr);
+				gap: 18px;
+			}
+
+			.service-card {
+				width: 98vw;
+				max-width: 98vw;
+			}
+		}
+
+		@media (max-width: 700px) {
+			.mantap-section {
+				padding: 18px 2vw 14px 2vw;
+				margin: 18px 0 0 0;
+			}
+
+			.main-section {
+				padding: 12px 0 24px 0;
+			}
+
+			.service-card {
+				min-height: 350px;
+				width: 99vw;
+				max-width: 99vw;
+			}
+
+			.service-image {
+				height: 120px;
 			}
 		}
 	</style>
 </head>
 
 <body>
-	<div class="floating-particles" id="particles"></div>
-
 	<div class="mantap-section">
 		<div class="mantap-title">MANTAP</div>
-		<div class="mantap-subtitle">MODERN, AMANAH, NYAMAN, TRANSPARAN, AKUNTABEL, dan PROFESIONAL</div>
+		<div class="mantap-subtitle">MODERN, AMANAH, NYAMAN, TRANSPARAN, AKUNTABEL, DAN PROFESIONAL</div>
 		<div class="layanan-title">Inovasi Pengadilan Agama Amuntai Kelas IB</div>
 		<div class="layanan-subtitle">Transformasi Digital untuk Pelayanan Prima</div>
 	</div>
@@ -330,16 +240,15 @@
 					<div class="service-badge">DRIVE THRU</div>
 				</a>
 
-			
 				<a href="https://www.canva.com/design/DAGuWQUE0Nk/pMDeTFSN5s6GWvwm0wtHcQ/view?utm_content=DAGuWQUE0Nk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0b298ed146"
 					class="service-card" target="_blank">
 					<img src="file_attach/inovasi/ptsp.png" alt="PTSP Online" class="service-image">
-					<div class="service-title">PTSP Online</div>
+					<div class="service-title">PTSP ONLINE</div>
 					<div class="service-description">Aplikasi PTSP Online Memudahkan Masyarakat Mengakses Layanan
 						Pengadilan Secara Efisien, dengan Fitur Utamanya Meliputi Voice Call, Video Call, Dan Online
 						Chat.
 					</div>
-					<div class="service-badge">Online</div>
+					<div class="service-badge">ONLINE</div>
 				</a>
 
 				<a href="https://docs.google.com/document/d/1Btn0FN7UW0pxdrCp79fnhAwNtS1EzAzm/edit?tab=t.0"
@@ -348,72 +257,78 @@
 					<div class="service-title">APLIKASI KARTU PINTAR</div>
 					<div class="service-description">Digunakan untuk antrian sidang dengan sistem barcode
 					</div>
-					<div class="service-badge">Kartu Pintar</div>
+					<div class="service-badge">KARTU PINTAR</div>
 				</a>
 
 				<a href="https://docs.google.com/document/d/19T8U0k6mtTb2o6BZmnBter5dv4N2ngyf/edit?tab=t.0#heading=h.gmi2r0xc3ppr"
 					class="service-card" target="_blank">
 					<img src="file_attach/inovasi/E-Kaper.png" alt="E-Kaper" class="service-image">
-					<div class="service-title">E-Kaper</div>
+					<div class="service-title">E-KAPER</div>
 					<div class="service-description">Aplikasi pengelolaan data ATK
 						Perkara yang bertujuan untuk
 						mempermudah pencatatan dan
 						pelaporan ATK Perkara.
 					</div>
-					<div class="service-badge">E-Kaper</div>
+					<div class="service-badge">E-KAPER</div>
 				</a>
 
 				<a href="https://docs.google.com/document/d/1ULQcU9fWJkis0ZJ_05XPkGJH5wjOKThz/edit?tab=t.0#heading=h.u4xt71qy7dt3"
 					class="service-card" target="_blank">
 					<img src="file_attach/inovasi/Cuti.png" alt="Aplikasi Surat Izin dan Cuti" class="service-image">
-					<div class="service-title">Surat Izin dan Cuti</div>
+					<div class="service-title">SURAT IZIN DAN CUTI</div>
 					<div class="service-description">Aplikasi Surat Izin dan Cuti merupakan
 						aplikasi yang digunakan pegawai untuk
 						membuat surat permohonan cuti, keluar
 						kantor, pulang cepat serta surat tugas
 						jurusita tanpa pengetikan manual.
 					</div>
-					<div class="service-badge">Surat Izin dan Cuti</div>
+					<div class="service-badge">SURAT IZIN DAN CUTI</div>
 				</a>
 
 				<a href="https://docs.google.com/document/d/1ohIAei3lgZU9BfJXfKWsd3V3CcSz23cWK3ByFU0SOuU/edit?tab=t.0#heading=h.3xfk161a2hc7"
 					class="service-card" target="_blank">
 					<img src="file_attach/inovasi/Lab_SIPP.png" alt="Laboratorium SIPP" class="service-image">
-					<div class="service-title">Laboratorium SIPP</div>
+					<div class="service-title">LABORATORIUM SIPP</div>
 					<div class="service-description">Laboratorium SIPP merupakan aplikasi
 						pendukung SIPP yang di dalamnya berisi
 						statistik dan keadaan perkara secara
 						realtime serta dapat membantu pembuatan
 						laporan bulanan.
 					</div>
-					<div class="service-badge">Lab SIPP</div>
+					<div class="service-badge">LAB SIPP</div>
 				</a>
 
 				<a href="https://www.canva.com/design/DAGucNmIVvU/26DuoLmFrw1kC4wUddMOJg/view?utm_content=DAGucNmIVvU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hba9576d264"
 					class="service-card" target="_blank">
 					<img src="file_attach/inovasi/mesin_anrian.png" alt="MESIN ANRIAN LAYANAN PTSP"
 						class="service-image">
-					<div class="service-title">MESIN ANRIAN LAYANAN PTSP</div>
+					<div class="service-title">MESIN ANTRIAN LAYANAN PTSP</div>
 					<div class="service-description">Digunakan untuk mencetak tiket antrian
 						Layanan PTSP yang terdiri dari meja
 						informasi, meja pendaftaran, pengambilan
 						produk pengadilan, kasir, meja pengaduan
 						dan posbakum.
 					</div>
-					<div class="service-badge">Menara PTSP</div>
+					<div class="service-badge">MENARA PTSP</div>
 				</a>
 
-				<a href="https://docs.google.com/document/d/1aLrb00DkfJRF6eHzh9U-o6XGypQPp_eCMN1SWcqjs4k/edit?tab=t.0#heading=h.di6p74datm5f" class="service-card" target="_blank">
+				<a href="https://docs.google.com/document/d/1aLrb00DkfJRF6eHzh9U-o6XGypQPp_eCMN1SWcqjs4k/edit?tab=t.0#heading=h.di6p74datm5f"
+					class="service-card" target="_blank">
 					<img src="file_attach/inovasi/si_pengejar_nona.png" alt="Si Pengejar Nona" class="service-image">
-					<div class="service-title">Sistem Pengembalian Uang Sisa Panjar Non Tunai</div>
-					<div class="service-description">Daftar Informasi Perkara Banding - Sistem tracking dan monitoring
-						perkara banding secara real-time
+					<div class="service-title">SI PENGEJAR NONA</div>
+					<div class="service-description">Sistem Pengembalian Uang Sisa Panjar Non Tunai - Daftar Informasi
+						Perkara Banding dengan sistem tracking dan monitoring perkara banding secara real-time
 					</div>
-					<div class="service-badge">Si Pengejar Nona</div>
+					<div class="service-badge">SI PENGEJAR NONA</div>
 				</a>
-				
 
-				
+				<a href="https://www.pa-amuntai.go.id/index.php?option=com_content&view=article&id=16173:inovasi-pengadilan-agama-amuntai-kelas-ib&catid=115&Itemid=539"
+					class="service-card next-card" target="_blank">
+					<div class="service-title">SELANJUTNYA</div>
+					<div class="service-description">Untuk melihat layanan inovasi lainnya, silakan klik di sini untuk
+						informasi lebih lengkap.</div>
+					<div class="service-badge">LIHAT SEMUA</div>
+				</a>
 			</div>
 		</div>
 	</div>
