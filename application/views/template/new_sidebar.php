@@ -205,6 +205,14 @@
 						</p>
 					</a>
 				</li>
+				<li class="nav-item">
+					<a href="<?php echo site_url('LKJuliPerkaraController') ?>" class="nav-link">
+						<i class="nav-icon fas fa-file-invoice-dollar"></i>
+						<p>
+							Laporan Keuangan Perkara Juli
+						</p>
+					</a>
+				</li>
 
 				<li class="nav-item">
 					<a href="<?php echo site_url('PersyaratanController') ?>" class="nav-link">
