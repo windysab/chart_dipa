@@ -821,65 +821,154 @@
 		/* Tables */
 		.table-card {
 			background: var(--card-bg);
-			border-radius: var(--border-radius);
+			border: 1px solid var(--border-color);
+			border-radius: var(--border-radius-lg);
 			overflow: hidden;
 			box-shadow: var(--box-shadow);
 			margin-bottom: 2rem;
+			transition: var(--transition);
+		}
+
+		.table-card:hover {
+			box-shadow: var(--box-shadow-lg);
+			border-color: var(--primary-light);
 		}
 
 		.table-card-title {
-			padding: 1.25rem 1.5rem;
-			font-size: 1.125rem;
-			font-weight: 600;
-			color: var(--dark);
-			border-bottom: 1px solid var(--gray-light);
+			padding: 1.5rem 2rem;
+			font-size: 1.25rem;
+			font-weight: 700;
+			color: var(--text-primary);
+			background: linear-gradient(135deg, var(--primary), var(--primary-light));
+			color: white;
 			display: flex;
 			align-items: center;
-			gap: 0.5rem;
+			gap: 0.75rem;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.table-card-title::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+			transition: var(--transition-slow);
+		}
+
+		.table-card:hover .table-card-title::before {
+			left: 100%;
 		}
 
 		.table-card-title i {
-			color: var(--primary);
+			color: white;
+			font-size: 1.5rem;
 		}
 
 		.table-card-body {
-			padding: 1rem;
+			padding: 0;
+			overflow-x: auto;
 		}
 
 		.modern-table {
 			width: 100%;
 			border-collapse: separate;
 			border-spacing: 0;
+			min-width: 600px;
 		}
 
 		.modern-table th {
-			background: rgba(241, 245, 249, 0.5);
-			color: var(--dark);
-			font-weight: 600;
-			padding: 1rem;
+			background: linear-gradient(135deg, var(--gray-light), #f1f5f9);
+			color: var(--text-primary);
+			font-weight: 700;
+			padding: 1.25rem 1.5rem;
 			text-align: left;
-			border-bottom: 1px solid var(--gray-light);
 			font-size: 0.875rem;
+			letter-spacing: 0.025em;
+			text-transform: uppercase;
+			position: relative;
+		}
+
+		.modern-table th::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 2px;
+			background: linear-gradient(90deg, var(--primary), var(--secondary));
 		}
 
 		.modern-table td {
-			padding: 1rem;
-			border-bottom: 1px solid var(--gray-light);
+			padding: 1.25rem 1.5rem;
+			border-bottom: 1px solid var(--border-color);
 			vertical-align: middle;
-			color: var(--gray);
-			font-size: 0.875rem;
+			color: var(--text-secondary);
+			font-size: 0.9rem;
+			position: relative;
 		}
 
 		.modern-table tr:last-child td {
 			border-bottom: none;
 		}
 
-		.modern-table tr {
+		.modern-table tbody tr {
+			transition: var(--transition);
+			position: relative;
+		}
+
+		.modern-table tbody tr::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 4px;
+			height: 100%;
+			background: var(--primary);
+			transform: scaleY(0);
 			transition: var(--transition);
 		}
 
-		.modern-table tr:hover td {
-			background: #f8fafc;
+		.modern-table tbody tr:hover {
+			background: linear-gradient(135deg, rgba(99, 102, 241, 0.02), rgba(99, 102, 241, 0.05));
+			transform: translateX(5px);
+		}
+
+		.modern-table tbody tr:hover::before {
+			transform: scaleY(1);
+		}
+
+		.modern-table tbody tr:hover td {
+			color: var(--text-primary);
+			font-weight: 500;
+		}
+
+		/* Table responsive wrapper */
+		.table-responsive {
+			position: relative;
+			overflow-x: auto;
+			-webkit-overflow-scrolling: touch;
+		}
+
+		.table-responsive::-webkit-scrollbar {
+			height: 6px;
+		}
+
+		.table-responsive::-webkit-scrollbar-track {
+			background: var(--gray-light);
+			border-radius: 3px;
+		}
+
+		.table-responsive::-webkit-scrollbar-thumb {
+			background: var(--primary);
+			border-radius: 3px;
+		}
+
+		.table-responsive::-webkit-scrollbar-thumb:hover {
+			background: var(--primary-dark);
 		}
 
 		/* Circle Stats */
@@ -1003,6 +1092,16 @@
 			}
 		}
 
+		@media (max-width: 1200px) {
+			.data-grid {
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			}
+			
+			.cctv-grid {
+				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+			}
+		}
+
 		@media (max-width: 992px) {
 			.dashboard-header {
 				padding: 2rem;
@@ -1026,12 +1125,53 @@
 				padding: 1rem;
 			}
 
-			.header-title {
-				font-size: 1.75rem;
+			.dashboard-header {
+				padding: 2rem 0;
+				margin-bottom: 1.5rem;
+				border-radius: 0 0 var(--border-radius) var(--border-radius);
 			}
 
-			.header-subtitle {
-				font-size: 1.1rem;
+			.theme-toggle {
+				top: 0.75rem;
+				right: 0.75rem;
+				padding: 0.5rem;
+			}
+
+			.logo-container {
+				width: 70px;
+				height: 70px;
+				margin-bottom: 1rem;
+			}
+
+			.logo-container i {
+				font-size: 2rem;
+			}
+
+			.dashboard-title {
+				font-size: 2rem;
+			}
+
+			.dashboard-subtitle {
+				font-size: 1rem;
+			}
+
+			.stats-grid {
+				grid-template-columns: 1fr;
+				gap: 1rem;
+			}
+
+			.cctv-grid {
+				grid-template-columns: 1fr;
+				gap: 1rem;
+			}
+
+			.data-grid {
+				grid-template-columns: 1fr;
+				gap: 1.5rem;
+			}
+
+			.data-card {
+				padding: 1.5rem;
 			}
 
 			.section-title {
@@ -1042,10 +1182,12 @@
 				flex-direction: column;
 				align-items: center;
 				gap: 1rem;
+				padding: 1rem;
 			}
 
 			.circle-stats-grid {
-				grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+				grid-template-columns: repeat(2, 1fr);
+				gap: 1rem;
 			}
 
 			.circle-stat-value-container {
@@ -1055,6 +1197,17 @@
 
 			.circle-stat-value {
 				font-size: 1.75rem;
+			}
+
+			.table-card-title {
+				padding: 1rem 1.5rem;
+				font-size: 1.1rem;
+			}
+
+			.modern-table th,
+			.modern-table td {
+				padding: 1rem;
+				font-size: 0.8rem;
 			}
 		}
 
@@ -1073,6 +1226,121 @@
 
 			.circle-stats-grid {
 				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+
+		@media (max-width: 480px) {
+			.dashboard-title {
+				font-size: 1.75rem;
+			}
+
+			.circle-stats-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.data-card-value {
+				font-size: 2rem;
+			}
+
+			.visitor-counter-item {
+				flex-direction: column;
+				text-align: center;
+				gap: 0.5rem;
+			}
+		}
+
+		/* Utility Classes */
+		.fade-in {
+			animation: fadeIn 0.8s ease-out;
+		}
+
+		.slide-up {
+			animation: slideUp 0.6s ease-out;
+		}
+
+		.scale-in {
+			animation: scaleIn 0.5s ease-out;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+
+		@keyframes slideUp {
+			from {
+				transform: translateY(30px);
+				opacity: 0;
+			}
+			to {
+				transform: translateY(0);
+				opacity: 1;
+			}
+		}
+
+		@keyframes scaleIn {
+			from {
+				transform: scale(0.9);
+				opacity: 0;
+			}
+			to {
+				transform: scale(1);
+				opacity: 1;
+			}
+		}
+
+		/* Loading States */
+		.loading {
+			position: relative;
+			overflow: hidden;
+		}
+
+		.loading::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+			animation: shimmer 1.5s infinite;
+		}
+
+		@keyframes shimmer {
+			0% {
+				left: -100%;
+			}
+			100% {
+				left: 100%;
+			}
+		}
+
+		/* Focus States for Accessibility */
+		.theme-toggle:focus,
+		.cctv-status:focus {
+			outline: 2px solid var(--primary);
+			outline-offset: 2px;
+		}
+
+		/* Print Styles */
+		@media print {
+			.theme-toggle {
+				display: none;
+			}
+			
+			.dashboard-header {
+				background: var(--primary) !important;
+				-webkit-print-color-adjust: exact;
+			}
+			
+			.card,
+			.data-card {
+				box-shadow: none;
+				border: 1px solid #ddd;
 			}
 		}
 	</style>
@@ -1096,7 +1364,7 @@
 
 		<!-- Stats Section -->
 		<div class="stats-grid fade-in-delay-1">
-			<div class="stat-card primary">
+			<div class="stat-card primary slide-up" style="animation-delay: 0.1s;">
 				<div class="stat-icon">
 					<i class="fas fa-folder-open"></i>
 				</div>
@@ -1104,7 +1372,7 @@
 				<div class="stat-label">Total Perkara</div>
 				<div class="stat-description">Total perkara bulan <?php echo date('F Y', strtotime('first day of last month')); ?></div>
 			</div>
-			<div class="stat-card success">
+			<div class="stat-card success slide-up" style="animation-delay: 0.2s;">
 				<div class="stat-icon">
 					<i class="fas fa-gavel"></i>
 				</div>
@@ -1112,7 +1380,7 @@
 				<div class="stat-label">Perkara Diputus</div>
 				<div class="stat-description">Perkara yang telah diputuskan</div>
 			</div>
-			<div class="stat-card warning">
+			<div class="stat-card warning slide-up" style="animation-delay: 0.3s;">
 				<div class="stat-icon">
 					<i class="fas fa-balance-scale"></i>
 				</div>
@@ -1120,7 +1388,7 @@
 				<div class="stat-label">Sisa Perkara</div>
 				<div class="stat-description">Perkara yang masih dalam proses</div>
 			</div>
-			<div class="stat-card info">
+			<div class="stat-card info slide-up" style="animation-delay: 0.4s;">
 				<div class="stat-icon">
 					<i class="fas fa-users"></i>
 				</div>
@@ -1131,7 +1399,7 @@
 		</div>
 
 		<!-- CCTV Section -->
-		<h2 class="section-title fade-in-delay-1"><i class="fas fa-video"></i> Pantauan CCTV Live</h2>
+		<h2 class="section-title slide-up"><i class="fas fa-video"></i> Pantauan CCTV Live</h2>
 		<div class="cctv-grid fade-in-delay-2">
 			<?php if (isset($links)) : ?>
 				<?php
@@ -1226,13 +1494,13 @@
 
 		<!-- Charts -->
 		<div class="data-grid fade-in-delay-3">
-			<div class="data-card">
+			<div class="data-card slide-up" style="animation-delay: 0.7s;">
 				<h3 class="data-card-title"><i class="fas fa-chart-pie"></i> Data Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h3>
 				<div class="chart-container">
 					<canvas id="donutChart"></canvas>
 				</div>
 			</div>
-			<div class="data-card">
+			<div class="data-card slide-up" style="animation-delay: 0.8s;">
 				<h3 class="data-card-title"><i class="fas fa-handshake"></i> Penyelesaian Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?></h3>
 				<div class="chart-container">
 					<canvas id="mediasiChart"></canvas>
@@ -1241,7 +1509,7 @@
 		</div>
 
 		<div class="data-grid fade-in-delay-3">
-			<div class="data-card">
+			<div class="data-card slide-up" style="animation-delay: 0.9s;">
 				<h3 class="data-card-title"><i class="fas fa-balance-scale"></i> Penanganan Perkara E-court</h3>
 				<div class="chart-container">
 					<canvas id="efilingChart"></canvas>
@@ -1252,7 +1520,7 @@
 		<!-- Tables -->
 		<div class="row fade-in-delay-3">
 			<div class="col-md-6">
-				<div class="table-card">
+				<div class="table-card scale-in" style="animation-delay: 1.0s;">
 					<div class="table-card-title">
 						<i class="fas fa-list-alt"></i> Data Perkara Bulan <?php echo date('F Y', strtotime('first day of last month')); ?>
 					</div>
@@ -1303,7 +1571,7 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class="table-card">
+				<div class="table-card scale-in" style="animation-delay: 1.1s;">
 					<div class="table-card-title">
 						<i class="fas fa-handshake"></i> Data Mediasi Bulan <?php echo date('F Y', strtotime('first day of last month')); ?>
 					</div>
