@@ -27,7 +27,7 @@ FROM
             JOIN perkara_pihak1 pp1 ON p.perkara_id = pp1.perkara_id
             JOIN pihak pd ON pp1.pihak_id = pd.id
         WHERE
-            YEAR(pac.tgl_akta_cerai) = '2023'
+            YEAR(pac.tgl_akta_cerai) = '2025 '
             AND pp1.alamat LIKE '%Balangan%'
         GROUP BY
             pac.faktor_perceraian_id
