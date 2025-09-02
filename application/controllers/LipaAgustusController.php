@@ -1,6 +1,5 @@
 
 
-
 <?php
 /**
  * Controller: LipaAgustus.php (CodeIgniter 3/4 compatible style)
@@ -10,7 +9,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class LipaAgustus extends CI_Controller { // For CI3. For CI4: class LipaAgustus extends \CodeIgniter\Controller
+class LipaAgustusController extends CI_Controller { // For CI3. For CI4: class LipaAgustus extends \CodeIgniter\Controller
 	public function __construct()
     {
         parent::__construct();
