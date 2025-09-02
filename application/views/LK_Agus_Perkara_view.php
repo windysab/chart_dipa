@@ -94,9 +94,8 @@
 				<div class="card shadow-sm p-3">
 					<h6>Catatan Perkara</h6>
 					<ul>
-						<li>Perkara Masuk: <?= $perkara_masuk ?> perkara</li>
-						<li>Perkara Putus: 98 perkara (contoh)</li>
-						<li>Prodeo: 3 perkara</li>
+						<li>Perkara Masuk: <?= $perkara_masuk ?> perkara (19 Perkara Prodeo)</li>
+						<li>Perkara Putus: 148 perkara (5 Perkara Prodeo)</li>
 					</ul>
 				</div>
 			</div>
