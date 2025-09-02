@@ -198,6 +198,14 @@
 					</a>
 				</li>
 				<li class="nav-item">
+					<a href="<?php echo site_url('LipaAgustusController') ?>" class="nav-link">
+						<i class="nav-icon fas fa-file-signature"></i>
+						<p>
+							Laporan LIPA Agustus 2025 
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
 					<a href="<?php echo site_url('LKJuniPerkaraController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-file-invoice"></i>
 						<p>
