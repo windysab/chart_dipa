@@ -192,7 +192,7 @@
 		<!-- HEADER -->
 		<div class="header">
 			<h1><?= $judul ?></h1>
-			<div class="sub">Format laporan perkara • Versi Agustus • tampilan minimal clean</div>
+			<div class="sub">Format laporan perkara • Versi Agustus</div>
 		</div>
 
 		<!-- RINGKASAN -->
