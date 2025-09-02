@@ -3,269 +3,159 @@
 
 <head>
 	<meta charset="utf-8">
-	<title><?= $judul ?></title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<style>
-		:root {
-			--bg: #f7faf9;
-			--ink: #0f172a;
-			--muted: #6b7280;
-			--line: #e5e7eb;
-			--accent: #10b981;
-			/* emerald */
-			--accent-ink: #065f46;
-			--danger: #ef4444;
-		}
-
-		* {
-			box-sizing: border-box
-		}
-
-		body {
-			margin: 0;
-			background: var(--bg);
-			color: var(--ink);
-			font: 14px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu
-		}
-
-		.wrap {
-			max-width: 1080px;
-			margin: 24px auto;
-			padding: 0 16px
-		}
-
-		.header {
-			padding: 18px 20px;
-			border: 1px solid var(--line);
-			border-radius: 14px;
-			background: linear-gradient(180deg, #ffffff, #f3faf7);
-			box-shadow: 0 1px 0 rgba(0, 0, 0, .03);
-		}
-
-		h1 {
-			margin: 0;
-			font-size: 20px;
-			letter-spacing: .3px
-		}
-
-		.sub {
-			color: var(--muted);
-			font-size: 12px;
-			margin-top: 4px
-		}
-
-		.grid {
-			display: grid;
-			grid-template-columns: repeat(4, 1fr);
-			gap: 12px;
-			margin: 16px 0 20px
-		}
-
-		.card {
-			background: #fff;
-			border: 1px solid var(--line);
-			border-radius: 12px;
-			padding: 14px;
-		}
-
-		.k-label {
-			font-size: 12px;
-			color: var(--muted);
-			margin: 0 0 6px
-		}
-
-		.k-val {
-			margin: 0;
-			font-weight: 700;
-			font-size: 18px
-		}
-
-		.ok {
-			color: var(--accent-ink)
-		}
-
-		.bad {
-			color: var(--danger)
-		}
-
-		.pill {
-			display: inline-block;
-			padding: 2px 8px;
-			border: 1px solid var(--line);
-			border-radius: 999px;
-			color: #111;
-			font-weight: 600;
-			font-size: 12px;
-			background: #fff
-		}
-
-		table {
-			width: 100%;
-			border-collapse: separate;
-			border-spacing: 0;
-			background: #fff;
-			border: 1px solid var(--line);
-			border-radius: 12px;
-			overflow: hidden
-		}
-
-		thead th {
-			background: #e9fbf3;
-			color: #064e3b;
-			border-bottom: 1px solid var(--line);
-			font-weight: 700;
-			text-transform: uppercase;
-			font-size: 12px;
-			letter-spacing: .6px;
-			padding: 10px 12px;
-			text-align: center
-		}
-
-		tbody td {
-			padding: 10px 12px;
-			border-bottom: 1px dashed var(--line)
-		}
-
-		tbody tr:nth-child(odd) {
-			background: #fcfdfc
-		}
-
-		tbody tr:hover {
-			background: #f3faf7
-		}
-
-		.num {
-			text-align: right;
-			white-space: nowrap;
-			font-variant-numeric: tabular-nums
-		}
-
-		.ctr {
-			text-align: center
-		}
-
-		.foot {
-			display: flex;
-			gap: 12px;
-			margin-top: 12px;
-			flex-wrap: wrap
-		}
-
-		.foot .card {
-			flex: 1 1 240px
-		}
-
-		.totalbar {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding: 10px 12px;
-			background: #072;
-			color: #eafff3;
-		}
-
-		.totalbar small {
-			opacity: .85
-		}
-
-		.totalbar b {
-			font-variant-numeric: tabular-nums
-		}
-
-		@media (max-width:900px) {
-			.grid {
-				grid-template-columns: repeat(2, 1fr)
-			}
-		}
-
-		@media (max-width:560px) {
-			.grid {
-				grid-template-columns: 1fr
-			}
-		}
-	</style>
+	<title><?= $judul ?> - <?= $periode ?></title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
-	<div class="wrap">
+<body class="bg-light">
+	<div class="container my-4">
 
-		<!-- HEADER -->
-		<div class="header">
-			<h1><?= $judul ?></h1>
-			<div class="sub">Format laporan perkara • Versi Agustus</div>
+		<!-- Header -->
+		<div class="text-center mb-4">
+			<h2 class="fw-bold text-success"><?= $judul ?></h2>
+			<h5 class="text-muted"><?= $subjudul ?></h5>
+			<h6 class="fw-semibold"><?= $periode ?></h6>
 		</div>
 
-		<!-- RINGKASAN -->
-		<div class="grid">
-			<div class="card">
-				<div class="k-label">Total Penerimaan</div>
-				<p class="k-val ok">Rp <?= number_format($total_penerimaan, 0, ',', '.') ?></p>
+		<!-- Summary Cards -->
+		<div class="row text-center mb-4">
+			<div class="col-md-3 mb-2">
+				<div class="card shadow-sm p-3">
+					<h6>Total Penerimaan</h6>
+					<h4 class="text-success">Rp <?= number_format($total_penerimaan, 0, ',', '.') ?></h4>
+				</div>
 			</div>
-			<div class="card">
-				<div class="k-label">Total Pengeluaran</div>
-				<p class="k-val bad">Rp <?= number_format($total_pengeluaran, 0, ',', '.') ?></p>
+			<div class="col-md-3 mb-2">
+				<div class="card shadow-sm p-3">
+					<h6>Total Pengeluaran</h6>
+					<h4 class="text-danger">Rp <?= number_format($total_pengeluaran, 0, ',', '.') ?></h4>
+				</div>
 			</div>
-			<div class="card">
-				<div class="k-label">Saldo Akhir</div>
-				<p class="k-val">Rp <?= number_format($saldo_akhir, 0, ',', '.') ?></p>
+			<div class="col-md-3 mb-2">
+				<div class="card shadow-sm p-3">
+					<h6>Saldo Akhir</h6>
+					<h4 class="text-primary">Rp <?= number_format($saldo_akhir, 0, ',', '.') ?></h4>
+				</div>
 			</div>
-			<div class="card">
-				<div class="k-label">Info</div>
-				<p class="k-val"><span class="pill">Agustus 2025</span></p>
+			<div class="col-md-3 mb-2">
+				<div class="card shadow-sm p-3">
+					<h6>Perkara Masuk</h6>
+					<h4 class="text-warning"><?= $perkara_masuk ?></h4>
+				</div>
 			</div>
 		</div>
 
-		<!-- TABEL RINCIAN -->
-		<table>
-			<thead>
-				<tr>
-					<th style="width:60px">No</th>
-					<th>Uraian</th>
-					<th style="width:220px">Penerimaan (Rp)</th>
-					<th style="width:220px">Pengeluaran (Rp)</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($laporan as $r): ?>
+		<!-- Tabel Rincian -->
+		<div class="card shadow-sm p-4 mb-4">
+			<h5 class="mb-3">Laporan Keuangan Perkara Agustus 2025</h5>
+			<table class="table table-bordered table-striped">
+				<thead class="table-success text-center">
 					<tr>
-						<td class="ctr"><?= $r['no']; ?></td>
-						<td><?= htmlspecialchars($r['uraian']); ?></td>
-						<td class="num"><?= $r['penerimaan'] ? number_format($r['penerimaan'], 0, ',', '.') : '-' ?></td>
-						<td class="num"><?= $r['pengeluaran'] ? number_format($r['pengeluaran'], 0, ',', '.') : '-' ?></td>
+						<th>No</th>
+						<th>Uraian</th>
+						<th>Penerimaan (Rp)</th>
+						<th>Pengeluaran (Rp)</th>
 					</tr>
-				<?php endforeach; ?>
-			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="4" style="padding:0">
-						<div class="totalbar">
-							<div><small>Jumlah</small></div>
-							<div>
-								<small>Penerimaan:</small>
-								<b>Rp <?= number_format($total_penerimaan, 0, ',', '.') ?></b>
-								&nbsp;&nbsp;•&nbsp;&nbsp;
-								<small>Pengeluaran:</small>
-								<b>Rp <?= number_format($total_pengeluaran, 0, ',', '.') ?></b>
-							</div>
-						</div>
-					</td>
-				</tr>
-			</tfoot>
-		</table>
+				</thead>
+				<tbody>
+					<?php $no = 1;
+					foreach ($laporan as $r): ?>
+						<tr>
+							<td class="text-center"><?= $no++ ?></td>
+							<td><?= $r['uraian'] ?></td>
+							<td class="text-end"><?= $r['penerimaan'] ? number_format($r['penerimaan'], 0, ',', '.') : '-' ?></td>
+							<td class="text-end"><?= $r['pengeluaran'] ? number_format($r['pengeluaran'], 0, ',', '.') : '-' ?></td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+		</div>
 
-		<!-- FOOT / SALDO DETAIL -->
-		<div class="foot">
-			<div class="card">
-				<div class="k-label">Saldo Bank</div>
-				<p class="k-val">Rp <?= number_format($saldo_bank, 0, ',', '.') ?></p>
+		<!-- Charts -->
+		<div class="row mb-4">
+			<div class="col-md-6">
+				<div class="card shadow-sm p-3">
+					<h6 class="text-center">Perbandingan Penerimaan & Pengeluaran</h6>
+					<canvas id="barChart"></canvas>
+				</div>
 			</div>
-			<div class="card">
-				<div class="k-label">Saldo Kas Tunai</div>
-				<p class="k-val">Rp <?= number_format($saldo_kas, 0, ',', '.') ?></p>
+			<div class="col-md-6">
+				<div class="card shadow-sm p-3">
+					<h6 class="text-center">Distribusi Pengeluaran</h6>
+					<canvas id="pieChart"></canvas>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card shadow-sm p-3">
+					<h6>Catatan Perkara</h6>
+					<ul>
+						<li>Perkara Masuk: <?= $perkara_masuk ?> perkara</li>
+						<li>Perkara Putus: 98 perkara (contoh)</li>
+						<li>Prodeo: 3 perkara</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card shadow-sm p-3 text-center">
+					<h6>Pengesahan</h6>
+					<p>AmuntaI, 01 September 2025</p>
+					<div class="row">
+						<div class="col">Ketua<br><br><br><strong>Bahrul Maji, S.H.I.</strong></div>
+						<div class="col">Panitera<br><br><br><strong>H. Ahmad Ramli, S.H.</strong></div>
+					</div>
+				</div>
 			</div>
 		</div>
 
 	</div>
+
+	<script>
+		// Bar Chart
+		new Chart(document.getElementById('barChart'), {
+			type: 'bar',
+			data: {
+				labels: <?= json_encode($bulan) ?>,
+				datasets: [{
+						label: 'Penerimaan',
+						data: <?= json_encode($penerimaan_bulanan) ?>,
+						backgroundColor: 'rgba(16, 185, 129, 0.7)'
+					},
+					{
+						label: 'Pengeluaran',
+						data: <?= json_encode($pengeluaran_bulanan) ?>,
+						backgroundColor: 'rgba(234, 88, 12, 0.7)'
+					}
+				]
+			},
+			options: {
+				responsive: true,
+				plugins: {
+					legend: {
+						position: 'top'
+					}
+				}
+			}
+		});
+
+		// Pie Chart
+		new Chart(document.getElementById('pieChart'), {
+			type: 'pie',
+			data: {
+				labels: <?= json_encode(array_column($laporan, 'uraian')) ?>,
+				datasets: [{
+					data: <?= json_encode(array_column($laporan, 'pengeluaran')) ?>,
+					backgroundColor: [
+						'#10b981', '#f87171', '#60a5fa', '#fbbf24', '#34d399', '#a78bfa', '#f472b6', '#facc15', '#4ade80', '#fb923c', '#22d3ee'
+					]
+				}]
+			}
+		});
+	</script>
 </body>
 
 </html>
