@@ -31,9 +31,12 @@ class LKAgustusPerkaraController extends CI_Controller
 		];
 
 		// tambahan untuk chart
-		$data['penerimaan_bulanan'] = [32000000, 33500000, 34800000, 36500000, 37000000, 39500000, 41520000];
-		$data['pengeluaran_bulanan'] = [21000000, 22500000, 24000000, 25500000, 26800000, 28000000, 29787000];
-		$data['bulan'] = ["Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu"];
+		// $data['penerimaan_bulanan'] = [22372500, 31983500, 33500000, 34800000, 36500000, 37000000, 39500000, 41520000];
+		// $data['pengeluaran_bulanan'] = [16856500, 23740000, 22500000, 24000000, 25500000, 26800000, 28000000, 29787000];
+		$data['penerimaan_bulanan'] = [22372500, 31983500, 24661000, 27887500, 38137000, 36913000, 50505500, 41520000];
+		$data['pengeluaran_bulanan'] = [16856500, 23740000, 17918500, 20196000, 25939000, 23680000, 36420500, 29787000];
+		$data['bulan'] = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu"];
+
 		$this->load->view('template/header', $data);
 		$this->load->view('LK_Agus_Perkara_view', $data);
 		$this->load->view('template/footer');
