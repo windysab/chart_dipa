@@ -1,5 +1,6 @@
 
 
+
 <?php
 /**
  * Controller: LipaAgustus.php (CodeIgniter 3/4 compatible style)
@@ -142,7 +143,8 @@ class LipaAgustusController extends CI_Controller { // For CI3. For CI4: class L
       'tot_img'  => $totals_from_image,
     ];
 
-    $this->load->view('lipa/Lipa_Agustus_view', $data); // sesuaikan path view Anda
+    // $this->load->view('lipa/Lipa_Agustus_view', $data); // sesuaikan path view Anda
+	$this->load->view('Lipa_Agustus_view');
   }
 }
 
