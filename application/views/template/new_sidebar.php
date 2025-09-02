@@ -214,7 +214,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo site_url('LKAgusPerkaraController') ?>" class="nav-link">
+					<a href="<?php echo site_url('LKAgustusPerkaraController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-file-invoice-dollar"></i>
 						<p>
 							Laporan Keuangan Perkara Agustus
