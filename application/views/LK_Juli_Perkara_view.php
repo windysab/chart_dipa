@@ -194,17 +194,17 @@
             const financeChart = new Chart(financeCtx, {
                 type: 'bar',
                 data: {
-                    labels: ['Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli'],
+                    labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli'],
                     datasets: [{
                             label: 'Penerimaan',
-                            data: [33200000, 32800000, 36000000, 38137000, 36913000, 50505500],
+                            data: [22372500, 31983500, 24661000, 27887500, 38137000, 36913000, 50505500],
                             backgroundColor: 'rgba(56, 142, 60, 0.7)',
                             borderColor: 'rgba(56, 142, 60, 1)',
                             borderWidth: 1
                         },
                         {
                             label: 'Pengeluaran',
-                            data: [24500000, 23400000, 23500000, 25939000, 23680000, 36420500],
+                            data: [16856500, 23740000, 17918500, 20196000, 25939000, 23680000, 36420500],
                             backgroundColor: 'rgba(255, 179, 0, 0.7)',
                             borderColor: 'rgba(255, 179, 0, 1)',
                             borderWidth: 1
