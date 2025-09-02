@@ -1,5 +1,6 @@
 
 
+
 <?php
 /**
  * Controller: LipaAgustus.php (CodeIgniter 3/4 compatible style)
@@ -7,7 +8,14 @@
  * - Supplies cleaned data for LIPA 8 Agustus 2025 + UI config for charts.
  */
 
+defined('BASEPATH') or exit('No direct script access allowed');
+
 class LipaAgustus extends CI_Controller { // For CI3. For CI4: class LipaAgustus extends \CodeIgniter\Controller
+	public function __construct()
+    {
+        parent::__construct();
+    }
+
   public function index() {
     // ===============
     // MASTER KATEGORI (urut sesuai template LIPA 8)
