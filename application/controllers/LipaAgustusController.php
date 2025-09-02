@@ -144,7 +144,7 @@ class LipaAgustusController extends CI_Controller { // For CI3. For CI4: class L
     ];
 
     // $this->load->view('lipa/Lipa_Agustus_view', $data); // sesuaikan path view Anda
-	$this->load->view('Lipa_Agustus_view');
+	$this->load->view('Lipa_Agustus_view', $data);
   }
 }
 
