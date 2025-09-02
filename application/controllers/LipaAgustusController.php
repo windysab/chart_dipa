@@ -12,7 +12,7 @@ class LipaAgustusController extends CI_Controller
     {
         $data['title'] = 'Laporan Perkara LIPA Agustus 2025';
         $this->load->view('template/header', $data);
-        $this->load->view('Lipa_Juli_view');
+        $this->load->view('Lipa_Agustus_view');
         $this->load->view('template/footer');
     }
 }
