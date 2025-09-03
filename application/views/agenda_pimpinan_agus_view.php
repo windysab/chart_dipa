@@ -4,149 +4,343 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title><?= isset($title) ? $title : 'Agenda Kerja Pimpinan — Agustus 2025' ?></title>
-
-	<!-- Bootstrap 5 -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+	<title><?= isset($title) ? $title : 'AGENDA' ?></title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 	<style>
+		:root {
+			--bg1: #6236ff;
+			--bg2: #b845ff;
+			--bg3: #28c0f5;
+			--card-bg: rgba(255, 255, 255, .11);
+			--card-stroke: rgba(255, 255, 255, .25);
+			--chip-bg: rgba(255, 255, 255, .18);
+			--chip-active: #ffd166;
+			--txt: #fff;
+			--muted: #dfe7ff;
+			--glow: rgba(255, 255, 255, .35);
+		}
+
+		* {
+			box-sizing: border-box
+		}
+
+		html,
 		body {
-			background: #f7f9fb;
+			height: 100%
 		}
 
-		.page-title {
-			font-weight: 700;
-			letter-spacing: .2px;
+		body {
+			margin: 0;
+			color: var(--txt);
+			font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+			background:
+				radial-gradient(1200px 800px at 10% -10%, var(--bg3) 0%, transparent 60%),
+				radial-gradient(900px 700px at 110% 20%, var(--bg2) 0%, transparent 60%),
+				linear-gradient(160deg, var(--bg1), #6f49ff 40%, #8e4fff 70%);
+			background-attachment: fixed;
 		}
 
-		.card {
-			border: 0;
-			box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
-			border-radius: 1rem;
+		.container {
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 40px 20px 80px
 		}
 
-		.table thead th {
-			position: sticky;
+		.heading {
+			text-align: center;
+			margin-bottom: 28px;
+		}
+
+		.title {
+			font-weight: 800;
+			font-size: 34px;
+			letter-spacing: .8px;
+			margin: 0 0 4px;
+			text-transform: uppercase;
+			text-shadow: 0 6px 24px rgba(0, 0, 0, .25);
+		}
+
+		.subtitle {
+			opacity: .9;
+			font-weight: 600;
+			letter-spacing: .4px
+		}
+
+		.meta {
+			margin-top: 8px;
+			opacity: .8;
+			font-size: 13px
+		}
+
+		.chips {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			justify-content: center;
+			margin: 22px auto 6px;
+		}
+
+		.chip {
+			padding: 8px 14px;
+			border-radius: 999px;
+			backdrop-filter: blur(6px);
+			background: var(--chip-bg);
+			border: 1px solid var(--card-stroke);
+			color: var(--txt);
+			font-size: 12px;
+			font-weight: 600;
+			letter-spacing: .3px;
+		}
+
+		.chip.active {
+			background: var(--chip-active);
+			color: #3a2b00;
+			border-color: transparent
+		}
+
+		/* Timeline wrapper */
+		.timeline {
+			position: relative;
+			margin: 40px auto 0;
+			padding: 10px 0 10px;
+		}
+
+		.timeline::before {
+			content: "";
+			position: absolute;
+			left: 50%;
 			top: 0;
+			bottom: 0;
+			width: 4px;
+			background: linear-gradient(180deg, rgba(255, 255, 255, .75), rgba(255, 255, 255, .25));
+			border-radius: 2px;
+			transform: translateX(-50%);
+			box-shadow: 0 0 18px var(--glow);
+		}
+
+		.tl-item {
+			position: relative;
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 14px;
+			margin: 26px 0;
+			opacity: 0;
+			transform: translateY(18px) scale(.98);
+			transition: all .5s ease;
+		}
+
+		.tl-item.visible {
+			opacity: 1;
+			transform: translateY(0) scale(1)
+		}
+
+		/* Dot di garis */
+		.tl-item::before {
+			content: "";
+			position: absolute;
+			left: 50%;
+			top: 18px;
+			transform: translate(-50%, -50%);
+			width: 14px;
+			height: 14px;
+			border-radius: 999px;
 			background: #fff;
-			z-index: 2;
-			border-bottom: 2px solid #dee2e6 !important;
+			box-shadow:
+				0 0 0 6px rgba(255, 255, 255, .15),
+				0 6px 18px rgba(0, 0, 0, .35);
 		}
 
-		.table tbody tr:hover {
-			background: #f7fbff;
+		/* Card */
+		.card {
+			backdrop-filter: blur(8px);
+			background: var(--card-bg);
+			border: 1px solid var(--card-stroke);
+			border-radius: 18px;
+			padding: 16px 18px;
+			box-shadow: 0 14px 40px rgba(0, 0, 0, .18);
+			max-width: 480px;
 		}
 
-		.badge-month {
-			font-size: .8rem;
-			background: #eef6ff;
-			color: #0b5ed7;
+		.date-badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			background: rgba(255, 255, 255, .18);
+			padding: 6px 10px;
+			border-radius: 999px;
+			font-size: 12px;
+			font-weight: 700;
+			letter-spacing: .3px;
+			border: 1px solid var(--card-stroke);
 		}
 
-		.search-input::placeholder {
-			color: #9aa6b2;
+		.date-badge .dot {
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: #8ef3ff;
+			box-shadow: 0 0 10px #8ef3ff
+		}
+
+		.event {
+			margin: 10px 0 6px;
+			font-weight: 700;
+			font-size: 18px;
+			line-height: 1.35
+		}
+
+		.keterangan {
+			font-size: 13px;
+			color: var(--muted);
+			display: flex;
+			align-items: center;
+			gap: 8px
+		}
+
+		.keterangan svg {
+			width: 16px;
+			height: 16px;
+			opacity: .9
+		}
+
+		/* Alternating (desktop) */
+		@media (min-width: 900px) {
+			.tl-item {
+				grid-template-columns: 1fr 1fr
+			}
+
+			.tl-item .left {
+				display: flex;
+				justify-content: flex-end
+			}
+
+			.tl-item .right {
+				display: flex;
+				justify-content: flex-start
+			}
+
+			.tl-item:nth-child(odd) .left {
+				order: 2
+			}
+
+			/* card di kanan */
+			.tl-item:nth-child(odd) .right {
+				order: 1
+			}
+
+			/* spacer di kiri */
+			.tl-item:nth-child(even) .left {
+				order: 1
+			}
+
+			/* card di kiri */
+			.tl-item:nth-child(even) .right {
+				order: 2
+			}
+
+			/* spacer di kanan */
+		}
+
+		/* Mobile: semua card full width di tengah */
+		@media (max-width: 899px) {
+			.timeline::before {
+				left: 28px;
+				transform: none
+			}
+
+			.tl-item::before {
+				left: 28px;
+			}
+
+			.card {
+				margin-left: 56px;
+				max-width: none;
+			}
+		}
+
+		/* Footer kecil */
+		.foot-note {
+			text-align: center;
+			margin-top: 40px;
+			opacity: .7;
+			font-size: 12px
 		}
 	</style>
 </head>
 
 <body>
-	<div class="container py-4">
-		<div class="d-flex align-items-center mb-3">
-			<div>
-				<h1 class="page-title mb-0"><?= isset($title) ? $title : 'Agenda Kerja Pimpinan — Agustus 2025' ?></h1>
-				<div class="text-muted">Pengadilan Agama Amuntai Kelas IB</div>
-			</div>
-			<div class="ms-auto">
-				<span class="badge badge-month rounded-pill px-3 py-2">Periode: Agustus 2025</span>
+	<div class="container">
+		<div class="heading">
+			<div class="title"><?= strtoupper(isset($title) ? $title : 'AGENDA KERJA') ?></div>
+			<div class="subtitle"><?= isset($subtitle) ? $subtitle : 'PENGADILAN AGAMA AMUNTAI' ?></div>
+			<div class="meta"><?= isset($periode) ? $periode : 'Agustus 2025' ?> • Timeline</div>
+
+			<!-- chips (opsional dekoratif) -->
+			<div class="chips">
+				<span class="chip">Juni 2025</span>
+				<span class="chip">Juli 2025</span>
+				<span class="chip active">Agustus 2025</span>
+				<span class="chip">September 2025</span>
+				<span class="chip">Oktober 2025</span>
 			</div>
 		</div>
 
-		<div class="card">
-			<div class="card-body">
-				<!-- Toolbar -->
-				<div class="row g-2 align-items-center mb-3">
-					<div class="col-md-6">
-						<div class="input-group">
-							<span class="input-group-text">🔎</span>
-							<input id="tblSearch" type="text" class="form-control search-input" placeholder="Cari tanggal/kegiatan/keterangan…">
+		<div class="timeline" id="timeline">
+			<?php if (!empty($agenda)): ?>
+				<?php
+				// pastikan sudah terurut
+				usort($agenda, function ($a, $b) {
+					return strcmp($a['tanggal'], $b['tanggal']);
+				});
+				$i = 0;
+				foreach ($agenda as $row):
+					$i++;
+				?>
+					<div class="tl-item">
+						<div class="left">
+							<div class="card">
+								<div class="date-badge">
+									<span class="dot"></span>
+									<?= htmlspecialchars($row['label']) ?>
+								</div>
+								<div class="event"><?= htmlspecialchars($row['kegiatan']) ?></div>
+								<div class="keterangan">
+									<!-- lokasi icon -->
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+										<path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0Z" />
+										<circle cx="12" cy="10" r="3" />
+									</svg>
+									<span><?= htmlspecialchars($row['keterangan']) ?></span>
+								</div>
+							</div>
 						</div>
+						<div class="right"><!-- spacer --></div>
 					</div>
-					<div class="col-md-6 text-md-end">
-						<button id="btnExport" class="btn btn-outline-primary btn-sm">
-							⤓ Ekspor CSV
-						</button>
-					</div>
-				</div>
-
-				<!-- Tabel -->
-				<div class="table-responsive">
-					<table id="agendaTable" class="table table-hover table-striped align-middle">
-						<thead>
-							<tr>
-								<th style="width:56px;">No</th>
-								<th style="min-width:180px;">Tanggal</th>
-								<th style="min-width:320px;">Kegiatan</th>
-								<th style="min-width:220px;">Keterangan</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php if (!empty($agenda)): ?>
-								<?php $no = 1;
-								foreach ($agenda as $row): ?>
-									<tr>
-										<td><?= $no++ ?></td>
-										<td><?= htmlspecialchars($row['label']) ?></td>
-										<td><?= htmlspecialchars($row['kegiatan']) ?></td>
-										<td><?= htmlspecialchars($row['keterangan']) ?></td>
-									</tr>
-								<?php endforeach; ?>
-							<?php else: ?>
-								<tr>
-									<td colspan="4" class="text-center text-muted py-4">Tidak ada data agenda.</td>
-								</tr>
-							<?php endif; ?>
-						</tbody>
-					</table>
-				</div>
-
-				<div class="small text-muted mt-2">*Header tabel tetap (sticky) saat discroll • Pencarian bersifat instan</div>
-			</div>
+				<?php endforeach; ?>
+			<?php else: ?>
+				<p style="text-align:center;opacity:.8">Tidak ada data agenda.</p>
+			<?php endif; ?>
 		</div>
+
+		<div class="foot-note">© <?= date('Y') ?> · Layout timeline</div>
 	</div>
 
 	<script>
-		// Pencarian instan
-		const searchInput = document.getElementById('tblSearch');
-		const rows = () => Array.from(document.querySelectorAll('#agendaTable tbody tr'));
-		searchInput.addEventListener('input', function() {
-			const q = this.value.toLowerCase();
-			rows().forEach(tr => {
-				const text = tr.innerText.toLowerCase();
-				tr.style.display = text.includes(q) ? '' : 'none';
+		// reveal on scroll
+		const items = Array.from(document.querySelectorAll('.tl-item'));
+		const reveal = () => {
+			const vh = window.innerHeight;
+			items.forEach(el => {
+				const rect = el.getBoundingClientRect();
+				if (rect.top < vh - 80) el.classList.add('visible');
 			});
+		};
+		window.addEventListener('scroll', reveal, {
+			passive: true
 		});
-
-		// Ekspor CSV sederhana
-		document.getElementById('btnExport').addEventListener('click', function() {
-			const table = document.getElementById('agendaTable');
-			let csv = [];
-			const toCSV = (row) => Array.from(row.querySelectorAll('th,td'))
-				.map(cell => `"${cell.innerText.replace(/"/g, '""')}"`).join(',');
-
-			csv.push(toCSV(table.tHead.rows[0]));
-			rows().forEach(tr => {
-				if (tr.style.display !== 'none') csv.push(toCSV(tr));
-			});
-
-			const blob = new Blob([csv.join('\n')], {
-				type: 'text/csv;charset=utf-8;'
-			});
-			const link = document.createElement('a');
-			link.href = URL.createObjectURL(blob);
-			link.download = 'agenda_pimpinan_agustus_2025.csv';
-			link.click();
-			URL.revokeObjectURL(link.href);
-		});
+		window.addEventListener('load', reveal);
 	</script>
 </body>
 
