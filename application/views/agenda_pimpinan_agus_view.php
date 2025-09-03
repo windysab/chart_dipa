@@ -10,16 +10,23 @@
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 	<style>
 		:root {
-			--bg1: #6236ff;
-			--bg2: #b845ff;
-			--bg3: #28c0f5;
-			--card-bg: rgba(255, 255, 255, .11);
-			--card-stroke: rgba(255, 255, 255, .25);
-			--chip-bg: rgba(255, 255, 255, .18);
-			--chip-active: #ffd166;
-			--txt: #fff;
-			--muted: #dfe7ff;
-			--glow: rgba(255, 255, 255, .35);
+			--primary-color: #8E2DE2;
+			--secondary-color: #4A00E0;
+			--accent-color: #FF9A8B;
+			--success-color: #20E3B2;
+			--info-color: #6236FF;
+			--warning-color: #FF6B95;
+			--danger-color: #FF5E62;
+			--light-color: #f8fafc;
+			--dark-color: #2d3748;
+			--white-color: #ffffff;
+			--body-bg: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%);
+			--card-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+			--card-hover-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+			--border-radius: 24px;
+			--transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+			--glass-bg: rgba(255, 255, 255, 0.2);
+			--glass-border: rgba(255, 255, 255, 0.15);
 		}
 
 		* {
@@ -33,14 +40,27 @@
 
 		body {
 			margin: 0;
-			color: var(--txt);
+			color: var(--light-color);
 			font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-			background:
-				radial-gradient(1200px 800px at 10% -10%, var(--bg3) 0%, transparent 60%),
-				radial-gradient(900px 700px at 110% 20%, var(--bg2) 0%, transparent 60%),
-				linear-gradient(160deg, var(--bg1), #6f49ff 40%, #8e4fff 70%);
+			background: var(--body-bg);
 			background-attachment: fixed;
 		}
+		
+		body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(146, 92, 255, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 154, 139, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(32, 227, 178, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 60% 60%, rgba(98, 54, 255, 0.3) 0%, transparent 40%);
+            z-index: -1;
+            animation: backgroundMove 15s ease-in-out infinite;
+        }
 
 		.container {
 			max-width: 1100px;
@@ -345,3 +365,4 @@
 </body>
 
 </html>
+
