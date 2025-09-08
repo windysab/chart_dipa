@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class AgendaSeptember2025Controller extends CI_Controller
 {
@@ -46,7 +46,7 @@ class AgendaSeptember2025Controller extends CI_Controller
         ];
 
         // Urutkan berdasarkan tanggal
-        usort($data['agenda'], function($a, $b) {
+        usort($data['agenda'], function ($a, $b) {
             return strcmp($a['tanggal'], $b['tanggal']);
         });
 
