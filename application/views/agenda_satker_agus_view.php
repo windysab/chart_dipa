@@ -1,350 +1,513 @@
+<?php
 <!doctype html>
 <html lang="id">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title><?= isset($title) ? $title : 'AGENDA' ?></title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-	<style>
-		:root {
-			--bg1: #5b2cff;
-			--bg2: #ff53a5;
-			--bg3: #2fd1ff;
-			--card: rgba(255, 255, 255, .12);
-			--stroke: rgba(255, 255, 255, .28);
-			--txt: #fff;
-			--muted: #deebff;
-			--chip: rgba(255, 255, 255, .18);
-			--chipAct: #ffe082;
-		}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title><?= isset($title) ? $title : 'AGENDA' ?></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5a6fd8;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --success: #4ade80;
+            --warning: #fbbf24;
+            --danger: #f87171;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-light: #ffffff;
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
 
-		* {
-			box-sizing: border-box
-		}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-		html,
-		body {
-			height: 100%
-		}
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
 
-		body {
-			margin: 0;
-			color: var(--txt);
-			font-family: Poppins, system-ui, Segoe UI, Roboto, Arial, sans-serif;
-			background:
-				radial-gradient(900px 700px at 110% 0%, var(--bg2) 0%, transparent 65%),
-				radial-gradient(1100px 800px at -10% 10%, var(--bg3) 0%, transparent 60%),
-				linear-gradient(160deg, var(--bg1), #7a46ff 45%, #9e53ff 75%);
-			background-attachment: fixed;
-		}
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
 
-		.container {
-			max-width: 1100px;
-			margin: 0 auto;
-			padding: 40px 20px 80px
-		}
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 20s infinite linear;
+        }
 
-		.heading {
-			text-align: center;
-			margin-bottom: 24px
-		}
+        .shape-1 { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; }
+        .shape-2 { width: 120px; height: 120px; top: 60%; right: 15%; animation-delay: 5s; }
+        .shape-3 { width: 60px; height: 60px; top: 80%; left: 20%; animation-delay: 10s; }
+        .shape-4 { width: 100px; height: 100px; top: 40%; right: 30%; animation-delay: 15s; }
 
-		.title {
-			font-weight: 800;
-			font-size: 34px;
-			letter-spacing: .8px;
-			margin: 0 0 4px;
-			text-transform: uppercase
-		}
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+            25% { transform: translateY(-20px) rotate(90deg); opacity: 0.7; }
+            50% { transform: translateY(-40px) rotate(180deg); opacity: 0.5; }
+            75% { transform: translateY(-20px) rotate(270deg); opacity: 0.8; }
+        }
 
-		.subtitle {
-			opacity: .95;
-			font-weight: 600;
-			letter-spacing: .4px
-		}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem 4rem;
+        }
 
-		.meta {
-			margin-top: 8px;
-			opacity: .85;
-			font-size: 13px
-		}
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
 
-		.chips {
-			display: flex;
-			gap: 8px;
-			justify-content: center;
-			margin: 18px 0
-		}
+        .header-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: var(--shadow-lg);
+        }
 
-		.chip {
-			padding: 8px 14px;
-			border-radius: 999px;
-			background: var(--chip);
-			border: 1px solid var(--stroke);
-			font-size: 12px;
-			font-weight: 700
-		}
+        .title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
 
-		.chip.active {
-			background: var(--chipAct);
-			color: #3a2b00;
-			border-color: transparent
-		}
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
 
-		.toolbar {
-			display: flex;
-			gap: 12px;
-			justify-content: center;
-			margin: 18px 0 0
-		}
+        .periode {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow);
+        }
 
-		.search {
-			padding: 10px 14px;
-			border-radius: 12px;
-			border: 1px solid var(--stroke);
-			background: rgba(255, 255, 255, .08);
-			color: #fff;
-			min-width: 280px
-		}
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 3rem;
+            position: relative;
+        }
 
-		.search::placeholder {
-			color: #e7efff
-		}
+        .search-box {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
 
-		.timeline {
-			position: relative;
-			margin: 36px auto 0;
-			padding: 6px 0
-		}
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
 
-		.timeline::before {
-			content: "";
-			position: absolute;
-			left: 50%;
-			top: 0;
-			bottom: 0;
-			width: 4px;
-			transform: translateX(-50%);
-			background: linear-gradient(180deg, rgba(255, 255, 255, .85), rgba(255, 255, 255, .25));
-			border-radius: 2px;
-			box-shadow: 0 0 14px rgba(255, 255, 255, .35)
-		}
+        .search-box:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(240, 147, 251, 0.2);
+        }
 
-		.item {
-			position: relative;
-			display: grid;
-			grid-template-columns: 1fr;
-			gap: 14px;
-			margin: 26px 0;
-			opacity: 0;
-			transform: translateY(18px) scale(.98);
-			transition: all .5s ease
-		}
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+        }
 
-		.item.visible {
-			opacity: 1;
-			transform: translateY(0) scale(1)
-		}
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-		.item::before {
-			content: "";
-			position: absolute;
-			left: 50%;
-			top: 18px;
-			transform: translate(-50%, -50%);
-			width: 14px;
-			height: 14px;
-			border-radius: 50%;
-			background: #fff;
-			box-shadow: 0 0 0 6px rgba(255, 255, 255, .18), 0 6px 18px rgba(0, 0, 0, .35)
-		}
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--accent), var(--primary));
+            transform: translateX(-50%);
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(240, 147, 251, 0.3);
+        }
 
-		.card {
-			backdrop-filter: blur(8px);
-			background: var(--card);
-			border: 1px solid var(--stroke);
-			border-radius: 18px;
-			padding: 16px 18px;
-			box-shadow: 0 14px 40px rgba(0, 0, 0, .18);
-			max-width: 480px
-		}
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-		.badge {
-			display: inline-flex;
-			align-items: center;
-			gap: 8px;
-			background: rgba(255, 255, 255, .2);
-			padding: 6px 10px;
-			border-radius: 999px;
-			font-size: 12px;
-			font-weight: 800;
-			border: 1px solid var(--stroke)
-		}
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-		.badge .dot {
-			width: 8px;
-			height: 8px;
-			border-radius: 50%;
-			background: #9af6ff;
-			box-shadow: 0 0 10px #9af6ff
-		}
+        .timeline-item:nth-child(odd) .card {
+            margin-left: 0;
+            margin-right: auto;
+        }
 
-		.evt {
-			margin: 10px 0 6px;
-			font-weight: 800;
-			font-size: 18px;
-			line-height: 1.35
-		}
+        .timeline-item:nth-child(even) .card {
+            margin-left: auto;
+            margin-right: 0;
+        }
 
-		.ket {
-			font-size: 13px;
-			color: var(--muted);
-			display: flex;
-			align-items: center;
-			gap: 8px
-		}
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            border: 4px solid white;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(240, 147, 251, 0.5);
+        }
 
-		.ket svg {
-			width: 16px;
-			height: 16px;
-			opacity: .9
-		}
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            max-width: 420px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
 
-		@media (min-width:900px) {
-			.item {
-				grid-template-columns: 1fr 1fr
-			}
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
 
-			.item .left {
-				display: flex;
-				justify-content: flex-end
-			}
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
 
-			.item .right {
-				display: flex;
-				justify-content: flex-start
-			}
+        .date-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
 
-			.item:nth-child(odd) .left {
-				order: 2
-			}
+        .event-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
 
-			.item:nth-child(odd) .right {
-				order: 1
-			}
+        .event-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
 
-			.item:nth-child(even) .left {
-				order: 1
-			}
+        .location-icon {
+            width: 16px;
+            height: 16px;
+            color: var(--primary);
+        }
 
-			.item:nth-child(even) .right {
-				order: 2
-			}
-		}
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
 
-		@media (max-width:899px) {
-			.timeline::before {
-				left: 28px;
-				transform: none
-			}
+        .stat-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            color: white;
+        }
 
-			.item::before {
-				left: 28px
-			}
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
 
-			.card {
-				margin-left: 56px;
-				max-width: none
-			}
-		}
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
 
-		.foot {
-			text-align: center;
-			margin-top: 40px;
-			opacity: .75;
-			font-size: 12px
-		}
-	</style>
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .title { font-size: 2rem; }
+            .timeline::before { left: 2rem; }
+            
+            .timeline-item::before {
+                left: 2rem;
+                transform: none;
+            }
+            
+            .timeline-item:nth-child(odd) .card,
+            .timeline-item:nth-child(even) .card {
+                margin-left: 4rem;
+                margin-right: 1rem;
+                max-width: none;
+            }
+            
+            .container { padding: 1rem; }
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 
 <body>
-	<div class="container">
-		<div class="heading">
-			<div class="title"><?= isset($title) ? $title : 'AGENDA' ?></div>
-			<div class="subtitle"><?= isset($subtitle) ? $subtitle : '' ?></div>
-			<div class="meta"><?= isset($periode) ? $periode : '' ?> • Timeline</div>
+    <div class="animated-bg">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+    </div>
 
-			<div class="chips">
-				<span class="chip">Juni 2025</span>
-				<span class="chip">Juli 2025</span>
-				<span class="chip active">Agustus 2025</span>
-				<span class="chip">September 2025</span>
-			</div>
+    <div class="container">
+        <div class="header">
+            <div class="header-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h1 class="title"><?= isset($title) ? $title : 'AGENDA KERJA SATKER' ?></h1>
+            <p class="subtitle"><?= isset($subtitle) ? $subtitle : 'PENGADILAN AGAMA AMUNTAI' ?></p>
+            <div class="periode">
+                <i class="fas fa-clock"></i>
+                <?= isset($periode) ? $periode : 'Agustus 2025' ?>
+            </div>
+        </div>
 
-			<div class="toolbar">
-				<input id="search" class="search" type="search" placeholder="Cari kegiatan/keterangan…">
-			</div>
-		</div>
+        <?php if(isset($agenda) && is_array($agenda)): ?>
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number"><?= count($agenda) ?></div>
+                <div class="stat-label">Total Agenda</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number"><?= count(array_unique(array_column($agenda, 'tanggal'))) ?></div>
+                <div class="stat-label">Hari Aktif</div>
+            </div>
+        </div>
 
-		<div class="timeline" id="TL">
-			<?php if (!empty($agenda)): ?>
-				<?php usort($agenda, function ($a, $b) {
-					return strcmp($a['tanggal'], $b['tanggal']);
-				}); ?>
-				<?php foreach ($agenda as $row): ?>
-					<div class="item">
-						<div class="left">
-							<div class="card">
-								<div class="badge"><span class="dot"></span><?= htmlspecialchars($row['label']) ?></div>
-								<div class="evt"><?= htmlspecialchars($row['kegiatan']) ?></div>
-								<div class="ket">
-									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-										<path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0Z" />
-										<circle cx="12" cy="10" r="3" />
-									</svg>
-									<span><?= htmlspecialchars($row['keterangan']) ?></span>
-								</div>
-							</div>
-						</div>
-						<div class="right"></div>
-					</div>
-				<?php endforeach; ?>
-			<?php else: ?>
-				<p style="text-align:center;opacity:.85">Tidak ada data.</p>
-			<?php endif; ?>
-		</div>
+        <div class="search-container">
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <input type="text" id="searchInput" class="search-box" placeholder="Cari kegiatan atau lokasi...">
+        </div>
 
-		<div class="foot">© <?= date('Y') ?> • Timeline Agenda Satker</div>
-	</div>
+        <div class="timeline" id="timeline">
+            <?php foreach($agenda as $index => $item): ?>
+            <div class="timeline-item" data-search="<?= strtolower($item['kegiatan'] . ' ' . $item['keterangan']) ?>">
+                <div class="card">
+                    <div class="date-badge">
+                        <i class="fas fa-calendar"></i>
+                        <?= $item['label'] ?>
+                    </div>
+                    <h3 class="event-title"><?= $item['kegiatan'] ?></h3>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt location-icon"></i>
+                        <?= $item['keterangan'] ?>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+        <?php else: ?>
+        <div class="no-results">
+            <i class="fas fa-calendar-times" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+            <p>Tidak ada agenda tersedia</p>
+        </div>
+        <?php endif; ?>
 
-	<script>
-		// Reveal on scroll
-		const items = Array.from(document.querySelectorAll('.item'));
-		const show = () => {
-			const vh = innerHeight;
-			items.forEach(el => {
-				const r = el.getBoundingClientRect();
-				if (r.top < vh - 80) el.classList.add('visible');
-			});
-		};
-		addEventListener('scroll', show, {
-			passive: true
-		});
-		addEventListener('load', show);
+        <div class="footer">
+            <p>&copy; <?= date('Y') ?> Timeline Agenda Satker • Pengadilan Agama Amuntai</p>
+        </div>
+    </div>
 
-		// Filter by search
-		const s = document.getElementById('search');
-		s.addEventListener('input', e => {
-			const q = e.target.value.toLowerCase();
-			items.forEach(el => {
-				const txt = el.innerText.toLowerCase();
-				el.style.display = txt.includes(q) ? '' : 'none';
-			});
-		});
-	</script>
+    <script>
+        // Intersection Observer for reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all timeline items
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            timelineItems.forEach(item => {
+                const searchData = item.getAttribute('data-search');
+                const isMatch = searchData.includes(searchTerm);
+                
+                item.style.display = isMatch ? 'block' : 'none';
+                if (isMatch) visibleCount++;
+            });
+
+            // Show no results message
+            const timeline = document.getElementById('timeline');
+            let noResults = timeline.querySelector('.no-results');
+            
+            if (visibleCount === 0 && searchTerm !== '') {
+                if (!noResults) {
+                    noResults = document.createElement('div');
+                    noResults.className = 'no-results';
+                    noResults.innerHTML = `
+                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <p>Tidak ditemukan agenda yang sesuai dengan pencarian "${searchTerm}"</p>
+                    `;
+                    timeline.appendChild(noResults);
+                }
+            } else if (noResults) {
+                noResults.remove();
+            }
+        });
+
+        // Add loading state
+        window.addEventListener('load', () => {
+            const loading = document.querySelector('.loading');
+            if (loading) loading.remove();
+        });
+
+        // Add smooth scrolling
+        document.addEventListener('DOMContentLoaded', () => {
+            const timeline = document.getElementById('timeline');
+            if (timeline) {
+                timeline.style.opacity = '0';
+                setTimeout(() => {
+                    timeline.style.opacity = '1';
+                    timeline.style.transition = 'opacity 0.5s ease';
+                }, 300);
+            }
+        });
+    </script>
 </body>
-
 </html>
