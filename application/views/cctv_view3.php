@@ -1655,10 +1655,10 @@
 					Pengadilan Agama Amuntai Kelas IB
 				</h4>
 				<p style="margin-bottom: 0.5rem; opacity: 0.9;">
-					Jl. Masjid Baitul Amin No. 123, Amuntai, Kabupaten Hulu Sungai Utara
+					Jl. Empu Mandastana No.10, Sungai Malang, Kec. Amuntai Tengah, Kabupaten Hulu Sungai Utara
 				</p>
 				<p style="margin-bottom: 1rem; opacity: 0.9;">
-					Kalimantan Selatan 71451 | Telp: (0517) 41234 | Email: pa.amuntai@badilag.mahkamahagung.go.id
+					Kalimantan Selatan 71418 | Telp: (0527) 61002 | Email: 	pa.amuntai@gmail.com
 				</p>
 				<div style="border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1rem; margin-top: 1rem;">
 					<small style="opacity: 0.8;">
