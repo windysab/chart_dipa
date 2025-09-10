@@ -28,6 +28,13 @@
 			color: var(--pa-text);
 			margin: 0;
 			min-height: 100vh;
+			padding: 0;
+		}
+
+		.container {
+			max-width: 1400px;
+			margin: 0 auto;
+			padding: 0 1.5rem;
 		}
 
 		.header {
@@ -414,138 +421,146 @@
 </head>
 
 <body>
-	<div class="header">
-		<div class="logo"><i class="fas fa-balance-scale"></i></div>
-		<h1>Dashboard Pengadilan Agama Amuntai</h1>
-		<p>Kelas IB - Modern Monitoring & Statistik</p>
-	</div>
-	<div class="stats">
-		<div class="stat-card">
-			<div class="stat-icon"><i class="fas fa-folder-open"></i></div>
-			<div class="stat-value"><?= htmlspecialchars($total_perkara_data->total_perkara) ?></div>
-			<div class="stat-label">Total Perkara</div>
-			<div class="stat-desc">Bulan <?= date('F Y', strtotime('first day of last month')) ?></div>
+	<div class="container">
+		<div class="header">
+			<div class="logo"><i class="fas fa-balance-scale"></i></div>
+			<h1>Dashboard Pengadilan Agama Amuntai</h1>
+			<p>Kelas IB - Modern Monitoring & Statistik</p>
 		</div>
-		<div class="stat-card">
-			<div class="stat-icon"><i class="fas fa-gavel"></i></div>
-			<div class="stat-value"><?= htmlspecialchars($jumlah_perkara_diputus) ?></div>
-			<div class="stat-label">Perkara Diputus</div>
-			<div class="stat-desc">Sudah putus</div>
+
+		<div class="stats">
+			<div class="stat-card">
+				<div class="stat-icon"><i class="fas fa-folder-open"></i></div>
+				<div class="stat-value"><?= htmlspecialchars($total_perkara_data->total_perkara) ?></div>
+				<div class="stat-label">Total Perkara</div>
+				<div class="stat-desc">Bulan <?= date('F Y', strtotime('first day of last month')) ?></div>
+			</div>
+			<div class="stat-card">
+				<div class="stat-icon"><i class="fas fa-gavel"></i></div>
+				<div class="stat-value"><?= htmlspecialchars($jumlah_perkara_diputus) ?></div>
+				<div class="stat-label">Perkara Diputus</div>
+				<div class="stat-desc">Sudah putus</div>
+			</div>
+			<div class="stat-card">
+				<div class="stat-icon"><i class="fas fa-balance-scale"></i></div>
+				<div class="stat-value"><?= htmlspecialchars($sisa_perkara) ?></div>
+				<div class="stat-label">Sisa Perkara</div>
+				<div class="stat-desc">Masih proses</div>
+			</div>
+			<div class="stat-card">
+				<div class="stat-icon"><i class="fas fa-users"></i></div>
+				<div class="stat-value"><?= htmlspecialchars($daily_view_count) ?></div>
+				<div class="stat-label">Pengunjung Hari Ini</div>
+				<div class="stat-desc">Dashboard</div>
+			</div>
 		</div>
-		<div class="stat-card">
-			<div class="stat-icon"><i class="fas fa-balance-scale"></i></div>
-			<div class="stat-value"><?= htmlspecialchars($sisa_perkara) ?></div>
-			<div class="stat-label">Sisa Perkara</div>
-			<div class="stat-desc">Masih proses</div>
-		</div>
-		<div class="stat-card">
-			<div class="stat-icon"><i class="fas fa-users"></i></div>
-			<div class="stat-value"><?= htmlspecialchars($daily_view_count) ?></div>
-			<div class="stat-label">Pengunjung Hari Ini</div>
-			<div class="stat-desc">Dashboard</div>
-		</div>
-	</div>
-	<h2 class="section-title"><i class="fas fa-video"></i> Pantauan CCTV Live</h2>
-	<div class="cctv-grid">
-		<?php
-		$icons = [
-			'Halaman Parkir' => 'fas fa-car',
-			'Ruang Tunggu' => 'fas fa-couch',
-			'PTSP' => 'fas fa-info-circle',
-		];
-		foreach ($links as $name => $url): ?>
-			<div class="cctv-card">
-				<div class="cctv-header">
-					<div class="cctv-title">
-						<i class="<?= isset($icons[$name]) ? $icons[$name] : 'fas fa-video'; ?>"></i>
-						<?= ucfirst(str_replace('_', ' ', $name)); ?>
+
+		<h2 class="section-title"><i class="fas fa-video"></i> Pantauan CCTV Live</h2>
+		<div class="cctv-grid">
+			<?php
+			$icons = [
+				'Halaman Parkir' => 'fas fa-car',
+				'Ruang Tunggu' => 'fas fa-couch',
+				'PTSP' => 'fas fa-info-circle',
+			];
+			foreach ($links as $name => $url): ?>
+				<div class="cctv-card">
+					<div class="cctv-header">
+						<div class="cctv-title">
+							<i class="<?= isset($icons[$name]) ? $icons[$name] : 'fas fa-video'; ?>"></i>
+							<?= ucfirst(str_replace('_', ' ', $name)); ?>
+						</div>
+						<div class="cctv-status">
+							<i class="fas fa-circle"></i> Live
+						</div>
 					</div>
-					<div class="cctv-status">
-						<i class="fas fa-circle"></i> Live
+					<div class="cctv-body">
+						<iframe src="<?= $url ?>" allowfullscreen class="cctv-iframe"></iframe>
 					</div>
 				</div>
-				<div class="cctv-body">
-					<iframe src="<?= $url ?>" allowfullscreen class="cctv-iframe"></iframe>
+			<?php endforeach; ?>
+		</div>
+
+		<div class="visitor-counter">
+			<div class="visitor-counter-item">
+				<div class="visitor-counter-icon"><i class="fas fa-users"></i></div>
+				<div>
+					<div class="visitor-counter-label">Pengunjung Hari Ini</div>
+					<div class="visitor-counter-value"><?= htmlspecialchars($daily_view_count) ?></div>
 				</div>
 			</div>
-		<?php endforeach; ?>
-	</div>
-	<div class="visitor-counter">
-		<div class="visitor-counter-item">
-			<div class="visitor-counter-icon"><i class="fas fa-users"></i></div>
-			<div>
-				<div class="visitor-counter-label">Pengunjung Hari Ini</div>
-				<div class="visitor-counter-value"><?= htmlspecialchars($daily_view_count) ?></div>
+			<div class="visitor-counter-item">
+				<div class="visitor-counter-icon"><i class="fas fa-calendar-alt"></i></div>
+				<div>
+					<div class="visitor-counter-label">Bulan Ini</div>
+					<div class="visitor-counter-value"><?= htmlspecialchars($monthly_view_count) ?></div>
+				</div>
+			</div>
+			<div class="visitor-counter-item">
+				<div class="visitor-counter-icon"><i class="fas fa-chart-line"></i></div>
+				<div>
+					<div class="visitor-counter-label">Total Pengunjung</div>
+					<div class="visitor-counter-value"><?= htmlspecialchars($total_view_count) ?></div>
+				</div>
 			</div>
 		</div>
-		<div class="visitor-counter-item">
-			<div class="visitor-counter-icon"><i class="fas fa-calendar-alt"></i></div>
-			<div>
-				<div class="visitor-counter-label">Bulan Ini</div>
-				<div class="visitor-counter-value"><?= htmlspecialchars($monthly_view_count) ?></div>
+
+		<div class="case-header">
+			<h2><i class="fas fa-balance-scale"></i> Keadaan Perkara s/d <?= date('F Y', strtotime('first day of last month')) ?></h2>
+		</div>
+
+		<div class="circle-stats-grid">
+			<div class="circle-stat">
+				<div class="circle-stat-value-container">
+					<div class="circle-stat-value"><?= htmlspecialchars($total_perkara_data->total_perkara) ?></div>
+				</div>
+				<div class="circle-stat-label">Total Perkara</div>
+			</div>
+			<div class="circle-stat">
+				<div class="circle-stat-value-container">
+					<div class="circle-stat-value"><?= htmlspecialchars($total_perkara_data->total_perkara_ecourt) ?></div>
+				</div>
+				<div class="circle-stat-label">Perkara e-Court</div>
+			</div>
+			<div class="circle-stat">
+				<div class="circle-stat-value-container">
+					<div class="circle-stat-value"><?= number_format($total_perkara_data->persen_perkara_ecourt) . '%' ?></div>
+				</div>
+				<div class="circle-stat-label">Persentase e-Court</div>
+			</div>
+			<div class="circle-stat">
+				<div class="circle-stat-value-container">
+					<div class="circle-stat-value"><?= htmlspecialchars($total_perkara_data->total_perkara_non_ecourt) ?></div>
+				</div>
+				<div class="circle-stat-label">Non e-Court</div>
 			</div>
 		</div>
-		<div class="visitor-counter-item">
-			<div class="visitor-counter-icon"><i class="fas fa-chart-line"></i></div>
-			<div>
-				<div class="visitor-counter-label">Total Pengunjung</div>
-				<div class="visitor-counter-value"><?= htmlspecialchars($total_view_count) ?></div>
+
+		<div class="data-grid">
+			<div class="data-card">
+				<h3 class="data-card-title"><i class="fas fa-chart-pie"></i> Data Perkara Bulan <?= date('F Y', strtotime('first day of last month')) ?></h3>
+				<div class="chart-container">
+					<canvas id="donutChart"></canvas>
+				</div>
+			</div>
+			<div class="data-card">
+				<h3 class="data-card-title"><i class="fas fa-handshake"></i> Penyelesaian Mediasi Bulan <?= date('F Y', strtotime('first day of last month')) ?></h3>
+				<div class="chart-container">
+					<canvas id="mediasiChart"></canvas>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="case-header">
-		<h2><i class="fas fa-balance-scale"></i> Keadaan Perkara s/d <?= date('F Y', strtotime('first day of last month')) ?></h2>
-	</div>
-	<div class="circle-stats-grid">
-		<div class="circle-stat">
-			<div class="circle-stat-value-container">
-				<div class="circle-stat-value"><?= htmlspecialchars($total_perkara_data->total_perkara) ?></div>
-			</div>
-			<div class="circle-stat-label">Total Perkara</div>
-		</div>
-		<div class="circle-stat">
-			<div class="circle-stat-value-container">
-				<div class="circle-stat-value"><?= htmlspecialchars($total_perkara_data->total_perkara_ecourt) ?></div>
-			</div>
-			<div class="circle-stat-label">Perkara e-Court</div>
-		</div>
-		<div class="circle-stat">
-			<div class="circle-stat-value-container">
-				<div class="circle-stat-value"><?= number_format($total_perkara_data->persen_perkara_ecourt) . '%' ?></div>
-			</div>
-			<div class="circle-stat-label">Persentase e-Court</div>
-		</div>
-		<div class="circle-stat">
-			<div class="circle-stat-value-container">
-				<div class="circle-stat-value"><?= htmlspecialchars($total_perkara_data->total_perkara_non_ecourt) ?></div>
-			</div>
-			<div class="circle-stat-label">Non e-Court</div>
-		</div>
-	</div>
-	<div class="data-grid">
-		<div class="data-card">
-			<h3 class="data-card-title"><i class="fas fa-chart-pie"></i> Data Perkara Bulan <?= date('F Y', strtotime('first day of last month')) ?></h3>
-			<div class="chart-container">
-				<canvas id="donutChart"></canvas>
+
+		<div class="data-grid">
+			<div class="data-card">
+				<h3 class="data-card-title"><i class="fas fa-balance-scale"></i> Penanganan Perkara E-court</h3>
+				<div class="chart-container">
+					<canvas id="efilingChart"></canvas>
+				</div>
 			</div>
 		</div>
-		<div class="data-card">
-			<h3 class="data-card-title"><i class="fas fa-handshake"></i> Penyelesaian Mediasi Bulan <?= date('F Y', strtotime('first day of last month')) ?></h3>
-			<div class="chart-container">
-				<canvas id="mediasiChart"></canvas>
-			</div>
-		</div>
-	</div>
-	<div class="data-grid">
-		<div class="data-card">
-			<h3 class="data-card-title"><i class="fas fa-balance-scale"></i> Penanganan Perkara E-court</h3>
-			<div class="chart-container">
-				<canvas id="efilingChart"></canvas>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-6">
+
+		<div class="data-grid">
 			<div class="table-card">
 				<div class="table-card-title">
 					<i class="fas fa-list-alt"></i> Data Perkara Bulan <?= date('F Y', strtotime('first day of last month')) ?>
@@ -587,8 +602,6 @@
 					</table>
 				</div>
 			</div>
-		</div>
-		<div class="col-md-6">
 			<div class="table-card">
 				<div class="table-card-title">
 					<i class="fas fa-handshake"></i> Data Mediasi Bulan <?= date('F Y', strtotime('first day of last month')) ?>
@@ -603,23 +616,23 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td><i class="fas fa-times-circle text-danger"></i> Tidak Dapat Dilaksanakan</td>
+								<td><i class="fas fa-times-circle" style="color: #f43f5e;"></i> Tidak Dapat Dilaksanakan</td>
 								<td><?= $mediasi_data['D'] ?></td>
 							</tr>
 							<tr>
-								<td><i class="fas fa-thumbs-down text-warning"></i> Tidak Berhasil</td>
+								<td><i class="fas fa-thumbs-down" style="color: #f59e0b;"></i> Tidak Berhasil</td>
 								<td><?= $mediasi_data['T'] ?></td>
 							</tr>
 							<tr>
-								<td><i class="fas fa-adjust text-info"></i> Berhasil Sebagian</td>
+								<td><i class="fas fa-adjust" style="color: #059669;"></i> Berhasil Sebagian</td>
 								<td><?= $mediasi_data['S'] ?></td>
 							</tr>
 							<tr>
-								<td><i class="fas fa-check-circle text-success"></i> Berhasil Dengan Pencabutan</td>
+								<td><i class="fas fa-check-circle" style="color: #34d399;"></i> Berhasil Dengan Pencabutan</td>
 								<td><?= $mediasi_data['Y2'] ?></td>
 							</tr>
 							<tr>
-								<td><i class="fas fa-award text-primary"></i> Berhasil Dengan Akta Perdamaian</td>
+								<td><i class="fas fa-award" style="color: #10b981;"></i> Berhasil Dengan Akta Perdamaian</td>
 								<td><?= $mediasi_data['Y1'] ?></td>
 							</tr>
 						</tbody>
@@ -627,15 +640,18 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="dashboard-footer">
+			&copy; <?= date('Y') ?> Pengadilan Agama Amuntai
+		</div>
 	</div>
-	<div class="dashboard-footer">
-		&copy; <?= date('Y') ?> Pengadilan Agama Amuntai
-	</div>
+
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			Chart.defaults.font.family = "'Inter', Arial, sans-serif";
 			Chart.defaults.color = '#059669';
+
 			// Donut Chart
 			const perkaraData = <?= json_encode($chart_data) ?>;
 			const previousMonth = "<?= date('Y-m', strtotime('first day of last month')) ?>";
@@ -650,6 +666,7 @@
 			});
 			const labels = Object.keys(groupedData);
 			const values = Object.values(groupedData);
+
 			if (document.getElementById('donutChart')) {
 				new Chart(document.getElementById('donutChart').getContext('2d'), {
 					type: 'doughnut',
@@ -707,6 +724,7 @@
 					}
 				});
 			}
+
 			// Mediasi Chart
 			if (document.getElementById('mediasiChart')) {
 				const mediasiData = <?= json_encode($mediasi_data) ?>;
@@ -766,6 +784,7 @@
 					}
 				});
 			}
+
 			// E-filing Chart
 			if (document.getElementById('efilingChart')) {
 				const totalPerkaraData = <?= json_encode($total_perkara_data) ?>;
