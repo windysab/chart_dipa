@@ -4,22 +4,22 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>CCTV Monitoring - PA Amuntai</title>
+	<title>Dashboard Monitoring - Pengadilan Agama Amuntai</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 	<style>
 		:root {
-			/* Light Mode Colors */
-			--primary: #6366f1;
-			--primary-light: #818cf8;
-			--primary-dark: #4f46e5;
-			--secondary: #06b6d4;
-			--success: #10b981;
-			--info: #3b82f6;
-			--warning: #f59e0b;
-			--danger: #ef4444;
+			/* Tema Pengadilan Agama - Hijau */
+			--primary: #16a085;
+			--primary-light: #2ecc71;
+			--primary-dark: #0d7377;
+			--secondary: #27ae60;
+			--success: #2ecc71;
+			--info: #17a2b8;
+			--warning: #f39c12;
+			--danger: #e74c3c;
 			--dark: #1f2937;
 			--light: #f9fafb;
 			--gray: #6b7280;
@@ -29,7 +29,7 @@
 			--text-primary: #111827;
 			--text-secondary: #6b7280;
 			--border-color: #e5e7eb;
-			
+
 			/* Dark Mode Colors */
 			--dark-bg: #0f172a;
 			--dark-card: #1e293b;
@@ -37,7 +37,7 @@
 			--dark-text: #f1f5f9;
 			--dark-text-secondary: #94a3b8;
 			--dark-border: #475569;
-			
+
 			/* Spacing & Effects */
 			--border-radius-sm: 0.5rem;
 			--border-radius: 0.75rem;
@@ -51,13 +51,13 @@
 			--transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 			--transition-fast: all 0.15s ease-out;
 			--transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-			
+
 			/* Glassmorphism */
 			--glass-bg: rgba(255, 255, 255, 0.1);
 			--glass-border: rgba(255, 255, 255, 0.2);
 			--backdrop-blur: blur(16px);
 		}
-		
+
 		/* Dark Mode Theme */
 		[data-theme="dark"] {
 			--card-bg: var(--dark-card);
@@ -75,8 +75,8 @@
 		}
 
 		body {
-			font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-			background: var(--body-bg);
+			font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			background: linear-gradient(135deg, #e8f5e8 0%, #f0fdf4 50%, #dcfce7 100%);
 			color: var(--text-primary);
 			line-height: 1.6;
 			margin: 0;
@@ -85,41 +85,59 @@
 			transition: var(--transition);
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;
+			position: relative;
 		}
-		
+
+		body::before {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="islamic" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="1" fill="%2316a085" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23islamic)"/></svg>') repeat;
+			pointer-events: none;
+			z-index: -1;
+		}
+
 		/* Typography Improvements */
-		h1, h2, h3, h4, h5, h6 {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
 			font-weight: 700;
 			color: var(--text-primary);
 			margin-bottom: 0.5rem;
 			letter-spacing: -0.025em;
 		}
-		
+
 		.text-mono {
 			font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 		}
-		
+
 		.text-secondary {
 			color: var(--text-secondary) !important;
 		}
-		
+
 		/* Scrollbar Styling */
 		::-webkit-scrollbar {
 			width: 8px;
 			height: 8px;
 		}
-		
+
 		::-webkit-scrollbar-track {
 			background: var(--gray-light);
 			border-radius: 4px;
 		}
-		
+
 		::-webkit-scrollbar-thumb {
 			background: var(--gray);
 			border-radius: 4px;
 			transition: var(--transition-fast);
 		}
-		
+
 		::-webkit-scrollbar-thumb:hover {
 			background: var(--primary);
 		}
@@ -132,9 +150,9 @@
 
 		/* Header Section */
 		.dashboard-header {
-			background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--secondary) 100%);
+			background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 30%, var(--secondary) 70%, var(--primary-light) 100%);
 			color: white;
-			padding: 2.5rem 0;
+			padding: 3rem 0;
 			margin-bottom: 2rem;
 			border-radius: 0 0 var(--border-radius-xl) var(--border-radius-xl);
 			box-shadow: var(--box-shadow-2xl);
@@ -150,9 +168,10 @@
 			left: 0;
 			right: 0;
 			bottom: 0;
-			background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
-						radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
-						radial-gradient(circle at 40% 80%, rgba(255,255,255,0.05) 0%, transparent 50%);
+			background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+				radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+				url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 15 L60 35 L85 35 L67 50 L72 75 L50 60 L28 75 L33 50 L15 35 L40 35 Z" fill="white" opacity="0.05"/></svg>') repeat;
+			background-size: auto, auto, 80px 80px;
 			pointer-events: none;
 		}
 
@@ -163,7 +182,7 @@
 			left: 0;
 			right: 0;
 			height: 1px;
-			background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+			background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
 		}
 
 		.header-content {
@@ -191,7 +210,7 @@
 			position: absolute;
 			inset: -2px;
 			border-radius: 50%;
-			background: linear-gradient(45deg, rgba(255,255,255,0.3), transparent, rgba(255,255,255,0.3));
+			background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), transparent, rgba(255, 255, 255, 0.3));
 			z-index: -1;
 			opacity: 0;
 			transition: var(--transition);
@@ -241,7 +260,7 @@
 			font-weight: 800;
 			margin-bottom: 0.5rem;
 			letter-spacing: -0.02em;
-			text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		}
 
 		.dashboard-subtitle {
@@ -438,7 +457,7 @@
 			left: -100%;
 			width: 100%;
 			height: 100%;
-			background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+			background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
 			transition: var(--transition);
 		}
 
@@ -500,10 +519,13 @@
 		}
 
 		@keyframes pulse {
-			0%, 100% {
+
+			0%,
+			100% {
 				opacity: 1;
 				transform: scale(1);
 			}
+
 			50% {
 				opacity: 0.7;
 				transform: scale(0.95);
@@ -515,6 +537,7 @@
 				transform: scale(0.8);
 				opacity: 0.8;
 			}
+
 			100% {
 				transform: scale(2);
 				opacity: 0;
@@ -535,7 +558,7 @@
 			content: '';
 			position: absolute;
 			inset: 0;
-			background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+			background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
 			opacity: 0;
 			transition: var(--transition);
 			z-index: 1;
@@ -855,7 +878,7 @@
 			left: -100%;
 			width: 100%;
 			height: 100%;
-			background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+			background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
 			transition: var(--transition-slow);
 		}
 
@@ -1096,7 +1119,7 @@
 			.data-grid {
 				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 			}
-			
+
 			.cctv-grid {
 				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 			}
@@ -1108,7 +1131,8 @@
 			}
 
 			.header-logo {
-				margin-bottom: 1.5rem; /* Maintain bottom margin on smaller screens */
+				margin-bottom: 1.5rem;
+				/* Maintain bottom margin on smaller screens */
 			}
 
 			.circle-stats-grid {
@@ -1266,6 +1290,7 @@
 			from {
 				opacity: 0;
 			}
+
 			to {
 				opacity: 1;
 			}
@@ -1276,6 +1301,7 @@
 				transform: translateY(30px);
 				opacity: 0;
 			}
+
 			to {
 				transform: translateY(0);
 				opacity: 1;
@@ -1287,6 +1313,7 @@
 				transform: scale(0.9);
 				opacity: 0;
 			}
+
 			to {
 				transform: scale(1);
 				opacity: 1;
@@ -1306,7 +1333,7 @@
 			left: -100%;
 			width: 100%;
 			height: 100%;
-			background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+			background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
 			animation: shimmer 1.5s infinite;
 		}
 
@@ -1314,6 +1341,7 @@
 			0% {
 				left: -100%;
 			}
+
 			100% {
 				left: 100%;
 			}
@@ -1331,12 +1359,13 @@
 			.theme-toggle {
 				display: none;
 			}
-			
+
 			.dashboard-header {
 				background: var(--primary) !important;
 				-webkit-print-color-adjust: exact;
+				print-color-adjust: exact;
 			}
-			
+
 			.card,
 			.data-card {
 				box-shadow: none;
@@ -1355,10 +1384,11 @@
 			</button>
 			<div class="header-content">
 				<div class="logo-container">
-					<i class="fas fa-video"></i>
+					<i class="fas fa-balance-scale"></i>
 				</div>
-				<h1 class="dashboard-title">MONITORING DASHBOARD</h1>
+				<h1 class="dashboard-title">SISTEM INFORMASI PENGADILAN AGAMA</h1>
 				<p class="dashboard-subtitle">PENGADILAN AGAMA AMUNTAI KELAS IB</p>
+				<p class="dashboard-motto" style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem; font-style: italic;">"Melayani dengan Amanah, Memutus dengan Adil"</p>
 			</div>
 		</div>
 
@@ -1366,47 +1396,52 @@
 		<div class="stats-grid fade-in-delay-1">
 			<div class="stat-card primary slide-up" style="animation-delay: 0.1s;">
 				<div class="stat-icon">
-					<i class="fas fa-folder-open"></i>
+					<i class="fas fa-clipboard-list"></i>
 				</div>
 				<div class="stat-value"><?php echo htmlspecialchars($total_perkara_data->total_perkara, ENT_QUOTES, 'UTF-8'); ?></div>
 				<div class="stat-label">Total Perkara</div>
-				<div class="stat-description">Total perkara bulan <?php echo date('F Y', strtotime('first day of last month')); ?></div>
+				<div class="stat-description">Perkara terdaftar bulan <?php echo date('F Y', strtotime('first day of last month')); ?></div>
 			</div>
 			<div class="stat-card success slide-up" style="animation-delay: 0.2s;">
 				<div class="stat-icon">
-					<i class="fas fa-gavel"></i>
+					<i class="fas fa-stamp"></i>
 				</div>
 				<div class="stat-value"><?php echo htmlspecialchars($jumlah_perkara_diputus, ENT_QUOTES, 'UTF-8'); ?></div>
 				<div class="stat-label">Perkara Diputus</div>
-				<div class="stat-description">Perkara yang telah diputuskan</div>
+				<div class="stat-description">Putusan yang telah dikeluarkan</div>
 			</div>
 			<div class="stat-card warning slide-up" style="animation-delay: 0.3s;">
 				<div class="stat-icon">
-					<i class="fas fa-balance-scale"></i>
+					<i class="fas fa-hourglass-half"></i>
 				</div>
 				<div class="stat-value"><?php echo htmlspecialchars($sisa_perkara, ENT_QUOTES, 'UTF-8'); ?></div>
 				<div class="stat-label">Sisa Perkara</div>
-				<div class="stat-description">Perkara yang masih dalam proses</div>
+				<div class="stat-description">Perkara dalam proses peradilan</div>
 			</div>
 			<div class="stat-card info slide-up" style="animation-delay: 0.4s;">
 				<div class="stat-icon">
-					<i class="fas fa-users"></i>
+					<i class="fas fa-desktop"></i>
 				</div>
 				<div class="stat-value"><?php echo htmlspecialchars($daily_view_count, ENT_QUOTES, 'UTF-8'); ?></div>
-				<div class="stat-label">Pengunjung Hari Ini</div>
-				<div class="stat-description">Total pengunjung dashboard ini</div>
+				<div class="stat-label">Akses Sistem</div>
+				<div class="stat-description">Pengguna mengakses sistem hari ini</div>
 			</div>
 		</div>
 
-		<!-- CCTV Section -->
-		<h2 class="section-title slide-up"><i class="fas fa-video"></i> Pantauan CCTV Live</h2>
+		<!-- Monitoring Section -->
+		<h2 class="section-title slide-up"><i class="fas fa-shield-alt"></i> Sistem Keamanan & Monitoring</h2>
 		<div class="cctv-grid fade-in-delay-2">
 			<?php if (isset($links)) : ?>
 				<?php
 				$icons = [
-					'Halaman Parkir' => 'fas fa-car',
-					'Ruang Tunggu' => 'fas fa-couch',
-					'PTSP' => 'fas fa-info-circle',
+					'Halaman Parkir' => 'fas fa-parking',
+					'Ruang Tunggu' => 'fas fa-users',
+					'PTSP' => 'fas fa-handshake',
+				];
+				$descriptions = [
+					'Halaman Parkir' => 'Area Parkir Pengadilan',
+					'Ruang Tunggu' => 'Ruang Tunggu Pengunjung',
+					'PTSP' => 'Pelayanan Terpadu Satu Pintu',
 				];
 				?>
 				<?php foreach ($links as $name => $url): ?>
@@ -1414,9 +1449,10 @@
 						<div class="cctv-header">
 							<div class="cctv-title">
 								<i class="<?php echo isset($icons[$name]) ? $icons[$name] : 'fas fa-video'; ?>"></i>
-								<?php echo ucfirst(str_replace('_', ' ', $name)); ?>
+								<?php echo isset($descriptions[$name]) ? $descriptions[$name] : ucfirst(str_replace('_', ' ', $name)); ?>
 							</div>
-							<div class="cctv-status">
+							<div class="cctv-status status-online">
+								<div class="status-indicator"></div>
 								<i class="fas fa-circle"></i> Live
 							</div>
 						</div>
@@ -1432,28 +1468,28 @@
 		<div class="visitor-counter fade-in-delay-2">
 			<div class="visitor-counter-item">
 				<div class="visitor-counter-icon">
-					<i class="fas fa-users"></i>
+					<i class="fas fa-eye"></i>
 				</div>
 				<div class="visitor-counter-content">
-					<div class="visitor-counter-label">Pengunjung Hari Ini</div>
+					<div class="visitor-counter-label">Akses Sistem Hari Ini</div>
 					<div class="visitor-counter-value"><?php echo htmlspecialchars($daily_view_count, ENT_QUOTES, 'UTF-8'); ?></div>
 				</div>
 			</div>
 			<div class="visitor-counter-item">
 				<div class="visitor-counter-icon">
-					<i class="fas fa-calendar-alt"></i>
+					<i class="fas fa-calendar-check"></i>
 				</div>
 				<div class="visitor-counter-content">
-					<div class="visitor-counter-label">Bulan Ini</div>
+					<div class="visitor-counter-label">Akses Bulan Ini</div>
 					<div class="visitor-counter-value"><?php echo htmlspecialchars($monthly_view_count, ENT_QUOTES, 'UTF-8'); ?></div>
 				</div>
 			</div>
 			<div class="visitor-counter-item">
 				<div class="visitor-counter-icon">
-					<i class="fas fa-chart-line"></i>
+					<i class="fas fa-chart-bar"></i>
 				</div>
 				<div class="visitor-counter-content">
-					<div class="visitor-counter-label">Total Pengunjung</div>
+					<div class="visitor-counter-label">Total Akses Sistem</div>
 					<div class="visitor-counter-value"><?php echo htmlspecialchars($total_view_count, ENT_QUOTES, 'UTF-8'); ?></div>
 				</div>
 			</div>
@@ -1461,7 +1497,7 @@
 
 		<!-- Case Data Section -->
 		<div class="case-header fade-in-delay-2">
-			<h2><i class="fas fa-balance-scale"></i> KEADAAN PERKARA S/D <?php echo date('F Y', strtotime('first day of last month')); ?></h2>
+			<h2><i class="fas fa-chart-pie"></i> STATISTIK PERKARA BULAN <?php echo strtoupper(date('F Y', strtotime('first day of last month'))); ?></h2>
 		</div>
 
 		<!-- Circle Stats -->
@@ -1613,6 +1649,23 @@
 
 		<!-- Footer Counter -->
 		<div class="dashboard-footer fade-in-delay-3">
+			<div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border-radius: var(--border-radius); margin-top: 2rem;">
+				<h4 style="margin-bottom: 1rem; font-weight: 600;">
+					<i class="fas fa-balance-scale"></i>
+					Pengadilan Agama Amuntai Kelas IB
+				</h4>
+				<p style="margin-bottom: 0.5rem; opacity: 0.9;">
+					Jl. Masjid Baitul Amin No. 123, Amuntai, Kabupaten Hulu Sungai Utara
+				</p>
+				<p style="margin-bottom: 1rem; opacity: 0.9;">
+					Kalimantan Selatan 71451 | Telp: (0517) 41234 | Email: pa.amuntai@badilag.mahkamahagung.go.id
+				</p>
+				<div style="border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1rem; margin-top: 1rem;">
+					<small style="opacity: 0.8;">
+						© <?php echo date('Y'); ?> Pengadilan Agama Amuntai | Sistem Informasi Dashboard v1.0
+					</small>
+				</div>
+			</div>
 			<div id="histats_counter"></div>
 		</div>
 	</div>
@@ -1629,7 +1682,7 @@
 			const body = document.body;
 			const themeIcon = document.getElementById('theme-icon');
 			const currentTheme = body.getAttribute('data-theme');
-			
+
 			if (currentTheme === 'light') {
 				body.setAttribute('data-theme', 'dark');
 				themeIcon.className = 'fas fa-sun';
@@ -1646,7 +1699,7 @@
 			const savedTheme = localStorage.getItem('theme') || 'light';
 			const body = document.body;
 			const themeIcon = document.getElementById('theme-icon');
-			
+
 			body.setAttribute('data-theme', savedTheme);
 			themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
 		}
@@ -1675,28 +1728,28 @@
 		document.addEventListener('DOMContentLoaded', function() {
 			loadTheme();
 			observeElements();
-			
+
 			// Set chart defaults
 			Chart.defaults.font.family = "'Inter', sans-serif";
 			Chart.defaults.color = '#64748b';
-			
+
 			// Debug data to verify it exists
 			console.log("Chart data:", <?php echo json_encode($chart_data); ?>);
 			console.log("Mediasi data:", <?php echo json_encode($mediasi_data); ?>);
 			console.log("Total perkara data:", <?php echo json_encode($total_perkara_data); ?>);
-			
+
 			try {
 				// Process data for pie chart
 				const perkaraData = <?php echo json_encode($chart_data); ?>;
 				const previousMonth = "<?php echo date('Y-m', strtotime('first day of last month')); ?>";
-				
+
 				// Filter chart data for previous month
 				const filteredChartData = perkaraData.filter(function(data) {
-					const dataMonth = data.tanggal_pendaftaran ? 
+					const dataMonth = data.tanggal_pendaftaran ?
 						data.tanggal_pendaftaran.substring(0, 7) : '';
 					return dataMonth === previousMonth;
 				});
-				
+
 				// Group data by jenis_perkara_nama
 				const groupedData = {};
 				filteredChartData.forEach(function(data) {
@@ -1705,15 +1758,15 @@
 					}
 					groupedData[data.jenis_perkara_nama] += parseInt(data.jumlah_perkara);
 				});
-				
+
 				// Extract labels and values
 				const labels = Object.keys(groupedData);
 				const values = Object.values(groupedData);
-				
+
 				// Log processed data
 				console.log("Processed labels:", labels);
 				console.log("Processed values:", values);
-				
+
 				// Donut Chart for Case Types
 				if (document.getElementById('donutChart')) {
 					const donutChartCtx = document.getElementById('donutChart').getContext('2d');
@@ -1724,7 +1777,7 @@
 							datasets: [{
 								data: values.length > 0 ? values : [1],
 								backgroundColor: [
-									'#4361ee', '#4cc9f0', '#4ade80', '#f59e0b', 
+									'#4361ee', '#4cc9f0', '#4ade80', '#f59e0b',
 									'#f43f5e', '#8b5cf6', '#ec4899', '#0ea5e9'
 								],
 								borderWidth: 0,
@@ -1785,10 +1838,10 @@
 						type: 'doughnut',
 						data: {
 							labels: [
-								'Tidak Dapat Dilaksanakan', 
-								'Tidak Berhasil', 
-								'Berhasil Sebagian', 
-								'Berhasil Dengan Pencabutan', 
+								'Tidak Dapat Dilaksanakan',
+								'Tidak Berhasil',
+								'Berhasil Sebagian',
+								'Berhasil Dengan Pencabutan',
 								'Berhasil Dengan Akta Perdamaian'
 							],
 							datasets: [{
@@ -1907,7 +1960,7 @@
 				} else {
 					console.error("efilingChart element not found");
 				}
-			
+
 			} catch (error) {
 				console.error("Error initializing charts:", error);
 			}
