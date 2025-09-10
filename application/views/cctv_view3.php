@@ -29,12 +29,15 @@
 			margin: 0;
 			min-height: 100vh;
 			padding: 0;
+			overflow-x: hidden;
 		}
 
 		.container {
 			max-width: 1400px;
 			margin: 0 auto;
 			padding: 0 1.5rem;
+			width: 100%;
+			box-sizing: border-box;
 		}
 
 		.header {
@@ -201,6 +204,7 @@
 			display: flex;
 			justify-content: center;
 			gap: 2rem;
+			flex-wrap: wrap;
 		}
 
 		.visitor-counter-item {
@@ -295,6 +299,7 @@
 			grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 			gap: 1.5rem;
 			margin-bottom: 2rem;
+			width: 100%;
 		}
 
 		.data-card {
@@ -358,6 +363,7 @@
 			border-collapse: separate;
 			border-spacing: 0;
 			min-width: 600px;
+			table-layout: fixed;
 		}
 
 		.modern-table th {
@@ -369,6 +375,7 @@
 			font-size: 0.95rem;
 			letter-spacing: 0.02em;
 			text-transform: uppercase;
+			word-wrap: break-word;
 		}
 
 		.modern-table td {
@@ -377,6 +384,8 @@
 			vertical-align: middle;
 			color: var(--pa-text-light);
 			font-size: 0.95rem;
+			word-wrap: break-word;
+			overflow-wrap: break-word;
 		}
 
 		.modern-table tr:last-child td {
@@ -401,12 +410,80 @@
 		}
 
 		@media (max-width: 768px) {
+			.container {
+				padding: 0 1rem;
+			}
 
 			.stats,
 			.cctv-grid,
-			.circle-stats-grid,
+			.circle-stats-grid {
+				grid-template-columns: 1fr;
+			}
+
 			.data-grid {
 				grid-template-columns: 1fr;
+				gap: 1rem;
+			}
+
+			.header h1 {
+				font-size: 1.8rem;
+			}
+
+			.header .logo {
+				font-size: 2.5rem;
+			}
+
+			.header p {
+				font-size: 1rem;
+			}
+
+			.stat-card {
+				padding: 1.5rem 1rem;
+			}
+
+			.stat-value {
+				font-size: 2rem;
+			}
+
+			.visitor-counter {
+				flex-direction: column;
+				gap: 1rem;
+			}
+
+			.visitor-counter-item {
+				justify-content: center;
+			}
+
+			.modern-table {
+				min-width: 100%;
+				font-size: 0.85rem;
+				table-layout: auto;
+			}
+
+			.modern-table th,
+			.modern-table td {
+				padding: 0.75rem 0.5rem;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			.chart-container {
+				height: 280px;
+			}
+
+			.section-title {
+				font-size: 1.3rem;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.container {
+				padding: 0 0.75rem;
+			}
+
+			.header {
+				padding: 1.5rem 0 1rem 0;
 			}
 
 			.header h1 {
@@ -415,6 +492,45 @@
 
 			.header .logo {
 				font-size: 2rem;
+			}
+
+			.stat-card {
+				padding: 1.25rem 0.75rem;
+			}
+
+			.stat-value {
+				font-size: 1.8rem;
+			}
+
+			.stat-label {
+				font-size: 1rem;
+			}
+
+			.data-card,
+			.table-card {
+				padding: 1rem;
+			}
+
+			.chart-container {
+				height: 250px;
+			}
+
+			.circle-stat-value-container {
+				width: 90px;
+				height: 90px;
+			}
+
+			.circle-stat-value {
+				font-size: 1.5rem;
+			}
+
+			.modern-table {
+				font-size: 0.8rem;
+			}
+
+			.modern-table th,
+			.modern-table td {
+				padding: 0.5rem 0.25rem;
 			}
 		}
 	</style>
