@@ -201,7 +201,7 @@
 					<a href="<?php echo site_url('LipaJuliController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-file-signature"></i>
 						<p>
-							Laporan LIPA Juli 2025 
+							Laporan LIPA Juli 2025
 						</p>
 					</a>
 				</li>
@@ -209,7 +209,7 @@
 					<a href="<?php echo site_url('LipaAgustusController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-file-signature"></i>
 						<p>
-							Laporan LIPA Agustus 2025 
+							Laporan LIPA Agustus 2025
 						</p>
 					</a>
 				</li>
@@ -234,6 +234,14 @@
 						<i class="nav-icon fas fa-file-invoice-dollar"></i>
 						<p>
 							Laporan Keuangan Perkara Agustus
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?php echo site_url('LKSeptemberPerkaraController') ?>" class="nav-link">
+						<i class="nav-icon fas fa-file-invoice-dollar"></i>
+						<p>
+							Laporan Keuangan Perkara September
 						</p>
 					</a>
 				</li>
