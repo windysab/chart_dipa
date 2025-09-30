@@ -114,44 +114,96 @@
 	</div>
 
 	<script>
+		// Chart defaults
+		Chart.defaults.responsive = true;
+		Chart.defaults.maintainAspectRatio = false;
+
+		// Prepare data
+		const chartData = {
+			bulan: <?= json_encode($bulan) ?>,
+			penerimaan: <?= json_encode($penerimaan_bulanan) ?>,
+			pengeluaran: <?= json_encode($pengeluaran_bulanan) ?>,
+			laporan: <?= json_encode($laporan) ?>
+		};
+
 		// Bar Chart
 		new Chart(document.getElementById('barChart'), {
 			type: 'bar',
 			data: {
-				labels: <?= json_encode($bulan) ?>,
+				labels: chartData.bulan,
 				datasets: [{
-						label: 'Penerimaan',
-						data: <?= json_encode($penerimaan_bulanan) ?>,
-						backgroundColor: 'rgba(16, 185, 129, 0.7)'
-					},
-					{
-						label: 'Pengeluaran',
-						data: <?= json_encode($pengeluaran_bulanan) ?>,
-						backgroundColor: 'rgba(234, 88, 12, 0.7)'
-					}
-				]
+					label: 'Penerimaan',
+					data: chartData.penerimaan,
+					backgroundColor: 'rgba(16, 185, 129, 0.8)',
+					borderColor: 'rgb(16, 185, 129)',
+					borderWidth: 2,
+					borderRadius: 6
+				}, {
+					label: 'Pengeluaran',
+					data: chartData.pengeluaran,
+					backgroundColor: 'rgba(234, 88, 12, 0.8)',
+					borderColor: 'rgb(234, 88, 12)',
+					borderWidth: 2,
+					borderRadius: 6
+				}]
 			},
 			options: {
 				responsive: true,
+				maintainAspectRatio: false,
 				plugins: {
 					legend: {
 						position: 'top'
+					}
+				},
+				scales: {
+					y: {
+						beginAtZero: true
+					},
+					x: {
+						grid: {
+							display: false
+						}
 					}
 				}
 			}
 		});
 
-		// Pie Chart
+		// Pie Chart - filter only pengeluaran > 0
+		const pengeluaranData = chartData.laporan
+			.filter(item => item.pengeluaran > 0)
+			.map(item => ({
+				label: item.uraian.length > 25 ? item.uraian.substring(0, 25) + '...' : item.uraian,
+				value: item.pengeluaran
+			}));
+
 		new Chart(document.getElementById('pieChart'), {
 			type: 'pie',
 			data: {
-				labels: <?= json_encode(array_column($laporan, 'uraian')) ?>,
+				labels: pengeluaranData.map(item => item.label),
 				datasets: [{
-					data: <?= json_encode(array_column($laporan, 'pengeluaran')) ?>,
+					data: pengeluaranData.map(item => item.value),
 					backgroundColor: [
-						'#10b981', '#f87171', '#60a5fa', '#fbbf24', '#34d399', '#a78bfa', '#f472b6', '#facc15', '#4ade80', '#fb923c', '#22d3ee'
-					]
+						'#10b981', '#f87171', '#60a5fa', '#fbbf24',
+						'#34d399', '#a78bfa', '#f472b6', '#facc15'
+					],
+					borderWidth: 2,
+					borderColor: '#ffffff'
 				}]
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				plugins: {
+					legend: {
+						position: 'bottom',
+						labels: {
+							font: {
+								size: 11
+							},
+							padding: 10
+						}
+					}
+				}
 			}
 		});
 	</script>
