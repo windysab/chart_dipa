@@ -114,9 +114,7 @@ class LipaSeptemberController extends CI_Controller
         $series_sisa = [95, 99, 107, 112, 105, 110, 102, 98, 97, 0, 0, 0];
 
         $data = array(
-            'title' => 'LAPORAN PERKARA (LIPA) SEPTEMBER 2025',
-            'subtitle' => 'PENGADILAN AGAMA AMUNTAI KELAS IB',
-            'periode' => 'SEPTEMBER 2025',
+            'title' => 'LIPA 8 – September 2025',
             'kategori' => $kategori,
             'rows' => $rows,
             'tot_img' => $totals_september,
@@ -129,5 +127,7 @@ class LipaSeptemberController extends CI_Controller
         $this->load->view('template/header', $data);
         $this->load->view('Lipa_September_view', $data);
         $this->load->view('template/footer');
+    }
+}
     }
 }
