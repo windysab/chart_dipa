@@ -129,5 +129,4 @@ class LipaSeptemberController extends CI_Controller
         $this->load->view('template/footer');
     }
 }
-    }
-}
+    
