@@ -1,934 +1,771 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title><?= $judul ?> - <?= $periode ?></title>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><?= htmlspecialchars($judul ?? 'Laporan Keuangan Perkara Oktober 2025'); ?></title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+	<link href="https://cdn.datatables.net/v/bs5/dt-2.0.8/r-3.0.2/datatables.min.css" rel="stylesheet" />
 	<style>
 		:root {
-			--primary: #1e40af;
-			--primary-light: #3b82f6;
-			--primary-dark: #1e3a8a;
-			--secondary: #059669;
-			--secondary-light: #10b981;
-			--accent: #f59e0b;
-			--accent-light: #fbbf24;
-			--danger: #dc2626;
-			--danger-light: #ef4444;
-			--warning: #d97706;
-			--info: #0891b2;
-			--success: #16a34a;
-			--dark: #0f172a;
-			--light: #f8fafc;
-			--white: #ffffff;
-			--gray-50: #f9fafb;
-			--gray-100: #f3f4f6;
-			--gray-200: #e5e7eb;
-			--gray-300: #d1d5db;
-			--gray-400: #9ca3af;
-			--gray-500: #6b7280;
-			--gray-600: #4b5563;
-			--gray-700: #374151;
-			--gray-800: #1f2937;
-			--gray-900: #111827;
-			--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-			--shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-			--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-			--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-			--shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+			--primary-color: #ea580c;
+			--secondary-color: #f59e0b;
+			--accent-color: #d97706;
+			--highlight-color: #10b981;
+			--background-color: #f8fafc;
+			--card-color: #ffffff;
+			--text-dark: #1e293b;
+			--text-light: #64748b;
+			--shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+			--transition: all 0.3s ease;
 		}
 
 		* {
-			margin: 0;
-			padding: 0;
 			box-sizing: border-box;
+			font-family: 'Segoe UI', 'Roboto', sans-serif;
 		}
 
 		body {
-			font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-			min-height: 100vh;
-			color: var(--gray-800);
+			background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+			color: var(--text-dark);
 			line-height: 1.6;
-		}
-
-		.main-container {
+			margin: 0;
 			min-height: 100vh;
-			position: relative;
-			padding: 2rem 1rem;
 		}
 
-		.bg-overlay {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background:
-				radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-				radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-				radial-gradient(circle at 40% 40%, rgba(251, 191, 36, 0.1) 0%, transparent 50%);
-			z-index: 0;
+		.hero {
+			background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+			border-radius: 20px;
+			color: white;
+			box-shadow: var(--shadow);
+			padding: 30px;
+			margin-bottom: 30px;
 		}
 
-		.container {
-			max-width: 1400px;
-			margin: 0 auto;
-			position: relative;
-			z-index: 1;
+		.hero h3 {
+			font-size: 2.5rem;
+			font-weight: 700;
+			margin-bottom: 10px;
+			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		}
 
-		.header-section {
-			background: rgba(255, 255, 255, 0.95);
-			backdrop-filter: blur(20px);
-			border: 1px solid rgba(255, 255, 255, 0.3);
-			border-radius: 24px;
-			padding: 3rem 2rem;
-			text-align: center;
-			margin-bottom: 2rem;
-			box-shadow: var(--shadow-xl);
+		.hero .opacity-75 {
+			font-size: 1.3rem;
+			font-weight: 400;
+			opacity: 0.9;
+		}
+
+		.hero .badge {
+			background: rgba(255, 255, 255, 0.2) !important;
+			backdrop-filter: blur(10px);
+			color: white !important;
+			padding: 15px 30px !important;
+			border-radius: 50px !important;
+			font-size: 1.2rem !important;
+			font-weight: 600 !important;
+			border: 1px solid rgba(255, 255, 255, 0.3) !important;
+		}
+
+		.metric-card {
+			background: linear-gradient(135deg, var(--card-color), #f1f5f9);
+			border: 0;
+			border-radius: 20px;
+			box-shadow: var(--shadow);
+			transition: var(--transition);
 			position: relative;
 			overflow: hidden;
+			border: 1px solid rgba(234, 88, 12, 0.1);
 		}
 
-		.header-section::before {
-			content: '';
+		.metric-card:hover {
+			transform: translateY(-15px) scale(1.02);
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+		}
+
+		.metric-card::before {
+			content: "";
 			position: absolute;
 			top: 0;
 			left: 0;
-			right: 0;
-			height: 6px;
-			background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+			width: 100%;
+			height: 5px;
+			background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
 		}
 
-		.header-badge {
-			display: inline-flex;
-			align-items: center;
-			gap: 0.5rem;
-			background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-			color: white;
-			padding: 0.5rem 1.5rem;
-			border-radius: 50px;
-			font-size: 0.875rem;
+		.metric-card .card-body {
+			padding: 30px;
+		}
+
+		.metric-card .small {
+			font-size: 1.1rem;
+			color: var(--text-light);
 			font-weight: 600;
-			margin-bottom: 1rem;
-			box-shadow: var(--shadow-md);
+			margin-bottom: 10px;
 		}
 
-		.header-title {
-			font-size: 2.5rem;
+		.metric-card .h3 {
+			font-size: 3rem;
 			font-weight: 800;
-			color: var(--gray-900);
-			margin-bottom: 0.5rem;
-			background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+			color: var(--primary-color);
+			margin-bottom: 8px;
+			background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 			background-clip: text;
 		}
 
-		.header-subtitle {
-			font-size: 1.25rem;
-			color: var(--gray-600);
-			font-weight: 500;
-			margin-bottom: 0.5rem;
-		}
-
-		.header-period {
-			font-size: 1.125rem;
-			color: var(--primary);
-			font-weight: 600;
-		}
-
-		.stats-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-			gap: 1.5rem;
-			margin-bottom: 2rem;
-		}
-
-		.stat-card {
-			background: rgba(255, 255, 255, 0.95);
-			backdrop-filter: blur(20px);
-			border: 1px solid rgba(255, 255, 255, 0.3);
-			border-radius: 20px;
-			padding: 2rem;
-			text-align: center;
-			position: relative;
-			overflow: hidden;
-			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-			box-shadow: var(--shadow-lg);
-		}
-
-		.stat-card:hover {
-			transform: translateY(-8px);
-			box-shadow: var(--shadow-xl);
-		}
-
-		.stat-card::before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			height: 4px;
-			background: var(--gradient);
-		}
-
-		.stat-card.penerimaan::before {
-			background: linear-gradient(90deg, var(--secondary) 0%, var(--secondary-light) 100%);
-		}
-
-		.stat-card.pengeluaran::before {
-			background: linear-gradient(90deg, var(--danger) 0%, var(--danger-light) 100%);
-		}
-
-		.stat-card.saldo::before {
-			background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
-		}
-
-		.stat-card.perkara::before {
-			background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
-		}
-
-		.stat-icon {
-			width: 4rem;
-			height: 4rem;
-			border-radius: 16px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			margin: 0 auto 1rem;
-			font-size: 1.5rem;
-			color: white;
-		}
-
-		.stat-icon.penerimaan {
-			background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
-		}
-
-		.stat-icon.pengeluaran {
-			background: linear-gradient(135deg, var(--danger) 0%, var(--danger-light) 100%);
-		}
-
-		.stat-icon.saldo {
-			background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-		}
-
-		.stat-icon.perkara {
-			background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-		}
-
-		.stat-value {
-			font-size: 1.875rem;
-			font-weight: 800;
-			color: var(--gray-900);
-			margin-bottom: 0.5rem;
-		}
-
-		.stat-label {
-			font-size: 1rem;
-			color: var(--gray-600);
-			font-weight: 500;
-		}
-
-		.stat-sublabel {
-			font-size: 0.875rem;
-			color: var(--gray-500);
-			margin-top: 0.25rem;
-		}
-
-		.content-grid {
-			display: grid;
-			grid-template-columns: 1fr;
-			gap: 2rem;
-			margin-bottom: 2rem;
-		}
-
 		.section-card {
-			background: rgba(255, 255, 255, 0.95);
-			backdrop-filter: blur(20px);
-			border: 1px solid rgba(255, 255, 255, 0.3);
+			background-color: var(--card-color);
+			border: 0;
 			border-radius: 20px;
+			box-shadow: var(--shadow);
 			overflow: hidden;
-			box-shadow: var(--shadow-lg);
-			transition: all 0.3s ease;
-		}
-
-		.section-card:hover {
-			transform: translateY(-4px);
-			box-shadow: var(--shadow-xl);
-		}
-
-		.section-header {
-			background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);
-			color: white;
-			padding: 1.5rem 2rem;
 			position: relative;
-			overflow: hidden;
+			border: 1px solid rgba(234, 88, 12, 0.1);
 		}
 
-		.section-header::before {
-			content: '';
-			position: absolute;
-			top: -50%;
-			right: -50%;
-			width: 100%;
-			height: 200%;
-			background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-			animation: shimmer 3s linear infinite;
+		.sticky-th th {
+			position: sticky;
+			top: 0;
+			z-index: 2;
+			background: linear-gradient(135deg, rgba(234, 88, 12, 0.1), rgba(234, 88, 12, 0.05));
+			color: var(--primary-color);
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 0.85rem;
+			letter-spacing: 0.5px;
+			padding: 18px;
+			text-align: center;
+			border-bottom: 2px solid rgba(234, 88, 12, 0.2);
 		}
 
-		@keyframes shimmer {
-			0% {
-				transform: translateX(-100%) rotate(45deg);
-			}
-
-			100% {
-				transform: translateX(200%) rotate(45deg);
-			}
+		.table td {
+			padding: 16px;
+			text-align: center;
+			border-bottom: 1px solid #f1f5f9;
+			transition: var(--transition);
 		}
 
-		.section-title {
-			font-size: 1.5rem;
+		.table tr:hover td {
+			background-color: rgba(234, 88, 12, 0.05);
+		}
+
+		.table tbody td:nth-child(2) {
+			text-align: left;
+			padding-left: 20px;
+			font-weight: 600;
+			color: var(--primary-color);
+		}
+
+		.table tfoot tr {
+			background: linear-gradient(135deg, rgba(234, 88, 12, 0.1), rgba(234, 88, 12, 0.05));
+			font-weight: 700;
+			color: var(--primary-color);
+		}
+
+		.table tfoot td {
+			border-top: 2px solid var(--secondary-color);
+		}
+
+		.chart-box {
+			min-height: 380px;
+			padding: 25px;
+		}
+
+		.chart-box h6 {
+			font-size: 1.3rem;
+			color: var(--primary-color);
+			margin-bottom: 25px;
+			padding-bottom: 15px;
+			border-bottom: 2px solid #e2e8f0;
 			font-weight: 700;
 			display: flex;
 			align-items: center;
-			gap: 0.75rem;
+			gap: 15px;
 		}
 
-		.section-body {
-			padding: 2rem;
+		canvas {
+			width: 100% !important;
+			height: 320px !important;
 		}
 
-		.table-responsive {
-			overflow-x: auto;
-			border-radius: 12px;
-			box-shadow: var(--shadow-sm);
+		footer {
+			color: #6c757d;
+			font-size: .85rem;
 		}
 
-		.modern-table {
-			width: 100%;
-			border-collapse: collapse;
-			background: white;
-			font-size: 0.95rem;
-		}
-
-		.modern-table th {
-			background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-			color: white;
-			padding: 1rem;
-			text-align: center;
-			font-weight: 600;
-			font-size: 0.875rem;
-			text-transform: uppercase;
-			letter-spacing: 0.025em;
-		}
-
-		.modern-table td {
-			padding: 1rem;
-			border-bottom: 1px solid var(--gray-200);
-			transition: background-color 0.2s ease;
-		}
-
-		.modern-table tbody tr:hover {
-			background-color: var(--gray-50);
-		}
-
-		.modern-table tbody tr:last-child td {
-			border-bottom: none;
-		}
-
-		.text-center {
-			text-align: center;
-		}
-
-		.text-start {
-			text-align: left;
-		}
-
-		.text-end {
-			text-align: right;
-		}
-
-		.fw-bold {
-			font-weight: 700;
-		}
-
-		.fw-semibold {
-			font-weight: 600;
-		}
-
-		.charts-grid {
+		.signature-section {
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-			gap: 2rem;
-			margin-bottom: 2rem;
-		}
-
-		.chart-container {
-			background: rgba(255, 255, 255, 0.95);
-			backdrop-filter: blur(20px);
-			border: 1px solid rgba(255, 255, 255, 0.3);
-			border-radius: 20px;
-			padding: 2rem;
-			box-shadow: var(--shadow-lg);
-			transition: all 0.3s ease;
-			height: 400px;
-		}
-
-		.chart-container:hover {
-			transform: translateY(-4px);
-			box-shadow: var(--shadow-xl);
-		}
-
-		.chart-title {
-			font-size: 1.25rem;
-			font-weight: 600;
-			color: var(--gray-900);
-			margin-bottom: 1.5rem;
+			grid-template-columns: 1fr 1fr;
+			gap: 3rem;
 			text-align: center;
+			margin-top: 2rem;
 		}
 
-		.chart-wrapper {
-			position: relative;
-			height: 300px;
-			width: 100%;
+		.signature-block {
+			padding: 2rem;
+			background: rgba(234, 88, 12, 0.05);
+			border-radius: 16px;
+			border: 1px solid rgba(234, 88, 12, 0.1);
+		}
+
+		.signature-title {
+			font-size: 1rem;
+			color: var(--text-light);
+			margin-bottom: 3rem;
+			line-height: 1.5;
+		}
+
+		.signature-name {
+			font-weight: 700;
+			color: var(--text-dark);
+			border-bottom: 3px solid var(--primary-color);
+			padding-bottom: 0.5rem;
+			font-size: 1.1rem;
+		}
+
+		.badge-warning {
+			background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+		}
+
+		.badge-success {
+			background: linear-gradient(135deg, var(--highlight-color) 0%, #059669 100%);
 		}
 
 		@media (max-width: 768px) {
-			.main-container {
-				padding: 1rem 0.5rem;
-			}
-
-			.header-section {
-				padding: 2rem 1.5rem;
-			}
-
-			.header-title {
+			.hero h3 {
 				font-size: 2rem;
 			}
 
-			.stats-grid {
-				grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+			.hero .opacity-75 {
+				font-size: 1.1rem;
 			}
 
-			.charts-grid {
-				grid-template-columns: 1fr;
-				gap: 1.5rem;
+			.metric-card .h3 {
+				font-size: 2.5rem;
 			}
 
 			.signature-section {
 				grid-template-columns: 1fr;
-				gap: 1rem;
-			}
-
-			.modern-table {
-				font-size: 0.875rem;
-			}
-
-			.modern-table th,
-			.modern-table td {
-				padding: 0.75rem 0.5rem;
-			}
-
-			.chart-container {
-				height: 350px;
-				padding: 1.5rem;
-			}
-
-			.chart-wrapper {
-				height: 250px;
-			}
-		}
-
-		.animate-fade-in {
-			animation: fadeIn 0.8s ease-out;
-		}
-
-		.animate-slide-up {
-			animation: slideUp 0.8s ease-out;
-		}
-
-		@keyframes fadeIn {
-			from {
-				opacity: 0;
-			}
-
-			to {
-				opacity: 1;
-			}
-		}
-
-		@keyframes slideUp {
-			from {
-				opacity: 0;
-				transform: translateY(30px);
-			}
-
-			to {
-				opacity: 1;
-				transform: translateY(0);
+				gap: 1.5rem;
 			}
 		}
 	</style>
 </head>
 
 <body>
-	<div class="main-container">
-		<div class="bg-overlay"></div>
-
-		<div class="container">
-			<!-- Header Section -->
-			<div class="header-section animate-fade-in">
-				<div class="header-badge">
-					<i class="fas fa-file-invoice-dollar"></i>
-					LIPA 7a
-				</div>
-				<h1 class="header-title"><?= $judul ?></h1>
-				<p class="header-subtitle"><?= $subjudul ?></p>
-				<p class="header-period"><?= $periode ?></p>
+	<div class="container-xxl py-4">
+		<!-- Header -->
+		<div class="hero p-4 mb-4 d-flex justify-content-between align-items-center">
+			<div>
+				<h3 class="mb-1 fw-bold">LAPORAN KEUANGAN PERKARA OKTOBER</h3>
+				<div class="opacity-75">Statistik Keuangan Oktober 2025</div>
 			</div>
+			<span class="badge bg-light text-dark px-3 py-2 rounded-pill">Oktober 2025</span>
+		</div>
 
-			<!-- Statistics Cards -->
-			<div class="stats-grid animate-slide-up">
-				<div class="stat-card penerimaan">
-					<div class="stat-icon penerimaan">
-						<i class="fas fa-arrow-trend-up"></i>
-					</div>
-					<div class="stat-value">Rp <?= number_format($total_penerimaan, 0, ',', '.') ?></div>
-					<div class="stat-label">Total Penerimaan</div>
-				</div>
-
-				<div class="stat-card pengeluaran">
-					<div class="stat-icon pengeluaran">
-						<i class="fas fa-arrow-trend-down"></i>
-					</div>
-					<div class="stat-value">Rp <?= number_format($total_pengeluaran, 0, ',', '.') ?></div>
-					<div class="stat-label">Total Pengeluaran</div>
-				</div>
-
-				<div class="stat-card saldo">
-					<div class="stat-icon saldo">
-						<i class="fas fa-wallet"></i>
-					</div>
-					<div class="stat-value">Rp <?= number_format($saldo_akhir, 0, ',', '.') ?></div>
-					<div class="stat-label">Saldo Akhir</div>
-					<div class="stat-sublabel">
-						Bank: Rp <?= number_format($saldo_bank, 0, ',', '.') ?> |
-						Tunai: Rp <?= number_format($saldo_kas_tunai, 0, ',', '.') ?>
-					</div>
-				</div>
-
-				<div class="stat-card perkara">
-					<div class="stat-icon perkara">
-						<i class="fas fa-gavel"></i>
-					</div>
-					<div class="stat-value"><?= $perkara_masuk ?> / <?= $perkara_putus ?></div>
-					<div class="stat-label">Perkara Masuk / Putus</div>
-					<div class="stat-sublabel">
-						<span class="badge badge-warning">Prodeo: <?= $perkara_prodeo_masuk ?>/<?= $perkara_prodeo_putus ?></span>
+		<!-- Metrics -->
+		<div class="row g-3 mb-4">
+			<div class="col-md-3">
+				<div class="card metric-card">
+					<div class="card-body">
+						<div class="small">Total Penerimaan</div>
+						<div class="h3">Rp <?= number_format($total_penerimaan, 0, ',', '.') ?></div>
 					</div>
 				</div>
 			</div>
-
-			<!-- Main Table -->
-			<div class="content-grid animate-slide-up">
-				<div class="section-card">
-					<div class="section-header">
-						<h3 class="section-title">
-							<i class="fas fa-table"></i>
-							Rincian Laporan Keuangan
-						</h3>
+			<div class="col-md-3">
+				<div class="card metric-card">
+					<div class="card-body">
+						<div class="small">Total Pengeluaran</div>
+						<div class="h3">Rp <?= number_format($total_pengeluaran, 0, ',', '.') ?></div>
 					</div>
-					<div class="section-body">
-						<div class="table-responsive">
-							<table class="modern-table">
-								<thead>
-									<tr>
-										<th style="width: 8%">No</th>
-										<th style="width: 50%">Uraian</th>
-										<th style="width: 21%">Penerimaan (Rp)</th>
-										<th style="width: 21%">Pengeluaran (Rp)</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php $no = 1;
-									foreach ($laporan as $item): ?>
-										<tr>
-											<td class="text-center fw-semibold"><?= $no++ ?></td>
-											<td class="fw-semibold"><?= $item['uraian'] ?></td>
-											<td class="text-end">
-												<?= $item['penerimaan'] > 0 ? 'Rp ' . number_format($item['penerimaan'], 0, ',', '.') : '-' ?>
-											</td>
-											<td class="text-end">
-												<?= $item['pengeluaran'] > 0 ? 'Rp ' . number_format($item['pengeluaran'], 0, ',', '.') : '-' ?>
-											</td>
-										</tr>
-									<?php endforeach; ?>
-									<tr style="background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%); color: white;">
-										<td class="text-center fw-bold" colspan="2">JUMLAH</td>
-										<td class="text-end fw-bold">Rp <?= number_format($total_penerimaan, 0, ',', '.') ?></td>
-										<td class="text-end fw-bold">Rp <?= number_format($total_pengeluaran, 0, ',', '.') ?></td>
-									</tr>
-								</tbody>
-							</table>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="card metric-card">
+					<div class="card-body">
+						<div class="small">Saldo Akhir</div>
+						<div class="h3">Rp <?= number_format($saldo_akhir, 0, ',', '.') ?></div>
+						<div class="small text-muted">
+							Bank: Rp <?= number_format($saldo_bank, 0, ',', '.') ?> |
+							Tunai: Rp <?= number_format($saldo_kas_tunai, 0, ',', '.') ?>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<!-- Charts Section -->
-			<div class="charts-grid animate-slide-up">
-				<div class="chart-container">
-					<h4 class="chart-title">
-						<i class="fas fa-chart-line"></i>
-						Tren Penerimaan & Pengeluaran
-					</h4>
-					<div class="chart-wrapper">
-						<canvas id="trendChart"></canvas>
-					</div>
-				</div>
-
-				<div class="chart-container">
-					<h4 class="chart-title">
-						<i class="fas fa-chart-pie"></i>
-						Distribusi Pengeluaran
-					</h4>
-					<div class="chart-wrapper">
-						<canvas id="pieChart"></canvas>
-					</div>
-				</div>
-
-				<div class="chart-container">
-					<h4 class="chart-title">
-						<i class="fas fa-chart-bar"></i>
-						Perbandingan September
-					</h4>
-					<div class="chart-wrapper">
-						<canvas id="comparisonChart"></canvas>
-					</div>
-				</div>
-
-				<div class="chart-container">
-					<h4 class="chart-title">
-						<i class="fas fa-balance-scale"></i>
-						Statistik Perkara
-					</h4>
-					<div class="chart-wrapper">
-						<canvas id="perkaraChart"></canvas>
-					</div>
-				</div>
-			</div>
-
-			<!-- Footer Section -->
-			<div class="footer-grid animate-slide-up">
-				<div class="footer-card">
-					<h4 class="footer-title">
-						<i class="fas fa-sticky-note"></i>
-						Catatan Perkara
-					</h4>
-					<ul style="list-style: none; padding: 0;">
-						<li style="padding: 0.5rem 0; border-bottom: 1px solid var(--gray-200);">
-							<strong>Perkara Masuk:</strong> <?= $perkara_masuk ?> perkara
-							<span class="badge badge-warning"><?= $perkara_prodeo_masuk ?> perkara prodeo</span>
-						</li>
-						<li style="padding: 0.5rem 0;">
-							<strong>Perkara Putus:</strong> <?= $perkara_putus ?> perkara
-							<span class="badge badge-success"><?= $perkara_prodeo_putus ?> perkara prodeo</span>
-						</li>
-					</ul>
-				</div>
-
-				<div class="footer-card">
-					<h4 class="footer-title">
-						<i class="fas fa-pen-fancy"></i>
-						Pengesahan
-					</h4>
-					<p class="text-center" style="margin-bottom: 2rem;">
-						<strong>Amuntai, 01 Oktober 2025</strong>
-					</p>
-					<div class="signature-section">
-						<div class="signature-block">
-							<div class="signature-title">Mengetahui,<br>Ketua</div>
-							<div class="signature-name">Bahrul Maji, S.H.I.</div>
-						</div>
-						<div class="signature-block">
-							<div class="signature-title">Panitera</div>
-							<div class="signature-name">H. Ahmad Ramli, S.H.</div>
+			<div class="col-md-3">
+				<div class="card metric-card">
+					<div class="card-body">
+						<div class="small">Perkara Masuk/Putus</div>
+						<div class="h3"><?= $perkara_masuk ?> / <?= $perkara_putus ?></div>
+						<div class="small text-muted">
+							Prodeo: <?= $perkara_prodeo_masuk ?> / <?= $perkara_prodeo_putus ?>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<!-- Table -->
+		<div class="card section-card mb-4">
+			<div class="card-body">
+				<div class="table-responsive">
+					<table id="lipa-table" class="table table-bordered table-hover align-middle">
+						<thead class="sticky-th">
+							<tr>
+								<th style="min-width:48px">No</th>
+								<th class="text-start" style="min-width:260px">Uraian</th>
+								<th>Penerimaan (Rp)</th>
+								<th>Pengeluaran (Rp)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php $no = 1;
+							foreach ($laporan as $item): ?>
+								<tr>
+									<td class="text-center"><?= $no++ ?></td>
+									<td><?= htmlspecialchars($item['uraian']) ?></td>
+									<td class="text-center"><?= $item['penerimaan'] ? 'Rp ' . number_format($item['penerimaan'], 0, ',', '.') : '–' ?></td>
+									<td class="text-center"><?= $item['pengeluaran'] ? 'Rp ' . number_format($item['pengeluaran'], 0, ',', '.') : '–' ?></td>
+								</tr>
+							<?php endforeach; ?>
+						</tbody>
+						<tfoot class="fw-bold">
+							<tr>
+								<td></td>
+								<td><strong>JUMLAH</strong></td>
+								<td class="text-center"><strong>Rp <?= number_format($total_penerimaan, 0, ',', '.') ?></strong></td>
+								<td class="text-center"><strong>Rp <?= number_format($total_pengeluaran, 0, ',', '.') ?></strong></td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<!-- Charts -->
+		<div class="row g-3 mb-4">
+			<div class="col-md-6">
+				<div class="card section-card h-100">
+					<div class="card-body chart-box">
+						<h6 class="mb-3"><i class="fas fa-chart-pie"></i> Distribusi Pengeluaran Oktober</h6>
+						<canvas id="pieDistribusi"></canvas>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card section-card h-100">
+					<div class="card-body chart-box">
+						<h6 class="mb-3"><i class="fas fa-chart-bar"></i> Tren Keuangan (Jan-Okt)</h6>
+						<canvas id="barTrend"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row g-3 mb-4">
+			<div class="col-md-6">
+				<div class="card section-card h-100">
+					<div class="card-body chart-box">
+						<h6 class="mb-3"><i class="fas fa-chart-line"></i> Perbandingan Bulanan</h6>
+						<canvas id="lineCompare"></canvas>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card section-card h-100">
+					<div class="card-body chart-box">
+						<h6 class="mb-3"><i class="fas fa-balance-scale"></i> Statistik Perkara (Jan-Okt)</h6>
+						<canvas id="perkaraChart"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer Section -->
+		<div class="row g-3 mb-5">
+			<div class="col-md-6">
+				<div class="card section-card">
+					<div class="card-body">
+						<h5 class="mb-3"><i class="fas fa-sticky-note"></i> Catatan Perkara Oktober 2025</h5>
+						<ul class="list-unstyled">
+							<li class="mb-2">
+								<strong>Perkara Masuk:</strong> <?= $perkara_masuk ?> perkara
+								<span class="badge badge-warning ms-2"><?= $perkara_prodeo_masuk ?> perkara prodeo</span>
+							</li>
+							<li>
+								<strong>Perkara Putus:</strong> <?= $perkara_putus ?> perkara
+								<span class="badge badge-success ms-2"><?= $perkara_prodeo_putus ?> perkara prodeo</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card section-card">
+					<div class="card-body">
+						<h5 class="mb-3"><i class="fas fa-pen-fancy"></i> Pengesahan Laporan</h5>
+						<p class="text-center mb-3">
+							<strong>Amuntai, 03 November 2025</strong>
+						</p>
+						<div class="signature-section">
+							<div class="signature-block">
+								<div class="signature-title">Mengetahui,<br>Ketua</div>
+								<div class="signature-name">Bahrul Maji, S.H.I.</div>
+							</div>
+							<div class="signature-block">
+								<div class="signature-title">Panitera</div>
+								<div class="signature-name">H. Ahmad Ramli, S.H.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer class="text-center">&copy; <?= date('Y'); ?> PA Amuntai</footer>
 	</div>
 
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/r-3.0.2/datatables.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 	<script>
-		// Chart configuration
-		Chart.defaults.font.family = 'Inter';
-		Chart.defaults.color = '#374151';
-		Chart.defaults.responsive = true;
-		Chart.defaults.maintainAspectRatio = false;
+		document.addEventListener('DOMContentLoaded', function() {
+			try {
+				new DataTable('#lipa-table', {
+					responsive: true,
+					paging: false,
+					searching: false,
+					info: false,
+					order: []
+				});
+			} catch (e) {}
 
-		// Data preparation - optimize loops
-		const chartData = {
-			bulan: <?= json_encode($bulan) ?>,
-			penerimaan: <?= json_encode($penerimaan_bulanan) ?>,
-			pengeluaran: <?= json_encode($pengeluaran_bulanan) ?>,
-			perkaraMasuk: <?= json_encode($perkara_masuk_bulanan) ?>,
-			perkaraPutus: <?= json_encode($perkara_putus_bulanan) ?>
-		};
+			const laporanData = <?= json_encode($laporan, JSON_UNESCAPED_UNICODE); ?> || [];
+			const chartData = {
+				bulan: <?= json_encode($bulan) ?>,
+				penerimaan: <?= json_encode($penerimaan_bulanan) ?>,
+				pengeluaran: <?= json_encode($pengeluaran_bulanan) ?>,
+				perkaraMasuk: <?= json_encode($perkara_masuk_bulanan) ?>,
+				perkaraPutus: <?= json_encode($perkara_putus_bulanan) ?>
+			};
 
-		const laporanData = <?= json_encode($laporan) ?>;
-		const pengeluaranOnly = laporanData
-			.filter(item => item.pengeluaran > 0)
-			.map(item => ({
-				label: item.uraian,
-				value: item.pengeluaran
-			}));
+			// ===== PIE: Distribusi pengeluaran
+			let pengeluaranData = laporanData
+				.filter(item => item.pengeluaran > 0)
+				.map(item => ({
+					label: item.uraian.length > 25 ? item.uraian.substring(0, 25) + '...' : item.uraian,
+					val: item.pengeluaran
+				}));
 
-		// Common chart options
-		const commonOptions = {
-			responsive: true,
-			maintainAspectRatio: false,
-			plugins: {
-				tooltip: {
-					backgroundColor: 'rgba(17, 24, 39, 0.95)',
-					titleColor: 'white',
-					bodyColor: 'white',
-					borderColor: 'rgba(255, 255, 255, 0.1)',
-					borderWidth: 1,
-					cornerRadius: 12
-				}
+			if (pengeluaranData.length === 0) {
+				pengeluaranData = [{
+					label: 'Tidak ada data',
+					val: 1
+				}];
 			}
-		};
 
-		// 1. Trend Chart
-		new Chart(document.getElementById('trendChart'), {
-			type: 'line',
-			data: {
-				labels: chartData.bulan,
-				datasets: [{
-					label: 'Penerimaan',
-					data: chartData.penerimaan,
-					borderColor: '#10b981',
-					backgroundColor: 'rgba(16, 185, 129, 0.1)',
-					borderWidth: 3,
-					fill: true,
-					tension: 0.4
-				}, {
-					label: 'Pengeluaran',
-					data: chartData.pengeluaran,
-					borderColor: '#dc2626',
-					backgroundColor: 'rgba(220, 38, 38, 0.1)',
-					borderWidth: 3,
-					fill: true,
-					tension: 0.4
-				}]
-			},
-			options: {
-				...commonOptions,
-				scales: {
-					y: {
-						beginAtZero: true,
-						grid: {
-							color: 'rgba(229, 231, 235, 0.5)'
-						},
-						ticks: {
-							callback: value => 'Rp ' + new Intl.NumberFormat('id-ID', {
-								notation: 'compact',
-								compactDisplay: 'short'
-							}).format(value)
-						}
-					},
-					x: {
-						grid: {
-							display: false
-						}
-					}
+			new Chart(document.getElementById('pieDistribusi'), {
+				type: 'doughnut',
+				data: {
+					labels: pengeluaranData.map(x => x.label),
+					datasets: [{
+						data: pengeluaranData.map(x => x.val),
+						backgroundColor: [
+							'#ea580c', '#f59e0b', '#10b981', '#3b82f6', '#8b5cf6',
+							'#f97316', '#06b6d4', '#84cc16', '#f43f5e', '#6366f1',
+							'#14b8a6', '#a855f7', '#22c55e', '#eab308', '#f97316'
+						],
+						borderWidth: 3,
+						borderColor: '#fff',
+						hoverOffset: 20
+					}]
 				},
-				plugins: {
-					...commonOptions.plugins,
-					legend: {
-						position: 'top'
-					},
-					tooltip: {
-						...commonOptions.plugins.tooltip,
-						callbacks: {
-							label: context => context.dataset.label + ': Rp ' +
-								new Intl.NumberFormat('id-ID').format(context.parsed.y)
-						}
-					}
-				}
-			}
-		});
-
-		// 2. Pie Chart
-		new Chart(document.getElementById('pieChart'), {
-			type: 'doughnut',
-			data: {
-				labels: pengeluaranOnly.map(item => item.label.length > 20 ?
-					item.label.substring(0, 20) + '...' : item.label),
-				datasets: [{
-					data: pengeluaranOnly.map(item => item.value),
-					backgroundColor: [
-						'#10b981', '#3b82f6', '#f59e0b', '#ef4444',
-						'#8b5cf6', '#06b6d4', '#f97316', '#84cc16'
-					],
-					borderWidth: 3,
-					borderColor: '#ffffff'
-				}]
-			},
-			options: {
-				...commonOptions,
-				plugins: {
-					...commonOptions.plugins,
-					legend: {
-						position: 'bottom',
-						labels: {
-							usePointStyle: true,
-							padding: 15,
-							font: {
-								size: 11
+				options: {
+					responsive: true,
+					maintainAspectRatio: false,
+					plugins: {
+						legend: {
+							position: 'bottom',
+							labels: {
+								usePointStyle: true,
+								padding: 15,
+								font: {
+									size: 11,
+									weight: '600'
+								}
+							}
+						},
+						tooltip: {
+							backgroundColor: 'rgba(0, 0, 0, 0.8)',
+							titleColor: '#fff',
+							bodyColor: '#fff',
+							borderColor: '#ea580c',
+							borderWidth: 1,
+							cornerRadius: 8,
+							callbacks: {
+								label: function(context) {
+									const total = context.dataset.data.reduce((a, b) => a + b, 0);
+									const percentage = ((context.parsed / total) * 100).toFixed(1);
+									return `${context.label}: Rp ${new Intl.NumberFormat('id-ID').format(context.parsed)} (${percentage}%)`;
+								}
 							}
 						}
 					},
-					tooltip: {
-						...commonOptions.plugins.tooltip,
-						callbacks: {
-							label: context => {
-								const total = context.dataset.data.reduce((a, b) => a + b, 0);
-								const percentage = ((context.parsed / total) * 100).toFixed(1);
-								return context.label + ': Rp ' +
-									new Intl.NumberFormat('id-ID').format(context.parsed) +
-									' (' + percentage + '%)';
-							}
-						}
-					}
-				}
-			}
-		});
-
-		// 3. Comparison Chart
-		new Chart(document.getElementById('comparisonChart'), {
-			type: 'bar',
-			data: {
-				labels: ['Penerimaan', 'Pengeluaran', 'Saldo'],
-				datasets: [{
-					data: [<?= $total_penerimaan ?>, <?= $total_pengeluaran ?>, <?= $saldo_akhir ?>],
-					backgroundColor: ['#10b981', '#dc2626', '#3b82f6'],
-					borderColor: ['#059669', '#b91c1c', '#1d4ed8'],
-					borderWidth: 2,
-					borderRadius: 8
-				}]
-			},
-			options: {
-				...commonOptions,
-				plugins: {
-					...commonOptions.plugins,
-					legend: {
-						display: false
-					},
-					tooltip: {
-						...commonOptions.plugins.tooltip,
-						callbacks: {
-							label: context => 'Rp ' + new Intl.NumberFormat('id-ID').format(context.parsed.y)
-						}
-					}
-				},
-				scales: {
-					y: {
-						beginAtZero: true,
-						grid: {
-							color: 'rgba(229, 231, 235, 0.5)'
-						},
-						ticks: {
-							callback: value => 'Rp ' + new Intl.NumberFormat('id-ID', {
-								notation: 'compact'
-							}).format(value)
-						}
-					},
-					x: {
-						grid: {
-							display: false
-						}
-					}
-				}
-			}
-		});
-
-		// 4. Perkara Chart
-		new Chart(document.getElementById('perkaraChart'), {
-			type: 'bar',
-			data: {
-				labels: chartData.bulan,
-				datasets: [{
-					label: 'Masuk',
-					data: chartData.perkaraMasuk,
-					backgroundColor: '#fbbf24',
-					borderColor: '#f59e0b',
-					borderWidth: 2,
-					borderRadius: 6
-				}, {
-					label: 'Putus',
-					data: chartData.perkaraPutus,
-					backgroundColor: '#3b82f6',
-					borderColor: '#1d4ed8',
-					borderWidth: 2,
-					borderRadius: 6
-				}]
-			},
-			options: {
-				...commonOptions,
-				plugins: {
-					...commonOptions.plugins,
-					legend: {
-						position: 'top',
-						labels: {
-							usePointStyle: true
-						}
-					}
-				},
-				scales: {
-					y: {
-						beginAtZero: true,
-						grid: {
-							color: 'rgba(229, 231, 235, 0.5)'
-						}
-					},
-					x: {
-						grid: {
-							display: false
-						}
-					}
-				}
-			}
-		});
-
-		// Animation observer - optimized
-		const observerOptions = {
-			threshold: 0.1,
-			rootMargin: '0px 0px -50px 0px'
-		};
-
-		const observer = new IntersectionObserver(entries => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					entry.target.style.opacity = '1';
-					entry.target.style.transform = 'translateY(0)';
+					cutout: '60%',
 				}
 			});
-		}, observerOptions);
 
-		// Apply animations
-		document.querySelectorAll('.animate-slide-up').forEach(element => {
-			element.style.opacity = '0';
-			element.style.transform = 'translateY(30px)';
-			element.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-			observer.observe(element);
+			// ===== BAR: Tren keuangan bulanan
+			new Chart(document.getElementById('barTrend'), {
+				type: 'bar',
+				data: {
+					labels: chartData.bulan,
+					datasets: [{
+						label: 'Penerimaan',
+						data: chartData.penerimaan,
+						backgroundColor: 'rgba(16, 185, 129, 0.8)',
+						borderColor: '#10b981',
+						borderWidth: 0,
+						borderRadius: 8,
+						borderSkipped: false,
+					}, {
+						label: 'Pengeluaran',
+						data: chartData.pengeluaran,
+						backgroundColor: 'rgba(234, 88, 12, 0.8)',
+						borderColor: '#ea580c',
+						borderWidth: 0,
+						borderRadius: 8,
+						borderSkipped: false,
+					}]
+				},
+				options: {
+					responsive: true,
+					maintainAspectRatio: false,
+					plugins: {
+						legend: {
+							position: 'bottom',
+							labels: {
+								usePointStyle: true,
+								padding: 20,
+								font: {
+									size: 12,
+									weight: '600'
+								}
+							}
+						},
+						tooltip: {
+							backgroundColor: 'rgba(0, 0, 0, 0.8)',
+							titleColor: '#fff',
+							bodyColor: '#fff',
+							borderColor: '#ea580c',
+							borderWidth: 1,
+							cornerRadius: 8,
+							callbacks: {
+								label: function(context) {
+									return `${context.dataset.label}: Rp ${new Intl.NumberFormat('id-ID').format(context.parsed.y)}`;
+								}
+							}
+						}
+					},
+					scales: {
+						y: {
+							beginAtZero: true,
+							title: {
+								display: true,
+								text: 'Jumlah (Rupiah)',
+								font: {
+									size: 14,
+									weight: '600'
+								},
+								color: '#ea580c'
+							},
+							grid: {
+								color: 'rgba(234, 88, 12, 0.1)',
+								drawBorder: false
+							},
+							ticks: {
+								font: {
+									size: 11,
+									weight: '500'
+								},
+								color: '#64748b',
+								callback: value => 'Rp ' + new Intl.NumberFormat('id-ID', {
+									notation: 'compact'
+								}).format(value)
+							}
+						},
+						x: {
+							grid: {
+								display: false
+							},
+							ticks: {
+								font: {
+									size: 11,
+									weight: '600'
+								},
+								color: '#ea580c'
+							}
+						}
+					}
+				}
+			});
+
+			// ===== LINE: Perbandingan bulanan
+			new Chart(document.getElementById('lineCompare'), {
+				type: 'line',
+				data: {
+					labels: chartData.bulan,
+					datasets: [{
+						label: 'Penerimaan',
+						data: chartData.penerimaan,
+						borderColor: '#10b981',
+						backgroundColor: 'rgba(16, 185, 129, 0.1)',
+						fill: true,
+						tension: 0.4,
+						pointBackgroundColor: '#10b981',
+						pointBorderColor: '#fff',
+						pointBorderWidth: 3,
+						pointRadius: 6,
+						pointHoverRadius: 8,
+						borderWidth: 3
+					}, {
+						label: 'Pengeluaran',
+						data: chartData.pengeluaran,
+						borderColor: '#ea580c',
+						backgroundColor: 'rgba(234, 88, 12, 0.1)',
+						fill: true,
+						tension: 0.4,
+						pointBackgroundColor: '#ea580c',
+						pointBorderColor: '#fff',
+						pointBorderWidth: 3,
+						pointRadius: 6,
+						pointHoverRadius: 8,
+						borderWidth: 3
+					}]
+				},
+				options: {
+					responsive: true,
+					maintainAspectRatio: false,
+					plugins: {
+						legend: {
+							position: 'top',
+							labels: {
+								usePointStyle: true,
+								padding: 20,
+								font: {
+									size: 14,
+									weight: '600'
+								}
+							}
+						},
+						tooltip: {
+							backgroundColor: 'rgba(234, 88, 12, 0.9)',
+							titleColor: '#fff',
+							bodyColor: '#fff',
+							borderColor: '#ea580c',
+							borderWidth: 2,
+							cornerRadius: 8,
+						}
+					},
+					scales: {
+						y: {
+							beginAtZero: true,
+							title: {
+								display: true,
+								text: 'Jumlah (Rupiah)',
+								font: {
+									size: 14,
+									weight: '600'
+								},
+								color: '#ea580c'
+							},
+							grid: {
+								color: 'rgba(234, 88, 12, 0.1)',
+								drawBorder: false
+							},
+							ticks: {
+								font: {
+									size: 11,
+									weight: '500'
+								},
+								color: '#64748b',
+								callback: value => 'Rp ' + new Intl.NumberFormat('id-ID', {
+									notation: 'compact'
+								}).format(value)
+							}
+						},
+						x: {
+							grid: {
+								color: 'rgba(234, 88, 12, 0.1)'
+							},
+							ticks: {
+								font: {
+									size: 11,
+									weight: '600'
+								},
+								color: '#ea580c'
+							}
+						}
+					},
+					interaction: {
+						intersect: false,
+						mode: 'index'
+					}
+				}
+			});
+
+			// ===== BAR: Statistik perkara
+			new Chart(document.getElementById('perkaraChart'), {
+				type: 'bar',
+				data: {
+					labels: chartData.bulan,
+					datasets: [{
+						label: 'Masuk',
+						data: chartData.perkaraMasuk,
+						backgroundColor: '#fbbf24',
+						borderColor: '#f59e0b',
+						borderWidth: 2,
+						borderRadius: 6
+					}, {
+						label: 'Putus',
+						data: chartData.perkaraPutus,
+						backgroundColor: '#3b82f6',
+						borderColor: '#1d4ed8',
+						borderWidth: 2,
+						borderRadius: 6
+					}]
+				},
+				options: {
+					responsive: true,
+					maintainAspectRatio: false,
+					plugins: {
+						legend: {
+							position: 'top',
+							labels: {
+								usePointStyle: true
+							}
+						}
+					},
+					scales: {
+						y: {
+							beginAtZero: true,
+							grid: {
+								color: 'rgba(234, 88, 12, 0.1)'
+							}
+						},
+						x: {
+							grid: {
+								display: false
+							}
+						}
+					}
+				}
+			});
 		});
 	</script>
 </body>
