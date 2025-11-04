@@ -480,6 +480,7 @@
 			font-size: 0.8rem;
 			font-weight: 600;
 			color: white;
+			margin-left: 0.5rem;
 		}
 
 		.badge-warning {
@@ -609,25 +610,25 @@
 					<div class="stat-value">Rp <?= number_format($saldo_akhir, 0, ',', '.') ?></div>
 					<div class="stat-label">Saldo Akhir</div>
 					<div class="stat-sublabel>
-						Bank: Rp <?= number_format($saldo_bank, 0, ',', '.') ?> |
-						Tunai: Rp <?= number_format($saldo_kas_tunai, 0, ',', '.') ?>
-					</div>
-				</div>
+                        Bank: Rp <?= number_format($saldo_bank, 0, ',', '.') ?> |
+                        Tunai: Rp <?= number_format($saldo_kas_tunai, 0, ',', '.') ?>
+                    </div>
+                </div>
 
-				<div class=" stat-card perkara">
+                <div class=" stat-card perkara">
 						<div class="stat-icon perkara">
 							<i class="fas fa-gavel"></i>
 						</div>
 						<div class="stat-value"><?= $perkara_masuk ?> / <?= $perkara_putus ?></div>
 						<div class="stat-label">Perkara Masuk / Putus</div>
 						<div class="stat-sublabel>
-						Prodeo: <?= $perkara_prodeo_masuk ?> / <?= $perkara_prodeo_putus ?>
-					</div>
-				</div>
-			</div>
+                        Prodeo: <?= $perkara_prodeo_masuk ?> / <?= $perkara_prodeo_putus ?>
+                    </div>
+                </div>
+            </div>
 
-			<!-- Main Table -->
-			<div class=" content-grid animate-slide-up">
+            <!-- Main Table -->
+            <div class=" content-grid animate-slide-up">
 							<div class="section-card">
 								<div class="section-header">
 									<h3 class="section-title">
@@ -735,23 +736,22 @@
 							</div>
 
 							<div class="footer-card">
-								<h4 class="footer-title">
-									<i class="fas fa-pen-fancy"></i>
+								<h4 class="footer
 									Pengesahan
 								</h4>
-								<p class="text-center" style="margin-bottom: 2rem;">
+								<p class=" text-center" style="margin-bottom: 2rem;">
 									<strong>Amuntai, 03 November 2025</strong>
-								</p>
-								<div class="signature-section">
-									<div class="signature-block">
-										<div class="signature-title">Mengetahui,<br>Ketua</div>
-										<div class="signature-name">Bahrul Maji, S.H.I.</div>
+									</p>
+									<div class="signature-section">
+										<div class="signature-block">
+											<div class="signature-title">Mengetahui,<br>Ketua</div>
+											<div class="signature-name">Bahrul Maji, S.H.I.</div>
+										</div>
+										<div class="signature-block">
+											<div class="signature-title">Panitera</div>
+											<div class="signature-name">H. Ahmad Ramli, S.H.</div>
+										</div>
 									</div>
-									<div class="signature-block">
-										<div class="signature-title">Panitera</div>
-										<div class="signature-name">H. Ahmad Ramli, S.H.</div>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>
