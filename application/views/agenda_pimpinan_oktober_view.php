@@ -60,9 +60,19 @@
         }
 
         @keyframes backgroundMove {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-40px) rotate(0.5deg); }
-            66% { transform: translateY(25px) rotate(-0.5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            33% {
+                transform: translateY(-40px) rotate(0.5deg);
+            }
+
+            66% {
+                transform: translateY(25px) rotate(-0.5deg);
+            }
         }
 
         .container {
@@ -96,8 +106,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateX(-50%) translateY(0px); }
-            50% { transform: translateX(-50%) translateY(-15px); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0px);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-15px);
+            }
         }
 
         .header h1 {
@@ -256,6 +273,7 @@
                 opacity: 0;
                 transform: translateX(-60px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -267,6 +285,7 @@
                 opacity: 0;
                 transform: translateX(60px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -292,9 +311,11 @@
             0% {
                 box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.8);
             }
+
             70% {
                 box-shadow: 0 0 0 12px rgba(234, 88, 12, 0);
             }
+
             100% {
                 box-shadow: 0 0 0 0 rgba(234, 88, 12, 0);
             }
@@ -458,6 +479,7 @@
                 opacity: 0;
                 transform: translateY(-60px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -469,6 +491,7 @@
                 opacity: 0;
                 transform: translateY(60px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -479,6 +502,7 @@
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
@@ -993,14 +1017,13 @@
             particle.style.top = '100vh';
             particle.style.pointerEvents = 'none';
             particle.style.zIndex = '0';
-            
+
             document.body.appendChild(particle);
-            
+
             const animationDuration = Math.random() * 4000 + 3000;
             const horizontalMovement = (Math.random() - 0.5) * 300;
-            
-            particle.animate([
-                {
+
+            particle.animate([{
                     transform: 'translateY(0px) translateX(0px)',
                     opacity: 0
                 },
