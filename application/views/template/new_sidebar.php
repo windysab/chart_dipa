@@ -342,6 +342,14 @@
 						</p>
 					</a>
 				</li>
+				<li class="nav-item">
+					<a href="<?php echo site_url('AgendaNovemberController') ?>" class="nav-link">
+						<i class="nav-icon fas fa-calendar-alt"></i>
+						<p>
+							Agenda Pimpinan November
+						</p>
+					</a>
+				</li>
 
 				<li class="nav-item">
 					<a href="<?php echo site_url('PersyaratanController') ?>" class="nav-link">
