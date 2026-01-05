@@ -278,6 +278,14 @@
 					</a>
 				</li>
 				<li class="nav-item">
+					<a href="<?php echo site_url('LKDesemberPerkaraController') ?>" class="nav-link">
+						<i class="nav-icon fas fa-file-invoice-dollar"></i>
+						<p>
+							Laporan Keuangan Perkara Desember
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
 					<a href="<?php echo site_url('LipaSeptemberController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-chart-line"></i>
 						<p>
