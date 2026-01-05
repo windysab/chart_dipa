@@ -310,6 +310,14 @@
 					</a>
 				</li>
 				<li class="nav-item">
+					<a href="<?php echo site_url('LipaDesemberController') ?>" class="nav-link">
+						<i class="nav-icon fas fa-chart-line"></i>
+						<p>
+							Laporan Perkara LIPA Desember
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
 					<a href="<?php echo site_url('AgendaSatkerJuliController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-calendar-alt"></i>
 						<p>
