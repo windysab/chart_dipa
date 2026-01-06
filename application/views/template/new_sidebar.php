@@ -190,6 +190,14 @@
 					</a>
 				</li>
 				<li class="nav-item">
+					<a href="<?php echo site_url('AgendaSatkerDesemberController') ?>" class="nav-link">
+						<i class="nav-icon fas fa-calendar-check"></i>
+						<p>
+							Agenda Satker Bulan Desember
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
 					<a href="<?php echo site_url('LipaAprController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-balance-scale"></i>
 						<p>
