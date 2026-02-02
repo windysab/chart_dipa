@@ -288,13 +288,13 @@
     <div class="container">
         <div class="header">
             <h1>AGENDA KERJA PIMPINAN</h1>
-            <h2>PENGADILAN AGAMA AMUNTAI</h2>
+            <h2>PENGADILAN AGAMA AMUNTAI TAHUN 2026</h2>
         </div>
 
         <div class="month-selector">
-            <button class="month-btn">April 2025</button>
-            <button class="month-btn active">Mei 2025</button>
-            <button class="month-btn">Juni 2025</button>
+            <button class="month-btn">Desember 2025</button>
+            <button class="month-btn active">Januari 2026</button>
+            <button class="month-btn">Februari 2026</button>
         </div>
 
         <div class="timeline-filter">
@@ -316,14 +316,45 @@
         </div>
 
         <div class="timeline">
-            <!-- 02-05-2025 -->
+            <!-- Kegiatan sesuai gambar yang diberikan -->
+            <!-- Item 1 -->
             <div class="timeline-item left">
-                <div class="timeline-card meeting">
-                    <div class="timeline-date">02 Mei 2025</div>
-                    <h3 class="timeline-title">Sekretaris Pengadilan Agama Amuntai menghadiri Rapat Persiapan Hari Jadi ke-73 Kabupaten HSU</h3>
+                <div class="timeline-card coordination">
+                    <div class="timeline-date">01 Januari 2026</div>
+                    <h3 class="timeline-title">Hukum yang Membumi, Keadilan yang Mengabdi: Kolaborasi Pengadilan Agama Amuntai Kelas IB dan LBH Peduli Hukum dan Keadilan Tahun 2026</h3>
                     <div class="timeline-location">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Aula KH. Dr. Idham Khalid, Amuntai</span>
+                        <span>Pengadilan Agama Amuntai</span>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="timeline-item right">
+                <div class="timeline-card training">
+                    <div class="timeline-date">02 Januari 2026</div>
+                    <h3 class="timeline-title">Belajar Keadilan dari Dekat: PA Amuntai Kelas IB Anugerahkan Sertifikat Magang</h3>
+                    <div class="timeline-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Aula PA Amuntai</span>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="timeline-item left">
+                <div class="timeline-card training">
+                    <div class="timeline-date">03 Januari 2026</div>
+                    <h3 class="timeline-title">Pengadilan Agama Amuntai Ikut Sosialisasi Asuransi Mandiri Inhealth bagi Anggota IKAHI Tahun 2026</h3>
+                    <div class="timeline-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Hotel Grand Artos, Magelang</span>
                     </div>
                     <div class="timeline-icon">
                         <i class="fas fa-users"></i>
@@ -331,14 +362,29 @@
                 </div>
             </div>
 
-            <!-- 03-05-2025 -->
+            <!-- Item 4 -->
             <div class="timeline-item right">
-                <div class="timeline-card ceremony">
-                    <div class="timeline-date">03 Mei 2025</div>
-                    <h3 class="timeline-title">Sekretaris PA Amuntai menghadiri Rapat Senat Terbuka STAI Rakha Amuntai dalam rangka Wisuda Sarjana</h3>
+                <div class="timeline-card coordination">
+                    <div class="timeline-date">04 Januari 2026</div>
+                    <h3 class="timeline-title">Seluruh Aparatur PA Amuntai Laksanakan Pendatanganan Perjanjian Kinerja, Pakta Integritas, dan Komitmen Bersama</h3>
                     <div class="timeline-location">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Aula STAI Rakha Amuntai</span>
+                        <span>Ruang Rapat PA Amuntai</span>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="timeline-item left">
+                <div class="timeline-card training">
+                    <div class="timeline-date">05 Januari 2026</div>
+                    <h3 class="timeline-title">Pengadilan Agama Amuntai Menerima Mahasiswa Magang Akademik dari UIN Palangkaraya</h3>
+                    <div class="timeline-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>PA Amuntai</span>
                     </div>
                     <div class="timeline-icon">
                         <i class="fas fa-graduation-cap"></i>
@@ -346,29 +392,59 @@
                 </div>
             </div>
 
-            <!-- 05-05-2025 -->
-            <div class="timeline-item left">
+            <!-- Item 6 -->
+            <div class="timeline-item right">
                 <div class="timeline-card coordination">
-                    <div class="timeline-date">05 Mei 2025</div>
-                    <h3 class="timeline-title">Penandatanganan penambahan daya listrik gedung kantor untuk Tahun Anggaran 2025</h3>
+                    <div class="timeline-date">06 Januari 2026</div>
+                    <h3 class="timeline-title">Ketua Pengadilan Agama Amuntai Hadiri Pelantikan dan Pengambilan Sumpah/Janji Pejabat di Lingkungan Pemkab HSU</h3>
                     <div class="timeline-location">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Kantor PA Amuntai</span>
+                        <span>Aula Pendopo Bupati HSU</span>
                     </div>
                     <div class="timeline-icon">
-                        <i class="fas fa-bolt"></i>
+                        <i class="fas fa-gavel"></i>
                     </div>
                 </div>
             </div>
 
-            <!-- 06-05-2025 Upacara -->
-            <div class="timeline-item right">
-                <div class="timeline-card ceremony">
-                    <div class="timeline-date">06 Mei 2025</div>
-                    <h3 class="timeline-title">Sekretaris PA Amuntai menghadiri upacara Peringatan Hari Pendidikan Nasional Tahun 2025</h3>
+            <!-- Item 7 -->
+            <div class="timeline-item left">
+                <div class="timeline-card meeting">
+                    <div class="timeline-date">07 Januari 2026</div>
+                    <h3 class="timeline-title">Ketua Pengadilan Agama Amuntai Hadiri Kegiatan Jalan Sehat Kerukunan HAB Kemenag RI ke-80 Tingkat Kabupaten HSU</h3>
                     <div class="timeline-location">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Halaman Kantor Bupati Hulu Sungai Utara</span>
+                        <span>Lapangan Utama Amuntai</span>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 8 -->
+            <div class="timeline-item right">
+                <div class="timeline-card coordination">
+                    <div class="timeline-date">08 Januari 2026</div>
+                    <h3 class="timeline-title">Kesekretariatan Pengadilan Agama Amuntai Gelar Rapat Terbatas Bahas Perencanaan Anggaran Tahun Anggaran 2026</h3>
+                    <div class="timeline-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Ruang Rapat Sekretaris PA Amuntai</span>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 9 -->
+            <div class="timeline-item left">
+                <div class="timeline-card ceremony">
+                    <div class="timeline-date">09 Januari 2026</div>
+                    <h3 class="timeline-title">Sekretaris Pengadilan Agama Amuntai Hadiri Upacara Peringatan Hari Amal Bakti ke-80 Tahun 2026</h3>
+                    <div class="timeline-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Halaman Kemenag Kabupaten HSU</span>
                     </div>
                     <div class="timeline-icon">
                         <i class="fas fa-flag"></i>
@@ -376,178 +452,17 @@
                 </div>
             </div>
 
-            <!-- 06-05-2025 Sosialisasi -->
-            <div class="timeline-item left">
+            <!-- Item 10 -->
+            <div class="timeline-item right">
                 <div class="timeline-card training">
-                    <div class="timeline-date">06 Mei 2025</div>
-                    <h3 class="timeline-title">Panitera PA Amuntai hadir sebagai narasumber dalam kegiatan sosialisasi bersama Disduk Capil Balangan</h3>
+                    <div class="timeline-date">10 Januari 2026</div>
+                    <h3 class="timeline-title">Pengadilan Agama Amuntai Ikut Sosialisasi Revisi Anggaran dan Juknis Pembayaran Gaji Hakim</h3>
                     <div class="timeline-location">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Kantor Disduk Capil Kabupaten Balangan</span>
+                        <span>Hotel Sahid Jaya, Jakarta</span>
                     </div>
                     <div class="timeline-icon">
                         <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 06-05-2025 Kunjungan -->
-            <div class="timeline-item right">
-                <div class="timeline-card coordination">
-                    <div class="timeline-date">06 Mei 2025</div>
-                    <h3 class="timeline-title">PA Amuntai menerima kunjungan YM Ketua PTA Banjarmasin dan jajaran pejabat</h3>
-                    <div class="timeline-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Kantor PA Amuntai</span>
-                    </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 07-05-2025 Kunjungan -->
-            <div class="timeline-item left">
-                <div class="timeline-card coordination">
-                    <div class="timeline-date">07 Mei 2025</div>
-                    <h3 class="timeline-title">PA Amuntai menerima kunjungan Sekretaris PTA Banjarmasin</h3>
-                    <div class="timeline-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Ruang Media Center PA Amuntai</span>
-                    </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 07-05-2025 HUT -->
-            <div class="timeline-item right">
-                <div class="timeline-card ceremony">
-                    <div class="timeline-date">07 Mei 2025</div>
-                    <h3 class="timeline-title">Ketua PA Amuntai menghadiri Puncak Peringatan HUT ke-73 Kabupaten HSU</h3>
-                    <div class="timeline-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Lapangan Utama Kota Amuntai</span>
-                    </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-birthday-cake"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 08-05-2025 Sidang -->
-            <div class="timeline-item left">
-                <div class="timeline-card other">
-                    <div class="timeline-date">08 Mei 2025</div>
-                    <h3 class="timeline-title">PA Amuntai menggelar sidang itsbat nikah terpadu untuk kepastian hukum pasangan suami istri</h3>
-                    <div class="timeline-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Aula Kecamatan Lampihong, Kabupaten Balangan</span>
-                    </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-gavel"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 08-05-2025 Sumpah -->
-            <div class="timeline-item right">
-                <div class="timeline-card ceremony">
-                    <div class="timeline-date">08 Mei 2025</div>
-                    <h3 class="timeline-title">PA Amuntai menggelar acara pengambilan sumpah/janji Pegawai Negeri Sipil (PNS)</h3>
-                    <div class="timeline-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Ruang Sidang Utama PA Amuntai</span>
-                    </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 15-05-2025 -->
-            <div class="timeline-item left">
-                <div class="timeline-card training">
-                    <div class="timeline-date">15 Mei 2025</div>
-                    <h3 class="timeline-title">Ketua PA Amuntai bersama Wakil Ketua, Hakim, dan Panitera mengikuti Pembinaan oleh Ketua Muda Agama MA RI</h3>
-                    <div class="timeline-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Pengadilan Tinggi Agama Banjarmasin</span>
-                    </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Remaining items truncated for brevity -->
-            <div class="timeline-item right">
-                <div class="timeline-card other">
-                    <div class="timeline-date">22 Mei 2025</div>
-                    <h3 class="timeline-title">PA Amuntai menggelar kegiatan itsbat nikah terpadu untuk layanan hukum masyarakat</h3>
-                    <div class="timeline-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Aula Serbaguna Kecamatan Lampihong, Kabupaten Balangan</span>
-                    </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-gavel"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item left">
-                <div class="timeline-card training">
-                    <div class="timeline-date">23 Mei 2025</div>
-                    <h3 class="timeline-title">PA Amuntai mengikuti Bimbingan Teknis Nasional bertema "Kaum Rentan Berhadapan dengan Hukum"</h3>
-                    <div class="timeline-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Secara Daring (Online)</span>
-                    </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-laptop"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item right">
-                <div class="timeline-card ceremony">
-                    <div class="timeline-date">26 Mei 2025</div>
-                    <h3 class="timeline-title">Ketua PA Amuntai menghadiri acara perpisahan siswa dan siswi Pesantren Ihya Ulumuddin</h3>
-                    <div class="timeline-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Pesantren Ihya Ulumuddin Nur Sufiiyah Amuntai</span>
-                    </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item left">
-                <div class="timeline-card training">
-                    <div class="timeline-date">27 Mei 2025</div>
-                    <h3 class="timeline-title">Panitera Muda ikuti Sosialisasi Pelaksanaan Itsbat Nikah dan Penerbitan Salinan Putusan Elektronik</h3>
-                    <div class="timeline-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Ruang Media Center PA Amuntai</span>
-                    </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item right">
-                <div class="timeline-card meeting">
-                    <div class="timeline-date">27 Mei 2025</div>
-                    <h3 class="timeline-title">Sekretaris PA Amuntai hadiri Rapat Paripurna DPRD Kabupaten HSU</h3>
-                    <div class="timeline-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Aula DPRD Kabupaten Hulu Sungai Utara</span>
-                    </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-comments"></i>
                     </div>
                 </div>
             </div>

@@ -392,6 +392,15 @@
 				</li>
 
 				<li class="nav-item">
+					<a href="<?php echo site_url('LipaJan2026Controller') ?>" class="nav-link">
+						<i class="nav-icon fas fa-chart-line"></i>
+						<p>
+							Laporan Perkara LIPA Januari 2026
+						</p>
+					</a>
+				</li>
+
+				<li class="nav-item">
 					<a href="<?php echo site_url('PersyaratanController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-balance-scale"></i>
 						<p>
