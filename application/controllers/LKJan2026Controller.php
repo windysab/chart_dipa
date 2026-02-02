@@ -8,7 +8,6 @@ class LKJan2026Controller extends CI_Controller
     {
         $data['title'] = 'Laporan Keuangan Perkara Januari 2026';
         $this->load->view('template/new_header', $data);
-        $this->load->view('template/new_sidebar');
         $this->load->view('LK_Jan_2026_view', $data);
         $this->load->view('template/new_footer');
     }
