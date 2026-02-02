@@ -125,7 +125,6 @@ class LipaJan2026Controller extends CI_Controller
         );
 
         $this->load->view('template/new_header', $data);
-        $this->load->view('template/new_sidebar');
         $this->load->view('Lipa_Jan_2026_view', $data);
         $this->load->view('template/new_footer');
     }
