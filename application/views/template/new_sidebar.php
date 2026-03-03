@@ -401,6 +401,15 @@
 				</li>
 
 				<li class="nav-item">
+					<a href="<?php echo site_url('LipaFeb2026Controller') ?>" class="nav-link">
+						<i class="nav-icon fas fa-heart"></i>
+						<p>
+							Laporan Perkara LIPA Februari 2026
+						</p>
+					</a>
+				</li>
+
+				<li class="nav-item">
 					<a href="<?php echo site_url('LKJan2026Controller') ?>" class="nav-link">
 						<i class="nav-icon fas fa-file-invoice-dollar"></i>
 						<p>
