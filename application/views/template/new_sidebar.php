@@ -428,6 +428,15 @@
 				</li>
 
 				<li class="nav-item">
+					<a href="<?php echo site_url('LKMar2026Controller') ?>" class="nav-link">
+						<i class="nav-icon fas fa-seedling"></i>
+						<p>
+							Laporan Keuangan Maret 2026
+						</p>
+					</a>
+				</li>
+
+				<li class="nav-item">
 					<a href="<?php echo site_url('PersyaratanController') ?>" class="nav-link">
 						<i class="nav-icon fas fa-balance-scale"></i>
 						<p>
