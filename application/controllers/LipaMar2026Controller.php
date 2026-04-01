@@ -1,0 +1,131 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+/**
+ * LipaMar2026Controller – LIPA 8 Maret 2026
+ * Modern dashboard with interactive charts and beautiful UI
+ */
+class LipaMar2026Controller extends CI_Controller
+{
+    public function index()
+    {
+        // 30 jenis perkara sesuai standar LIPA
+        $kategori = array(
+            'Izin Poligami',
+            'Pencegahan Perkawinan',
+            'Penolakan Perkawinan',
+            'Pembatalan Perkawinan',
+            'Kelalaian Atas Kewajiban Suami / Istri',
+            'Cerai Talak',
+            'Cerai Gugat',
+            'Harta Bersama',
+            'Penguasaan Anak',
+            'Nafkah Anak Oleh Ibu karena Ayah tidak mampu',
+            'Hak - hak bekas istri/kewajiban bekas Suami',
+            'Pengesahan Anak',
+            'Pencabutan Kekuasaan Orang Tua',
+            'Perwalian',
+            'Pencabutan Kekuasaan Wali',
+            'Penunjukan orang lain sebagai Wali oleh Pengadilan',
+            'Ganti Rugi terhadap Wali',
+            'Asal Usul Anak',
+            'Perkawinan Campuran',
+            'Pengesahan Perkawinan/Isbat Nikah',
+            'Izin Kawin',
+            'Dispensasi Kawin',
+            'Wali Adhol',
+            'Kewarisan',
+            'Wasiat',
+            'Hibah',
+            'Wakaf',
+            'Lain-Lain',
+            'Ekonomi Syariah',
+            'P3HP/Penetapan Ahli Waris',
+        );
+
+        // Data Maret 2026 berdasarkan tabel yang diberikan
+        // 16 kolom: sisa_lalu, diterima, jumlah, dicabut, dikabulkan, ditolak,
+        // tidak_diterima, digugurkan, dicoret, perdamaian, dismissal,
+        // jumlah_laju_6_13, sisa_akhir, banding, kasasi, pk
+        $rows = array(
+            array(0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0), // 1. Izin Poligami
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 2. Pencegahan Perkawinan
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 3. Penolakan Perkawinan
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 4. Pembatalan Perkawinan
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 5. Kelalaian Atas Kewajiban Suami/Istri
+            array(16, 6, 22, 0, 7, 0, 1, 0, 0, 0, 0, 8, 14, 0, 0, 0), // 6. Cerai Talak
+            array(55, 21, 76, 2, 37, 0, 0, 1, 0, 0, 0, 40, 34, 0, 0, 0), // 7. Cerai Gugat
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 8. Harta Bersama
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 9. Penguasaan Anak
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 10. Nafkah Anak
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 11. Hak bekas istri
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 12. Pengesahan Anak
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 13. Pencabutan Kekuasaan Orang Tua
+            array(1, 4, 5, 0, 3, 0, 0, 0, 0, 0, 0, 3, 2, 0, 0, 0), // 14. Perwalian
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 15. Pencabutan Kekuasaan Wali
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 16. Penunjukan Wali
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 17. Ganti Rugi Wali
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 18. Asal Usul Anak
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 19. Perkawinan Campuran
+            array(12, 13, 25, 0, 18, 2, 0, 0, 0, 0, 0, 20, 5, 0, 0, 0), // 20. Isbat Nikah
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 21. Izin Kawin
+            array(1, 2, 3, 0, 6, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0), // 22. Dispensasi Kawin - corrected
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 23. Wali Adhol
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 24. Kewarisan
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 25. Wasiat
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 26. Hibah
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 27. Wakaf
+            array(2, 2, 4, 0, 3, 0, 0, 0, 0, 0, 0, 3, 1, 0, 0, 0), // 28. Lain-Lain
+            array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), // 29. Ekonomi Syariah
+            array(1, 2, 3, 1, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0), // 30. P3HP/Penetapan Ahli Waris
+        );
+
+        // Totals Maret 2026 sesuai data yang diberikan
+        $totals_maret = array(
+            'sisa_lalu' => 93,
+            'diterima' => 50,
+            'jumlah' => 143,
+            'dicabut' => 3,
+            'dikabulkan' => 75,
+            'ditolak' => 2,
+            'tidak_diterima' => 1,
+            'digugurkan' => 1,
+            'dicoret' => 0,
+            'perdamaian' => 0,
+            'dismissal' => 0,
+            'jumlah_laju_6_13' => 82,
+            'sisa_akhir' => 61,
+            'banding' => 0,
+            'kasasi' => 0,
+            'pk' => 0,
+        );
+
+        // Hitung total kalkulasi untuk verifikasi
+        $tot_calc = array_fill(0, 16, 0);
+        foreach ($rows as $r) {
+            foreach ($r as $i => $v) {
+                $tot_calc[$i] += (int)$v;
+            }
+        }
+
+        // Data series bulanan untuk chart (Jan-Mar) - data 2026
+        $series_masuk = [111, 134, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // Data Jan-Mar tersedia
+        $series_selesai = [25, 68, 82, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // Data Jan-Mar tersedia
+        $series_sisa = [91, 160, 61, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // Data Jan-Mar tersedia
+
+        $data = array(
+            'title' => 'LIPA 8 – Maret 2026',
+            'kategori' => $kategori,
+            'rows' => $rows,
+            'tot_img' => $totals_maret,
+            'tot_calc' => $tot_calc,
+            'series_masuk' => $series_masuk,
+            'series_selesai' => $series_selesai,
+            'series_sisa' => $series_sisa,
+        );
+
+        $this->load->view('template/new_header', $data);
+        $this->load->view('Lipa_Mar_2026_view', $data);
+        $this->load->view('template/new_footer');
+    }
+}

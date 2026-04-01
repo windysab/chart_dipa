@@ -410,6 +410,15 @@
 				</li>
 
 				<li class="nav-item">
+					<a href="<?php echo site_url('LipaMar2026Controller') ?>" class="nav-link">
+						<i class="nav-icon fas fa-leaf"></i>
+						<p>
+							Laporan Perkara LIPA Maret 2026
+						</p>
+					</a>
+				</li>
+
+				<li class="nav-item">
 					<a href="<?php echo site_url('LKJan2026Controller') ?>" class="nav-link">
 						<i class="nav-icon fas fa-file-invoice-dollar"></i>
 						<p>
